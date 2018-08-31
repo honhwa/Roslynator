@@ -26,19 +26,19 @@ doc
 
 ### Required Options
 
-`-a|--assemblies <ASSEMBLIES-TO-DOCUMENT>`
+**`-a|--assemblies`** `<ASSEMBLIES-TO-DOCUMENT>`
 
 Defines one or more assemblies that should be used as a source for the documentation.
 
-`-h|--heading <ROOT-FILE-HEADING>`
+**`-h|--heading`** `<ROOT-FILE-HEADING>`
 
 Defines a heading of the root documentation file.
 
-`-o|--output <OUTPUT-DIRECTORY>`
+**`-o|--output`** `<OUTPUT-DIRECTORY>`
 
 Defines a path for the output directory.
 
-`-r|--references <PATH-TO-FILE-WITH-ASSEMBLY-REFERENCES>`
+**`-r|--references`** `<PATH-TO-FILE-WITH-ASSEMBLY-REFERENCES>`
 
 Defines one of two following options:
 
@@ -47,39 +47,39 @@ Defines one of two following options:
 
 ### Optional Options
 
-`[--depth] {member|type|namespace}`
+**`[--depth]`** `{member|type|namespace}`
 
 Defines a depth of a documentation. Default value is `member`.
 
-`[--ignored-names] <FULLY-QUALIFIED-METADATA-NAMES-TO-IGNORE>`
+**`[--ignored-names]`** `<FULLY-QUALIFIED-METADATA-NAMES-TO-IGNORE>`
 
 Defines a list of metadata names that should be excluded from a documentation. Namespace of type names can be specified.
 
-`[--ignored-parts] {content | namespaces | classes | static-classes | structs | interfaces | enums | delegates | other}`
+**`[--ignored-parts]`** `{content | namespaces | classes | static-classes | structs | interfaces | enums | delegates | other}`
 
 Defines parts of a root documentation that should be excluded. No part is excluded by default.
 
-`[--mode] {github}`
+**`[--mode]`** `{github}`
 
 Defines documentation generation mode. Currently only supported mode is `github`.
 
-`[--no-class-hierarchy]`
+**`[--no-class-hierarchy]`**
 
 Indicates whether classes should be displayed as a list instead of hierarchy tree.
 
-`[--no-mark-obsolete]`
+**`[--no-mark-obsolete]`**
 
 Indicates whether obsolete types and members should not be marked as `[deprecated]`.
 
-`[--no-precedence-for-system]`
+**`[--no-precedence-for-system]`**
 
 Indicates whether symbols contained in `System` namespace should be ordered as any other symbols and not before other symbols.
 
-`[--omit-containing-namespace]`
+**`[--omit-containing-namespace]`**
 
 Indicates whether a containing namespace should be omitted when displaying type name.
 
-`[--root-url]`
+**`[--root-url]`**
 
 Defines a relative url to the documentation root directory.
 
