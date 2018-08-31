@@ -52,7 +52,6 @@ public abstract class DocumentationWriter : System.IDisposable
 | [GetType()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [MemberwiseClone()](https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [ToString()](https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
-| [WriteAssembly(ISymbol, String)](WriteAssembly/README.md#_top) | |
 | [WriteAttributes(ISymbol, Int32)](WriteAttributes/README.md#_top) | |
 | [WriteBlockQuote(String)](WriteBlockQuote/README.md#_top) | |
 | [WriteBold(String)](WriteBold/README.md#_top) | |
@@ -60,6 +59,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteCodeBlock(String, String)](WriteCodeBlock/README.md#_top) | |
 | [WriteComment(String)](WriteComment/README.md#_top) | |
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](WriteConstructors/README.md#_top) | |
+| [WriteContainingAssembly(ISymbol, String)](WriteContainingAssembly/README.md#_top) | |
 | [WriteContainingNamespace(INamespaceSymbol, String)](WriteContainingNamespace/README.md#_top) | |
 | [WriteContainingType(ISymbol, String)](WriteContainingType/README.md#_top) | |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](WriteContent/README.md#_top) | |

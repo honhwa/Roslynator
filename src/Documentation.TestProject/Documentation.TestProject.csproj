@@ -27,18 +27,6 @@
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Roslynator.Documentation.TestProject.xml</DocumentationFile>
   </PropertyGroup>
 
-  <Target Name="PreRoslynatorDocumention" BeforeTargets="RoslynatorDocumentation" Condition=" '$(Configuration)' == 'Release'">
-    <PropertyGroup>
-      <RoslynatorDocumentationDirectory>$(SolutionDir)..\docs\apitest</RoslynatorDocumentationDirectory>
-    </PropertyGroup>
-    <RemoveDir Directories="$(RoslynatorDocumentationDirectory)" />
-    <PropertyGroup>
-      <RoslynatorDocumentationAssemblies>&quot;$(TargetPath)&quot;</RoslynatorDocumentationAssemblies>
-      <RoslynatorDocumentationDocParameters> -a $(RoslynatorDocumentationAssemblies) -o &quot;$(RoslynatorDocumentationDirectory)&quot; -h &quot;Foo API Reference&quot; --additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; --ignored-names &quot;Roslynator.Documentation.Test2&quot;</RoslynatorDocumentationDocParameters>
-      <RoslynatorDocumentationDeclarationsParameters> -a $(RoslynatorDocumentationAssemblies) -o &quot;$(RoslynatorDocumentationDirectory)\api.cs&quot; --ignored-names &quot;Roslynator.Documentation.Test2&quot;</RoslynatorDocumentationDeclarationsParameters>
-    </PropertyGroup>
-  </Target>
-
   <ItemGroup>
     <None Remove="Documentation.TestProject.snk" />
   </ItemGroup>

@@ -38,7 +38,8 @@
     <Exec Command="$(RoslynatorDocumentationExe) declarations ^
 -a $(RoslynatorDocumentationAssemblies) ^
 -r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)..\docs\api\Roslynator.Tests.cs&quot;"
+-o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
+--empty-line-between-members"
           LogStandardErrorAsError="true"
           ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />

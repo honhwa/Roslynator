@@ -48,7 +48,6 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [GetType()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [MemberwiseClone()](https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [ToString()](ToString/README.md#_top) |  \(Overrides [Object.ToString](https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring)\) |
-| [WriteAssembly(ISymbol, String)](../../DocumentationWriter/WriteAssembly/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteAttributes(ISymbol, Int32)](../../DocumentationWriter/WriteAttributes/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteBlockQuote(String)](../../DocumentationWriter/WriteBlockQuote/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteBold(String)](../../DocumentationWriter/WriteBold/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
@@ -56,6 +55,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteCodeBlock(String, String)](WriteCodeBlock/README.md#_top) |  \(Overrides [DocumentationWriter.WriteCodeBlock](../../DocumentationWriter/WriteCodeBlock/README.md#_top)\) |
 | [WriteComment(String)](WriteComment/README.md#_top) |  \(Overrides [DocumentationWriter.WriteComment](../../DocumentationWriter/WriteComment/README.md#_top)\) |
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](../../DocumentationWriter/WriteConstructors/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteContainingAssembly(ISymbol, String)](../../DocumentationWriter/WriteContainingAssembly/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingNamespace(INamespaceSymbol, String)](../../DocumentationWriter/WriteContainingNamespace/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingType(ISymbol, String)](../../DocumentationWriter/WriteContainingType/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](../../DocumentationWriter/WriteContent/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

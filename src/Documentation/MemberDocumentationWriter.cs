@@ -68,7 +68,7 @@ namespace Roslynator.Documentation
                         }
                     case MemberDocumentationParts.ContainingAssembly:
                         {
-                            Writer.WriteAssembly(symbol, Resources.AssemblyTitle);
+                            Writer.WriteContainingAssembly(symbol, Resources.AssemblyTitle);
                             break;
                         }
                 }

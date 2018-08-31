@@ -10,7 +10,7 @@ declarations
 -a|--assemblies
 -o|--output
 -r|--references
-[--empty-line-between-declarations]
+[--empty-line-between-members]
 [--format-base-list]
 [--format-constraints]
 [--ignored-names]
@@ -22,6 +22,7 @@ declarations
 [--no-new-line-before-open-brace]
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
+[--omit-auto-generated-comment]
 ```
 
 ## Options
@@ -42,9 +43,9 @@ Defines a path to a file that contains a list of all assemblies necessary to com
 
 ### Optional Options
 
-**`[--empty-line-between-declarations]`**
+**`[--empty-line-between-members]`**
 
-Indicates whether an empty line should be added between two declarations. Default value is `false`.
+Indicates whether an empty line should be added between two member declarations. Default value is `false`.
 
 **`[--format-base-list]`**
 
@@ -89,6 +90,10 @@ Indicates whether symbols contained in `System` namespace should be ordered as a
 **`[--omit-attribute-arguments]`**
 
 Indicates whether attribute arguments should be omitted when displaying an attribute.
+
+**`[--omit-auto-generated-comment]`**
+
+Indicates whether an "auto-generated" comment at the beginning of the document should be omitted.
 
 ## See Also
 

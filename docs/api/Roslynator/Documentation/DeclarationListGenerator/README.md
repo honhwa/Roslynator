@@ -16,5 +16,5 @@ public static class DeclarationListGenerator
 
 | Method | Summary |
 | ------ | ------- |
-| [GenerateAsync(DocumentationModel, DeclarationListOptions)](GenerateAsync/README.md#_top) | |
+| [GenerateAsync(DocumentationModel, DeclarationListOptions, IComparer\<INamespaceSymbol>, IComparer\<INamedTypeSymbol>, IComparer\<ISymbol>)](GenerateAsync/README.md#_top) | |
 

@@ -720,7 +720,7 @@ namespace Roslynator.Documentation
                             }
                         case TypeDocumentationParts.ContainingAssembly:
                             {
-                                writer.WriteAssembly(typeSymbol, Resources.AssemblyTitle);
+                                writer.WriteContainingAssembly(typeSymbol, Resources.AssemblyTitle);
                                 break;
                             }
                         case TypeDocumentationParts.ObsoleteMessage:

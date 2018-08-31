@@ -350,7 +350,7 @@ namespace Roslynator.Documentation
             WriteLine();
         }
 
-        public virtual void WriteAssembly(ISymbol symbol, string title)
+        public virtual void WriteContainingAssembly(ISymbol symbol, string title)
         {
             WriteBold(title);
             WriteString(Resources.Colon);
