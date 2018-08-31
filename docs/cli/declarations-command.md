@@ -17,11 +17,11 @@ declarations
 [--include-ienumerable]
 [--indent-chars]
 [--merge-attributes]
+[--no-default-literal]
 [--no-indent]
 [--no-new-line-before-open-brace]
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
-[--no-default-literal]
 ```
 
 ## Options
@@ -70,6 +70,10 @@ Defines characters that should be used for indentation. Default value are four s
 
 Indicates whether attributes should be displayed in a single attribute list.
 
+**`[--no-default-literal]`**
+
+Indicates whether default expression (`default(T)`) should be used instead of default literal (`default`).
+
 **`[--no-indent]`**
 
 Indicates whether declarations should not be indented.
@@ -78,17 +82,13 @@ Indicates whether declarations should not be indented.
 
 Indicates whether opening braced should not be placed on a new line.
 
-**`[--omit-attribute-arguments]`**
-
-Indicates whether attribute arguments should be omitted when displaying an attribute.
-
-**`[--no-default-literal]`**
-
-Indicates whether default expression (`default(T)`) should be used instead of default literal (`default`).
-
 **`[--no-precedence-for-system]`**
 
 Indicates whether symbols contained in `System` namespace should be ordered as any other symbols and not before other symbols.
+
+**`[--omit-attribute-arguments]`**
+
+Indicates whether attribute arguments should be omitted when displaying an attribute.
 
 ## See Also
 

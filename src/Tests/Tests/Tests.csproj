@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.3.0" />
+    <PackageReference Include="Roslynator.Documentation.Build" Version="0.1.0-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +28,22 @@
   <ItemGroup>
     <None Remove="Tests.snk" />
   </ItemGroup>
+
+  <Target Name="RoslynatorDocumentation" AfterTargets="RoslynatorDocumentationInitialize" Condition=" '$(Configuration)' == 'Release'">
+
+    <PropertyGroup>
+      <RoslynatorDocumentationAssemblies>&quot;$(TargetPath)&quot;</RoslynatorDocumentationAssemblies>
+    </PropertyGroup>
+
+    <Exec Command="$(RoslynatorDocumentationExe) declarations ^
+-a $(RoslynatorDocumentationAssemblies) ^
+-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
+-o &quot;$(SolutionDir)..\docs\api\Roslynator.Tests.cs&quot;"
+          LogStandardErrorAsError="true"
+          ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+  </Target>
 
 </Project>
