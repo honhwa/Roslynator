@@ -37,9 +37,12 @@ Defines one or more assemblies that should be used as a source for the documenta
 
 Defines a path for the output directory.
 
-**`-r|--references`** `<PATH-TO-FILE-WITH-ASSEMBLY-REFERENCES>`
+**`-r|--references`** `<ASSEMBLY-REFERENCES-OR-PATH-TO-FILE-WITH-ASSEMBLY-REFERENCES>`
 
-Defines a path to a file that contains a list of all assemblies necessary to compile a project. Each assembly must be on separate line.
+Defines one of two following options:
+
+* Semicolon separated list of assemblies necessary to compile a project.
+* Path to a file that contains a list of all assemblies necessary to compile a project. Each assembly must be on separate line.
 
 ### Optional Options
 
