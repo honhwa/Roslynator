@@ -28,7 +28,7 @@ declarations
 
 ### Required Options
 
-`-a|--assemblies` <ASSEMBLIES-TO-DOCUMENT>
+`-a|--assemblies` \<ASSEMBLIES-TO-DOCUMENT\>
 
 Defines one or more assemblies that should be used as a source for the documentation.
 
@@ -75,3 +75,7 @@ Indicates whether default expression (`default(T)`) should be used instead of de
 
 #### `[--no-precedence-for-system]`
 Indicates whether symbols contained in `System` namespace should be ordered as any other symbols and not before other symbols.
+
+## See Also
+
+* [Roslynator.Documentation Command-Line Interface](../README.md)

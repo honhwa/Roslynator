@@ -6,7 +6,6 @@ using static Roslynator.Documentation.DeclarationListOptions;
 
 namespace Roslynator.Documentation
 {
-    //TODO: no-precedence-for-system
     [Verb("declarations")]
     public class DeclarationsCommandLineOptions
     {
