@@ -85,4 +85,4 @@ Defines a relative url to the documentation root directory.
 
 ## See Also
 
-* [Roslynator.Documentation Command-Line Interface](../README.md)
+* [Roslynator.Documentation Command-Line Interface](README.md)
