@@ -89,15 +89,15 @@ namespace Roslynator.Documentation
 
         internal static class DefaultValues
         {
-            public const bool Indent = true;
-            public const string IndentChars = "    ";
-            public const bool NewLineBeforeOpenBrace = true;
             public const bool EmptyLineBetweenMembers = false;
             public const bool FormatBaseList = false;
             public const bool FormatConstraints = false;
-            public const bool SplitAttributes = true;
             public const bool IncludeAttributeArguments = true;
+            public const bool Indent = true;
+            public const string IndentChars = "    ";
+            public const bool NewLineBeforeOpenBrace = true;
             public const bool OmitIEnumerable = true;
+            public const bool SplitAttributes = true;
             public const bool UseDefaultLiteral = true;
         }
     }

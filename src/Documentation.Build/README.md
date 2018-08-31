@@ -156,6 +156,7 @@ declarations
 [--merge-attributes]
 [--no-indent]
 [--no-new-line-before-open-brace]
+[--no-precedence-for-system]
 [--omit-attribute-arguments]
 [--no-default-literal]
 ```
@@ -204,6 +205,8 @@ Indicates whether attribute arguments should be omitted when displaying an attri
 #### `[--no-default-literal]`
 Indicates whether default expression (`default(T)`) should be used instead of default literal (`default`).
 
+#### `[--no-precedence-for-system]`
+Indicates whether symbols contained in `System` namespace should be ordered as any other symbols and not before other symbols.
 
 ## `root` Command
 

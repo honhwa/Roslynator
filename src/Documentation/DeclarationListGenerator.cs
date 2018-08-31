@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Josef Pihrt. All rights reserved. Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,20 @@ namespace Roslynator.Documentation
 {
     public static class DeclarationListGenerator
     {
-        public static async Task<string> GenerateAsync(DocumentationModel documentationModel, DeclarationListOptions options = null)
+        public static async Task<string> GenerateAsync(
+            DocumentationModel documentationModel,
+            DeclarationListOptions options = null,
+            IComparer<INamespaceSymbol> namespaceComparer = null,
+            IComparer<INamedTypeSymbol> typeComparer = null,
+            IComparer<ISymbol> memberComparer = null)
         {
             options = options ?? DeclarationListOptions.Default;
 
-            var builder = new DeclarationListBuilder(options: options);
+            var builder = new DeclarationListBuilder(
+                options: options,
+                namespaceComparer: namespaceComparer,
+                typeComparer: typeComparer,
+                memberComparer: memberComparer);
 
             builder.Append(documentationModel);
 

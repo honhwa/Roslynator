@@ -41,9 +41,9 @@
 
 #### Commands
 
-* [`doc`](../src/Documentation.Build/README.md#doc-command)
-* [`declarations`](../src/Documentation.Build/README.md#declarations-command)
-* [`root`](../src/Documentation.Build/README.md#root-command)
+* [`doc`](cli/doc-command.md)
+* [`declarations`](cli/declarations-command.md)
+* [`root`](cli/root-command.md)
 
 3) Build project in **Release** configuration
 

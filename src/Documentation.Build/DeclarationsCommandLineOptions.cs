@@ -46,13 +46,16 @@ namespace Roslynator.Documentation
         [Option(longName: "no-indent", Default = !DefaultValues.Indent)]
         public bool NoIndent { get; set; }
 
+        [Option(longName: "no-default-literal", Default = !DefaultValues.UseDefaultLiteral)]
+        public bool NoDefaultLiteral { get; set; }
+
         [Option(longName: "no-new-line-before-open-brace", Default = !DefaultValues.NewLineBeforeOpenBrace)]
         public bool NoNewLineBeforeOpenBrace { get; set; }
 
+        [Option(longName: "no-precedence-for-system", Default = !DocumentationOptions.DefaultValues.PlaceSystemNamespaceFirst)]
+        public bool NoPrecedenceForSystem { get; set; }
+
         [Option(longName: "omit-attribute-arguments", Default = !DefaultValues.IncludeAttributeArguments)]
         public bool OmitAttributeArguments { get; set; }
-
-        [Option(longName: "no-default-literal", Default = !DefaultValues.UseDefaultLiteral)]
-        public bool NoDefaultLiteral { get; set; }
     }
 }

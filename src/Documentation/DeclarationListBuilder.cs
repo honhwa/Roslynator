@@ -25,10 +25,18 @@ namespace Roslynator.Documentation
         private int _indentationLevel;
         private INamespaceSymbol _currentNamespace;
 
-        public DeclarationListBuilder(StringBuilder stringBuilder = null, DeclarationListOptions options = null)
+        public DeclarationListBuilder(
+            StringBuilder stringBuilder = null,
+            DeclarationListOptions options = null,
+            IComparer<INamespaceSymbol> namespaceComparer = null,
+            IComparer<INamedTypeSymbol> typeComparer = null,
+            IComparer<ISymbol> memberComparer = null)
         {
             StringBuilder = stringBuilder ?? new StringBuilder();
             Options = options ?? DeclarationListOptions.Default;
+            NamespaceComparer = namespaceComparer ?? NamespaceSymbolComparer.SystemFirst;
+            TypeComparer = typeComparer ?? TypeDeclarationComparer.Instance;
+            MemberComparer = memberComparer ?? MemberDeclarationComparer.Instance;
         }
 
         public StringBuilder StringBuilder { get; }
@@ -39,11 +47,11 @@ namespace Roslynator.Documentation
 
         internal HashSet<INamespaceSymbol> Namespaces { get; } = new HashSet<INamespaceSymbol>(MetadataNameEqualityComparer<INamespaceSymbol>.Instance);
 
-        public virtual IComparer<INamespaceSymbol> NamespaceComparer => NamespaceSymbolComparer.SystemFirst;
+        public IComparer<INamespaceSymbol> NamespaceComparer { get; }
 
-        public virtual IComparer<INamedTypeSymbol> TypeComparer => TypeDeclarationComparer.Instance;
+        public IComparer<INamedTypeSymbol> TypeComparer { get; }
 
-        public virtual IComparer<ISymbol> MemberComparer => MemberDeclarationComparer.Instance;
+        public IComparer<ISymbol> MemberComparer { get; }
 
         public virtual bool IsVisibleType(ISymbol symbol)
         {

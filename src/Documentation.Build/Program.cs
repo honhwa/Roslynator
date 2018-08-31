@@ -9,6 +9,7 @@ using CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Roslynator.Documentation.Markdown;
+using System.Threading.Tasks;
 
 namespace Roslynator.Documentation
 {
@@ -127,6 +128,8 @@ namespace Roslynator.Documentation
                 indentChars: options.IndentChars,
                 newLineBeforeOpenBrace: !options.NoNewLineBeforeOpenBrace,
                 emptyLineBetweenMembers: options.EmptyLineBetweenMembers,
+                formatBaseList: options.FormatBaseList,
+                formatConstraints: options.FormatConstraints,
                 splitAttributes: !options.MergeAttributes,
                 includeAttributeArguments: !options.OmitAttributeArguments,
                 omitIEnumerable: !options.IncludeIEnumerable,
@@ -134,7 +137,12 @@ namespace Roslynator.Documentation
 
             Console.WriteLine($"Declaration list is being generated to '{options.OutputPath}'.");
 
-            string content = DeclarationListGenerator.GenerateAsync(documentationModel, declarationListOptions).Result;
+            Task<string> task = DeclarationListGenerator.GenerateAsync(
+                documentationModel,
+                declarationListOptions,
+                namespaceComparer: NamespaceSymbolComparer.GetInstance(systemNamespaceFirst: !options.NoPrecedenceForSystem));
+
+            string content = task.Result;
 
             string path = options.OutputPath;
 

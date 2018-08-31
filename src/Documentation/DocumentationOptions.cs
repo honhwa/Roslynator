@@ -141,22 +141,22 @@ namespace Roslynator.Documentation
 
         internal static class DefaultValues
         {
-            public const int MaxDerivedTypes = 5;
-            public const bool IncludeClassHierarchy = true;
-            public const bool IncludeContainingNamespace = true;
-            public const bool PlaceSystemNamespaceFirst = true;
+            public const DocumentationDepth Depth = DocumentationDepth.Member;
             public const bool FormatDeclarationBaseList = true;
             public const bool FormatDeclarationConstraints = true;
-            public const bool MarkObsolete = true;
-            public const bool IncludeMemberInheritedFrom = true;
-            public const bool IncludeMemberOverrides = true;
-            public const bool IncludeMemberImplements = true;
-            public const bool IncludeMemberConstantValue = true;
-            public const bool IncludeInheritedInterfaceMembers = false;
             public const bool IncludeAllDerivedTypes = false;
             public const bool IncludeAttributeArguments = true;
+            public const bool IncludeClassHierarchy = true;
+            public const bool IncludeContainingNamespace = true;
+            public const bool IncludeInheritedInterfaceMembers = false;
+            public const bool IncludeMemberConstantValue = true;
+            public const bool IncludeMemberImplements = true;
+            public const bool IncludeMemberInheritedFrom = true;
+            public const bool IncludeMemberOverrides = true;
+            public const bool MarkObsolete = true;
+            public const int MaxDerivedTypes = 5;
             public const bool OmitIEnumerable = true;
-            public const DocumentationDepth Depth = DocumentationDepth.Member;
+            public const bool PlaceSystemNamespaceFirst = true;
         }
     }
 }
