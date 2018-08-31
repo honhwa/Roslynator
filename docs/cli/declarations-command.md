@@ -42,15 +42,15 @@ Defines a path to a file that contains a list of all assemblies necessary to com
 
 ### Optional Options
 
-**`[--empty-line-between-declarations]`
+**`[--empty-line-between-declarations]`**
 
 Indicates whether an empty line should be added between two declarations. Default value is `false`.
 
-**`[--format-base-list]`
+**`[--format-base-list]`**
 
 Indicates whether a base list should be formatted on a multiple lines. Default value is `false`.
 
-**`[--format-constraints]`
+**`[--format-constraints]`**
 
 Indicates whether constraints should be formatted on a multiple lines. Default value is `false`.
 
@@ -58,7 +58,7 @@ Indicates whether constraints should be formatted on a multiple lines. Default v
 
 Defines a list of metadata names that should be excluded from a documentation. Namespace of type names can be specified.
 
-**`[--include-ienumerable]`
+**`[--include-ienumerable]`**
 
 Indicates whether interface `System.Collections.IEnumerable` should be included in a documentation if a type also implements interface `System.Collections.Generic.IEnumerable<T>`.
 
