@@ -39,7 +39,8 @@
 -a $(RoslynatorDocumentationAssemblies) ^
 -r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
 -o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
---empty-line-between-members"
+--empty-line-between-members ^
+--format-parameters"
           LogStandardErrorAsError="true"
           ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />

@@ -20,55 +20,23 @@
       <RoslynatorDocumentationAssemblies>Roslynator.CSharp.dll Roslynator.CSharp.Workspaces.dll Roslynator.Documentation.dll</RoslynatorDocumentationAssemblies>
     </PropertyGroup>
 
-    <Exec Command="$(RoslynatorDocumentationExe) doc ^
--a $(RoslynatorDocumentationAssemblies) ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)..\docs\api&quot; ^
--h &quot;Roslynator API Reference&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) doc ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\api&quot; ^&#xD;&#xA;-h &quot;Roslynator API Reference&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) declarations ^
--a $(RoslynatorDocumentationAssemblies) ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)..\docs\api.cs&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) declarations ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\api.cs&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^
--a Roslynator.Documentation.dll ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)Documentation\README.md&quot; ^
--h &quot;Roslynator.Documentation&quot; ^
---root-url &quot;../../docs/api/&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.Documentation.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)Documentation\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.Documentation&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^
--a Roslynator.CSharp.dll ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)CSharp\README.md&quot; ^
--h &quot;Roslynator.CSharp&quot; ^
---root-url &quot;../../docs/api/&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^
--a Roslynator.CSharp.Workspaces.dll ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^
--h &quot;Roslynator.CSharp.Workspaces&quot; ^
---root-url &quot;../../docs/api/&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.Workspaces.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp.Workspaces&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
@@ -76,25 +44,11 @@
       <RoslynatorDocumentationAssemblies>Roslynator.Documentation.TestProject</RoslynatorDocumentationAssemblies>
     </PropertyGroup>
 
-    <Exec Command="$(RoslynatorDocumentationExe) doc ^
--a $(RoslynatorDocumentationAssemblies) ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)..\docs\apitest&quot; ^
--h &quot;Foo API Reference&quot; ^
---additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^
---ignored-names &quot;Roslynator.Documentation.Test2&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) doc ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest&quot; ^&#xD;&#xA;-h &quot;Foo API Reference&quot; ^&#xD;&#xA;--additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) declarations ^
--a $(RoslynatorDocumentationAssemblies) ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
--o &quot;$(SolutionDir)..\docs\apitest.cs&quot; ^
---ignored-names &quot;Roslynator.Documentation.Test2&quot;"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) declarations ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest.cs&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
@@ -102,6 +56,7 @@
 
   <ItemGroup>
     <None Remove="Documentation.Generator.snk" />
+    <None Remove="test.xml" />
   </ItemGroup>
 
   <ItemGroup>

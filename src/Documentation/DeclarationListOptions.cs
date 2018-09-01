@@ -20,6 +20,7 @@ namespace Roslynator.Documentation
             bool emptyLineBetweenMembers = DefaultValues.EmptyLineBetweenMembers,
             bool formatBaseList = DefaultValues.FormatBaseList,
             bool formatConstraints = DefaultValues.FormatConstraints,
+            bool formatParameters = DefaultValues.FormatParameters,
             bool splitAttributes = DefaultValues.SplitAttributes,
             bool includeAttributeArguments = DefaultValues.IncludeAttributeArguments,
             bool omitIEnumerable = DefaultValues.OmitIEnumerable,
@@ -35,6 +36,7 @@ namespace Roslynator.Documentation
             EmptyLineBetweenMembers = emptyLineBetweenMembers;
             FormatBaseList = formatBaseList;
             FormatConstraints = formatConstraints;
+            FormatParameters = formatParameters;
             SplitAttributes = splitAttributes;
             IncludeAttributeArguments = includeAttributeArguments;
             OmitIEnumerable = omitIEnumerable;
@@ -58,6 +60,8 @@ namespace Roslynator.Documentation
         public bool FormatBaseList { get; }
 
         public bool FormatConstraints { get; }
+
+        public bool FormatParameters { get; }
 
         public bool SplitAttributes { get; }
 
@@ -96,6 +100,7 @@ namespace Roslynator.Documentation
             public const bool EmptyLineBetweenMembers = false;
             public const bool FormatBaseList = false;
             public const bool FormatConstraints = false;
+            public const bool FormatParameters = false;
             public const bool IncludeAttributeArguments = true;
             public const bool Indent = true;
             public const string IndentChars = "    ";

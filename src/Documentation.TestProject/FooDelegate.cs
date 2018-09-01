@@ -7,6 +7,7 @@ namespace Roslynator.Documentation.Test
     /// <summary>
     /// del
     /// </summary>
-    /// <param name="p"></param>
-    public delegate Foo FooDelegate(object p);
+    /// <param name="p1"></param>
+    /// <param name="p2"></param>
+    public delegate Foo FooDelegate(object p1, object p2);
 }

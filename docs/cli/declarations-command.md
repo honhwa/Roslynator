@@ -13,6 +13,7 @@ declarations
 [--empty-line-between-members]
 [--format-base-list]
 [--format-constraints]
+[--format-parameters]
 [--ignored-names]
 [--include-ienumerable]
 [--indent-chars]
@@ -48,15 +49,19 @@ Defines one of two following options:
 
 **`[--empty-line-between-members]`**
 
-Indicates whether an empty line should be added between two member declarations. Default value is `false`.
+Indicates whether an empty line should be added between two member declarations.
 
 **`[--format-base-list]`**
 
-Indicates whether a base list should be formatted on a multiple lines. Default value is `false`.
+Indicates whether a base list should be formatted on a multiple lines.
 
 **`[--format-constraints]`**
 
-Indicates whether constraints should be formatted on a multiple lines. Default value is `false`.
+Indicates whether constraints should be formatted on a multiple lines.
+
+**`[--format-parameters]`**
+
+Indicates whether parameters should be formatted on a multiple lines.
 
 **`[--ignored-names]`** `<FULLY-QUALIFIED-METADATA-NAMES-TO-IGNORE>`
 
@@ -68,7 +73,7 @@ Indicates whether interface `System.Collections.IEnumerable` should be included 
 
 **`[--indent-chars]`** `<INDENT-CHARS>`
 
-Defines characters that should be used for indentation. Default value are four spaces.
+Defines characters that should be used for indentation. Default value is four spaces.
 
 **`[--merge-attributes]`**
 

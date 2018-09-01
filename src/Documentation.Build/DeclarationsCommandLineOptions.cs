@@ -30,6 +30,9 @@ namespace Roslynator.Documentation
         [Option(longName: "format-constraints", Default = DefaultValues.FormatConstraints)]
         public bool FormatConstraints { get; set; }
 
+        [Option(longName: "format-parameters", Default = DefaultValues.FormatParameters)]
+        public bool FormatParameters { get; set; }
+
         [Option(longName: "ignored-names")]
         public IEnumerable<string> IgnoredNames { get; set; }
 

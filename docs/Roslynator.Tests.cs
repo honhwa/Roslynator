@@ -26,15 +26,39 @@ namespace Roslynator.Tests
 
         public abstract CodeFixProvider FixProvider { get; }
 
-        public Task VerifyDiagnosticAndFixAsync(string source, string expected, IEnumerable<(string source, string expected)> additionalData = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAndFixAsync(
+            string source,
+            string expected,
+            IEnumerable<(string source, string expected)> additionalData = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAndFixAsync(string theory, string fromData, string toData, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAndFixAsync(
+            string theory,
+            string fromData,
+            string toData,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyFixAsync(string source, string expected, IEnumerable<(string source, string expected)> additionalData = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyFixAsync(
+            string source,
+            string expected,
+            IEnumerable<(string source, string expected)> additionalData = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyFixAsync(string theory, string fromData, string toData, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyFixAsync(
+            string theory,
+            string fromData,
+            string toData,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoFixAsync(string source, IEnumerable<string> additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoFixAsync(
+            string source,
+            IEnumerable<string> additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
     }
 
     public abstract class CodeRefactoringVerifier : CodeVerifier
@@ -45,24 +69,68 @@ namespace Roslynator.Tests
 
         public abstract CodeRefactoringProvider RefactoringProvider { get; }
 
-        public Task VerifyNoRefactoringAsync(string source, IEnumerable<TextSpan> spans, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoRefactoringAsync(
+            string source,
+            IEnumerable<TextSpan> spans,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoRefactoringAsync(string source, TextSpan span, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoRefactoringAsync(
+            string source,
+            TextSpan span,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoRefactoringAsync(string source, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoRefactoringAsync(
+            string source,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyRefactoringAsync(string source, string expected, IEnumerable<TextSpan> spans, string equivalenceKey = null, string[] additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyRefactoringAsync(
+            string source,
+            string expected,
+            IEnumerable<TextSpan> spans,
+            string equivalenceKey = null,
+            string[] additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyRefactoringAsync(string source, string expected, TextSpan span, string equivalenceKey = null, string[] additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyRefactoringAsync(
+            string source,
+            string expected,
+            TextSpan span,
+            string equivalenceKey = null,
+            string[] additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyRefactoringAsync(string source, string expected, string equivalenceKey = null, string[] additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyRefactoringAsync(
+            string source,
+            string expected,
+            string equivalenceKey = null,
+            string[] additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyRefactoringAsync(string theory, string fromData, string toData, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyRefactoringAsync(
+            string theory,
+            string fromData,
+            string toData,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
     }
 
     public abstract class CodeVerificationOptions
     {
-        protected CodeVerificationOptions(bool allowNewCompilerDiagnostics = false, bool enableDiagnosticsDisabledByDefault = true, DiagnosticSeverity maxAllowedCompilerDiagnosticSeverity = DiagnosticSeverity.Info, IEnumerable<string> allowedCompilerDiagnosticIds = null);
+        protected CodeVerificationOptions(
+            bool allowNewCompilerDiagnostics = false,
+            bool enableDiagnosticsDisabledByDefault = true,
+            DiagnosticSeverity maxAllowedCompilerDiagnosticSeverity = DiagnosticSeverity.Info,
+            IEnumerable<string> allowedCompilerDiagnosticIds = null);
 
         public bool AllowNewCompilerDiagnostics { get; }
 
@@ -87,7 +155,9 @@ namespace Roslynator.Tests
 
         protected virtual TextSpanParser SpanParser { get; }
 
-        protected virtual Document CreateDocument(string source, params string[] additionalSources);
+        protected virtual Document CreateDocument(
+            string source,
+            params string[] additionalSources);
 
         protected abstract string CreateFileName(int index = 0);
 
@@ -102,11 +172,26 @@ namespace Roslynator.Tests
 
         public abstract CodeFixProvider FixProvider { get; }
 
-        public Task VerifyFixAsync(string source, string expected, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyFixAsync(
+            string source,
+            string expected,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyFixAsync(string theory, string fromData, string toData, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyFixAsync(
+            string theory,
+            string fromData,
+            string toData,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoFixAsync(string source, string equivalenceKey = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoFixAsync(
+            string source,
+            string equivalenceKey = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
     }
 
     public abstract class DiagnosticVerifier : CodeVerifier
@@ -117,21 +202,53 @@ namespace Roslynator.Tests
 
         public abstract DiagnosticDescriptor Descriptor { get; }
 
-        public Task VerifyDiagnosticAsync(string source, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string source,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAsync(string source, Diagnostic expectedDiagnostic, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string source,
+            Diagnostic expectedDiagnostic,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAsync(string source, IEnumerable<Diagnostic> expectedDiagnostics, string[] additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string source,
+            IEnumerable<Diagnostic> expectedDiagnostics,
+            string[] additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAsync(string source, IEnumerable<TextSpan> spans, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string source,
+            IEnumerable<TextSpan> spans,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAsync(string source, TextSpan span, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string source,
+            TextSpan span,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyDiagnosticAsync(string theory, string fromData, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyDiagnosticAsync(
+            string theory,
+            string fromData,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoDiagnosticAsync(string source, string[] additionalSources = null, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoDiagnosticAsync(
+            string source,
+            string[] additionalSources = null,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
 
-        public Task VerifyNoDiagnosticAsync(string theory, string fromData, CodeVerificationOptions options = null, CancellationToken cancellationToken = default);
+        public Task VerifyNoDiagnosticAsync(
+            string theory,
+            string fromData,
+            CodeVerificationOptions options = null,
+            CancellationToken cancellationToken = default);
     }
 }
 
@@ -165,7 +282,13 @@ namespace Roslynator.Tests.CSharp
 
     public class CSharpCodeVerificationOptions : CodeVerificationOptions
     {
-        public CSharpCodeVerificationOptions(bool allowNewCompilerDiagnostics = false, bool enableDiagnosticsDisabledByDefault = true, DiagnosticSeverity maxAllowedCompilerDiagnosticSeverity = DiagnosticSeverity.Info, IEnumerable<string> allowedCompilerDiagnosticIds = null, bool allowUnsafe = true, OutputKind outputKind = OutputKind.DynamicallyLinkedLibrary);
+        public CSharpCodeVerificationOptions(
+            bool allowNewCompilerDiagnostics = false,
+            bool enableDiagnosticsDisabledByDefault = true,
+            DiagnosticSeverity maxAllowedCompilerDiagnosticSeverity = DiagnosticSeverity.Info,
+            IEnumerable<string> allowedCompilerDiagnosticIds = null,
+            bool allowUnsafe = true,
+            OutputKind outputKind = OutputKind.DynamicallyLinkedLibrary);
 
         public bool AllowUnsafe { get; }
 
@@ -215,16 +338,26 @@ namespace Roslynator.Tests.Text
 
         public static TextSpanParser Default { get; }
 
-        public abstract TextSpanParserResult GetSpans(string s, bool reverse = false);
+        public abstract TextSpanParserResult GetSpans(
+            string s,
+            bool reverse = false);
 
-        public abstract (TextSpan span, string text) ReplaceEmptySpan(string s, string replacement);
+        public abstract (
+            TextSpan span,
+            string text) ReplaceEmptySpan(string s, string replacement);
 
-        public abstract (TextSpan span, string text1, string text2) ReplaceEmptySpan(string s, string replacement1, string replacement2);
+        public abstract (
+            TextSpan span,
+            string text1,
+            string text2) ReplaceEmptySpan(string s, string replacement1, string replacement2);
     }
 
     public readonly struct LinePositionInfo : IEquatable<LinePositionInfo>
     {
-        public LinePositionInfo(int index, int lineIndex, int columnIndex);
+        public LinePositionInfo(
+            int index,
+            int lineIndex,
+            int columnIndex);
 
         public int ColumnIndex { get; }
 
@@ -240,14 +373,20 @@ namespace Roslynator.Tests.Text
 
         public override int GetHashCode();
 
-        public static bool operator ==(in LinePositionInfo info1, in LinePositionInfo info2);
+        public static bool operator ==(
+            in LinePositionInfo info1,
+            in LinePositionInfo info2);
 
-        public static bool operator !=(in LinePositionInfo info1, in LinePositionInfo info2);
+        public static bool operator !=(
+            in LinePositionInfo info1,
+            in LinePositionInfo info2);
     }
 
     public readonly struct LinePositionSpanInfo : IEquatable<LinePositionSpanInfo>
     {
-        public LinePositionSpanInfo(in LinePositionInfo start, in LinePositionInfo end);
+        public LinePositionSpanInfo(
+            in LinePositionInfo start,
+            in LinePositionInfo end);
 
         public LinePositionInfo End { get; }
 
@@ -263,14 +402,20 @@ namespace Roslynator.Tests.Text
 
         public override int GetHashCode();
 
-        public static bool operator ==(in LinePositionSpanInfo info1, in LinePositionSpanInfo info2);
+        public static bool operator ==(
+            in LinePositionSpanInfo info1,
+            in LinePositionSpanInfo info2);
 
-        public static bool operator !=(in LinePositionSpanInfo info1, in LinePositionSpanInfo info2);
+        public static bool operator !=(
+            in LinePositionSpanInfo info1,
+            in LinePositionSpanInfo info2);
     }
 
     public readonly struct TextSpanParserResult : IEquatable<TextSpanParserResult>
     {
-        public TextSpanParserResult(string text, ImmutableArray<LinePositionSpanInfo> spans);
+        public TextSpanParserResult(
+            string text,
+            ImmutableArray<LinePositionSpanInfo> spans);
 
         public ImmutableArray<LinePositionSpanInfo> Spans { get; }
 
@@ -282,9 +427,13 @@ namespace Roslynator.Tests.Text
 
         public override int GetHashCode();
 
-        public static bool operator ==(in TextSpanParserResult analysis1, in TextSpanParserResult analysis2);
+        public static bool operator ==(
+            in TextSpanParserResult analysis1,
+            in TextSpanParserResult analysis2);
 
-        public static bool operator !=(in TextSpanParserResult analysis1, in TextSpanParserResult analysis2);
+        public static bool operator !=(
+            in TextSpanParserResult analysis1,
+            in TextSpanParserResult analysis2);
     }
 }
 

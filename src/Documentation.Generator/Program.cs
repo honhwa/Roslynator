@@ -21,11 +21,15 @@ namespace Roslynator.Documentation
         [SuppressMessage("Redundancy", "RCS1163")]
         private static void Main(string[] args)
         {
-            GenerateDocumentation(@"..\..\..\..\..\docs\api\", "Roslynator API Reference", "Roslynator.Documentation.dll", "Roslynator.CSharp.dll", "Roslynator.CSharp.Workspaces.dll");
-            GenerateDocumentation(@"..\..\..\..\..\docs\apitest\", "Foo API Reference", "Roslynator.Documentation.TestProject.dll");
+            GenerateDocumentation(@"..\..\..\..\..\docs\api", "Roslynator API Reference", "api.cs", "Roslynator.Documentation.dll", "Roslynator.CSharp.dll", "Roslynator.CSharp.Workspaces.dll");
+            GenerateDocumentation(@"..\..\..\..\..\docs\apitest", "Foo API Reference", "apitest.cs", "Roslynator.Documentation.TestProject.dll");
         }
 
-        private static void GenerateDocumentation(string directoryPath, string heading, params string[] assemblyNames)
+        private static void GenerateDocumentation(
+            string directoryPath,
+            string heading,
+            string declarationListFileName,
+            params string[] assemblyNames)
         {
             DocumentationModel documentationModel = CreateFromTrustedPlatformAssemblies(assemblyNames);
 
@@ -39,7 +43,7 @@ namespace Roslynator.Documentation
 
             foreach (DocumentationGeneratorResult result in generator.Generate(heading))
             {
-                string path = directoryPath + result.FilePath;
+                string path = Path.Combine(directoryPath, result.FilePath);
 
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
 
@@ -50,7 +54,7 @@ namespace Roslynator.Documentation
 
             string declarationList = DeclarationListGenerator.GenerateAsync(documentationModel, declarationListOptions).Result;
 
-            FileHelper.WriteAllText(directoryPath + "api.cs", declarationList, Encoding.UTF8, onlyIfChanges: true, fileMustExists: false);
+            FileHelper.WriteAllText(Path.Combine(Path.GetDirectoryName(directoryPath), declarationListFileName), declarationList, Encoding.UTF8, onlyIfChanges: true, fileMustExists: false);
         }
 
         internal static DocumentationModel CreateFromTrustedPlatformAssemblies(string[] assemblyNames)
@@ -80,7 +84,7 @@ namespace Roslynator.Documentation
             return new DocumentationModel(
                 compilation,
                 references.Select(f => (IAssemblySymbol)compilation.GetAssemblyOrModuleSymbol(f)),
-                additionalXmlDocumentationPaths: new string[] { @"..\..\..\..\Documentation.TestProject\test.xml" });
+                additionalXmlDocumentationPaths: new string[] { @"..\..\..\test.xml" });
         }
     }
 }

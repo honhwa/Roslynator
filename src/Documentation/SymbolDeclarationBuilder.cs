@@ -19,6 +19,7 @@ namespace Roslynator.Documentation
             Func<INamedTypeSymbol, bool> isVisibleAttribute = null,
             bool formatBaseList = false,
             bool formatConstraints = false,
+            bool formatParameters = false,
             bool splitAttributes = true,
             bool includeAttributeArguments = false,
             bool omitIEnumerable = false,
@@ -90,7 +91,8 @@ namespace Roslynator.Documentation
 
             if (!hasAttributes
                 && baseListCount == 0
-                && constraintCount == 0)
+                && constraintCount == 0
+                && (!formatParameters || symbol.GetParameters().Length <= 1))
             {
                 return parts;
             }
@@ -100,13 +102,6 @@ namespace Roslynator.Documentation
             ImmutableArray<SymbolDisplayPart>.Builder builder = ImmutableArray.CreateBuilder<SymbolDisplayPart>(parts.Length);
 
             AddAttributes(builder, attributes, isVisibleAttribute, containingNamespace, splitAttributes: splitAttributes, includeAttributeArguments: includeAttributeArguments);
-
-            if (baseListCount == 0
-                && constraintCount == 0)
-            {
-                builder.AddRange(parts);
-                return builder.ToImmutableArray();
-            }
 
             if (baseListCount > 0)
             {
@@ -232,6 +227,14 @@ namespace Roslynator.Documentation
                         builder.Add(parts[i]);
                     }
                 }
+            }
+
+            if (formatParameters)
+            {
+                ImmutableArray<IParameterSymbol> parameters = symbol.GetParameters();
+
+                if (parameters.Length > 1)
+                    FormatParameters(symbol, builder, DeclarationListOptions.DefaultValues.IndentChars);
             }
 
             return builder.ToImmutableArray();
@@ -506,6 +509,166 @@ namespace Roslynator.Documentation
                             throw new InvalidOperationException();
                     }
                 }
+            }
+        }
+
+        internal static void FormatParameters(
+            ISymbol symbol,
+            ImmutableArray<SymbolDisplayPart>.Builder builder,
+            string indentChars)
+        {
+            int parenthesesDepth = 0;
+            int bracesDepth = 0;
+            int bracketsDepth = 0;
+
+            int parenthesisOrBracketIndex = -1;
+
+            int i = 0;
+
+            while (i < builder.Count)
+            {
+                SymbolDisplayPart part = builder[i];
+
+                if (part.Kind == SymbolDisplayPartKind.Punctuation)
+                {
+                    switch (part.ToString())
+                    {
+                        case "(":
+                            {
+                                if (symbol.IsKind(SymbolKind.Method, SymbolKind.NamedType)
+                                    && parenthesesDepth == 0
+                                    && bracesDepth == 0
+                                    && bracketsDepth == 0)
+                                {
+                                    parenthesisOrBracketIndex = i;
+                                }
+
+                                parenthesesDepth++;
+
+                                break;
+                            }
+                        case ")":
+                            {
+                                Debug.Assert(parenthesesDepth >= 0);
+                                parenthesesDepth--;
+                                break;
+                            }
+                        case "[":
+                            {
+                                if (symbol.Kind == SymbolKind.Property
+                                    && parenthesesDepth == 0
+                                    && bracesDepth == 0
+                                    && bracketsDepth == 0)
+                                {
+                                    parenthesisOrBracketIndex = i;
+                                }
+                                else
+                                {
+                                    bracketsDepth++;
+                                }
+
+                                break;
+                            }
+                        case "]":
+                            {
+                                Debug.Assert(bracketsDepth >= 0);
+                                bracketsDepth--;
+                                break;
+                            }
+                        case "{":
+                            {
+                                bracesDepth++;
+                                break;
+                            }
+                        case "}":
+                            {
+                                Debug.Assert(bracesDepth >= 0);
+                                bracesDepth--;
+                                break;
+                            }
+                    }
+                }
+
+                i++;
+
+                if (parenthesisOrBracketIndex > 0)
+                    break;
+            }
+
+            Debug.Assert(parenthesisOrBracketIndex >= 0);
+
+            if (parenthesisOrBracketIndex == -1)
+                return;
+
+            builder.Insert(parenthesisOrBracketIndex + 1, SymbolDisplayPartFactory.Indentation(indentChars));
+            builder.Insert(parenthesisOrBracketIndex + 1, SymbolDisplayPartFactory.LineBreak());
+
+            while (i < builder.Count)
+            {
+                SymbolDisplayPart part = builder[i];
+
+                if (part.Kind == SymbolDisplayPartKind.Punctuation)
+                {
+                    switch (part.ToString())
+                    {
+                        case ",":
+                            {
+                                if (parenthesesDepth == 1
+                                    && bracesDepth == 0
+                                    && bracketsDepth == 0
+                                    && i < builder.Count - 1)
+                                {
+                                    SymbolDisplayPart nextPart = builder[i + 1];
+
+                                    if (nextPart.Kind == SymbolDisplayPartKind.Space)
+                                    {
+                                        builder[i + 1] = SymbolDisplayPartFactory.LineBreak();
+                                        builder.Insert(i + 2, SymbolDisplayPartFactory.Indentation(indentChars));
+                                    }
+                                }
+
+                                break;
+                            }
+                        case "(":
+                            {
+                                parenthesesDepth++;
+                                break;
+                            }
+                        case ")":
+                            {
+                                Debug.Assert(parenthesesDepth >= 0);
+                                parenthesesDepth--;
+                                break;
+                            }
+                        case "[":
+                            {
+                                bracketsDepth++;
+                                break;
+                            }
+                        case "]":
+                            {
+                                Debug.Assert(bracketsDepth >= 0);
+                                bracketsDepth--;
+                                break;
+                            }
+                        case "{":
+                            {
+                                bracesDepth++;
+                                break;
+                            }
+                        case "}":
+                            {
+                                Debug.Assert(bracesDepth >= 0);
+                                bracesDepth--;
+                                break;
+                            }
+                    }
+
+                    if (parenthesesDepth == 0)
+                        break;
+                }
+
+                i++;
             }
         }
 

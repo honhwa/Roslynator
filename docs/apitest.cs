@@ -143,7 +143,7 @@ namespace Roslynator.Documentation.Test
         D = 8,
     }
 
-    public delegate Foo FooDelegate(object p);
+    public delegate Foo FooDelegate(object p1, object p2);
 }
 
 [CLSCompliant(true)]

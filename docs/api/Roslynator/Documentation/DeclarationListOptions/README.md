@@ -20,7 +20,7 @@ public class DeclarationListOptions
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [DeclarationListOptions(IEnumerable\<String>, Boolean, String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)](-ctor/README.md#_top) | |
+| [DeclarationListOptions(IEnumerable\<String>, Boolean, String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)](-ctor/README.md#_top) | |
 
 ## Properties
 
@@ -30,6 +30,7 @@ public class DeclarationListOptions
 | [EmptyLineBetweenMembers](EmptyLineBetweenMembers/README.md#_top) | |
 | [FormatBaseList](FormatBaseList/README.md#_top) | |
 | [FormatConstraints](FormatConstraints/README.md#_top) | |
+| [FormatParameters](FormatParameters/README.md#_top) | |
 | [IgnoredNames](IgnoredNames/README.md#_top) | |
 | [IncludeAttributeArguments](IncludeAttributeArguments/README.md#_top) | |
 | [Indent](Indent/README.md#_top) | |

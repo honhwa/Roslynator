@@ -93,7 +93,14 @@ namespace Roslynator.Documentation
             if (!options.NoDelete
                 && Directory.Exists(directoryPath))
             {
-                Directory.Delete(directoryPath, recursive: true);
+                try
+                {
+                    Directory.Delete(directoryPath, recursive: true);
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
 
             Console.WriteLine($"Documentation is being generated to '{options.OutputDirectory}'.");
@@ -131,6 +138,7 @@ namespace Roslynator.Documentation
                 emptyLineBetweenMembers: options.EmptyLineBetweenMembers,
                 formatBaseList: options.FormatBaseList,
                 formatConstraints: options.FormatConstraints,
+                formatParameters: options.FormatParameters,
                 splitAttributes: !options.MergeAttributes,
                 includeAttributeArguments: !options.OmitAttributeArguments,
                 omitIEnumerable: !options.IncludeIEnumerable,

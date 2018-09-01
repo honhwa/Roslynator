@@ -27,9 +27,9 @@ namespace Roslynator.Documentation
             return new SymbolDisplayPart(SymbolDisplayPartKind.Space, null, text);
         }
 
-        public static SymbolDisplayPart Indentation(string text = "    ")
+        public static SymbolDisplayPart Indentation(string indentChars = "    ")
         {
-            return Space(text);
+            return Space(indentChars);
         }
 
         public static SymbolDisplayPart LineBreak()

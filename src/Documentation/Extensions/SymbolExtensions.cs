@@ -155,6 +155,21 @@ namespace Roslynator.Documentation
             return ImmutableArray<ITypeParameterSymbol>.Empty;
         }
 
+        public static ImmutableArray<IParameterSymbol> GetParameters(this ISymbol symbol)
+        {
+            switch (symbol.Kind)
+            {
+                case SymbolKind.Method:
+                    return ((IMethodSymbol)symbol).Parameters;
+                case SymbolKind.NamedType:
+                    return ((INamedTypeSymbol)symbol).DelegateInvokeMethod?.Parameters ?? ImmutableArray<IParameterSymbol>.Empty;
+                case SymbolKind.Property:
+                    return ((IPropertySymbol)symbol).Parameters;
+            }
+
+            return ImmutableArray<IParameterSymbol>.Empty;
+        }
+
         public static ISymbol GetFirstExplicitInterfaceImplementation(this ISymbol symbol)
         {
             switch (symbol.Kind)

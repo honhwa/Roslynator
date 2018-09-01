@@ -93,7 +93,7 @@ Defines parts of a type documentation that should be excluded. No part is exclud
 
 **`[--include-all-derived-types]`**
 
-Indicates whether all derived types should be included in the list of derived types. By default only types that directly inherits from a specified type are displayed. Default value is `false`.
+Indicates whether all derived types should be included in the list of derived types. By default only types that directly inherits from a specified type are displayed.
 
 **`[--include-ienumerable]`**
 
@@ -101,7 +101,7 @@ Indicates whether interface `System.Collections.IEnumerable` should be included 
 
 **`[--include-inherited-interface-members]`**
 
-Indicates whether inherited interface members should be displayed in a list of members. Default values is `false`.
+Indicates whether inherited interface members should be displayed in a list of members.
 
 **`[--omit-attribute-arguments]`**
 

@@ -170,6 +170,7 @@ namespace Roslynator.Documentation
                             isVisibleAttribute: IsVisibleAttribute,
                             formatBaseList: Options.FormatBaseList,
                             formatConstraints: Options.FormatConstraints,
+                            formatParameters: Options.FormatParameters,
                             splitAttributes: Options.SplitAttributes,
                             includeAttributeArguments: Options.IncludeAttributeArguments,
                             omitIEnumerable: Options.OmitIEnumerable));
@@ -279,7 +280,26 @@ namespace Roslynator.Documentation
                             splitAttributes: Options.SplitAttributes,
                             includeAttributeArguments: Options.IncludeAttributeArguments));
 
-                        Append(en.Current.ToDisplayParts(_memberFormat));
+                        ImmutableArray<SymbolDisplayPart> parts = en.Current.ToDisplayParts(_memberFormat);
+
+                        bool areParametersFormatted = false;
+
+                        if (Options.FormatParameters)
+                        {
+                            ImmutableArray<IParameterSymbol> parameters = en.Current.GetParameters();
+
+                            if (parameters.Length > 1)
+                            {
+                                ImmutableArray<SymbolDisplayPart>.Builder builder = parts.ToBuilder();
+                                SymbolDeclarationBuilder.FormatParameters(en.Current, builder, Options.IndentChars);
+                                Append(builder.ToImmutableArray());
+
+                                areParametersFormatted = true;
+                            }
+                        }
+
+                        if (!areParametersFormatted)
+                            Append(parts);
 
                         if (en.Current.Kind != SymbolKind.Property)
                             Append(";");
@@ -292,11 +312,9 @@ namespace Roslynator.Documentation
                         {
                             MemberDeclarationKind kind2 = MemberDeclarationComparer.GetKind(en.Current);
 
-                            if (kind != kind2)
-                            {
-                                AppendLine();
-                            }
-                            else if (Options.EmptyLineBetweenMembers)
+                            if (kind != kind2
+                                || Options.EmptyLineBetweenMembers
+                                || areParametersFormatted)
                             {
                                 AppendLine();
                             }
