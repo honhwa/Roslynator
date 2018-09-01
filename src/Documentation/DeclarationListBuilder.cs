@@ -282,24 +282,17 @@ namespace Roslynator.Documentation
 
                         ImmutableArray<SymbolDisplayPart> parts = en.Current.ToDisplayParts(_memberFormat);
 
-                        bool areParametersFormatted = false;
-
-                        if (Options.FormatParameters)
+                        if (Options.FormatParameters
+                            && en.Current.GetParameters().Length > 1)
                         {
-                            ImmutableArray<IParameterSymbol> parameters = en.Current.GetParameters();
-
-                            if (parameters.Length > 1)
-                            {
-                                ImmutableArray<SymbolDisplayPart>.Builder builder = parts.ToBuilder();
-                                SymbolDeclarationBuilder.FormatParameters(en.Current, builder, Options.IndentChars);
-                                Append(builder.ToImmutableArray());
-
-                                areParametersFormatted = true;
-                            }
+                            ImmutableArray<SymbolDisplayPart>.Builder builder = parts.ToBuilder();
+                            SymbolDeclarationBuilder.FormatParameters(en.Current, builder, Options.IndentChars);
+                            Append(builder.ToImmutableArray());
                         }
-
-                        if (!areParametersFormatted)
+                        else
+                        {
                             Append(parts);
+                        }
 
                         if (en.Current.Kind != SymbolKind.Property)
                             Append(";");
@@ -313,8 +306,7 @@ namespace Roslynator.Documentation
                             MemberDeclarationKind kind2 = MemberDeclarationComparer.GetKind(en.Current);
 
                             if (kind != kind2
-                                || Options.EmptyLineBetweenMembers
-                                || areParametersFormatted)
+                                || Options.EmptyLineBetweenMembers)
                             {
                                 AppendLine();
                             }
