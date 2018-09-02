@@ -39,7 +39,9 @@
 -a $(RoslynatorDocumentationAssemblies) ^
 -r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
 -o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
+--indent-chars &quot;  &quot; ^
 --empty-line-between-members ^
+--namespace-hierarchy ^
 --format-parameters"
           LogStandardErrorAsError="true"
           ConsoleToMSBuild="true">

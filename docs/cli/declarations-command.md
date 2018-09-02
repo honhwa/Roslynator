@@ -18,6 +18,7 @@ declarations
 [--include-ienumerable]
 [--indent-chars]
 [--merge-attributes]
+[--namespace-hierarchy]
 [--no-default-literal]
 [--no-indent]
 [--no-new-line-before-open-brace]
@@ -78,6 +79,10 @@ Defines characters that should be used for indentation. Default value is four sp
 **`[--merge-attributes]`**
 
 Indicates whether attributes should be displayed in a single attribute list.
+
+**`[--namespace-hierarchy]`**
+
+Indicates whether namespaces should be nested.
 
 **`[--no-default-literal]`**
 

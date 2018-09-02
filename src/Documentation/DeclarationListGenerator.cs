@@ -65,7 +65,9 @@ namespace Roslynator.Documentation
                 sb.AppendLine(";");
             }
 
-            sb.AppendLine();
+            if (builder.Namespaces.Count > 0)
+                sb.AppendLine();
+
             sb.Append(builder);
 
             string content = sb.ToString();

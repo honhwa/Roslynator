@@ -533,6 +533,8 @@ namespace Roslynator.Documentation
             builder.Insert(index + 1, SymbolDisplayPartFactory.Indentation(indentChars));
             builder.Insert(index + 1, SymbolDisplayPartFactory.LineBreak());
 
+            i++;
+
             FormatParameters();
 
             void FormatParameters()

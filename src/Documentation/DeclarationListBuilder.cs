@@ -13,6 +13,9 @@ namespace Roslynator.Documentation
     {
         private static readonly SymbolDisplayFormat _namespaceFormat = SymbolDisplayFormats.NamespaceDeclaration;
 
+        private static readonly SymbolDisplayFormat _namespaceHierarchyFormat = SymbolDisplayFormats.NamespaceDeclaration.Update(
+            typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameOnly);
+
         private static readonly SymbolDisplayFormat _typeFormat = SymbolDisplayFormats.FullDeclaration.Update(
             typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameOnly);
 
@@ -123,16 +126,97 @@ namespace Roslynator.Documentation
 
         public void Append(DocumentationModel documentationModel)
         {
+            if (Options.NamespaceHierarchy)
+            {
+                AppendWithNamespaceHierarchy(documentationModel);
+            }
+            else
+            {
+                IEnumerable<INamedTypeSymbol> types = documentationModel.Types.Where(f => f.ContainingType == null && !Options.ShouldBeIgnored(f));
+
+                foreach (INamespaceSymbol namespaceSymbol in types
+                    .Select(f => f.ContainingNamespace)
+                    .Distinct(MetadataNameEqualityComparer<INamespaceSymbol>.Instance)
+                    .OrderBy(f => f, NamespaceComparer))
+                {
+                    if (!namespaceSymbol.IsGlobalNamespace)
+                    {
+                        Append(namespaceSymbol, _namespaceFormat);
+                        BeginTypeContent();
+                    }
+
+                    _currentNamespace = namespaceSymbol;
+
+                    AppendTypes(types.Where(f => MetadataNameEqualityComparer<INamespaceSymbol>.Instance.Equals(f.ContainingNamespace, namespaceSymbol)));
+
+                    _currentNamespace = null;
+
+                    if (!namespaceSymbol.IsGlobalNamespace)
+                    {
+                        EndTypeContent();
+                        AppendLine();
+                    }
+                }
+            }
+        }
+
+        private void AppendWithNamespaceHierarchy(DocumentationModel documentationModel)
+        {
             IEnumerable<INamedTypeSymbol> types = documentationModel.Types.Where(f => f.ContainingType == null && !Options.ShouldBeIgnored(f));
 
-            foreach (INamespaceSymbol namespaceSymbol in types
-                .Select(f => f.ContainingNamespace)
-                .Distinct(MetadataNameEqualityComparer<INamespaceSymbol>.Instance)
+            var rootNamespaces = new HashSet<INamespaceSymbol>(MetadataNameEqualityComparer<INamespaceSymbol>.Instance);
+
+            var nestedNamespaces = new HashSet<INamespaceSymbol>(MetadataNameEqualityComparer<INamespaceSymbol>.Instance);
+
+            foreach (INamespaceSymbol namespaceSymbol in types.Select(f => f.ContainingNamespace))
+            {
+                if (namespaceSymbol.IsGlobalNamespace)
+                {
+                    rootNamespaces.Add(namespaceSymbol);
+                }
+                else
+                {
+                    INamespaceSymbol n = namespaceSymbol;
+
+                    while (true)
+                    {
+                        INamespaceSymbol containingNamespace = n.ContainingNamespace;
+
+                        if (containingNamespace.IsGlobalNamespace)
+                        {
+                            rootNamespaces.Add(n);
+                            break;
+                        }
+
+                        nestedNamespaces.Add(n);
+
+                        n = containingNamespace;
+                    }
+                }
+            }
+
+            foreach (INamespaceSymbol namespaceSymbol in rootNamespaces
                 .OrderBy(f => f, NamespaceComparer))
+            {
+                AppendNamespace(namespaceSymbol);
+                AppendLine();
+            }
+
+            void AppendNamespace(INamespaceSymbol namespaceSymbol, bool isNested = false, bool startsWithNewLine = false)
             {
                 if (!namespaceSymbol.IsGlobalNamespace)
                 {
-                    Append(namespaceSymbol, _namespaceFormat);
+                    if (isNested)
+                    {
+                        if (startsWithNewLine)
+                            AppendLine();
+
+                        Append("// ");
+                        Append(namespaceSymbol, SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespaces);
+                        AppendLine();
+                    }
+
+                    Append(namespaceSymbol, _namespaceHierarchyFormat);
                     BeginTypeContent();
                 }
 
@@ -140,13 +224,25 @@ namespace Roslynator.Documentation
 
                 AppendTypes(types.Where(f => MetadataNameEqualityComparer<INamespaceSymbol>.Instance.Equals(f.ContainingNamespace, namespaceSymbol)));
 
+                startsWithNewLine = false;
+
+                foreach (INamespaceSymbol namespaceSymbol2 in nestedNamespaces
+                    .Where(f => MetadataNameEqualityComparer<INamespaceSymbol>.Instance.Equals(f.ContainingNamespace, namespaceSymbol))
+                    .Distinct(MetadataNameEqualityComparer<INamespaceSymbol>.Instance)
+                    .OrderBy(f => f, NamespaceComparer)
+                    .ToArray())
+                {
+                    nestedNamespaces.Remove(namespaceSymbol2);
+
+                    AppendNamespace(namespaceSymbol2, isNested: true, startsWithNewLine: startsWithNewLine);
+
+                    startsWithNewLine = true;
+                }
+
                 _currentNamespace = null;
 
                 if (!namespaceSymbol.IsGlobalNamespace)
-                {
                     EndTypeContent();
-                    AppendLine();
-                }
             }
         }
 
@@ -253,7 +349,7 @@ namespace Roslynator.Documentation
 
         private void EndTypeContent()
         {
-            Debug.Assert(_indentationLevel > 0, "Cannot decrease indentation.");
+            Debug.Assert(_indentationLevel > 0, "Cannot decrease indentation level.");
 
             _indentationLevel--;
 
