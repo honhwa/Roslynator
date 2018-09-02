@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# B\.Method\(\) Method
+# B\.Method\(String, String, String\) Method
 
 [Home](../../../../../README.md#_top)
 
@@ -9,8 +9,16 @@
 **Assembly**: Roslynator\.Documentation\.TestProject\.dll
 
 ```csharp
-public string Method()
+public string Method(string s1, string s2, string s3)
 ```
+
+### Parameters
+
+**s1**
+
+**s2**
+
+**s3**
 
 ### Returns
 

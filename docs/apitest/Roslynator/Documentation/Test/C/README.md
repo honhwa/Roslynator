@@ -32,6 +32,7 @@ public class C : B
 
 | Indexer | Summary |
 | ------- | ------- |
+| [Item\[Int32, Int32, Int32\]](../B/Item/README.md#_top) |  \(Inherited from [B](../B/README.md#_top)\) |
 | [Item\[Int32\]](Item/README.md#_top) | |
 
 ## Properties
@@ -49,6 +50,7 @@ public class C : B
 | [GetType()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [MemberwiseClone()](https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [Method()](Method/README.md#_top) | |
+| [Method(String, String, String)](../B/Method/README.md#_top) |  \(Inherited from [B](../B/README.md#_top)\) |
 | [ToString()](ToString/README.md#_top) | |
 
 ## Events

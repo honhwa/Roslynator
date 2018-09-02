@@ -10,11 +10,14 @@ declarations
 -a|--assemblies
 -o|--output
 -r|--references
+[--depth]
 [--empty-line-between-members]
 [--format-base-list]
 [--format-constraints]
 [--format-parameters]
+[--fully-qualified-names]
 [--ignored-names]
+[--ignored-parts]
 [--include-ienumerable]
 [--indent-chars]
 [--merge-attributes]
@@ -24,7 +27,6 @@ declarations
 [--no-new-line-before-open-brace]
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
-[--omit-auto-generated-comment]
 ```
 
 ## Options
@@ -48,6 +50,10 @@ Defines one of two following options:
 
 ### Optional Options
 
+**`[--depth]`** `{member|type|namespace}`
+
+Defines a depth of a documentation. Default value is `member`.
+
 **`[--empty-line-between-members]`**
 
 Indicates whether an empty line should be added between two member declarations.
@@ -64,9 +70,17 @@ Indicates whether constraints should be formatted on a multiple lines.
 
 Indicates whether parameters should be formatted on a multiple lines.
 
+**`[--fully-qualified-names]`**
+
+Indicates whether type names should be fully qualified.
+
 **`[--ignored-names]`** `<FULLY-QUALIFIED-METADATA-NAMES-TO-IGNORE>`
 
 Defines a list of metadata names that should be excluded from a documentation. Namespace of type names can be specified.
+
+**`[--ignored-parts]`** `{auto-generated-comment | assembly-attributes}`
+
+Defines parts of a declaration list that should be excluded.
 
 **`[--include-ienumerable]`**
 
@@ -103,10 +117,6 @@ Indicates whether symbols contained in `System` namespace should be ordered as a
 **`[--omit-attribute-arguments]`**
 
 Indicates whether attribute arguments should be omitted when displaying an attribute.
-
-**`[--omit-auto-generated-comment]`**
-
-Indicates whether an "auto-generated" comment at the beginning of the document should be omitted.
 
 ## See Also
 

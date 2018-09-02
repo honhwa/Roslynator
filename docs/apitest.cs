@@ -10,6 +10,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Reflection;
+using System.Runtime.Versioning;
+
+// Roslynator.Documentation.TestProject
+[assembly: AssemblyCompany("Josef Pihrt")]
+[assembly: AssemblyCopyright("Copyright (c) 2017-2018 Josef Pihrt")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0.0")]
+[assembly: AssemblyProduct("Roslynator.Documentation.TestProject")]
+[assembly: AssemblyTitle("Roslynator.Documentation.TestProject")]
+[assembly: TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName = "")]
 
 namespace System
 {
@@ -35,11 +46,11 @@ namespace Roslynator.Documentation.Test
 
         public event EventHandler Event;
 
-        public int this[int index] { get; }
+        public int this[[Some] [Some] int index1, [Some] int index2, [Some] int index3] { get; }
 
-        public string Property { get; }
+        public string Property { [Some] [Some] get; }
 
-        public string Method();
+        public string Method([Some] [Some] string s1, [Some] string s2, [Some] string s3);
     }
 
     public class C : B
@@ -115,6 +126,12 @@ namespace Roslynator.Documentation.Test
 
     public static class FooExtensions
     {
+    }
+
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public sealed class SomeAttribute : Attribute
+    {
+        public SomeAttribute();
     }
 
     public struct FooStruct

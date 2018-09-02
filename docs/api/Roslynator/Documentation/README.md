@@ -37,6 +37,7 @@
 
 | Enum | Summary |
 | ---- | ------- |
+| [DeclarationListParts](DeclarationListParts/README.md#_top) | |
 | [DocumentationDepth](DocumentationDepth/README.md#_top) | |
 | [DocumentationFileKind](DocumentationFileKind/README.md#_top) | |
 | [DocumentationUrlKind](DocumentationUrlKind/README.md#_top) | |

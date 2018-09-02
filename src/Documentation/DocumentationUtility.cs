@@ -17,6 +17,7 @@ namespace Roslynator.Documentation
             switch (attributeType.MetadataName)
             {
                 case "ConditionalAttribute":
+                case "DebuggableAttribute":
                 case "DebuggerBrowsableAttribute":
                 case "DebuggerDisplayAttribute":
                 case "DebuggerHiddenAttribute":
@@ -29,25 +30,34 @@ namespace Roslynator.Documentation
                 case "SuppressMessageAttribute":
                     return attributeType.ContainingNamespace.HasMetadataName(MetadataNames.System_Diagnostics_CodeAnalysis);
                 case "DefaultMemberAttribute":
+                case "AssemblyConfigurationAttribute":
                     return attributeType.ContainingNamespace.HasMetadataName(MetadataNames.System_Reflection);
                 case "AsyncStateMachineAttribute":
+                case "CompilationRelaxationsAttribute":
+                case "CompilerGeneratedAttribute":
                 case "IsReadOnlyAttribute":
+                case "InternalsVisibleToAttribute":
                 case "IteratorStateMachineAttribute":
                 case "MethodImplAttribute":
+                case "RuntimeCompatibilityAttribute":
+                case "StateMachineAttribute":
+                case "TupleElementNamesAttribute":
                 case "TypeForwardedFromAttribute":
                 case "TypeForwardedToAttribute":
                     return attributeType.ContainingNamespace.HasMetadataName(MetadataNames.System_Runtime_CompilerServices);
 #if DEBUG
+                case "AttributeUsageAttribute":
                 case "CLSCompliantAttribute":
                 case "FlagsAttribute":
-                case "AttributeUsageAttribute":
-                case "ObsoleteAttribute":
                 case "FooAttribute":
+                case "ObsoleteAttribute":
+                case "TargetFrameworkAttribute":
                     return false;
 #endif
             }
 
-            Debug.Fail(attributeType.ToDisplayString());
+            //TODO: 
+            //Debug.Fail(attributeType.ToDisplayString());
             return false;
         }
     }

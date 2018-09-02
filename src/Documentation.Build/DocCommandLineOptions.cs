@@ -27,8 +27,20 @@ namespace Roslynator.Documentation
         [Option(longName: "depth", Default = DefaultValues.Depth)]
         public DocumentationDepth Depth { get; set; }
 
+        [Option(longName: "ignored-member-parts")]
+        public IEnumerable<string> IgnoredMemberParts { get; set; }
+
         [Option(longName: "ignored-names")]
         public IEnumerable<string> IgnoredNames { get; set; }
+
+        [Option(longName: "ignored-namespace-parts")]
+        public IEnumerable<string> IgnoredNamespaceParts { get; set; }
+
+        [Option(longName: "ignored-root-parts")]
+        public IEnumerable<string> IgnoredRootParts { get; set; }
+
+        [Option(longName: "ignored-type-parts")]
+        public IEnumerable<string> IgnoredTypeParts { get; set; }
 
         [Option(longName: "include-all-derived-types", Default = DefaultValues.IncludeAllDerivedTypes)]
         public bool IncludeAllDerivedTypes { get; set; }
@@ -42,26 +54,20 @@ namespace Roslynator.Documentation
         [Option(longName: "max-derived-types", Default = DefaultValues.MaxDerivedTypes)]
         public int MaxDerivedTypes { get; set; }
 
-        [Option(longName: "member-parts")]
-        public IEnumerable<string> MemberParts { get; set; }
-
         [Option(longName: "mode", Default = "github")]
         public string Mode { get; set; }
-
-        [Option(longName: "namespace-parts")]
-        public IEnumerable<string> NamespaceParts { get; set; }
-
-        [Option(longName: "no-format-base-list", Default = !DefaultValues.FormatDeclarationBaseList)]
-        public bool NoFormatBaseList { get; set; }
 
         [Option(longName: "no-class-hierarchy", Default = !DefaultValues.IncludeClassHierarchy)]
         public bool NoClassHierarchy { get; set; }
 
-        [Option(longName: "no-format-constraints", Default = !DefaultValues.FormatDeclarationConstraints)]
-        public bool NoFormatConstraints { get; set; }
-
         [Option(longName: "no-delete", Default = false)]
         public bool NoDelete { get; set; }
+
+        [Option(longName: "no-format-base-list", Default = !DefaultValues.FormatDeclarationBaseList)]
+        public bool NoFormatBaseList { get; set; }
+
+        [Option(longName: "no-format-constraints", Default = !DefaultValues.FormatDeclarationConstraints)]
+        public bool NoFormatConstraints { get; set; }
 
         [Option(longName: "no-mark-obsolete", Default = !DefaultValues.MarkObsolete)]
         public bool NoMarkObsolete { get; set; }
@@ -89,11 +95,5 @@ namespace Roslynator.Documentation
 
         [Option(longName: "preferred-culture")]
         public string PreferredCulture { get; set; }
-
-        [Option(longName: "root-parts")]
-        public IEnumerable<string> RootParts { get; set; }
-
-        [Option(longName: "type-parts")]
-        public IEnumerable<string> TypeParts { get; set; }
     }
 }

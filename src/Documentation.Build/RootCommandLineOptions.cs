@@ -45,6 +45,7 @@ namespace Roslynator.Documentation
         [Option(longName: "parts")]
         public IEnumerable<string> Parts { get; set; }
 
+        //TODO: root-url relative-url documentation-root-url root-relative-url
         [Option(longName: "root-url")]
         public string RootUrl { get; set; }
     }

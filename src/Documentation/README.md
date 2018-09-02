@@ -40,6 +40,7 @@
 
 ## Enums
 
+* Roslynator\.Documentation\.[DeclarationListParts](../../docs/api/Roslynator/Documentation/DeclarationListParts/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationDepth](../../docs/api/Roslynator/Documentation/DocumentationDepth/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationFileKind](../../docs/api/Roslynator/Documentation/DocumentationFileKind/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationUrlKind](../../docs/api/Roslynator/Documentation/DocumentationUrlKind/README.md#_top)

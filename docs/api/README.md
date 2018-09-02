@@ -114,6 +114,7 @@
 * Roslynator\.CSharp\.[ModifierKinds](Roslynator/CSharp/ModifierKinds/README.md#_top)
 * Roslynator\.CSharp\.[NullCheckStyles](Roslynator/CSharp/NullCheckStyles/README.md#_top)
 * Roslynator\.CSharp\.[PreprocessorDirectiveKinds](Roslynator/CSharp/PreprocessorDirectiveKinds/README.md#_top)
+* Roslynator\.Documentation\.[DeclarationListParts](Roslynator/Documentation/DeclarationListParts/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationDepth](Roslynator/Documentation/DocumentationDepth/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationFileKind](Roslynator/Documentation/DocumentationFileKind/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationUrlKind](Roslynator/Documentation/DocumentationUrlKind/README.md#_top)

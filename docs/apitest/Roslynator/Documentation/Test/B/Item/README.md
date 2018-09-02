@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# B\.Item\[Int32\] Indexer
+# B\.Item\[Int32, Int32, Int32\] Indexer
 
 [Home](../../../../../README.md#_top)
 
@@ -9,12 +9,16 @@
 **Assembly**: Roslynator\.Documentation\.TestProject\.dll
 
 ```csharp
-public int this[int index] { get; }
+public int this[int index1, int index2, int index3] { get; }
 ```
 
 ### Parameters
 
-**index**
+**index1**
+
+**index2**
+
+**index3**
 
 ### Property Value
 

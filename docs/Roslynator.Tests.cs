@@ -9,6 +9,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
@@ -17,6 +19,15 @@ using Microsoft.CodeAnalysis.CodeRefactorings;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 using Roslynator.Tests.Text;
+
+// Roslynator.Tests
+[assembly: AssemblyCompany("Roslynator.Tests")]
+[assembly: AssemblyCopyright("Copyright (c) 2017-2018 Josef Pihrt")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyProduct("Roslynator.Tests")]
+[assembly: AssemblyTitle("Roslynator.Tests")]
+[assembly: TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName = "")]
 
 namespace Roslynator
 {

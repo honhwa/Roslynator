@@ -28,6 +28,7 @@ test remarks
 | [FooDic\<TKey, TValue>](FooDic-2/README.md#_top) | \[deprecated\]  |
 | [FooEvent](FooEvent/README.md#_top) | |
 | [FooExtensions](FooExtensions/README.md#_top) | fx |
+| [SomeAttribute](SomeAttribute/README.md#_top) | |
 
 ## Structs
 

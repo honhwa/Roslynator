@@ -244,7 +244,9 @@ namespace Roslynator.Documentation
             ImmutableArray<AttributeData> attributes,
             Func<INamedTypeSymbol, bool> predicate,
             bool splitAttributes = true,
-            bool includeAttributeArguments = false)
+            bool includeAttributeArguments = false,
+            bool isAssemblyAttribute = false,
+            bool addNewLine = true)
         {
             ImmutableArray<SymbolDisplayPart>.Builder builder = ImmutableArray.CreateBuilder<SymbolDisplayPart>();
 
@@ -253,7 +255,9 @@ namespace Roslynator.Documentation
                 attributes,
                 predicate,
                 splitAttributes: splitAttributes,
-                includeAttributeArguments: includeAttributeArguments);
+                includeAttributeArguments: includeAttributeArguments,
+                isAssemblyAttribute: isAssemblyAttribute,
+                addNewLine: addNewLine);
 
             return builder.ToImmutableArray();
         }
@@ -264,7 +268,9 @@ namespace Roslynator.Documentation
             Func<INamedTypeSymbol, bool> predicate = null,
             INamespaceSymbol containingNamespace = null,
             bool splitAttributes = true,
-            bool includeAttributeArguments = false)
+            bool includeAttributeArguments = false,
+            bool isAssemblyAttribute = false,
+            bool addNewLine = true)
         {
             using (IEnumerator<AttributeData> en = attributes
                 .Where(f => predicate(f.AttributeClass))
@@ -273,6 +279,13 @@ namespace Roslynator.Documentation
                 if (en.MoveNext())
                 {
                     builder.AddPunctuation("[");
+
+                    if (isAssemblyAttribute)
+                    {
+                        builder.AddKeyword("assembly");
+                        builder.AddPunctuation(":");
+                        builder.AddSpace();
+                    }
 
                     while (true)
                     {
@@ -286,8 +299,24 @@ namespace Roslynator.Documentation
                             if (splitAttributes)
                             {
                                 builder.AddPunctuation("]");
-                                builder.AddLineBreak();
+
+                                if (addNewLine)
+                                {
+                                    builder.AddLineBreak();
+                                }
+                                else
+                                {
+                                    builder.AddSpace();
+                                }
+
                                 builder.AddPunctuation("[");
+
+                                if (isAssemblyAttribute)
+                                {
+                                    builder.AddKeyword("assembly");
+                                    builder.AddPunctuation(":");
+                                    builder.AddSpace();
+                                }
                             }
                             else
                             {
@@ -302,7 +331,9 @@ namespace Roslynator.Documentation
                     }
 
                     builder.AddPunctuation("]");
-                    builder.AddLineBreak();
+
+                    if (addNewLine)
+                        builder.AddLineBreak();
                 }
             }
 
@@ -520,10 +551,11 @@ namespace Roslynator.Documentation
             int parenthesesDepth = 0;
             int bracesDepth = 0;
             int bracketsDepth = 0;
+            int angleBracketsDepth = 0;
 
             int i = 0;
 
-            int index = FindParameterListStart();
+            int index = FindParameterListStart(symbol, builder);
 
             Debug.Assert(index >= 0);
 
@@ -549,9 +581,8 @@ namespace Roslynator.Documentation
                         {
                             case ",":
                                 {
-                                    if (parenthesesDepth == 1
-                                        && bracesDepth == 0
-                                        && bracketsDepth == 0
+                                    if (((angleBracketsDepth == 0 && parenthesesDepth == 1 && bracesDepth == 0 && bracketsDepth == 0)
+                                            || (angleBracketsDepth == 0 && parenthesesDepth == 0 && bracesDepth == 0 && bracketsDepth == 1))
                                         && i < builder.Count - 1)
                                     {
                                         SymbolDisplayPart nextPart = builder[i + 1];
@@ -612,82 +643,115 @@ namespace Roslynator.Documentation
                                     bracesDepth--;
                                     break;
                                 }
+                            case "<":
+                                {
+                                    angleBracketsDepth++;
+                                    break;
+                                }
+                            case ">":
+                                {
+                                    Debug.Assert(angleBracketsDepth >= 0);
+                                    angleBracketsDepth--;
+                                    break;
+                                }
                         }
                     }
 
                     i++;
                 }
             }
+        }
 
-            int FindParameterListStart()
+        internal static int FindParameterListStart(
+            ISymbol symbol,
+            IList<SymbolDisplayPart> parts)
+        {
+            int parenthesesDepth = 0;
+            int bracesDepth = 0;
+            int bracketsDepth = 0;
+            int angleBracketsDepth = 0;
+
+            int i = 0;
+
+            while (i < parts.Count)
             {
-                while (i < builder.Count)
+                SymbolDisplayPart part = parts[i];
+
+                if (part.Kind == SymbolDisplayPartKind.Punctuation)
                 {
-                    SymbolDisplayPart part = builder[i];
-
-                    if (part.Kind == SymbolDisplayPartKind.Punctuation)
+                    switch (part.ToString())
                     {
-                        switch (part.ToString())
-                        {
-                            case "(":
-                                {
-                                    parenthesesDepth++;
+                        case "(":
+                            {
+                                parenthesesDepth++;
 
-                                    if (symbol.IsKind(SymbolKind.Method, SymbolKind.NamedType)
-                                        && parenthesesDepth == 1
-                                        && bracesDepth == 0
-                                        && bracketsDepth == 0)
-                                    {
-                                        return i;
-                                    }
+                                if (symbol.IsKind(SymbolKind.Method, SymbolKind.NamedType)
+                                    && parenthesesDepth == 1
+                                    && bracesDepth == 0
+                                    && bracketsDepth == 0
+                                    && angleBracketsDepth == 0)
+                                {
+                                    return i;
+                                }
 
-                                    break;
-                                }
-                            case ")":
-                                {
-                                    Debug.Assert(parenthesesDepth >= 0);
-                                    parenthesesDepth--;
-                                    break;
-                                }
-                            case "[":
-                                {
-                                    bracketsDepth++;
+                                break;
+                            }
+                        case ")":
+                            {
+                                Debug.Assert(parenthesesDepth >= 0);
+                                parenthesesDepth--;
+                                break;
+                            }
+                        case "[":
+                            {
+                                bracketsDepth++;
 
-                                    if (symbol.Kind == SymbolKind.Property
-                                        && parenthesesDepth == 0
-                                        && bracesDepth == 0
-                                        && bracketsDepth == 1)
-                                    {
-                                        return i;
-                                    }
+                                if (symbol.Kind == SymbolKind.Property
+                                    && parenthesesDepth == 0
+                                    && bracesDepth == 0
+                                    && bracketsDepth == 1
+                                    && angleBracketsDepth == 0)
+                                {
+                                    return i;
+                                }
 
-                                    break;
-                                }
-                            case "]":
-                                {
-                                    Debug.Assert(bracketsDepth >= 0);
-                                    bracketsDepth--;
-                                    break;
-                                }
-                            case "{":
-                                {
-                                    bracesDepth++;
-                                    break;
-                                }
-                            case "}":
-                                {
-                                    Debug.Assert(bracesDepth >= 0);
-                                    bracesDepth--;
-                                    break;
-                                }
-                        }
+                                break;
+                            }
+                        case "]":
+                            {
+                                Debug.Assert(bracketsDepth >= 0);
+                                bracketsDepth--;
+                                break;
+                            }
+                        case "{":
+                            {
+                                bracesDepth++;
+                                break;
+                            }
+                        case "}":
+                            {
+                                Debug.Assert(bracesDepth >= 0);
+                                bracesDepth--;
+                                break;
+                            }
+                        case "<":
+                            {
+                                angleBracketsDepth++;
+                                break;
+                            }
+                        case ">":
+                            {
+                                Debug.Assert(angleBracketsDepth >= 0);
+                                angleBracketsDepth--;
+                                break;
+                            }
                     }
-
-                    i++;
                 }
 
-                return -1;
+                i++;
             }
+
+            return -1;
         }
 
         private static string ToDisplayString(INamedTypeSymbol symbol, INamespaceSymbol containingNamespace)

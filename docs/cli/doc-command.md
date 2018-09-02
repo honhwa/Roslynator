@@ -73,7 +73,7 @@ Defines a depth of a documentation. Default value is `member`.
 
 **`[--ignored-member-parts]`** `{overloads containing-type containing-assembly obsolete-message summary declaration type-parameters parameters return-value implements attributes exceptions examples remarks see-also}`
 
-Defines parts of a member documentation that should be excluded. No part is excluded by default.
+Defines parts of a member documentation that should be excluded.
 
 **`[--ignored-names]`** `<FULLY-QUALIFIED-METADATA-NAMES-TO-IGNORE>`
 
@@ -81,15 +81,15 @@ Defines a list of metadata names that should be excluded from a documentation. N
 
 **`[--ignored-namespace-parts]`** `{content containing-namespace summary examples remarks classes structs interfaces enums delegates see-also}`
 
-Defines parts of a namespace documentation that should be excluded. No part is excluded by default.
+Defines parts of a namespace documentation that should be excluded.
 
 **`[--ignored-root-parts]`** `{content | namespaces | classes | static-classes | structs | interfaces | enums | delegates | other}`
 
-Defines parts of a root documentation that should be excluded. No part is excluded by default.
+Defines parts of a root documentation that should be excluded.
 
 **`[--ignored-type-parts]`** `{content containing-namespace containing-assembly obsolete-message summary declaration type-parameters parameters return-value inheritance attributes derived implements examples remarks constructors fields indexers properties methods operators events explicit-interface-implementations extension-methods classes structs interfaces enums delegates see-also}`
 
-Defines parts of a type documentation that should be excluded. No part is excluded by default.
+Defines parts of a type documentation that should be excluded.
 
 **`[--include-all-derived-types]`**
 
