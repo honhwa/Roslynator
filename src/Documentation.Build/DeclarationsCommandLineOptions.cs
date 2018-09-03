@@ -54,8 +54,8 @@ namespace Roslynator.Documentation
         [Option(longName: "merge-attributes", Default = !DefaultValues.SplitAttributes)]
         public bool MergeAttributes { get; set; }
 
-        [Option(longName: "namespace-hierarchy", Default = DefaultValues.NamespaceHierarchy)]
-        public bool NamespaceHierarchy { get; set; }
+        [Option(longName: "nest-namespace", Default = DefaultValues.NestNamespaces)]
+        public bool NestNamespaces { get; set; }
 
         [Option(longName: "no-indent", Default = !DefaultValues.Indent)]
         public bool NoIndent { get; set; }

@@ -136,7 +136,7 @@ namespace Roslynator.Documentation
                 }
             }
 
-            if (Options.NamespaceHierarchy)
+            if (Options.NestNamespaces)
             {
                 AppendWithNamespaceHierarchy(documentationModel);
             }

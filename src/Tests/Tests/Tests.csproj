@@ -41,7 +41,7 @@
 -o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
 --indent-chars &quot;  &quot; ^
 --empty-line-between-members ^
---namespace-hierarchy ^
+--nest-namespaces ^
 --format-parameters"
           LogStandardErrorAsError="true"
           ConsoleToMSBuild="true">

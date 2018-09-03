@@ -126,7 +126,7 @@ namespace Roslynator.Documentation
                 ignoredNames: options.IgnoredNames,
                 indent: !options.NoIndent,
                 indentChars: options.IndentChars,
-                namespaceHierarchy: options.NamespaceHierarchy,
+                nestNamespaces: options.NestNamespaces,
                 newLineBeforeOpenBrace: !options.NoNewLineBeforeOpenBrace,
                 emptyLineBetweenMembers: options.EmptyLineBetweenMembers,
                 formatBaseList: options.FormatBaseList,

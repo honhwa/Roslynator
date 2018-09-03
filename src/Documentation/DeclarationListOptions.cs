@@ -15,7 +15,7 @@ namespace Roslynator.Documentation
             IEnumerable<string> ignoredNames = null,
             bool indent = DefaultValues.Indent,
             string indentChars = DefaultValues.IndentChars,
-            bool namespaceHierarchy = DefaultValues.NamespaceHierarchy,
+            bool nestNamespaces = DefaultValues.NestNamespaces,
             bool newLineBeforeOpenBrace = DefaultValues.NewLineBeforeOpenBrace,
             bool emptyLineBetweenMembers = DefaultValues.EmptyLineBetweenMembers,
             bool formatBaseList = DefaultValues.FormatBaseList,
@@ -34,7 +34,7 @@ namespace Roslynator.Documentation
             IgnoredNames = ignoredNames?.ToImmutableArray() ?? ImmutableArray<string>.Empty;
             Indent = indent;
             IndentChars = indentChars;
-            NamespaceHierarchy = namespaceHierarchy;
+            NestNamespaces = nestNamespaces;
             NewLineBeforeOpenBrace = newLineBeforeOpenBrace;
             EmptyLineBetweenMembers = emptyLineBetweenMembers;
             FormatBaseList = formatBaseList;
@@ -61,7 +61,7 @@ namespace Roslynator.Documentation
 
         public string IndentChars { get; }
 
-        public bool NamespaceHierarchy { get; }
+        public bool NestNamespaces { get; }
 
         public bool NewLineBeforeOpenBrace { get; }
 
@@ -116,8 +116,8 @@ namespace Roslynator.Documentation
             public const bool FormatParameters = false;
             public const bool IncludeAttributeArguments = true;
             public const bool Indent = true;
-            public const string IndentChars = "    "; //TODO: IndentChars = "    "
-            public const bool NamespaceHierarchy = false;
+            public const string IndentChars = "    ";
+            public const bool NestNamespaces = false;
             public const bool NewLineBeforeOpenBrace = true;
             public const bool OmitIEnumerable = true;
             public const bool SplitAttributes = true;
