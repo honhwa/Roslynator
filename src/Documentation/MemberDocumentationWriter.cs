@@ -125,8 +125,12 @@ namespace Roslynator.Documentation
 
         public virtual void WriteImplements(ISymbol symbol)
         {
+            SymbolDisplayFormat format = (Options.IncludeContainingNamespace)
+                ? SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespacesAndTypeParameters
+                : SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
+
             using (IEnumerator<ISymbol> en = symbol.FindImplementedInterfaceMembers()
-                .OrderBy(f => f.ToDisplayString(SymbolDisplayFormats.MemberImplements, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName))
+                .OrderBy(f => f.ToDisplayString(format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName))
                 .GetEnumerator())
             {
                 if (en.MoveNext())
@@ -138,7 +142,7 @@ namespace Roslynator.Documentation
                     do
                     {
                         Writer.WriteStartBulletItem();
-                        Writer.WriteLink(en.Current, SymbolDisplayFormats.MemberImplements, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName);
+                        Writer.WriteLink(en.Current, format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName);
                         Writer.WriteEndBulletItem();
                     }
                     while (en.MoveNext());

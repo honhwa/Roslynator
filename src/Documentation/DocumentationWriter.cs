@@ -736,6 +736,7 @@ namespace Roslynator.Documentation
 
         public virtual void WriteExceptions(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0)
         {
+            //TODO: sort exceptions
             using (IEnumerator<(XElement element, ISymbol exceptionSymbol)> en = GetExceptions().GetEnumerator())
             {
                 if (en.MoveNext())
@@ -934,9 +935,13 @@ namespace Roslynator.Documentation
 
                     WriteStartBulletList();
 
+                    SymbolDisplayFormat format = (Options.IncludeContainingNamespace)
+                        ? SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespacesAndTypeParameters
+                        : SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
+
                     do
                     {
-                        WriteBulletItemLink(en.Current, SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName);
+                        WriteBulletItemLink(en.Current, format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName);
                     }
                     while (en.MoveNext());
 
