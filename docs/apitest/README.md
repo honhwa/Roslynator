@@ -15,7 +15,6 @@
 * System\.Object
 * &emsp; System\.Attribute
 * &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[FooAttribute](Roslynator/Documentation/Test/FooAttribute/README.md#_top)
-* &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[SomeAttribute](Roslynator/Documentation/Test/SomeAttribute/README.md#_top)
 * &emsp; System\.[ClassName\<Methods>](System/ClassName-1/README.md#_top) \[deprecated\]
 * &emsp; Roslynator\.Documentation\.Test\.[B](Roslynator/Documentation/Test/B/README.md#_top)
 * &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[C](Roslynator/Documentation/Test/C/README.md#_top)
@@ -36,6 +35,7 @@
 ## Interfaces
 
 * Roslynator\.Documentation\.Test\.[IFoo](Roslynator/Documentation/Test/IFoo/README.md#_top)
+* Roslynator\.Documentation\.Test\.[IFoo2](Roslynator/Documentation/Test/IFoo2/README.md#_top)
 * Roslynator\.Documentation\.Test\.[IImmutableFoo\<T>](Roslynator/Documentation/Test/IImmutableFoo-1/README.md#_top)
 
 ## Enums

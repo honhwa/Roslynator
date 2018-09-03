@@ -46,6 +46,13 @@ namespace Roslynator.Documentation
                 case "TypeForwardedToAttribute":
                     return attributeType.ContainingNamespace.HasMetadataName(MetadataNames.System_Runtime_CompilerServices);
 #if DEBUG
+                case "AssemblyCompanyAttribute":
+                case "AssemblyCopyrightAttribute":
+                case "AssemblyDescriptionAttribute":
+                case "AssemblyFileVersionAttribute":
+                case "AssemblyInformationalVersionAttribute":
+                case "AssemblyProductAttribute":
+                case "AssemblyTitleAttribute":
                 case "AttributeUsageAttribute":
                 case "CLSCompliantAttribute":
                 case "FlagsAttribute":
@@ -56,8 +63,7 @@ namespace Roslynator.Documentation
 #endif
             }
 
-            //TODO: 
-            //Debug.Fail(attributeType.ToDisplayString());
+            Debug.Fail(attributeType.ToDisplayString());
             return false;
         }
     }

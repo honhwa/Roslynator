@@ -6,8 +6,12 @@ using System;
 
 namespace Roslynator.Documentation.Test
 {
-    public class FooEvent : IFoo
+    public class FooEvent : IFoo, IFoo2
     {
+        public void Bar()
+        {
+        }
+
         event EventHandler IFoo.Changed
         {
             add { throw new NotImplementedException(); }

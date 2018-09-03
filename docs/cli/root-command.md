@@ -14,12 +14,11 @@ doc
 [--depth]
 [--ignored-names]
 [--ignored-parts]
-[--mode]
 [--no-class-hierarchy]
 [--no-mark-obsolete]
 [--no-precedence-for-system]
 [--omit-containing-namespace]
-[--root-url]
+[--root-directory-url]
 ```
 
 ## Options
@@ -59,10 +58,6 @@ Defines a list of metadata names that should be excluded from a documentation. N
 
 Defines parts of a root documentation that should be excluded. No part is excluded by default.
 
-**`[--mode]`** `{github}`
-
-Defines documentation generation mode. Currently only supported mode is `github`.
-
 **`[--no-class-hierarchy]`**
 
 Indicates whether classes should be displayed as a list instead of hierarchy tree.
@@ -79,7 +74,7 @@ Indicates whether symbols contained in `System` namespace should be ordered as a
 
 Indicates whether a containing namespace should be omitted when displaying type name.
 
-**`[--root-url]`**
+**`[--root-directory-url]`**
 
 Defines a relative url to the documentation root directory.
 

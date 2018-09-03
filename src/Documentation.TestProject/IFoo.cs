@@ -8,6 +8,8 @@ namespace Roslynator.Documentation.Test
 {
     public interface IFoo
     {
+        void Bar();
+
         event EventHandler Changed;
     }
 }

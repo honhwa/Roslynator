@@ -54,9 +54,6 @@ namespace Roslynator.Documentation
         [Option(longName: "max-derived-types", Default = DefaultValues.MaxDerivedTypes)]
         public int MaxDerivedTypes { get; set; }
 
-        [Option(longName: "mode", Default = "github")]
-        public string Mode { get; set; }
-
         [Option(longName: "no-class-hierarchy", Default = !DefaultValues.IncludeClassHierarchy)]
         public bool NoClassHierarchy { get; set; }
 

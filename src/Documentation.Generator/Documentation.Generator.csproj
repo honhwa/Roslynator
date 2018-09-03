@@ -28,15 +28,15 @@
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.Documentation.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)Documentation\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.Documentation&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.Documentation.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)Documentation\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.Documentation&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.Workspaces.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp.Workspaces&quot; ^&#xD;&#xA;--root-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) root ^&#xD;&#xA;-a Roslynator.CSharp.Workspaces.dll ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp.Workspaces&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 

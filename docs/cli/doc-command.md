@@ -21,20 +21,19 @@ doc
 [--include-all-derived-types]
 [--include-ienumerable]
 [--include-inherited-interface-members]
-[--omit-attribute-arguments]
-[--omit-containing-namespace]
-[--omit-member-constant-value]
-[--omit-member-inherited-from]
-[--omit-member-implements]
-[--omit-member-overrides]
 [--max-derived-types]
-[--mode]
 [--no-format-base-list]
 [--no-class-hierarchy]
 [--no-format-constraints]
 [--no-delete]
 [--no-mark-obsolete]
 [--no-precedence-for-system]
+[--omit-attribute-arguments]
+[--omit-containing-namespace]
+[--omit-member-constant-value]
+[--omit-member-inherited-from]
+[--omit-member-implements]
+[--omit-member-overrides]
 [--preferred-culture]
 ```
 
@@ -103,37 +102,9 @@ Indicates whether interface `System.Collections.IEnumerable` should be included 
 
 Indicates whether inherited interface members should be displayed in a list of members.
 
-**`[--omit-attribute-arguments]`**
-
-Indicates whether attribute arguments should be omitted when displaying an attribute.
-
-**`[--omit-containing-namespace]`**
-
-Indicates whether a containing namespace should be omitted when displaying type name.
-
-**`[--omit-member-constant-value]`**
-
-Indicates whether a constant value of a member should be omitted.
-
-**`[--omit-member-inherited-from]`**
-
-Indicates whether a containing member of an inherited member should be omitted.
-
-**`[--omit-member-implements]`**
-
-Indicates whether an interface member that is being implemented should be omitted.
-
-**`[--omit-member-overrides]`**
-
-Indicates whether an overridden member should be omitted.
-
 **`[--max-derived-types]`**
 
 Defines maximum number derived types that should be displayed. Default value is `5`.
-
-**`[--mode] {github}`**
-
-Defines documentation generation mode. Currently only supported mode is `github`.
 
 **`[--no-format-base-list]`**
 
@@ -158,6 +129,30 @@ Indicates whether obsolete types and members should not be marked as `[deprecate
 **`[--no-precedence-for-system]`**
 
 Indicates whether symbols contained in `System` namespace should be ordered as any other symbols and not before other symbols.
+
+**`[--omit-attribute-arguments]`**
+
+Indicates whether attribute arguments should be omitted when displaying an attribute.
+
+**`[--omit-containing-namespace]`**
+
+Indicates whether a containing namespace should be omitted when displaying type name.
+
+**`[--omit-member-constant-value]`**
+
+Indicates whether a constant value of a member should be omitted.
+
+**`[--omit-member-inherited-from]`**
+
+Indicates whether a containing member of an inherited member should be omitted.
+
+**`[--omit-member-implements]`**
+
+Indicates whether an interface member that is being implemented should be omitted.
+
+**`[--omit-member-overrides]`**
+
+Indicates whether an overridden member should be omitted.
 
 **`[--preferred-culture]`**
 

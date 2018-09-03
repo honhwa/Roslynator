@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.TestProject\.dll
 
 ```csharp
-[System.AttributeUsageAttribute(System.AttributeTargets.All, AllowMultiple = false, Inherited = false)]
+[System.AttributeUsageAttribute(System.AttributeTargets.All, AllowMultiple = true, Inherited = false)]
 public sealed class FooAttribute : System.Attribute
 ```
 
@@ -25,7 +25,8 @@ public sealed class FooAttribute : System.Attribute
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [FooAttribute(Object, String, Boolean, Boolean, Byte, Char, Double, Single, Int32, Int64, SByte, Int16, UInt32, UInt64, UInt16, Type, Flags, Flags, Flags, Flags, Flags, Flags)](-ctor/README.md#_top) | |
+| [FooAttribute()](-ctor/README.md#Roslynator_Documentation_Test_FooAttribute__ctor) | |
+| [FooAttribute(Object, String, Boolean, Boolean, Byte, Char, Double, Single, Int32, Int64, SByte, Int16, UInt32, UInt64, UInt16, Type, Flags, Flags, Flags, Flags, Flags, Flags)](-ctor/README.md#Roslynator_Documentation_Test_FooAttribute__ctor_System_Object_System_String_System_Boolean_System_Boolean_System_Byte_System_Char_System_Double_System_Single_System_Int32_System_Int64_System_SByte_System_Int16_System_UInt32_System_UInt64_System_UInt16_System_Type_Roslynator_Documentation_Test_Flags_Roslynator_Documentation_Test_Flags_Roslynator_Documentation_Test_Flags_Roslynator_Documentation_Test_Flags_Roslynator_Documentation_Test_Flags_Roslynator_Documentation_Test_Flags_) | |
 
 ## Properties
 

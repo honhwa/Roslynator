@@ -401,7 +401,7 @@ namespace Roslynator.Documentation
 
                         ImmutableArray<SymbolDisplayPart> parts = en.Current.ToDisplayParts(_memberFormat);
 
-                        //TODO: event accessor's attributes
+                        //XTODO: attribute on event accessor
                         if (en.Current.Kind == SymbolKind.Property)
                         {
                             var propertySymbol = (IPropertySymbol)en.Current;

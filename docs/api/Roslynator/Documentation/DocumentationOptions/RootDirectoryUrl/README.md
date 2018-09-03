@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DocumentationOptions\.BaseLocalUrl Property
+# DocumentationOptions\.RootDirectoryUrl Property
 
 [Home](../../../../README.md#_top)
 
@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public string BaseLocalUrl { get; }
+public string RootDirectoryUrl { get; }
 ```
 
 ### Property Value

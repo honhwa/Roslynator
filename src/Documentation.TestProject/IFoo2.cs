@@ -2,12 +2,12 @@
 
 using System;
 
-#pragma warning disable CS1591, CA1051, CA1822
+#pragma warning disable CS0618, CS1591, RCS1079 
 
 namespace Roslynator.Documentation.Test
 {
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public sealed class SomeAttribute : Attribute
+    public interface IFoo2
     {
+        void Bar();
     }
 }

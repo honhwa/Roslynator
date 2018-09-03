@@ -15,7 +15,7 @@ namespace Roslynator.Documentation
         public DocumentationOptions(
             IEnumerable<string> ignoredNames = null,
             string preferredCultureName = null,
-            string baseLocalUrl = null,
+            string rootDirectoryUrl = null,
             int maxDerivedTypes = DefaultValues.MaxDerivedTypes,
             bool includeClassHierarchy = DefaultValues.IncludeClassHierarchy,
             bool includeContainingNamespace = DefaultValues.IncludeContainingNamespace,
@@ -44,7 +44,7 @@ namespace Roslynator.Documentation
 
             IgnoredNames = ignoredNames?.ToImmutableArray() ?? ImmutableArray<string>.Empty;
             PreferredCultureName = preferredCultureName;
-            BaseLocalUrl = baseLocalUrl;
+            RootDirectoryUrl = rootDirectoryUrl;
             MaxDerivedTypes = maxDerivedTypes;
             IncludeClassHierarchy = includeClassHierarchy;
             IncludeContainingNamespace = includeContainingNamespace;
@@ -73,12 +73,13 @@ namespace Roslynator.Documentation
 
         public string PreferredCultureName { get; }
 
-        public string BaseLocalUrl { get; }
+        public string RootDirectoryUrl { get; }
 
         public int MaxDerivedTypes { get; }
 
         public bool IncludeClassHierarchy { get; }
 
+        //TODO: IncludeContainingNamespace - root file?
         public bool IncludeContainingNamespace { get; }
 
         public bool PlaceSystemNamespaceFirst { get; }

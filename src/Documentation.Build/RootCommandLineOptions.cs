@@ -27,9 +27,6 @@ namespace Roslynator.Documentation
         [Option(longName: "ignored-names")]
         public IEnumerable<string> IgnoredNames { get; set; }
 
-        [Option(longName: "mode", Default = "github")]
-        public string Mode { get; set; }
-
         [Option(longName: "no-class-hierarchy", Default = !DefaultValues.IncludeClassHierarchy)]
         public bool NoClassHierarchy { get; set; }
 
@@ -45,8 +42,7 @@ namespace Roslynator.Documentation
         [Option(longName: "parts")]
         public IEnumerable<string> Parts { get; set; }
 
-        //TODO: root-url relative-url documentation-root-url root-relative-url
-        [Option(longName: "root-url")]
-        public string RootUrl { get; set; }
+        [Option(longName: "root-directory-url")]
+        public string RootDirectoryUrl { get; set; }
     }
 }

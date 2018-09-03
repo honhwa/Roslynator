@@ -46,11 +46,11 @@ namespace Roslynator.Documentation.Test
 
         public event EventHandler Event;
 
-        public int this[[Some] [Some] int index1, [Some] int index2, [Some] int index3] { get; }
+        public int this[[Foo] [Foo] int index1, [Foo] int index2, [Foo] int index3] { get; }
 
-        public string Property { [Some] [Some] get; }
+        public string Property { [Foo] [Foo] get; }
 
-        public string Method([Some] [Some] string s1, [Some] string s2, [Some] string s3);
+        public string Method([Foo] [Foo] string s1, [Foo] string s2, [Foo] string s3);
     }
 
     public class C : B
@@ -88,9 +88,10 @@ namespace Roslynator.Documentation.Test
         public void WriteString(char* pSrcStart, char* pSrcEnd);
     }
 
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
     public sealed class FooAttribute : Attribute
     {
+        public FooAttribute();
         [Foo(null, "\\n", true, false, 0, '\'', 0, 0, 0, 0, 0, 0, 0, 0, 0, typeof(object), Flags.None, Flags.A, Flags.A, Flags.AB | Flags.C, Flags.AB, (Flags)100)]
         public FooAttribute(object object1, string s1, bool bool1, bool bool2, byte byte1, char ch1, double double1, float float1, int int1, long long1, sbyte sbyte1, short short1, uint uint1, ulong ulong1, ushort ushort1, Type type, Flags f1, Flags f2, Flags f3, Flags f4, Flags f5, Flags f6);
     }
@@ -119,19 +120,15 @@ namespace Roslynator.Documentation.Test
         public FooDic();
     }
 
-    public class FooEvent : IFoo
+    public class FooEvent : IFoo, IFoo2
     {
         public FooEvent();
+
+        public void Bar();
     }
 
     public static class FooExtensions
     {
-    }
-
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public sealed class SomeAttribute : Attribute
-    {
-        public SomeAttribute();
     }
 
     public struct FooStruct
@@ -142,6 +139,13 @@ namespace Roslynator.Documentation.Test
     public interface IFoo
     {
         event EventHandler Changed;
+
+        void Bar();
+    }
+
+    public interface IFoo2
+    {
+        void Bar();
     }
 
     public interface IImmutableFoo<T> : IEquatable<IImmutableFoo<T>>, ICollection, IList, IStructuralComparable, IStructuralEquatable, ICollection<T>, IEnumerable<T>, IList<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, IImmutableList<T>

@@ -28,7 +28,6 @@ test remarks
 | [FooDic\<TKey, TValue>](FooDic-2/README.md#_top) | \[deprecated\]  |
 | [FooEvent](FooEvent/README.md#_top) | |
 | [FooExtensions](FooExtensions/README.md#_top) | fx |
-| [SomeAttribute](SomeAttribute/README.md#_top) | |
 
 ## Structs
 
@@ -41,6 +40,7 @@ test remarks
 | Interface | Summary |
 | --------- | ------- |
 | [IFoo](IFoo/README.md#_top) | |
+| [IFoo2](IFoo2/README.md#_top) | |
 | [IImmutableFoo\<T>](IImmutableFoo-1/README.md#_top) | |
 
 ## Enums

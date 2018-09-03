@@ -6,9 +6,13 @@ using System;
 
 namespace Roslynator.Documentation.Test
 {
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
     public sealed class FooAttribute : Attribute
     {
+        public FooAttribute()
+        {
+        }
+
         [Foo(
             default(object),
             @"\n",

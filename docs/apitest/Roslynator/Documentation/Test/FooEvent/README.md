@@ -9,7 +9,8 @@
 **Assembly**: Roslynator\.Documentation\.TestProject\.dll
 
 ```csharp
-public class FooEvent : IFoo
+public class FooEvent : IFoo,
+    IFoo2
 ```
 
 ### Inheritance
@@ -19,6 +20,7 @@ public class FooEvent : IFoo
 ### Implements
 
 * Roslynator\.Documentation\.Test\.[IFoo](../IFoo/README.md#_top)
+* Roslynator\.Documentation\.Test\.[IFoo2](../IFoo2/README.md#_top)
 
 ## Constructors
 
@@ -30,6 +32,7 @@ public class FooEvent : IFoo
 
 | Method | Summary |
 | ------ | ------- |
+| [Bar()](Bar/README.md#_top) |  \(Implements [IFoo.Bar](../IFoo/Bar/README.md#_top), [IFoo2.Bar](../IFoo2/Bar/README.md#_top)\) |
 | [Equals(Object)](https://docs.microsoft.com/en-us/dotnet/api/system.object.equals) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [GetHashCode()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [GetType()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |

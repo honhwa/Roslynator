@@ -12,15 +12,15 @@ namespace Roslynator.Documentation.Test
 
         public string Field;
 
-        public string Method([SomeAttribute] [SomeAttribute] string s1, [SomeAttribute] string s2, [SomeAttribute] string s3) => s1 + s2 + s3;
+        public string Method([FooAttribute] [FooAttribute] string s1, [FooAttribute] string s2, [FooAttribute] string s3) => s1 + s2 + s3;
 
-        public int this[[SomeAttribute] [SomeAttribute] int index1, [SomeAttribute] int index2, [SomeAttribute] int index3] => index1 + index2 + index3;
+        public int this[[FooAttribute] [FooAttribute] int index1, [FooAttribute] int index2, [FooAttribute] int index3] => index1 + index2 + index3;
 
-        public string Property { [SomeAttribute] [SomeAttribute] get; }
+        public string Property { [FooAttribute] [FooAttribute] get; }
 
         public event EventHandler Event
         {
-            [SomeAttribute]
+            [FooAttribute]
             add { }
             remove { }
         }

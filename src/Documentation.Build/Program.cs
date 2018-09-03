@@ -15,6 +15,8 @@ namespace Roslynator.Documentation
 {
     internal static class Program
     {
+        private static readonly Encoding _defaultEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+
         private static void Main(string[] args)
         {
             Parser.Default.ParseArguments<DocCommandLineOptions, DeclarationsCommandLineOptions, RootCommandLineOptions>(args)
@@ -27,18 +29,6 @@ namespace Roslynator.Documentation
 
         private static int ExecuteDoc(DocCommandLineOptions options)
         {
-            Encoding encoding = null;
-
-            if (string.Equals(options.Mode, "github", StringComparison.OrdinalIgnoreCase))
-            {
-                encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-            }
-            else
-            {
-                Console.WriteLine($"Unknown mode '{options.Mode}'.");
-                return 1;
-            }
-
             if (options.MaxDerivedTypes < 0)
             {
                 Console.WriteLine("Maximum number of derived items must be equal or greater than 0.");
@@ -113,7 +103,7 @@ namespace Roslynator.Documentation
                 Console.WriteLine($"saving '{path}'");
 #else
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
-                File.WriteAllText(path, documentationFile.Content, encoding);
+                File.WriteAllText(path, documentationFile.Content, _defaultEncoding);
 #endif
             }
 
@@ -175,18 +165,6 @@ namespace Roslynator.Documentation
 
         private static int ExecuteRoot(RootCommandLineOptions options)
         {
-            Encoding encoding = null;
-
-            if (string.Equals(options.Mode, "github", StringComparison.OrdinalIgnoreCase))
-            {
-                encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-            }
-            else
-            {
-                Console.WriteLine($"Unknown mode '{options.Mode}'.");
-                return 1;
-            }
-
             DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies);
 
             if (documentationModel == null)
@@ -197,7 +175,7 @@ namespace Roslynator.Documentation
 
             var documentationOptions = new DocumentationOptions(
                 ignoredNames: options.IgnoredNames,
-                baseLocalUrl: options.RootUrl,
+                rootDirectoryUrl: options.RootDirectoryUrl,
                 includeClassHierarchy: !options.NoClassHierarchy,
                 includeContainingNamespace: !options.OmitContainingNamespace,
                 placeSystemNamespaceFirst: !options.NoPrecedenceForSystem,
@@ -224,7 +202,7 @@ namespace Roslynator.Documentation
 
             DocumentationGeneratorResult result = generator.GenerateRoot(heading);
 
-            File.WriteAllText(path, result.Content, encoding);
+            File.WriteAllText(path, result.Content, _defaultEncoding);
 
             Console.WriteLine($"Documentation root successfully generated to '{path}'.");
 

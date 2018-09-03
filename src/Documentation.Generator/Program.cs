@@ -35,7 +35,7 @@ namespace Roslynator.Documentation
 
             var ignoredNames = new string[] { "Roslynator.Documentation.Test2" };
 
-            var documentationOptions = new DocumentationOptions(ignoredNames: ignoredNames);
+            var documentationOptions = new DocumentationOptions(ignoredNames: ignoredNames, includeInheritedInterfaceMembers: true);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 

@@ -26,7 +26,6 @@ public class DocumentationOptions
 
 | Property | Summary |
 | -------- | ------- |
-| [BaseLocalUrl](BaseLocalUrl/README.md#_top) | |
 | [Default](Default/README.md#_top) | |
 | [Depth](Depth/README.md#_top) | |
 | [FormatDeclarationBaseList](FormatDeclarationBaseList/README.md#_top) | |
@@ -50,6 +49,7 @@ public class DocumentationOptions
 | [OmitIEnumerable](OmitIEnumerable/README.md#_top) | |
 | [PlaceSystemNamespaceFirst](PlaceSystemNamespaceFirst/README.md#_top) | |
 | [PreferredCultureName](PreferredCultureName/README.md#_top) | |
+| [RootDirectoryUrl](RootDirectoryUrl/README.md#_top) | |
 
 ## Methods
 
