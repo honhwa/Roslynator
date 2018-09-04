@@ -14,10 +14,10 @@ public enum MemberDeclarationKind
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;System\.[Enum](https://docs.microsoft.com/en-us/dotnet/api/system.enum)  
-&emsp;&emsp;&emsp;MemberDeclarationKind
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;System\.[Enum](https://docs.microsoft.com/en-us/dotnet/api/system.enum)\
+&emsp;&emsp;&emsp;Roslynator\.Documentation\.MemberDeclarationKind
 
 ## Fields
 

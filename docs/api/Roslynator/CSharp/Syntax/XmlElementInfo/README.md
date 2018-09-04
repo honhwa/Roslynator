@@ -18,9 +18,9 @@ public readonly struct XmlElementInfo : System.IEquatable<XmlElementInfo>
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;XmlElementInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;Roslynator\.CSharp\.Syntax\.XmlElementInfo
 
 ### Implements
 

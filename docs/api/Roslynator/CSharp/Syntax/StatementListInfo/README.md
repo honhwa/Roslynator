@@ -21,9 +21,9 @@ public readonly struct StatementListInfo : System.IEquatable<StatementListInfo>,
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;StatementListInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;Roslynator\.CSharp\.Syntax\.StatementListInfo
 
 ### Implements
 

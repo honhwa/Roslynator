@@ -18,9 +18,9 @@ public readonly struct SingleParameterLambdaExpressionInfo : System.IEquatable<S
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;SingleParameterLambdaExpressionInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;Roslynator\.CSharp\.Syntax\.SingleParameterLambdaExpressionInfo
 
 ### Implements
 

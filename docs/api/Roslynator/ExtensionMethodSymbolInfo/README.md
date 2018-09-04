@@ -18,9 +18,9 @@ public readonly struct ExtensionMethodSymbolInfo : System.IEquatable<ExtensionMe
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;ExtensionMethodSymbolInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;Roslynator\.ExtensionMethodSymbolInfo
 
 ### Implements
 

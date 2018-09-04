@@ -14,8 +14,8 @@ public abstract class DocumentationGenerator
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;DocumentationGenerator
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.DocumentationGenerator
 
 ### Derived
 

@@ -133,6 +133,12 @@ namespace Roslynator.Documentation.Markdown
 
         public override void WriteLine() => _writer.WriteLine();
 
+        public override void WriteLineBreak()
+        {
+            WriteRaw(@"\");
+            WriteLine();
+        }
+
         public override void WriteLinkDestination(string name)
         {
             WriteRaw($"<a name=\"{name}\"></a>");

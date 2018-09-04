@@ -18,9 +18,9 @@ public readonly struct BinaryExpressionInfo : System.IEquatable<BinaryExpression
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
-&emsp;&emsp;BinaryExpressionInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
+&emsp;&emsp;Roslynator\.CSharp\.Syntax\.BinaryExpressionInfo
 
 ### Implements
 

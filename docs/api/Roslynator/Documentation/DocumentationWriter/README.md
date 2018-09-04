@@ -14,8 +14,8 @@ public abstract class DocumentationWriter : System.IDisposable
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;DocumentationWriter
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.DocumentationWriter
 
 ### Derived
 
@@ -104,6 +104,7 @@ System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
 | [WriteInlineCode(String)](WriteInlineCode/README.md#_top) | |
 | [WriteItalic(String)](WriteItalic/README.md#_top) | |
 | [WriteLine()](WriteLine/README.md#_top) | |
+| [WriteLineBreak()](WriteLineBreak/README.md#_top) | |
 | [WriteLink(String, String, String)](WriteLink/README.md#_top) | |
 | [WriteLinkDestination(String)](WriteLinkDestination/README.md#_top) | |
 | [WriteLinkOrText(String, String, String)](WriteLinkOrText/README.md#_top) | |

@@ -14,9 +14,9 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;Roslynator\.Documentation\.[DocumentationWriter](../../DocumentationWriter/README.md#_top)  
-&emsp;&emsp;MarkdownDocumentationWriter
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.[DocumentationWriter](../../DocumentationWriter/README.md#_top)\
+&emsp;&emsp;Roslynator\.Documentation\.Markdown\.MarkdownDocumentationWriter
 
 ### Implements
 
@@ -101,6 +101,7 @@ System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
 | [WriteInlineCode(String)](WriteInlineCode/README.md#_top) |  \(Overrides [DocumentationWriter.WriteInlineCode](../../DocumentationWriter/WriteInlineCode/README.md#_top)\) |
 | [WriteItalic(String)](../../DocumentationWriter/WriteItalic/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteLine()](WriteLine/README.md#_top) |  \(Overrides [DocumentationWriter.WriteLine](../../DocumentationWriter/WriteLine/README.md#_top)\) |
+| [WriteLineBreak()](WriteLineBreak/README.md#_top) |  \(Overrides [DocumentationWriter.WriteLineBreak](../../DocumentationWriter/WriteLineBreak/README.md#_top)\) |
 | [WriteLink(String, String, String)](WriteLink/README.md#_top) |  \(Overrides [DocumentationWriter.WriteLink](../../DocumentationWriter/WriteLink/README.md#_top)\) |
 | [WriteLinkDestination(String)](WriteLinkDestination/README.md#_top) |  \(Overrides [DocumentationWriter.WriteLinkDestination](../../DocumentationWriter/WriteLinkDestination/README.md#_top)\) |
 | [WriteLinkOrText(String, String, String)](../../DocumentationWriter/WriteLinkOrText/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

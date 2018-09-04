@@ -226,6 +226,8 @@ namespace Roslynator.Documentation
 
         public abstract void WriteLine();
 
+        public abstract void WriteLineBreak();
+
         public abstract void WriteLinkDestination(string name);
 
         public virtual void WriteValue(bool value)
@@ -667,16 +669,13 @@ namespace Roslynator.Documentation
                 {
                     WriteIndentation(depth);
                     WriteTypeLink(baseType.OriginalDefinition, includeContainingNamespace: Options.IncludeContainingNamespace);
-
-                    //TODO: WriteLineBreak
-                    WriteString("  ");
-                    WriteLine();
+                    WriteLineBreak();
 
                     depth++;
                 }
 
                 WriteIndentation(depth);
-                WriteTypeSymbol(typeSymbol, includeContainingNamespace: false);
+                WriteTypeSymbol(typeSymbol, includeContainingNamespace: Options.IncludeContainingNamespace);
                 WriteLine();
             }
             else

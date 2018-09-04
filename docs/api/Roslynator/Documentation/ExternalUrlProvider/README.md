@@ -14,8 +14,8 @@ public abstract class ExternalUrlProvider
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;ExternalUrlProvider
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.ExternalUrlProvider
 
 ## Constructors
 

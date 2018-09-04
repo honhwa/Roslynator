@@ -14,8 +14,8 @@ public class DocumentationModel
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;DocumentationModel
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.DocumentationModel
 
 ## Constructors
 

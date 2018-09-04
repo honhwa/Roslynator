@@ -14,8 +14,8 @@ public class DocumentationOptions
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
-&emsp;DocumentationOptions
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
+&emsp;Roslynator\.Documentation\.DocumentationOptions
 
 ## Constructors
 
