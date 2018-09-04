@@ -29,7 +29,7 @@ public void CopyTo(Array array, int index)
 
 ### Implements
 
-* [ICollection.CopyTo](https://docs.microsoft.com/en-us/dotnet/api/system.collections.icollection.copyto)
+* System\.Collections\.[ICollection.CopyTo](https://docs.microsoft.com/en-us/dotnet/api/system.collections.icollection.copyto)
 
 ## CopyTo\(Foo\[\], Int32\) <a name="Roslynator_Documentation_Test_FooCollection_CopyTo_Roslynator_Documentation_Test_Foo___System_Int32_"></a>
 
@@ -45,4 +45,4 @@ public void CopyTo(Foo[] array, int arrayIndex)
 
 ### Implements
 
-* [ICollection\<Foo>.CopyTo](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.copyto)
+* System\.Collections\.Generic\.[ICollection\<Foo>.CopyTo](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.copyto)

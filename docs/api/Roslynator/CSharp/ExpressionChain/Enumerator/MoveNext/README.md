@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.MoveNext\(\) Method
+# ExpressionChain\.Enumerator\.MoveNext\(\) Method
 
 [Home](../../../../../README.md#_top)
 

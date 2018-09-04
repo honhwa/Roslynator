@@ -8,6 +8,8 @@ using Microsoft.CodeAnalysis;
 
 namespace Roslynator.Documentation
 {
+    //TODO: DocumentationOptions.InheritedAttributes
+    //TODO: DocumentationOptions.InheritanceStyle - Horizontal, Vertical
     public class DocumentationOptions
     {
         private readonly ImmutableArray<MetadataName> _ignoredMetadataNames;
@@ -79,7 +81,6 @@ namespace Roslynator.Documentation
 
         public bool IncludeClassHierarchy { get; }
 
-        //TODO: IncludeContainingNamespace - root file?
         public bool IncludeContainingNamespace { get; }
 
         public bool PlaceSystemNamespaceFirst { get; }

@@ -14,4 +14,4 @@ private event EventHandler IFoo.Changed
 
 ### Implements
 
-* [IFoo.Changed](../../IFoo/Changed/README.md#_top)
+* Roslynator\.Documentation\.Test\.[IFoo.Changed](../../IFoo/Changed/README.md#_top)

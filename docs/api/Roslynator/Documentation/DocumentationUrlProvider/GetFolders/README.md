@@ -18,5 +18,5 @@ public virtual ImmutableArray<string> GetFolders(ISymbol symbol)
 
 ### Returns
 
-System\.Collections\.Immutable\.[ImmutableArray](https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1)\<System\.[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)>
+System\.Collections\.Immutable\.[ImmutableArray](https://docs.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1)\<[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)>
 

@@ -30,4 +30,4 @@ The node at the specified index\.
 
 ### Implements
 
-* [IReadOnlyList\<TNode>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)
+* System\.Collections\.Generic\.[IReadOnlyList\<TNode>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)

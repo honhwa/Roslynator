@@ -57,11 +57,11 @@ doc for value2
 
 ### Exceptions
 
-[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
+System\.[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
 
 
 
-[ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception)
+System\.[ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception)
 
 
 

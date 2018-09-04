@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.Reset\(\) Method
+# TextLineCollectionSelection\.Enumerator\.Reset\(\) Method
 
 [Home](../../../../../README.md#_top)
 

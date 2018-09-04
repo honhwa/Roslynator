@@ -45,4 +45,4 @@ System\.[Boolean](https://docs.microsoft.com/en-us/dotnet/api/system.boolean)
 
 ### Implements
 
-* [IEquatable\<TypeDocumentationModel>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
+* System\.[IEquatable\<TypeDocumentationModel>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)

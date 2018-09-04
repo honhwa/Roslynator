@@ -14,5 +14,5 @@ public IEnumerable<MetadataReference> References { get; }
 
 ### Property Value
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<Microsoft\.CodeAnalysis\.[MetadataReference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.metadatareference)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[MetadataReference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.metadatareference)>
 

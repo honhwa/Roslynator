@@ -18,7 +18,7 @@
     <None Remove="Documentation.snk" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\netstandard1.3\Roslynator.Documentation.xml</DocumentationFile>
   </PropertyGroup>
 

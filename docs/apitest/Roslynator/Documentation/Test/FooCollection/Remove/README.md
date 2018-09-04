@@ -22,4 +22,4 @@ System\.[Boolean](https://docs.microsoft.com/en-us/dotnet/api/system.boolean)
 
 ### Implements
 
-* [ICollection\<Foo>.Remove](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.remove)
+* System\.Collections\.Generic\.[ICollection\<Foo>.Remove](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.remove)

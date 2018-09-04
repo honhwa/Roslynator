@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.IEnumerable\.GetEnumerator\(\) Method
+# ExpressionChain\.Reversed\.IEnumerable\.GetEnumerator\(\) Method
 
 [Home](../../../../../README.md#_top)
 
@@ -18,4 +18,4 @@ System\.Collections\.[IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/s
 
 ### Implements
 
-* [IEnumerable.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)
+* System\.Collections\.[IEnumerable.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)

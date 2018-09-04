@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.GetHashCode\(\) Method
+# IfStatementCascade\.Enumerator\.GetHashCode\(\) Method
 
 [Home](../../../../../README.md#_top)
 

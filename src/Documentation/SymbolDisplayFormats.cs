@@ -115,6 +115,7 @@ namespace Roslynator.Documentation
                 | SymbolDisplayMemberOptions.IncludeContainingType);
 
         public static SymbolDisplayFormat MemberTitle { get; } = Default.Update(
+            typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypes,
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
             memberOptions: SymbolDisplayMemberOptions.IncludeExplicitInterface
                 | SymbolDisplayMemberOptions.IncludeParameters
@@ -126,6 +127,7 @@ namespace Roslynator.Documentation
             memberOptions: SymbolDisplayMemberOptions.IncludeConstantValue);
 
         public static SymbolDisplayFormat OverloadedMemberTitle { get; } = Default.Update(
+            typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypes,
             genericsOptions: SymbolDisplayGenericsOptions.None,
             memberOptions: SymbolDisplayMemberOptions.IncludeExplicitInterface
                 | SymbolDisplayMemberOptions.IncludeContainingType);

@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.Current Property
+# SeparatedSyntaxListSelection\<TNode>\.Enumerator\.Current Property
 
 [Home](../../../../README.md#_top)
 

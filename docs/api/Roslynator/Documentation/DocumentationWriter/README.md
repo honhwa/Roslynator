@@ -135,7 +135,6 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteSummary(ISymbol, SymbolXmlDocumentation, Int32)](WriteSummary/README.md#_top) | |
 | [WriteTableCell(String)](WriteTableCell/README.md#_top) | |
 | [WriteTableHeaderSeparator()](WriteTableHeaderSeparator/README.md#_top) | |
-| [WriteTypeLink(INamedTypeSymbol, Boolean, Boolean, Boolean)](WriteTypeLink/README.md#_top) | |
 | [WriteTypeParameters(ISymbol)](WriteTypeParameters/README.md#_top) | |
 | [WriteValue(Boolean)](WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Boolean_) | |
 | [WriteValue(Decimal)](WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Decimal_) | |

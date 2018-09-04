@@ -22,4 +22,4 @@ Microsoft\.CodeAnalysis\.Text\.[TextLine](https://docs.microsoft.com/en-us/dotne
 
 ### Implements
 
-* [ISelection\<TextLine>.First](../../../ISelection-1/First/README.md#_top)
+* Roslynator\.[ISelection\<TextLine>.First](../../../ISelection-1/First/README.md#_top)

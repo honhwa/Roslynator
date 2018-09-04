@@ -31,7 +31,7 @@ System\.[Boolean](https://docs.microsoft.com/en-us/dotnet/api/system.boolean)
 
 ### Implements
 
-* [IEquatable\<DocumentationUrlInfo>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
+* System\.[IEquatable\<DocumentationUrlInfo>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
 
 ## Equals\(Object\) <a name="Roslynator_Documentation_DocumentationUrlInfo_Equals_System_Object_"></a>
 

@@ -22,4 +22,4 @@ TNode
 
 ### Implements
 
-* [ISelection\<TNode>.Last](../../ISelection-1/Last/README.md#_top)
+* Roslynator\.[ISelection\<TNode>.Last](../../ISelection-1/Last/README.md#_top)

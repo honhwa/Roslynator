@@ -39,7 +39,7 @@ true if the current object is equal to the **other** parameter; otherwise, false
 
 ### Implements
 
-* [IEquatable\<GenericInfo>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
+* System\.[IEquatable\<GenericInfo>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
 
 ## Equals\(Object\) <a name="Roslynator_CSharp_Syntax_GenericInfo_Equals_System_Object_"></a>
 

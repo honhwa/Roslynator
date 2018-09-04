@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.Equals\(Object\) Method
+# TextLineCollectionSelection\.Enumerator\.Equals\(Object\) Method
 
 [Home](../../../../../README.md#_top)
 

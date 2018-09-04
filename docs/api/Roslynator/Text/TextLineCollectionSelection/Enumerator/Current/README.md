@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.Current Property
+# TextLineCollectionSelection\.Enumerator\.Current Property
 
 [Home](../../../../../README.md#_top)
 

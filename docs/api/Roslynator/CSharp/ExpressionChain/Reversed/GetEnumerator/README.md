@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.GetEnumerator\(\) Method
+# ExpressionChain\.Reversed\.GetEnumerator\(\) Method
 
 [Home](../../../../../README.md#_top)
 

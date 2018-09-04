@@ -9,14 +9,14 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-protected void WriteTypeLink(INamedTypeSymbol typeSymbol, bool containingNamespace = true, bool containingTypes = true, bool canCreateExternalUrl = true)
+protected void WriteTypeLink(INamedTypeSymbol typeSymbol, bool includeContainingNamespace = true, bool containingTypes = true, bool canCreateExternalUrl = true)
 ```
 
 ### Parameters
 
 **typeSymbol**
 
-**containingNamespace**
+**includeContainingNamespace**
 
 **containingTypes**
 

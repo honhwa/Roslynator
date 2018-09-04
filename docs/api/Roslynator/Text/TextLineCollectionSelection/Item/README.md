@@ -30,4 +30,4 @@ The line at the specified index\.
 
 ### Implements
 
-* [IReadOnlyList\<TextLine>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)
+* System\.Collections\.Generic\.[IReadOnlyList\<TextLine>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)

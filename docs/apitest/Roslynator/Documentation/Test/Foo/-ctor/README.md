@@ -11,7 +11,7 @@
 | Constructor | Summary |
 | ----------- | ------- |
 | [Foo(String)](#Roslynator_Documentation_Test_Foo__ctor_System_String_) | aaa |
-| [Foo(String, String)](#Roslynator_Documentation_Test_Foo__ctor_System_String_System_String_) | |
+| [Foo(String, String)](#Roslynator_Documentation_Test_Foo__ctor_System_String_System_String_) | s |
 
 ## Foo\(String\) <a name="Roslynator_Documentation_Test_Foo__ctor_System_String_"></a>
 
@@ -31,21 +31,23 @@ qqq
 
 ### Exceptions
 
-[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
+System\.[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
 
 a
 
-[ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception)
+Roslynator\.Documentation\.Test\.[FooException\<T>](../../FooException-1/README.md#_top)
 
 b
 
 ### See Also
 
-* [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+* System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
 
 ## Foo\(String, String\) <a name="Roslynator_Documentation_Test_Foo__ctor_System_String_System_String_"></a>
 
 ### Summary
+
+s
 
 ```csharp
 public Foo(string s, string examples)

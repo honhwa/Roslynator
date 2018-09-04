@@ -14,4 +14,4 @@ public void Clear()
 
 ### Implements
 
-* [ICollection\<Foo>.Clear](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.clear)
+* System\.Collections\.Generic\.[ICollection\<Foo>.Clear](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.clear)

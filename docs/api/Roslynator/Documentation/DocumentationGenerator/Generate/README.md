@@ -18,5 +18,5 @@ public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null)
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<Roslynator\.Documentation\.[DocumentationGeneratorResult](../../DocumentationGeneratorResult/README.md#_top)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[DocumentationGeneratorResult](../../DocumentationGeneratorResult/README.md#_top)>
 

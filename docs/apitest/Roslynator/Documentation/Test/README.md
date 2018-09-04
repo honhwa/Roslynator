@@ -27,6 +27,7 @@ test remarks
 | [FooCollection](FooCollection/README.md#_top) | |
 | [FooDic\<TKey, TValue>](FooDic-2/README.md#_top) | \[deprecated\]  |
 | [FooEvent](FooEvent/README.md#_top) | |
+| [FooException\<T>](FooException-1/README.md#_top) | |
 | [FooExtensions](FooExtensions/README.md#_top) | fx |
 
 ## Structs
@@ -57,4 +58,4 @@ test remarks
 
 ## See Also
 
-* [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+* System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)

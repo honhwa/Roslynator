@@ -38,7 +38,7 @@ public class DeclarationListOptions
 | [IncludeAttributeArguments](IncludeAttributeArguments/README.md#_top) | |
 | [Indent](Indent/README.md#_top) | |
 | [IndentChars](IndentChars/README.md#_top) | |
-| [NamespaceHierarchy](NamespaceHierarchy/README.md#_top) | |
+| [NestNamespaces](NestNamespaces/README.md#_top) | |
 | [NewLineBeforeOpenBrace](NewLineBeforeOpenBrace/README.md#_top) | |
 | [OmitIEnumerable](OmitIEnumerable/README.md#_top) | |
 | [SplitAttributes](SplitAttributes/README.md#_top) | |

@@ -2097,7 +2097,7 @@ namespace Roslynator.Documentation
 
     public class DeclarationListOptions
     {
-        public DeclarationListOptions(IEnumerable<string> ignoredNames = null, bool indent = true, string indentChars = "    ", bool namespaceHierarchy = false, bool newLineBeforeOpenBrace = true, bool emptyLineBetweenMembers = false, bool formatBaseList = false, bool formatConstraints = false, bool formatParameters = false, bool splitAttributes = true, bool includeAttributeArguments = true, bool omitIEnumerable = true, bool useDefaultLiteral = true, bool fullyQualifiedNames = false, DocumentationDepth depth = DocumentationDepth.Member, DeclarationListParts ignoredParts = DeclarationListParts.None);
+        public DeclarationListOptions(IEnumerable<string> ignoredNames = null, bool indent = true, string indentChars = "    ", bool nestNamespaces = false, bool newLineBeforeOpenBrace = true, bool emptyLineBetweenMembers = false, bool formatBaseList = false, bool formatConstraints = false, bool formatParameters = false, bool splitAttributes = true, bool includeAttributeArguments = true, bool omitIEnumerable = true, bool useDefaultLiteral = true, bool fullyQualifiedNames = false, DocumentationDepth depth = DocumentationDepth.Member, DeclarationListParts ignoredParts = DeclarationListParts.None);
 
         public static DeclarationListOptions Default { get; }
         public DocumentationDepth Depth { get; }
@@ -2111,7 +2111,7 @@ namespace Roslynator.Documentation
         public bool IncludeAttributeArguments { get; }
         public bool Indent { get; }
         public string IndentChars { get; }
-        public bool NamespaceHierarchy { get; }
+        public bool NestNamespaces { get; }
         public bool NewLineBeforeOpenBrace { get; }
         public bool OmitIEnumerable { get; }
         public bool SplitAttributes { get; }
@@ -2382,7 +2382,6 @@ namespace Roslynator.Documentation
         public virtual void WriteSummary(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0);
         public abstract void WriteTableCell(string text);
         public abstract void WriteTableHeaderSeparator();
-        protected void WriteTypeLink(INamedTypeSymbol typeSymbol, bool containingNamespace = true, bool containingTypes = true, bool canCreateExternalUrl = true);
         public virtual void WriteTypeParameters(ISymbol symbol);
         public virtual void WriteValue(bool value);
         public virtual void WriteValue(decimal value);

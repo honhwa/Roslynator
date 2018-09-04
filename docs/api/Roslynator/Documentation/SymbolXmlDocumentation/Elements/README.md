@@ -18,5 +18,5 @@ public IEnumerable<XElement> Elements(string name)
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<System\.Xml\.Linq\.[XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement)>
 

@@ -14,5 +14,5 @@ public virtual IComparer<NamespaceDocumentationParts> NamespacePartComparer { ge
 
 ### Property Value
 
-System\.Collections\.Generic\.[IComparer](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1)\<Roslynator\.Documentation\.[NamespaceDocumentationParts](../../NamespaceDocumentationParts/README.md#_top)>
+System\.Collections\.Generic\.[IComparer](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1)\<[NamespaceDocumentationParts](../../NamespaceDocumentationParts/README.md#_top)>
 

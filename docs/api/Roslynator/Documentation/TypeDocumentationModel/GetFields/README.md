@@ -18,5 +18,5 @@ public IEnumerable<IFieldSymbol> GetFields(bool includeInherited = false)
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<Microsoft\.CodeAnalysis\.[IFieldSymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ifieldsymbol)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[IFieldSymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ifieldsymbol)>
 

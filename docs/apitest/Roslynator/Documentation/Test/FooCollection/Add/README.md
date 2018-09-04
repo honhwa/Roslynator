@@ -18,4 +18,4 @@ public void Add(Foo item)
 
 ### Implements
 
-* [ICollection\<Foo>.Add](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.add)
+* System\.Collections\.Generic\.[ICollection\<Foo>.Add](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1.add)

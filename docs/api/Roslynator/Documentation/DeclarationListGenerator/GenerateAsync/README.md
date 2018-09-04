@@ -26,5 +26,5 @@ public static Task<string> GenerateAsync(DocumentationModel documentationModel, 
 
 ### Returns
 
-System\.Threading\.Tasks\.[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<System\.[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)>
+System\.Threading\.Tasks\.[Task](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1)\<[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)>
 

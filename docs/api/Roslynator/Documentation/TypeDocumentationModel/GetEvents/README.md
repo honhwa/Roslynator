@@ -18,5 +18,5 @@ public IEnumerable<IEventSymbol> GetEvents(bool includeInherited = false)
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<Microsoft\.CodeAnalysis\.[IEventSymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ieventsymbol)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[IEventSymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ieventsymbol)>
 

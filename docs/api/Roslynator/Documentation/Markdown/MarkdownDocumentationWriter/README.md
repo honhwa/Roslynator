@@ -131,7 +131,6 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteSummary(ISymbol, SymbolXmlDocumentation, Int32)](../../DocumentationWriter/WriteSummary/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteTableCell(String)](WriteTableCell/README.md#_top) |  \(Overrides [DocumentationWriter.WriteTableCell](../../DocumentationWriter/WriteTableCell/README.md#_top)\) |
 | [WriteTableHeaderSeparator()](WriteTableHeaderSeparator/README.md#_top) |  \(Overrides [DocumentationWriter.WriteTableHeaderSeparator](../../DocumentationWriter/WriteTableHeaderSeparator/README.md#_top)\) |
-| [WriteTypeLink(INamedTypeSymbol, Boolean, Boolean, Boolean)](../../DocumentationWriter/WriteTypeLink/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteTypeParameters(ISymbol)](../../DocumentationWriter/WriteTypeParameters/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteValue(Boolean)](../../DocumentationWriter/WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Boolean_) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteValue(Decimal)](../../DocumentationWriter/WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Decimal_) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

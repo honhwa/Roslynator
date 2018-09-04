@@ -7,7 +7,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public DeclarationListOptions(IEnumerable<string> ignoredNames = null, bool indent = true, string indentChars = "    ", bool namespaceHierarchy = false, bool newLineBeforeOpenBrace = true, bool emptyLineBetweenMembers = false, bool formatBaseList = false, bool formatConstraints = false, bool formatParameters = false, bool splitAttributes = true, bool includeAttributeArguments = true, bool omitIEnumerable = true, bool useDefaultLiteral = true, bool fullyQualifiedNames = false, DocumentationDepth depth = Member, DeclarationListParts ignoredParts = None)
+public DeclarationListOptions(IEnumerable<string> ignoredNames = null, bool indent = true, string indentChars = "    ", bool nestNamespaces = false, bool newLineBeforeOpenBrace = true, bool emptyLineBetweenMembers = false, bool formatBaseList = false, bool formatConstraints = false, bool formatParameters = false, bool splitAttributes = true, bool includeAttributeArguments = true, bool omitIEnumerable = true, bool useDefaultLiteral = true, bool fullyQualifiedNames = false, DocumentationDepth depth = Member, DeclarationListParts ignoredParts = None)
 ```
 
 ### Parameters
@@ -18,7 +18,7 @@ public DeclarationListOptions(IEnumerable<string> ignoredNames = null, bool inde
 
 **indentChars**
 
-**namespaceHierarchy**
+**nestNamespaces**
 
 **newLineBeforeOpenBrace**
 

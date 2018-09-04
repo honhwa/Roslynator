@@ -22,4 +22,4 @@ System\.Collections\.Generic\.[KeyValuePair\<TKey, TValue>](https://docs.microso
 
 ### Implements
 
-* [IReadOnlyList\<KeyValuePair\<TKey, TValue>>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)
+* System\.Collections\.Generic\.[IReadOnlyList\<KeyValuePair\<TKey, TValue>>.Item](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1.item)

@@ -63,7 +63,7 @@ paratext
 | Constructor | Summary |
 | ----------- | ------- |
 | [Foo(String)](-ctor/README.md#Roslynator_Documentation_Test_Foo__ctor_System_String_) | aaa |
-| [Foo(String, String)](-ctor/README.md#Roslynator_Documentation_Test_Foo__ctor_System_String_System_String_) | |
+| [Foo(String, String)](-ctor/README.md#Roslynator_Documentation_Test_Foo__ctor_System_String_System_String_) | s |
 
 ## Fields
 
@@ -96,5 +96,5 @@ paratext
 
 ## See Also
 
-* [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-* [Foo](#_top)
+* System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+* Roslynator\.Documentation\.Test\.[Foo](#_top)

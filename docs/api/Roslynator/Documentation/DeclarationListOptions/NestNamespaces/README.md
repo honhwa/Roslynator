@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DeclarationListOptions\.NamespaceHierarchy Property
+# DeclarationListOptions\.NestNamespaces Property
 
 [Home](../../../../README.md#_top)
 
@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public bool NamespaceHierarchy { get; }
+public bool NestNamespaces { get; }
 ```
 
 ### Property Value

@@ -21,21 +21,32 @@ namespace Roslynator.Documentation
         [SuppressMessage("Redundancy", "RCS1163")]
         private static void Main(string[] args)
         {
-            GenerateDocumentation(@"..\..\..\..\..\docs\api", "Roslynator API Reference", "api.cs", "Roslynator.Documentation.dll", "Roslynator.CSharp.dll", "Roslynator.CSharp.Workspaces.dll");
-            GenerateDocumentation(@"..\..\..\..\..\docs\apitest", "Foo API Reference", "apitest.cs", "Roslynator.Documentation.TestProject.dll");
+            GenerateDocumentation(
+                @"..\..\..\..\..\docs\api",
+                "Roslynator API Reference",
+                "api.cs",
+                new string[] { "Roslynator.Documentation.dll", "Roslynator.CSharp.dll", "Roslynator.CSharp.Workspaces.dll" });
+
+            GenerateDocumentation(
+                @"..\..\..\..\..\docs\apitest",
+                "Foo API Reference",
+                "apitest.cs",
+                new string[] { "Roslynator.Documentation.TestProject.dll" },
+                inheritedInterfaceMembers: true);
         }
 
         private static void GenerateDocumentation(
             string directoryPath,
             string heading,
             string declarationListFileName,
-            params string[] assemblyNames)
+            string[] assemblyNames,
+            bool inheritedInterfaceMembers = false)
         {
             DocumentationModel documentationModel = CreateFromTrustedPlatformAssemblies(assemblyNames);
 
             var ignoredNames = new string[] { "Roslynator.Documentation.Test2" };
 
-            var documentationOptions = new DocumentationOptions(ignoredNames: ignoredNames, includeInheritedInterfaceMembers: true);
+            var documentationOptions = new DocumentationOptions(ignoredNames: ignoredNames, includeInheritedInterfaceMembers: inheritedInterfaceMembers);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 

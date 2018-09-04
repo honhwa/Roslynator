@@ -14,8 +14,8 @@ private IEnumerator<Foo> IEnumerable<Foo>.GetEnumerator()
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1)\<Roslynator\.Documentation\.Test\.[Foo](../../Foo/README.md#_top)>
+System\.Collections\.Generic\.[IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1)\<[Foo](../../Foo/README.md#_top)>
 
 ### Implements
 
-* [IEnumerable\<Foo>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)
+* System\.Collections\.Generic\.[IEnumerable\<Foo>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)

@@ -18,4 +18,4 @@ System\.Collections\.Generic\.[IEnumerator\<TNode>](https://docs.microsoft.com/e
 
 ### Implements
 
-* [IEnumerable\<TNode>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)
+* System\.Collections\.Generic\.[IEnumerable\<TNode>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)

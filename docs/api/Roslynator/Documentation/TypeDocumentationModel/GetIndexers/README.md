@@ -18,5 +18,5 @@ public IEnumerable<IPropertySymbol> GetIndexers(bool includeInherited = false)
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<Microsoft\.CodeAnalysis\.[IPropertySymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ipropertysymbol)>
+System\.Collections\.Generic\.[IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1)\<[IPropertySymbol](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.ipropertysymbol)>
 

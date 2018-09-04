@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.GetHashCode\(\) Method
+# SyntaxListSelection\<TNode>\.Enumerator\.GetHashCode\(\) Method
 
 [Home](../../../../README.md#_top)
 

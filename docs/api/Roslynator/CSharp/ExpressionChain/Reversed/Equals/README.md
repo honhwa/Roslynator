@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.Equals Method
+# ExpressionChain\.Reversed\.Equals Method
 
 [Home](../../../../../README.md#_top)
 
@@ -45,4 +45,4 @@ System\.[Boolean](https://docs.microsoft.com/en-us/dotnet/api/system.boolean)
 
 ### Implements
 
-* [IEquatable\<Reversed>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)
+* System\.[IEquatable\<ExpressionChain.Reversed>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)

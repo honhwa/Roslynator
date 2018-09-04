@@ -14,8 +14,8 @@ private IEnumerator<IfStatementOrElseClause> IEnumerable<IfStatementOrElseClause
 
 ### Returns
 
-System\.Collections\.Generic\.[IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1)\<Roslynator\.CSharp\.[IfStatementOrElseClause](../../IfStatementOrElseClause/README.md#_top)>
+System\.Collections\.Generic\.[IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1)\<[IfStatementOrElseClause](../../IfStatementOrElseClause/README.md#_top)>
 
 ### Implements
 
-* [IEnumerable\<IfStatementOrElseClause>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)
+* System\.Collections\.Generic\.[IEnumerable\<IfStatementOrElseClause>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)

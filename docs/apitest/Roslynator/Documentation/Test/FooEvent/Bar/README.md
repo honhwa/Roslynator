@@ -14,5 +14,5 @@ public void Bar()
 
 ### Implements
 
-* [IFoo.Bar](../../IFoo/Bar/README.md#_top)
-* [IFoo2.Bar](../../IFoo2/Bar/README.md#_top)
+* Roslynator\.Documentation\.Test\.[IFoo.Bar](../../IFoo/Bar/README.md#_top)
+* Roslynator\.Documentation\.Test\.[IFoo2.Bar](../../IFoo2/Bar/README.md#_top)

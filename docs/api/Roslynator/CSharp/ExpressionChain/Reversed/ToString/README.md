@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.ToString\(\) Method
+# ExpressionChain\.Reversed\.ToString\(\) Method
 
 [Home](../../../../../README.md#_top)
 

@@ -125,13 +125,25 @@ namespace Roslynator.Documentation
 
         public virtual void WriteImplements(ISymbol symbol)
         {
-            SymbolDisplayFormat format = (Options.IncludeContainingNamespace)
-                ? SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespacesAndTypeParameters
-                : SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
+            SymbolDisplayFormat format = SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
 
-            using (IEnumerator<ISymbol> en = symbol.FindImplementedInterfaceMembers()
-                .OrderBy(f => f.ToDisplayString(format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName))
-                .GetEnumerator())
+            const SymbolDisplayAdditionalMemberOptions additionalOptions = SymbolDisplayAdditionalMemberOptions.UseItemPropertyName;
+
+            IEnumerable<ISymbol> implementedInterfaceMembers = null;
+
+            if (Options.IncludeContainingNamespace)
+            {
+                implementedInterfaceMembers = symbol.FindImplementedInterfaceMembers()
+                    .OrderBy(f => f.ContainingNamespace, NamespaceSymbolComparer.GetInstance(Options.PlaceSystemNamespaceFirst))
+                    .ThenBy(f => f.ToDisplayString(format, additionalOptions));
+            }
+            else
+            {
+                implementedInterfaceMembers = symbol.FindImplementedInterfaceMembers()
+                    .OrderBy(f => f.ToDisplayString(format, additionalOptions));
+            }
+
+            using (IEnumerator<ISymbol> en = implementedInterfaceMembers.GetEnumerator())
             {
                 if (en.MoveNext())
                 {
@@ -142,7 +154,8 @@ namespace Roslynator.Documentation
                     do
                     {
                         Writer.WriteStartBulletItem();
-                        Writer.WriteLink(en.Current, format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName);
+
+                        Writer.WriteLink(en.Current, format, additionalOptions, includeContainingNamespace: Options.IncludeContainingNamespace);
                         Writer.WriteEndBulletItem();
                     }
                     while (en.MoveNext());

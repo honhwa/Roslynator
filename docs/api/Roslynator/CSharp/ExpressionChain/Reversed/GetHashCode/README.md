@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.GetHashCode\(\) Method
+# ExpressionChain\.Reversed\.GetHashCode\(\) Method
 
 [Home](../../../../../README.md#_top)
 

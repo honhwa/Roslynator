@@ -18,4 +18,4 @@ System\.Collections\.Generic\.[IEnumerator\<TValue>](https://docs.microsoft.com/
 
 ### Implements
 
-* [IEnumerable\<TValue>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)
+* System\.Collections\.Generic\.[IEnumerable\<TValue>.GetEnumerator](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1.getenumerator)

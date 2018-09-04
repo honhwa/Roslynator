@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.Current Property
+# ExpressionChain\.Enumerator\.Current Property
 
 [Home](../../../../../README.md#_top)
 

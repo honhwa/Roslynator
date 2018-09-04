@@ -14,5 +14,5 @@ public virtual IComparer<RootDocumentationParts> RootPartComparer { get; }
 
 ### Property Value
 
-System\.Collections\.Generic\.[IComparer](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1)\<Roslynator\.Documentation\.[RootDocumentationParts](../../RootDocumentationParts/README.md#_top)>
+System\.Collections\.Generic\.[IComparer](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1)\<[RootDocumentationParts](../../RootDocumentationParts/README.md#_top)>
 

@@ -22,4 +22,4 @@ System\.[Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)
 
 ### Implements
 
-* [ISelection\<TextLine>.LastIndex](../../../ISelection-1/LastIndex/README.md#_top)
+* Roslynator\.[ISelection\<TextLine>.LastIndex](../../../ISelection-1/LastIndex/README.md#_top)

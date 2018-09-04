@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Enumerator\.MoveNext\(\) Method
+# SyntaxListSelection\<TNode>\.Enumerator\.MoveNext\(\) Method
 
 [Home](../../../../README.md#_top)
 

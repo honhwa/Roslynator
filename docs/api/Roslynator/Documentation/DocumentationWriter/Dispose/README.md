@@ -23,7 +23,7 @@ public void Dispose()
 
 ### Implements
 
-* [IDisposable.Dispose](https://docs.microsoft.com/en-us/dotnet/api/system.idisposable.dispose)
+* System\.[IDisposable.Dispose](https://docs.microsoft.com/en-us/dotnet/api/system.idisposable.dispose)
 
 ## Dispose\(Boolean\) <a name="Roslynator_Documentation_DocumentationWriter_Dispose_System_Boolean_"></a>
 

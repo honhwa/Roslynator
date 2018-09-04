@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# Reversed\.Equality\(Reversed, Reversed\) Operator
+# ExpressionChain\.Reversed\.Equality\(ExpressionChain\.Reversed, ExpressionChain\.Reversed\) Operator
 
 [Home](../../../../../README.md#_top)
 

@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Runtime.Versioning;
 
 // Roslynator.Documentation.TestProject
@@ -125,6 +126,14 @@ namespace Roslynator.Documentation.Test
         public FooEvent();
 
         public void Bar();
+    }
+
+    public class FooException<T> : Exception
+    {
+        public FooException();
+        protected FooException(SerializationInfo info, StreamingContext context);
+        public FooException(string message);
+        public FooException(string message, Exception inner);
     }
 
     public static class FooExtensions

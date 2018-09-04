@@ -18,4 +18,4 @@ System\.[Int32](https://docs.microsoft.com/en-us/dotnet/api/system.int32)
 
 ### Implements
 
-* [IReadOnlyCollection\<KeyValuePair\<TKey, TValue>>.Count](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1.count)
+* System\.Collections\.Generic\.[IReadOnlyCollection\<KeyValuePair\<TKey, TValue>>.Count](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1.count)
