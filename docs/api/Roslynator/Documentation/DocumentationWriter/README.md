@@ -61,7 +61,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](WriteConstructors/README.md#_top) | |
 | [WriteContainingAssembly(ISymbol, String)](WriteContainingAssembly/README.md#_top) | |
 | [WriteContainingNamespace(INamespaceSymbol, String)](WriteContainingNamespace/README.md#_top) | |
-| [WriteContainingType(ISymbol, String)](WriteContainingType/README.md#_top) | |
+| [WriteContainingType(INamedTypeSymbol, String)](WriteContainingType/README.md#_top) | |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](WriteContent/README.md#_top) | |
 | [WriteDeclaration(ISymbol)](WriteDeclaration/README.md#_top) | |
 | [WriteDerivedTypes(IEnumerable\<INamedTypeSymbol>)](WriteDerivedTypes/README.md#_top) | |

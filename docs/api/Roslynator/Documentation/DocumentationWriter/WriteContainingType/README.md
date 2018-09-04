@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DocumentationWriter\.WriteContainingType\(ISymbol, String\) Method
+# DocumentationWriter\.WriteContainingType\(INamedTypeSymbol, String\) Method
 
 [Home](../../../../README.md#_top)
 
@@ -9,11 +9,11 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public virtual void WriteContainingType(ISymbol symbol, string title)
+public virtual void WriteContainingType(INamedTypeSymbol typeSymbol, string title)
 ```
 
 ### Parameters
 
-**symbol**
+**typeSymbol**
 
 **title**

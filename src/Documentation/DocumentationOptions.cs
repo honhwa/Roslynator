@@ -18,7 +18,6 @@ namespace Roslynator.Documentation
             string rootDirectoryUrl = null,
             int maxDerivedTypes = DefaultValues.MaxDerivedTypes,
             bool includeClassHierarchy = DefaultValues.IncludeClassHierarchy,
-            bool includeContainingNamespace = DefaultValues.IncludeContainingNamespace,
             bool placeSystemNamespaceFirst = DefaultValues.PlaceSystemNamespaceFirst,
             bool formatDeclarationBaseList = DefaultValues.FormatDeclarationBaseList,
             bool formatDeclarationConstraints = DefaultValues.FormatDeclarationConstraints,
@@ -37,7 +36,8 @@ namespace Roslynator.Documentation
             RootDocumentationParts ignoredRootParts = RootDocumentationParts.None,
             NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None,
             TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None,
-            MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None)
+            MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None,
+            OmitContainingNamespaceParts omitContainingNamespaceParts = OmitContainingNamespaceParts.None)
         {
             if (maxDerivedTypes < 0)
                 throw new ArgumentOutOfRangeException(nameof(maxDerivedTypes), maxDerivedTypes, "Maximum number of derived items must be greater than or equal to 0.");
@@ -49,7 +49,6 @@ namespace Roslynator.Documentation
             RootDirectoryUrl = rootDirectoryUrl;
             MaxDerivedTypes = maxDerivedTypes;
             IncludeClassHierarchy = includeClassHierarchy;
-            IncludeContainingNamespace = includeContainingNamespace;
             PlaceSystemNamespaceFirst = placeSystemNamespaceFirst;
             FormatDeclarationBaseList = formatDeclarationBaseList;
             FormatDeclarationConstraints = formatDeclarationConstraints;
@@ -69,6 +68,7 @@ namespace Roslynator.Documentation
             IgnoredNamespaceParts = ignoredNamespaceParts;
             IgnoredTypeParts = ignoredTypeParts;
             IgnoredMemberParts = ignoredMemberParts;
+            OmitContainingNamespaceParts = omitContainingNamespaceParts;
         }
 
         public static DocumentationOptions Default { get; } = new DocumentationOptions();
@@ -82,8 +82,6 @@ namespace Roslynator.Documentation
         public int MaxDerivedTypes { get; }
 
         public bool IncludeClassHierarchy { get; }
-
-        public bool IncludeContainingNamespace { get; }
 
         public bool PlaceSystemNamespaceFirst { get; }
 
@@ -123,6 +121,13 @@ namespace Roslynator.Documentation
 
         public MemberDocumentationParts IgnoredMemberParts { get; }
 
+        public OmitContainingNamespaceParts OmitContainingNamespaceParts { get; }
+
+        internal bool IncludeContainingNamespace(OmitContainingNamespaceParts parts)
+        {
+            return (OmitContainingNamespaceParts & parts) == 0;
+        }
+
         internal bool ShouldBeIgnored(INamedTypeSymbol typeSymbol)
         {
             foreach (MetadataName metadataName in _ignoredMetadataNames)
@@ -156,7 +161,6 @@ namespace Roslynator.Documentation
             public const bool IncludeAllDerivedTypes = false;
             public const bool IncludeAttributeArguments = true;
             public const bool IncludeClassHierarchy = true;
-            public const bool IncludeContainingNamespace = true;
             public const bool IncludeInheritedAttributes = true;
             public const bool IncludeInheritedInterfaceMembers = false;
             public const bool IncludeMemberConstantValue = true;

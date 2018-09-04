@@ -47,6 +47,9 @@ namespace Roslynator.Documentation
             if (!TryGetIgnoredMemberParts(options.IgnoredMemberParts, out MemberDocumentationParts ignoredMemberParts))
                 return 1;
 
+            if (!TryGetOmitContainingNamespaceParts(options.OmitContainingNamespaceParts, out OmitContainingNamespaceParts omitContainingNamespaceParts))
+                return 1;
+
             DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, options.AdditionalXmlDocumentation);
 
             if (documentationModel == null)
@@ -57,7 +60,6 @@ namespace Roslynator.Documentation
                 preferredCultureName: options.PreferredCulture,
                 maxDerivedTypes: options.MaxDerivedTypes,
                 includeClassHierarchy: !options.NoClassHierarchy,
-                includeContainingNamespace: !options.OmitContainingNamespace,
                 placeSystemNamespaceFirst: !options.NoPrecedenceForSystem,
                 formatDeclarationBaseList: !options.NoFormatBaseList,
                 formatDeclarationConstraints: !options.NoFormatConstraints,
@@ -76,7 +78,8 @@ namespace Roslynator.Documentation
                 ignoredRootParts: ignoredRootParts,
                 ignoredNamespaceParts: ignoredNamespaceParts,
                 ignoredTypeParts: ignoredTypeParts,
-                ignoredMemberParts: ignoredMemberParts);
+                ignoredMemberParts: ignoredMemberParts,
+                omitContainingNamespaceParts: omitContainingNamespaceParts);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 
@@ -179,11 +182,11 @@ namespace Roslynator.Documentation
                 ignoredNames: options.IgnoredNames,
                 rootDirectoryUrl: options.RootDirectoryUrl,
                 includeClassHierarchy: !options.NoClassHierarchy,
-                includeContainingNamespace: !options.OmitContainingNamespace,
                 placeSystemNamespaceFirst: !options.NoPrecedenceForSystem,
                 markObsolete: !options.NoMarkObsolete,
                 depth: options.Depth,
-                ignoredRootParts: ignoredParts);
+                ignoredRootParts: ignoredParts,
+                omitContainingNamespaceParts: (options.OmitContainingNamespace) ? OmitContainingNamespaceParts.Root : OmitContainingNamespaceParts.None);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 
@@ -407,6 +410,32 @@ namespace Roslynator.Documentation
                 else
                 {
                     Console.WriteLine($"Unknown declaration list part '{value}'.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool TryGetOmitContainingNamespaceParts(IEnumerable<string> values, out OmitContainingNamespaceParts parts)
+        {
+            if (!values.Any())
+            {
+                parts = DocumentationOptions.Default.OmitContainingNamespaceParts;
+                return true;
+            }
+
+            parts = OmitContainingNamespaceParts.None;
+
+            foreach (string value in values)
+            {
+                if (Enum.TryParse(value.Replace("-", ""), ignoreCase: true, out OmitContainingNamespaceParts result))
+                {
+                    parts |= result;
+                }
+                else
+                {
+                    Console.WriteLine($"Unknown omit containing namespace part '{value}'.");
                     return false;
                 }
             }

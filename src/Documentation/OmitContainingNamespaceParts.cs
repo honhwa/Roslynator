@@ -4,7 +4,6 @@ using System;
 
 namespace Roslynator.Documentation
 {
-    //TODO: OmitContainingNamespaceParts
     [Flags]
     public enum OmitContainingNamespaceParts
     {

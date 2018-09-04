@@ -78,8 +78,8 @@ namespace Roslynator.Documentation
         [Option(longName: "omit-attribute-arguments")]
         public bool OmitAttributeArguments { get; set; }
 
-        [Option(longName: "omit-containing-namespace")]
-        public bool OmitContainingNamespace { get; set; }
+        [Option(longName: "omit-containing-namespace-parts")]
+        public IEnumerable<string> OmitContainingNamespaceParts { get; set; }
 
         [Option(longName: "omit-inherited-atttributes")]
         public bool OmitInheritedAttributes { get; set; }

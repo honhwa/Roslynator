@@ -63,7 +63,7 @@ namespace Roslynator.Documentation
                 {
                     case MemberDocumentationParts.ContainingType:
                         {
-                            Writer.WriteContainingType(symbol, Resources.ContainingTypeTitle);
+                            Writer.WriteContainingType(symbol.ContainingType, Resources.ContainingTypeTitle);
                             break;
                         }
                     case MemberDocumentationParts.ContainingAssembly:
@@ -126,24 +126,12 @@ namespace Roslynator.Documentation
         public virtual void WriteImplements(ISymbol symbol)
         {
             SymbolDisplayFormat format = SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
-
+            bool includeContainingNamespace = Options.IncludeContainingNamespace(OmitContainingNamespaceParts.ImplementedMember);
             const SymbolDisplayAdditionalMemberOptions additionalOptions = SymbolDisplayAdditionalMemberOptions.UseItemPropertyName;
 
-            IEnumerable<ISymbol> implementedInterfaceMembers = null;
-
-            if (Options.IncludeContainingNamespace)
-            {
-                implementedInterfaceMembers = symbol.FindImplementedInterfaceMembers()
-                    .OrderBy(f => f.ContainingNamespace, NamespaceSymbolComparer.GetInstance(Options.PlaceSystemNamespaceFirst))
-                    .ThenBy(f => f.ToDisplayString(format, additionalOptions));
-            }
-            else
-            {
-                implementedInterfaceMembers = symbol.FindImplementedInterfaceMembers()
-                    .OrderBy(f => f.ToDisplayString(format, additionalOptions));
-            }
-
-            using (IEnumerator<ISymbol> en = implementedInterfaceMembers.GetEnumerator())
+            using (IEnumerator<ISymbol> en = symbol.FindImplementedInterfaceMembers()
+                .Sort(format, systemNamespaceFirst: Options.PlaceSystemNamespaceFirst, includeContainingNamespace: includeContainingNamespace, additionalOptions: additionalOptions)
+                .GetEnumerator())
             {
                 if (en.MoveNext())
                 {
@@ -155,7 +143,7 @@ namespace Roslynator.Documentation
                     {
                         Writer.WriteStartBulletItem();
 
-                        Writer.WriteLink(en.Current, format, additionalOptions, includeContainingNamespace: Options.IncludeContainingNamespace);
+                        Writer.WriteLink(en.Current, format, additionalOptions, includeContainingNamespace: includeContainingNamespace);
                         Writer.WriteEndBulletItem();
                     }
                     while (en.MoveNext());

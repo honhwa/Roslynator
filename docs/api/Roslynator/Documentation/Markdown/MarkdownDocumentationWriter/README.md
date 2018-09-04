@@ -57,7 +57,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](../../DocumentationWriter/WriteConstructors/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingAssembly(ISymbol, String)](../../DocumentationWriter/WriteContainingAssembly/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingNamespace(INamespaceSymbol, String)](../../DocumentationWriter/WriteContainingNamespace/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
-| [WriteContainingType(ISymbol, String)](../../DocumentationWriter/WriteContainingType/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteContainingType(INamedTypeSymbol, String)](../../DocumentationWriter/WriteContainingType/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](../../DocumentationWriter/WriteContent/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteDeclaration(ISymbol)](../../DocumentationWriter/WriteDeclaration/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteDerivedTypes(IEnumerable\<INamedTypeSymbol>)](../../DocumentationWriter/WriteDerivedTypes/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

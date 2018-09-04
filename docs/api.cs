@@ -2157,7 +2157,7 @@ namespace Roslynator.Documentation
 
     public class DocumentationOptions
     {
-        public DocumentationOptions(IEnumerable<string> ignoredNames = null, string preferredCultureName = null, string rootDirectoryUrl = null, int maxDerivedTypes = 5, bool includeClassHierarchy = true, bool includeContainingNamespace = true, bool placeSystemNamespaceFirst = true, bool formatDeclarationBaseList = true, bool formatDeclarationConstraints = true, bool markObsolete = true, bool includeMemberInheritedFrom = true, bool includeMemberOverrides = true, bool includeMemberImplements = true, bool includeMemberConstantValue = true, bool includeInheritedInterfaceMembers = false, bool includeAllDerivedTypes = false, bool includeAttributeArguments = true, bool includeInheritedAttributes = true, bool omitIEnumerable = true, DocumentationDepth depth = DocumentationDepth.Member, InheritanceStyle inheritanceStyle = InheritanceStyle.Horizontal, RootDocumentationParts ignoredRootParts = RootDocumentationParts.None, NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None, TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None, MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None);
+        public DocumentationOptions(IEnumerable<string> ignoredNames = null, string preferredCultureName = null, string rootDirectoryUrl = null, int maxDerivedTypes = 5, bool includeClassHierarchy = true, bool placeSystemNamespaceFirst = true, bool formatDeclarationBaseList = true, bool formatDeclarationConstraints = true, bool markObsolete = true, bool includeMemberInheritedFrom = true, bool includeMemberOverrides = true, bool includeMemberImplements = true, bool includeMemberConstantValue = true, bool includeInheritedInterfaceMembers = false, bool includeAllDerivedTypes = false, bool includeAttributeArguments = true, bool includeInheritedAttributes = true, bool omitIEnumerable = true, DocumentationDepth depth = DocumentationDepth.Member, InheritanceStyle inheritanceStyle = InheritanceStyle.Horizontal, RootDocumentationParts ignoredRootParts = RootDocumentationParts.None, NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None, TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None, MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None, OmitContainingNamespaceParts omitContainingNamespaceParts = OmitContainingNamespaceParts.None);
 
         public static DocumentationOptions Default { get; }
         public DocumentationDepth Depth { get; }
@@ -2171,7 +2171,6 @@ namespace Roslynator.Documentation
         public bool IncludeAllDerivedTypes { get; }
         public bool IncludeAttributeArguments { get; }
         public bool IncludeClassHierarchy { get; }
-        public bool IncludeContainingNamespace { get; }
         public bool IncludeInheritedAttributes { get; }
         public bool IncludeInheritedInterfaceMembers { get; }
         public bool IncludeMemberConstantValue { get; }
@@ -2181,6 +2180,7 @@ namespace Roslynator.Documentation
         public InheritanceStyle InheritanceStyle { get; }
         public bool MarkObsolete { get; }
         public int MaxDerivedTypes { get; }
+        public OmitContainingNamespaceParts OmitContainingNamespaceParts { get; }
         public bool OmitIEnumerable { get; }
         public bool PlaceSystemNamespaceFirst { get; }
         public string PreferredCultureName { get; }
@@ -2311,7 +2311,7 @@ namespace Roslynator.Documentation
         public virtual void WriteConstructors(IEnumerable<IMethodSymbol> constructors);
         public virtual void WriteContainingAssembly(ISymbol symbol, string title);
         public virtual void WriteContainingNamespace(INamespaceSymbol namespaceSymbol, string title);
-        public virtual void WriteContainingType(ISymbol symbol, string title);
+        public virtual void WriteContainingType(INamedTypeSymbol typeSymbol, string title);
         public virtual void WriteContent(IEnumerable<string> names, bool addLinkToRoot = false, bool beginWithSeparator = false);
         public virtual void WriteDeclaration(ISymbol symbol);
         public virtual void WriteDerivedTypes(IEnumerable<INamedTypeSymbol> derivedTypes);

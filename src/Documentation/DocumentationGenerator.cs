@@ -254,7 +254,7 @@ namespace Roslynator.Documentation
 
                                     writer.WriteHeading2(Resources.GetPluralName(TypeKind.Class));
 
-                                    writer.WriteClassHierarchy(objectType, instanceClasses, format, includeContainingNamespace: Options.IncludeContainingNamespace);
+                                    writer.WriteClassHierarchy(objectType, instanceClasses, includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.Root));
 
                                     writer.WriteLine();
                                 }
@@ -266,7 +266,7 @@ namespace Roslynator.Documentation
                                     Resources.ClassesTitle,
                                     2,
                                     SymbolDisplayFormats.TypeNameAndContainingTypes,
-                                    includeContainingNamespace: true);
+                                    includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.Root));
 
                                 break;
                             }
@@ -276,25 +276,7 @@ namespace Roslynator.Documentation
                     case RootDocumentationParts.StaticClasses:
                         {
                             if (Options.IncludeClassHierarchy)
-                            {
-                                using (IEnumerator<INamedTypeSymbol> en = typeSymbols
-                                    .Where(f => f.IsStatic && f.TypeKind == TypeKind.Class)
-                                    .OrderBy(f => f.ContainingNamespace, NamespaceSymbolComparer.GetInstance(Options.PlaceSystemNamespaceFirst))
-                                    .ThenBy(f => f.ToDisplayString(format))
-                                    .GetEnumerator())
-                                {
-                                    if (en.MoveNext())
-                                    {
-                                        writer.WriteHeading2(Resources.StaticClassesTitle);
-
-                                        do
-                                        {
-                                            WriteBulletItemLink(en.Current);
-                                        }
-                                        while (en.MoveNext());
-                                    }
-                                }
-                            }
+                                WriteTypesImpl(f => f.IsStatic && f.TypeKind == TypeKind.Class, Resources.StaticClassesTitle);
 
                             break;
                         }
@@ -335,15 +317,19 @@ namespace Roslynator.Documentation
 
             void WriteTypes(TypeKind typeKind)
             {
+                WriteTypesImpl(f => f.TypeKind == typeKind, Resources.GetPluralName(typeKind));
+            }
+
+            void WriteTypesImpl(Func<INamedTypeSymbol, bool> predicate, string heading)
+            {
                 using (IEnumerator<INamedTypeSymbol> en = typeSymbols
-                    .Where(f => f.TypeKind == typeKind)
-                    .OrderBy(f => f.ContainingNamespace, NamespaceSymbolComparer.GetInstance(Options.PlaceSystemNamespaceFirst))
-                    .ThenBy(f => f.ToDisplayString(format))
+                    .Where(predicate)
+                    .Sort(systemNamespaceFirst: Options.PlaceSystemNamespaceFirst, includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.Root))
                     .GetEnumerator())
                 {
                     if (en.MoveNext())
                     {
-                        writer.WriteHeading2(Resources.GetPluralName(typeKind));
+                        writer.WriteHeading2(heading);
 
                         do
                         {
@@ -914,8 +900,7 @@ namespace Roslynator.Documentation
                         writer.WriteClassHierarchy(
                             typeSymbol,
                             derivedTypes,
-                            SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters,
-                            includeContainingNamespace: Options.IncludeContainingNamespace,
+                            includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.DerivedType),
                             addBaseType: false,
                             addSeparatorAtIndex: (derivedTypes.Length > Options.MaxDerivedTypes) ? Options.MaxDerivedTypes : -1);
 
@@ -928,7 +913,7 @@ namespace Roslynator.Documentation
                             heading: Resources.DerivedAllTitle,
                             headingLevel: 2,
                             format: SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters,
-                            includeContainingNamespace: Options.IncludeContainingNamespace);
+                            includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.DerivedType));
                     }
                 }
 

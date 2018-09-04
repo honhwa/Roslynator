@@ -20,7 +20,7 @@ public class DocumentationOptions
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts)](-ctor/README.md#_top) | |
+| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts, OmitContainingNamespaceParts)](-ctor/README.md#_top) | |
 
 ## Properties
 
@@ -38,7 +38,6 @@ public class DocumentationOptions
 | [IncludeAllDerivedTypes](IncludeAllDerivedTypes/README.md#_top) | |
 | [IncludeAttributeArguments](IncludeAttributeArguments/README.md#_top) | |
 | [IncludeClassHierarchy](IncludeClassHierarchy/README.md#_top) | |
-| [IncludeContainingNamespace](IncludeContainingNamespace/README.md#_top) | |
 | [IncludeInheritedAttributes](IncludeInheritedAttributes/README.md#_top) | |
 | [IncludeInheritedInterfaceMembers](IncludeInheritedInterfaceMembers/README.md#_top) | |
 | [IncludeMemberConstantValue](IncludeMemberConstantValue/README.md#_top) | |
@@ -48,6 +47,7 @@ public class DocumentationOptions
 | [InheritanceStyle](InheritanceStyle/README.md#_top) | |
 | [MarkObsolete](MarkObsolete/README.md#_top) | |
 | [MaxDerivedTypes](MaxDerivedTypes/README.md#_top) | |
+| [OmitContainingNamespaceParts](OmitContainingNamespaceParts/README.md#_top) | |
 | [OmitIEnumerable](OmitIEnumerable/README.md#_top) | |
 | [PlaceSystemNamespaceFirst](PlaceSystemNamespaceFirst/README.md#_top) | |
 | [PreferredCultureName](PreferredCultureName/README.md#_top) | |

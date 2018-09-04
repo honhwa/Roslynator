@@ -30,7 +30,7 @@ doc
 [--no-mark-obsolete]
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
-[--omit-containing-namespace]
+[--omit-containing-namespace-parts]
 [--omit-inherited-attributes]
 [--omit-member-constant-value]
 [--omit-member-inherited-from]
@@ -140,7 +140,9 @@ Indicates whether symbols contained in `System` namespace should be ordered as a
 
 Indicates whether attribute arguments should be omitted when displaying an attribute.
 
-**`[--omit-containing-namespace]`**
+**`[--omit-containing-namespace-parts]`** `{root | containing-type | return-type | base-type | attribute | derived-type | implemented-interface | implemented-member | exception | see-also | all}`
+
+Defines parts that that should by displayed without containing namespace.
 
 Indicates whether a containing namespace should be omitted when displaying type name.
 
