@@ -354,7 +354,6 @@ namespace Roslynator.Documentation
             WriteLine();
         }
 
-        //TODO: constructor?
         public virtual void WriteContainingType(ISymbol symbol, string title)
         {
             WriteBold(title);
@@ -675,6 +674,7 @@ namespace Roslynator.Documentation
                 }
 
                 WriteIndentation(depth);
+
                 WriteTypeSymbol(typeSymbol, includeContainingNamespace: false);
                 WriteLine();
             }
@@ -782,8 +782,21 @@ namespace Roslynator.Documentation
 
         public virtual void WriteExceptions(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0)
         {
-            //TODO: sort exceptions?
-            using (IEnumerator<(XElement element, INamedTypeSymbol exceptionSymbol)> en = GetExceptions().GetEnumerator())
+            IEnumerable<(XElement element, INamedTypeSymbol exceptionSymbol)> exceptions = null;
+
+            if (Options.IncludeContainingNamespace)
+            {
+                exceptions = GetExceptions()
+                    .OrderBy(f => f.exceptionSymbol.ContainingNamespace, NamespaceSymbolComparer.GetInstance(Options.PlaceSystemNamespaceFirst))
+                    .ThenBy(f => f.exceptionSymbol.ToDisplayString(SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters));
+            }
+            else
+            {
+                exceptions = GetExceptions()
+                    .OrderBy(f => f.exceptionSymbol.ToDisplayString(SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters));
+            }
+
+            using (IEnumerator<(XElement element, INamedTypeSymbol exceptionSymbol)> en = exceptions.GetEnumerator())
             {
                 if (en.MoveNext())
                 {
@@ -1635,7 +1648,6 @@ namespace Roslynator.Documentation
                         {
                             if (en.Current.Kind == SymbolKind.NamedType)
                             {
-                                //TODO: includeContainingNamespace
                                 WriteTypeLink((INamedTypeSymbol)en.Current, includeContainingNamespace: false, includeContainingTypes: includeContainingTypes, canCreateExternalUrl: canCreateExternalUrl);
                             }
                             else

@@ -14,8 +14,7 @@ public sealed class XmlDocumentation
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;XmlDocumentation
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; XmlDocumentation
 
 ## Methods
 

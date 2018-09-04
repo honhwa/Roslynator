@@ -14,8 +14,7 @@ public abstract class DocumentationResources
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;DocumentationResources
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationResources
 
 ## Constructors
 

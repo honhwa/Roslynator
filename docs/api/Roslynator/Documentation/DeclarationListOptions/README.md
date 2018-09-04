@@ -14,8 +14,7 @@ public class DeclarationListOptions
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;DeclarationListOptions
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DeclarationListOptions
 
 ## Constructors
 

@@ -14,8 +14,7 @@ public class DocumentationOptions
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;DocumentationOptions
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationOptions
 
 ## Constructors
 

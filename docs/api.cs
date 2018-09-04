@@ -2157,7 +2157,7 @@ namespace Roslynator.Documentation
 
     public class DocumentationOptions
     {
-        public DocumentationOptions(IEnumerable<string> ignoredNames = null, string preferredCultureName = null, string rootDirectoryUrl = null, int maxDerivedTypes = 5, bool includeClassHierarchy = true, bool includeContainingNamespace = true, bool placeSystemNamespaceFirst = true, bool formatDeclarationBaseList = true, bool formatDeclarationConstraints = true, bool markObsolete = true, bool includeMemberInheritedFrom = true, bool includeMemberOverrides = true, bool includeMemberImplements = true, bool includeMemberConstantValue = true, bool includeInheritedInterfaceMembers = false, bool includeAllDerivedTypes = false, bool includeAttributeArguments = true, bool omitIEnumerable = true, DocumentationDepth depth = DocumentationDepth.Member, InheritanceStyle inheritanceStyle = InheritanceStyle.Horizontal, RootDocumentationParts ignoredRootParts = RootDocumentationParts.None, NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None, TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None, MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None);
+        public DocumentationOptions(IEnumerable<string> ignoredNames = null, string preferredCultureName = null, string rootDirectoryUrl = null, int maxDerivedTypes = 5, bool includeClassHierarchy = true, bool includeContainingNamespace = true, bool placeSystemNamespaceFirst = true, bool formatDeclarationBaseList = true, bool formatDeclarationConstraints = true, bool markObsolete = true, bool includeMemberInheritedFrom = true, bool includeMemberOverrides = true, bool includeMemberImplements = true, bool includeMemberConstantValue = true, bool includeInheritedInterfaceMembers = false, bool includeAllDerivedTypes = false, bool includeAttributeArguments = true, bool includeInheritedAttributes = true, bool omitIEnumerable = true, DocumentationDepth depth = DocumentationDepth.Member, InheritanceStyle inheritanceStyle = InheritanceStyle.Horizontal, RootDocumentationParts ignoredRootParts = RootDocumentationParts.None, NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None, TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None, MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None);
 
         public static DocumentationOptions Default { get; }
         public DocumentationDepth Depth { get; }
@@ -2172,6 +2172,7 @@ namespace Roslynator.Documentation
         public bool IncludeAttributeArguments { get; }
         public bool IncludeClassHierarchy { get; }
         public bool IncludeContainingNamespace { get; }
+        public bool IncludeInheritedAttributes { get; }
         public bool IncludeInheritedInterfaceMembers { get; }
         public bool IncludeMemberConstantValue { get; }
         public bool IncludeMemberImplements { get; }
@@ -2351,6 +2352,7 @@ namespace Roslynator.Documentation
         public abstract void WriteInlineCode(string text);
         public virtual void WriteItalic(string text);
         public abstract void WriteLine();
+        public abstract void WriteLineBreak();
         public abstract void WriteLink(string text, string url, string title = null);
         public abstract void WriteLinkDestination(string name);
         public void WriteLinkOrText(string text, string url = null, string title = null);
@@ -2694,6 +2696,7 @@ namespace Roslynator.Documentation.Markdown
         public override void WriteImage(string text, string url, string title = null);
         public override void WriteInlineCode(string text);
         public override void WriteLine();
+        public override void WriteLineBreak();
         public override void WriteLink(string text, string url, string title = null);
         public override void WriteLinkDestination(string name);
         public override void WriteRaw(string data);

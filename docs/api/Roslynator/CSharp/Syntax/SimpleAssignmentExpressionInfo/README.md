@@ -18,9 +18,7 @@ public readonly struct SimpleAssignmentExpressionInfo : System.IEquatable<Simple
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;SimpleAssignmentExpressionInfo
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; SimpleAssignmentExpressionInfo
 
 ### Implements
 

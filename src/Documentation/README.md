@@ -44,6 +44,7 @@
 * Roslynator\.Documentation\.[DocumentationDepth](../../docs/api/Roslynator/Documentation/DocumentationDepth/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationFileKind](../../docs/api/Roslynator/Documentation/DocumentationFileKind/README.md#_top)
 * Roslynator\.Documentation\.[DocumentationUrlKind](../../docs/api/Roslynator/Documentation/DocumentationUrlKind/README.md#_top)
+* Roslynator\.Documentation\.[InheritanceStyle](../../docs/api/Roslynator/Documentation/InheritanceStyle/README.md#_top)
 * Roslynator\.Documentation\.[MemberDeclarationKind](../../docs/api/Roslynator/Documentation/MemberDeclarationKind/README.md#_top)
 * Roslynator\.Documentation\.[MemberDocumentationParts](../../docs/api/Roslynator/Documentation/MemberDocumentationParts/README.md#_top)
 * Roslynator\.Documentation\.[NamespaceDocumentationParts](../../docs/api/Roslynator/Documentation/NamespaceDocumentationParts/README.md#_top)

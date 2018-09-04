@@ -14,9 +14,7 @@ public struct SeparatedSyntaxListSelection<TNode>.Enumerator
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;SeparatedSyntaxListSelection\<TNode>\.Enumerator
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; SeparatedSyntaxListSelection\<TNode>\.Enumerator
 
 ## Properties
 

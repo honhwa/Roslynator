@@ -14,9 +14,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.Documentation\.[DocumentationWriter](../../DocumentationWriter/README.md#_top)\
-&emsp;&emsp;MarkdownDocumentationWriter
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [DocumentationWriter](../../DocumentationWriter/README.md#_top) &#x2192; MarkdownDocumentationWriter
 
 ### Implements
 

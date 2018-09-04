@@ -26,8 +26,7 @@ public class SyntaxListSelection<TNode> : ISelection<TNode>,
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;SyntaxListSelection\<TNode>
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; SyntaxListSelection\<TNode>
 
 ### Derived
 

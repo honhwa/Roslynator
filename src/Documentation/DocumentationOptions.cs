@@ -152,7 +152,7 @@ namespace Roslynator.Documentation
             public const DocumentationDepth Depth = DocumentationDepth.Member;
             public const bool FormatDeclarationBaseList = true;
             public const bool FormatDeclarationConstraints = true;
-            public const InheritanceStyle InheritanceStyle = Documentation.InheritanceStyle.Vertical;
+            public const InheritanceStyle InheritanceStyle = Documentation.InheritanceStyle.Horizontal;
             public const bool IncludeAllDerivedTypes = false;
             public const bool IncludeAttributeArguments = true;
             public const bool IncludeClassHierarchy = true;

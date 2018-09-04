@@ -21,8 +21,7 @@ public class TextLineCollectionSelection : Roslynator.ISelection<Microsoft.CodeA
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;TextLineCollectionSelection
+[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; TextLineCollectionSelection
 
 ### Implements
 
