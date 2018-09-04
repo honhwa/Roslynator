@@ -1070,16 +1070,12 @@ namespace Roslynator.Documentation
             int count = 0;
             bool isMaxReached = false;
 
-            WriteStartBulletList();
             WriteClassHierarchy();
-            WriteEndBulletList();
 
             void WriteClassHierarchy()
             {
                 if (level >= 0)
                 {
-                    WriteStartBulletItem();
-
                     for (int i = 0; i < level; i++)
                     {
                         if (i > 0)
@@ -1106,19 +1102,18 @@ namespace Roslynator.Documentation
 
                     WriteObsolete(baseType, before: false);
 
-                    WriteEndBulletItem();
+                    WriteLineBreak();
 
                     count++;
 
                     if (addSeparatorAtIndex == count)
                     {
-                        WriteStartBulletItem();
                         WriteEntityRef("mdash");
                         WriteEntityRef("mdash");
                         WriteEntityRef("mdash");
                         WriteEntityRef("mdash");
                         WriteEntityRef("mdash");
-                        WriteEndBulletItem();
+                        WriteLineBreak();
                     }
                 }
 
@@ -1189,13 +1184,13 @@ namespace Roslynator.Documentation
             {
                 if (!string.IsNullOrEmpty(allItemsHeading))
                 {
-                    WriteStartBulletItem();
                     WriteLink(Resources.Ellipsis, UrlProvider.GetFragment(Resources.DerivedAllTitle), title: allItemsLinkTitle);
-                    WriteEndBulletItem();
+                    WriteLineBreak();
                 }
                 else
                 {
-                    WriteBulletItem(Resources.Ellipsis);
+                    WriteString(Resources.Ellipsis);
+                    WriteLineBreak();
                 }
             }
         }
