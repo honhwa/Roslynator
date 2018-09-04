@@ -15,28 +15,28 @@
 
 ## Classes
 
-System\.Object\
-&emsp; Roslynator\.[NameGenerator](Roslynator/NameGenerator/README.md#_top)\
-&emsp; Roslynator\.[SeparatedSyntaxListSelection\<TNode>](Roslynator/SeparatedSyntaxListSelection-1/README.md#_top)\
-&emsp; Roslynator\.[SyntaxListSelection\<TNode>](Roslynator/SyntaxListSelection-1/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.CSharp\.[MemberDeclarationListSelection](Roslynator/CSharp/MemberDeclarationListSelection/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.CSharp\.[StatementListSelection](Roslynator/CSharp/StatementListSelection/README.md#_top)\
-&emsp; Roslynator\.CSharp\.[ModifierList\<TNode>](Roslynator/CSharp/ModifierList-1/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DeclarationListOptions](Roslynator/Documentation/DeclarationListOptions/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationGenerator](Roslynator/Documentation/DocumentationGenerator/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.Documentation\.Markdown\.[MarkdownDocumentationGenerator](Roslynator/Documentation/Markdown/MarkdownDocumentationGenerator/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationModel](Roslynator/Documentation/DocumentationModel/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationOptions](Roslynator/Documentation/DocumentationOptions/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationResources](Roslynator/Documentation/DocumentationResources/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationUrlProvider](Roslynator/Documentation/DocumentationUrlProvider/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[DocumentationWriter](Roslynator/Documentation/DocumentationWriter/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.Documentation\.Markdown\.[MarkdownDocumentationWriter](Roslynator/Documentation/Markdown/MarkdownDocumentationWriter/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[ExternalUrlProvider](Roslynator/Documentation/ExternalUrlProvider/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[MemberDocumentationModel](Roslynator/Documentation/MemberDocumentationModel/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[SymbolXmlDocumentation](Roslynator/Documentation/SymbolXmlDocumentation/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[TypeDocumentationModel](Roslynator/Documentation/TypeDocumentationModel/README.md#_top)\
-&emsp; Roslynator\.Documentation\.[XmlDocumentation](Roslynator/Documentation/XmlDocumentation/README.md#_top)\
-&emsp; Roslynator\.Text\.[TextLineCollectionSelection](Roslynator/Text/TextLineCollectionSelection/README.md#_top)\
+* System\.Object
+* &emsp; Roslynator\.[NameGenerator](Roslynator/NameGenerator/README.md#_top)
+* &emsp; Roslynator\.[SeparatedSyntaxListSelection\<TNode>](Roslynator/SeparatedSyntaxListSelection-1/README.md#_top)
+* &emsp; Roslynator\.[SyntaxListSelection\<TNode>](Roslynator/SyntaxListSelection-1/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.CSharp\.[MemberDeclarationListSelection](Roslynator/CSharp/MemberDeclarationListSelection/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.CSharp\.[StatementListSelection](Roslynator/CSharp/StatementListSelection/README.md#_top)
+* &emsp; Roslynator\.CSharp\.[ModifierList\<TNode>](Roslynator/CSharp/ModifierList-1/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DeclarationListOptions](Roslynator/Documentation/DeclarationListOptions/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationGenerator](Roslynator/Documentation/DocumentationGenerator/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.Documentation\.Markdown\.[MarkdownDocumentationGenerator](Roslynator/Documentation/Markdown/MarkdownDocumentationGenerator/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationModel](Roslynator/Documentation/DocumentationModel/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationOptions](Roslynator/Documentation/DocumentationOptions/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationResources](Roslynator/Documentation/DocumentationResources/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationUrlProvider](Roslynator/Documentation/DocumentationUrlProvider/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[DocumentationWriter](Roslynator/Documentation/DocumentationWriter/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.Documentation\.Markdown\.[MarkdownDocumentationWriter](Roslynator/Documentation/Markdown/MarkdownDocumentationWriter/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[ExternalUrlProvider](Roslynator/Documentation/ExternalUrlProvider/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[MemberDocumentationModel](Roslynator/Documentation/MemberDocumentationModel/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[SymbolXmlDocumentation](Roslynator/Documentation/SymbolXmlDocumentation/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[TypeDocumentationModel](Roslynator/Documentation/TypeDocumentationModel/README.md#_top)
+* &emsp; Roslynator\.Documentation\.[XmlDocumentation](Roslynator/Documentation/XmlDocumentation/README.md#_top)
+* &emsp; Roslynator\.Text\.[TextLineCollectionSelection](Roslynator/Text/TextLineCollectionSelection/README.md#_top)
 
 ## Static Classes
 

@@ -12,19 +12,19 @@
 
 ## Classes
 
-System\.Object\
-&emsp; System\.Attribute\
-&emsp; \| &emsp; Roslynator\.Documentation\.Test\.[FooAttribute](Roslynator/Documentation/Test/FooAttribute/README.md#_top)\
-&emsp; System\.[ClassName\<Methods>](System/ClassName-1/README.md#_top) \[deprecated\]\
-&emsp; System\.Exception\
-&emsp; \| &emsp; Roslynator\.Documentation\.Test\.[FooException\<T>](Roslynator/Documentation/Test/FooException-1/README.md#_top)\
-&emsp; Roslynator\.Documentation\.Test\.[B](Roslynator/Documentation/Test/B/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.Documentation\.Test\.[C](Roslynator/Documentation/Test/C/README.md#_top)\
-&emsp; Roslynator\.Documentation\.Test\.[FooCollection](Roslynator/Documentation/Test/FooCollection/README.md#_top)\
-&emsp; Roslynator\.Documentation\.Test\.[FooDic\<TKey, TValue>](Roslynator/Documentation/Test/FooDic-2/README.md#_top) \[deprecated\]\
-&emsp; Roslynator\.Documentation\.Test\.[FooEvent](Roslynator/Documentation/Test/FooEvent/README.md#_top)\
-&emsp; [Bla](_Global/Bla/README.md#_top)\
-&emsp; \| &emsp; Roslynator\.Documentation\.Test\.[Foo](Roslynator/Documentation/Test/Foo/README.md#_top) \[deprecated\]\
+* System\.Object
+* &emsp; System\.Attribute
+* &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[FooAttribute](Roslynator/Documentation/Test/FooAttribute/README.md#_top)
+* &emsp; System\.[ClassName\<Methods>](System/ClassName-1/README.md#_top) \[deprecated\]
+* &emsp; System\.Exception
+* &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[FooException\<T>](Roslynator/Documentation/Test/FooException-1/README.md#_top)
+* &emsp; Roslynator\.Documentation\.Test\.[B](Roslynator/Documentation/Test/B/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[C](Roslynator/Documentation/Test/C/README.md#_top)
+* &emsp; Roslynator\.Documentation\.Test\.[FooCollection](Roslynator/Documentation/Test/FooCollection/README.md#_top)
+* &emsp; Roslynator\.Documentation\.Test\.[FooDic\<TKey, TValue>](Roslynator/Documentation/Test/FooDic-2/README.md#_top) \[deprecated\]
+* &emsp; Roslynator\.Documentation\.Test\.[FooEvent](Roslynator/Documentation/Test/FooEvent/README.md#_top)
+* &emsp; [Bla](_Global/Bla/README.md#_top)
+* &emsp; \| &emsp; Roslynator\.Documentation\.Test\.[Foo](Roslynator/Documentation/Test/Foo/README.md#_top) \[deprecated\]
 
 ## Static Classes
 
