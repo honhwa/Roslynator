@@ -18,6 +18,7 @@ doc
 [--ignored-namespace-parts]
 [--ignored-root-parts]
 [--ignored-type-parts]
+[--inheritance-style]
 [--include-all-derived-types]
 [--include-ienumerable]
 [--include-inherited-interface-members]
@@ -89,6 +90,10 @@ Defines parts of a root documentation that should be excluded.
 **`[--ignored-type-parts]`** `{content containing-namespace containing-assembly obsolete-message summary declaration type-parameters parameters return-value inheritance attributes derived implements examples remarks constructors fields indexers properties methods operators events explicit-interface-implementations extension-methods classes structs interfaces enums delegates see-also}`
 
 Defines parts of a type documentation that should be excluded.
+
+**`[--inheritance-style]`** `{horizontal | vertical}`
+
+Defines a style of a type inheritance. Default value is `horizontal`.
 
 **`[--include-all-derived-types]`**
 

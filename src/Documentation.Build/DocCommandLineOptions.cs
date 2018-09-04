@@ -42,52 +42,55 @@ namespace Roslynator.Documentation
         [Option(longName: "ignored-type-parts")]
         public IEnumerable<string> IgnoredTypeParts { get; set; }
 
-        [Option(longName: "include-all-derived-types", Default = DefaultValues.IncludeAllDerivedTypes)]
+        [Option(longName: "inheritance-style", Default = DefaultValues.InheritanceStyle)]
+        public InheritanceStyle InheritanceStyle { get; set; }
+
+        [Option(longName: "include-all-derived-types")]
         public bool IncludeAllDerivedTypes { get; set; }
 
-        [Option(longName: "include-ienumerable", Default = !DefaultValues.OmitIEnumerable)]
+        [Option(longName: "include-ienumerable")]
         public bool IncludeIEnumerable { get; set; }
 
-        [Option(longName: "include-inherited-interface-members", Default = DefaultValues.IncludeInheritedInterfaceMembers)]
+        [Option(longName: "include-inherited-interface-members")]
         public bool IncludeInheritedInterfaceMembers { get; set; }
 
         [Option(longName: "max-derived-types", Default = DefaultValues.MaxDerivedTypes)]
         public int MaxDerivedTypes { get; set; }
 
-        [Option(longName: "no-class-hierarchy", Default = !DefaultValues.IncludeClassHierarchy)]
+        [Option(longName: "no-class-hierarchy")]
         public bool NoClassHierarchy { get; set; }
 
         [Option(longName: "no-delete", Default = false)]
         public bool NoDelete { get; set; }
 
-        [Option(longName: "no-format-base-list", Default = !DefaultValues.FormatDeclarationBaseList)]
+        [Option(longName: "no-format-base-list")]
         public bool NoFormatBaseList { get; set; }
 
-        [Option(longName: "no-format-constraints", Default = !DefaultValues.FormatDeclarationConstraints)]
+        [Option(longName: "no-format-constraints")]
         public bool NoFormatConstraints { get; set; }
 
-        [Option(longName: "no-mark-obsolete", Default = !DefaultValues.MarkObsolete)]
+        [Option(longName: "no-mark-obsolete")]
         public bool NoMarkObsolete { get; set; }
 
-        [Option(longName: "no-precedence-for-system", Default = !DefaultValues.PlaceSystemNamespaceFirst)]
+        [Option(longName: "no-precedence-for-system")]
         public bool NoPrecedenceForSystem { get; set; }
 
-        [Option(longName: "omit-attribute-arguments", Default = !DefaultValues.IncludeAttributeArguments)]
+        [Option(longName: "omit-attribute-arguments")]
         public bool OmitAttributeArguments { get; set; }
 
-        [Option(longName: "omit-containing-namespace", Default = !DefaultValues.IncludeContainingNamespace)]
+        [Option(longName: "omit-containing-namespace")]
         public bool OmitContainingNamespace { get; set; }
 
-        [Option(longName: "omit-member-constant-value", Default = !DefaultValues.IncludeMemberConstantValue)]
+        [Option(longName: "omit-member-constant-value")]
         public bool OmitMemberConstantValue { get; set; }
 
-        [Option(longName: "omit-member-implements", Default = !DefaultValues.IncludeMemberImplements)]
+        [Option(longName: "omit-member-implements")]
         public bool OmitMemberImplements { get; set; }
 
-        [Option(longName: "omit-member-inherited-from", Default = !DefaultValues.IncludeMemberInheritedFrom)]
+        [Option(longName: "omit-member-inherited-from")]
         public bool OmitMemberInheritedFrom { get; set; }
 
-        [Option(longName: "omit-member-overrides", Default = !DefaultValues.IncludeMemberOverrides)]
+        [Option(longName: "omit-member-overrides")]
         public bool OmitMemberOverrides { get; set; }
 
         [Option(longName: "preferred-culture")]

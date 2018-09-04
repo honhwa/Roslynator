@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DocumentationWriter\.WriteInheritance\(ITypeSymbol\) Method
+# DocumentationWriter\.WriteInheritance\(INamedTypeSymbol\) Method
 
 [Home](../../../../README.md#_top)
 
@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public virtual void WriteInheritance(ITypeSymbol typeSymbol)
+public virtual void WriteInheritance(INamedTypeSymbol typeSymbol)
 ```
 
 ### Parameters

@@ -14,13 +14,14 @@ public class DocumentationOptions
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationOptions
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;DocumentationOptions
 
 ## Constructors
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts)](-ctor/README.md#_top) | |
+| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts)](-ctor/README.md#_top) | |
 
 ## Properties
 
@@ -44,6 +45,7 @@ public class DocumentationOptions
 | [IncludeMemberImplements](IncludeMemberImplements/README.md#_top) | |
 | [IncludeMemberInheritedFrom](IncludeMemberInheritedFrom/README.md#_top) | |
 | [IncludeMemberOverrides](IncludeMemberOverrides/README.md#_top) | |
+| [InheritanceStyle](InheritanceStyle/README.md#_top) | |
 | [MarkObsolete](MarkObsolete/README.md#_top) | |
 | [MaxDerivedTypes](MaxDerivedTypes/README.md#_top) | |
 | [OmitIEnumerable](OmitIEnumerable/README.md#_top) | |

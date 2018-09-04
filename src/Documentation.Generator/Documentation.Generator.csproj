@@ -44,7 +44,7 @@
       <RoslynatorDocumentationAssemblies>Roslynator.Documentation.TestProject</RoslynatorDocumentationAssemblies>
     </PropertyGroup>
 
-    <Exec Command="$(RoslynatorDocumentationExe) doc ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest&quot; ^&#xD;&#xA;-h &quot;Foo API Reference&quot; ^&#xD;&#xA;--inherited-interface-members ^&#xD;&#xA;--additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+    <Exec Command="$(RoslynatorDocumentationExe) doc ^&#xD;&#xA;-a $(RoslynatorDocumentationAssemblies) ^&#xD;&#xA;-r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest&quot; ^&#xD;&#xA;-h &quot;Foo API Reference&quot; ^&#xD;&#xA;--include-inherited-interface-members ^&#xD;&#xA;--additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 

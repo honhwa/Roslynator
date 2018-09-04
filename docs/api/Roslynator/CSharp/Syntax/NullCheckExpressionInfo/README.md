@@ -18,7 +18,9 @@ public readonly struct NullCheckExpressionInfo : System.IEquatable<NullCheckExpr
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; NullCheckExpressionInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+&emsp;&emsp;NullCheckExpressionInfo
 
 ### Implements
 

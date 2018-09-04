@@ -27,16 +27,16 @@ namespace Roslynator.Documentation
         [Option(longName: "ignored-names")]
         public IEnumerable<string> IgnoredNames { get; set; }
 
-        [Option(longName: "no-class-hierarchy", Default = !DefaultValues.IncludeClassHierarchy)]
+        [Option(longName: "no-class-hierarchy")]
         public bool NoClassHierarchy { get; set; }
 
-        [Option(longName: "no-mark-obsolete", Default = !DefaultValues.MarkObsolete)]
+        [Option(longName: "no-mark-obsolete")]
         public bool NoMarkObsolete { get; set; }
 
-        [Option(longName: "no-precedence-for-system", Default = !DefaultValues.PlaceSystemNamespaceFirst)]
+        [Option(longName: "no-precedence-for-system")]
         public bool NoPrecedenceForSystem { get; set; }
 
-        [Option(longName: "omit-containing-namespace", Default = !DefaultValues.IncludeContainingNamespace)]
+        [Option(longName: "omit-containing-namespace")]
         public bool OmitContainingNamespace { get; set; }
 
         [Option(longName: "parts")]

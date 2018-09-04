@@ -19,7 +19,9 @@ public readonly struct ExpressionChain.Reversed : System.IEquatable<ExpressionCh
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; ExpressionChain\.Reversed
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+&emsp;&emsp;ExpressionChain\.Reversed
 
 ### Implements
 

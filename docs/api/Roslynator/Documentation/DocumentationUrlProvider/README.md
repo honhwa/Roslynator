@@ -14,7 +14,8 @@ public abstract class DocumentationUrlProvider
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationUrlProvider
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;DocumentationUrlProvider
 
 ## Constructors
 

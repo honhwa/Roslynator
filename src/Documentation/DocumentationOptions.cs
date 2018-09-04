@@ -9,7 +9,6 @@ using Microsoft.CodeAnalysis;
 namespace Roslynator.Documentation
 {
     //TODO: DocumentationOptions.InheritedAttributes
-    //TODO: DocumentationOptions.InheritanceStyle - Horizontal, Vertical
     public class DocumentationOptions
     {
         private readonly ImmutableArray<MetadataName> _ignoredMetadataNames;
@@ -34,6 +33,7 @@ namespace Roslynator.Documentation
             bool includeAttributeArguments = DefaultValues.IncludeAttributeArguments,
             bool omitIEnumerable = DefaultValues.OmitIEnumerable,
             DocumentationDepth depth = DefaultValues.Depth,
+            InheritanceStyle inheritanceStyle = DefaultValues.InheritanceStyle,
             RootDocumentationParts ignoredRootParts = RootDocumentationParts.None,
             NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None,
             TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None,
@@ -63,6 +63,7 @@ namespace Roslynator.Documentation
             IncludeAttributeArguments = includeAttributeArguments;
             OmitIEnumerable = omitIEnumerable;
             Depth = depth;
+            InheritanceStyle = inheritanceStyle;
             IgnoredRootParts = ignoredRootParts;
             IgnoredNamespaceParts = ignoredNamespaceParts;
             IgnoredTypeParts = ignoredTypeParts;
@@ -109,6 +110,8 @@ namespace Roslynator.Documentation
 
         public DocumentationDepth Depth { get; }
 
+        public InheritanceStyle InheritanceStyle { get; }
+
         public RootDocumentationParts IgnoredRootParts { get; }
 
         public NamespaceDocumentationParts IgnoredNamespaceParts { get; }
@@ -146,6 +149,7 @@ namespace Roslynator.Documentation
             public const DocumentationDepth Depth = DocumentationDepth.Member;
             public const bool FormatDeclarationBaseList = true;
             public const bool FormatDeclarationConstraints = true;
+            public const InheritanceStyle InheritanceStyle = Documentation.InheritanceStyle.Horizontal;
             public const bool IncludeAllDerivedTypes = false;
             public const bool IncludeAttributeArguments = true;
             public const bool IncludeClassHierarchy = true;

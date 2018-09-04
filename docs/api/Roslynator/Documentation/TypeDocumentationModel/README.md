@@ -14,7 +14,8 @@ public sealed class TypeDocumentationModel : System.IEquatable<TypeDocumentation
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; TypeDocumentationModel
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;TypeDocumentationModel
 
 ### Implements
 

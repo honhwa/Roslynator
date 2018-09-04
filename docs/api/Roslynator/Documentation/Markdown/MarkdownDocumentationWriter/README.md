@@ -14,7 +14,9 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [DocumentationWriter](../../DocumentationWriter/README.md#_top) &#x2192; MarkdownDocumentationWriter
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;Roslynator\.Documentation\.[DocumentationWriter](../../DocumentationWriter/README.md#_top)
+&emsp;&emsp;MarkdownDocumentationWriter
 
 ### Implements
 
@@ -95,7 +97,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteImage(String, String, String)](WriteImage/README.md#_top) |  \(Overrides [DocumentationWriter.WriteImage](../../DocumentationWriter/WriteImage/README.md#_top)\) |
 | [WriteImplementedInterfaces(IEnumerable\<INamedTypeSymbol>)](../../DocumentationWriter/WriteImplementedInterfaces/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteIndexers(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](../../DocumentationWriter/WriteIndexers/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
-| [WriteInheritance(ITypeSymbol)](../../DocumentationWriter/WriteInheritance/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteInheritance(INamedTypeSymbol)](../../DocumentationWriter/WriteInheritance/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteInlineCode(String)](WriteInlineCode/README.md#_top) |  \(Overrides [DocumentationWriter.WriteInlineCode](../../DocumentationWriter/WriteInlineCode/README.md#_top)\) |
 | [WriteItalic(String)](../../DocumentationWriter/WriteItalic/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteLine()](WriteLine/README.md#_top) |  \(Overrides [DocumentationWriter.WriteLine](../../DocumentationWriter/WriteLine/README.md#_top)\) |

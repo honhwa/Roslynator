@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# SymbolDisplayTypeDeclarationOptions Enum
+# InheritanceStyle Enum
 
 [Home](../../../README.md#_top) &#x2022; [Fields](#fields)
 
@@ -9,8 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-[System.FlagsAttribute]
-public enum SymbolDisplayTypeDeclarationOptions
+public enum InheritanceStyle
 ```
 
 ### Inheritance
@@ -18,17 +17,12 @@ public enum SymbolDisplayTypeDeclarationOptions
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
 &emsp;&emsp;System\.[Enum](https://docs.microsoft.com/en-us/dotnet/api/system.enum)
-&emsp;&emsp;&emsp;SymbolDisplayTypeDeclarationOptions
-
-### Attributes
-
-* System\.[FlagsAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute)
+&emsp;&emsp;&emsp;InheritanceStyle
 
 ## Fields
 
 | Name | Value | Summary |
 | ---- | ----- | ------- |
-| None | 0 |
-| IncludeModifiers | 1 |
-| IncludeAccessibility | 2 |
+| Horizontal | 0 |
+| Vertical | 1 |
 

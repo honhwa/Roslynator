@@ -14,7 +14,8 @@ public abstract class DocumentationWriter : System.IDisposable
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationWriter
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;DocumentationWriter
 
 ### Derived
 
@@ -99,7 +100,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteImage(String, String, String)](WriteImage/README.md#_top) | |
 | [WriteImplementedInterfaces(IEnumerable\<INamedTypeSymbol>)](WriteImplementedInterfaces/README.md#_top) | |
 | [WriteIndexers(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](WriteIndexers/README.md#_top) | |
-| [WriteInheritance(ITypeSymbol)](WriteInheritance/README.md#_top) | |
+| [WriteInheritance(INamedTypeSymbol)](WriteInheritance/README.md#_top) | |
 | [WriteInlineCode(String)](WriteInlineCode/README.md#_top) | |
 | [WriteItalic(String)](WriteItalic/README.md#_top) | |
 | [WriteLine()](WriteLine/README.md#_top) | |

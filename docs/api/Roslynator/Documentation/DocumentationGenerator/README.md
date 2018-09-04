@@ -14,7 +14,8 @@ public abstract class DocumentationGenerator
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; DocumentationGenerator
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;DocumentationGenerator
 
 ### Derived
 

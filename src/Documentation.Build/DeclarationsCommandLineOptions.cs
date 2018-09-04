@@ -24,19 +24,19 @@ namespace Roslynator.Documentation
         [Option(longName: "depth", Default = DefaultValues.Depth)]
         public DocumentationDepth Depth { get; set; }
 
-        [Option(longName: "empty-line-between-members", Default = DefaultValues.EmptyLineBetweenMembers)]
+        [Option(longName: "empty-line-between-members")]
         public bool EmptyLineBetweenMembers { get; set; }
 
-        [Option(longName: "format-base-list", Default = DefaultValues.FormatBaseList)]
+        [Option(longName: "format-base-list")]
         public bool FormatBaseList { get; set; }
 
-        [Option(longName: "format-constraints", Default = DefaultValues.FormatConstraints)]
+        [Option(longName: "format-constraints")]
         public bool FormatConstraints { get; set; }
 
-        [Option(longName: "format-parameters", Default = DefaultValues.FormatParameters)]
+        [Option(longName: "format-parameters")]
         public bool FormatParameters { get; set; }
 
-        [Option(longName: "fully-qualified-names", Default = DefaultValues.FullyQualifiedNames)]
+        [Option(longName: "fully-qualified-names")]
         public bool FullyQualifiedNames { get; set; }
 
         [Option(longName: "ignored-names")]
@@ -45,31 +45,31 @@ namespace Roslynator.Documentation
         [Option(longName: "ignored-parts")]
         public IEnumerable<string> IgnoredParts { get; set; }
 
-        [Option(longName: "include-ienumerable", Default = !DefaultValues.OmitIEnumerable)]
+        [Option(longName: "include-ienumerable")]
         public bool IncludeIEnumerable { get; set; }
 
         [Option(longName: "indent-chars", Default = DefaultValues.IndentChars)]
         public string IndentChars { get; set; }
 
-        [Option(longName: "merge-attributes", Default = !DefaultValues.SplitAttributes)]
+        [Option(longName: "merge-attributes")]
         public bool MergeAttributes { get; set; }
 
-        [Option(longName: "nest-namespaces", Default = DefaultValues.NestNamespaces)]
+        [Option(longName: "nest-namespaces")]
         public bool NestNamespaces { get; set; }
 
-        [Option(longName: "no-indent", Default = !DefaultValues.Indent)]
+        [Option(longName: "no-indent")]
         public bool NoIndent { get; set; }
 
-        [Option(longName: "no-default-literal", Default = !DefaultValues.UseDefaultLiteral)]
+        [Option(longName: "no-default-literal")]
         public bool NoDefaultLiteral { get; set; }
 
-        [Option(longName: "no-new-line-before-open-brace", Default = !DefaultValues.NewLineBeforeOpenBrace)]
+        [Option(longName: "no-new-line-before-open-brace")]
         public bool NoNewLineBeforeOpenBrace { get; set; }
 
-        [Option(longName: "no-precedence-for-system", Default = !DocumentationOptions.DefaultValues.PlaceSystemNamespaceFirst)]
+        [Option(longName: "no-precedence-for-system")]
         public bool NoPrecedenceForSystem { get; set; }
 
-        [Option(longName: "omit-attribute-arguments", Default = !DefaultValues.IncludeAttributeArguments)]
+        [Option(longName: "omit-attribute-arguments")]
         public bool OmitAttributeArguments { get; set; }
     }
 }

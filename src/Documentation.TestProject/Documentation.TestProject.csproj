@@ -23,7 +23,7 @@
     <Copyright>Copyright (c) 2017-2018 Josef Pihrt</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Roslynator.Documentation.TestProject.xml</DocumentationFile>
   </PropertyGroup>
 

@@ -18,7 +18,9 @@ public readonly struct IsExpressionInfo : System.IEquatable<IsExpressionInfo>
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; IsExpressionInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+&emsp;&emsp;IsExpressionInfo
 
 ### Implements
 

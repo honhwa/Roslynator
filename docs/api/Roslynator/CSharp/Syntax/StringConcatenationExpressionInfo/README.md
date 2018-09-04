@@ -18,7 +18,9 @@ public readonly struct StringConcatenationExpressionInfo : System.IEquatable<Str
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; [ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype) &#x2192; StringConcatenationExpressionInfo
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+&emsp;&emsp;StringConcatenationExpressionInfo
 
 ### Implements
 

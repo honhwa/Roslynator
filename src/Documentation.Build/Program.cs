@@ -71,6 +71,7 @@ namespace Roslynator.Documentation
                 includeAttributeArguments: !options.OmitAttributeArguments,
                 omitIEnumerable: !options.IncludeIEnumerable,
                 depth: options.Depth,
+                inheritanceStyle: options.InheritanceStyle,
                 ignoredRootParts: ignoredRootParts,
                 ignoredNamespaceParts: ignoredNamespaceParts,
                 ignoredTypeParts: ignoredTypeParts,

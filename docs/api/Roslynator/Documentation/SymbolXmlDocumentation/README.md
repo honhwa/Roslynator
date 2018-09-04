@@ -14,7 +14,8 @@ public class SymbolXmlDocumentation
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; SymbolXmlDocumentation
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;SymbolXmlDocumentation
 
 ## Properties
 

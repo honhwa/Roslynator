@@ -18,7 +18,8 @@ public abstract class NameGenerator
 
 ### Inheritance
 
-[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) &#x2192; NameGenerator
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+&emsp;NameGenerator
 
 ## Constructors
 
