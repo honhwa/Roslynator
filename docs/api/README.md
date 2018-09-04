@@ -122,6 +122,7 @@
 * Roslynator\.Documentation\.[MemberDeclarationKind](Roslynator/Documentation/MemberDeclarationKind/README.md#_top)
 * Roslynator\.Documentation\.[MemberDocumentationParts](Roslynator/Documentation/MemberDocumentationParts/README.md#_top)
 * Roslynator\.Documentation\.[NamespaceDocumentationParts](Roslynator/Documentation/NamespaceDocumentationParts/README.md#_top)
+* Roslynator\.Documentation\.[OmitContainingNamespaceParts](Roslynator/Documentation/OmitContainingNamespaceParts/README.md#_top)
 * Roslynator\.Documentation\.[RootDocumentationParts](Roslynator/Documentation/RootDocumentationParts/README.md#_top)
 * Roslynator\.Documentation\.[SymbolDisplayAdditionalMemberOptions](Roslynator/Documentation/SymbolDisplayAdditionalMemberOptions/README.md#_top)
 * Roslynator\.Documentation\.[SymbolDisplayTypeDeclarationOptions](Roslynator/Documentation/SymbolDisplayTypeDeclarationOptions/README.md#_top)

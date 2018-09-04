@@ -48,6 +48,7 @@
 * Roslynator\.Documentation\.[MemberDeclarationKind](../../docs/api/Roslynator/Documentation/MemberDeclarationKind/README.md#_top)
 * Roslynator\.Documentation\.[MemberDocumentationParts](../../docs/api/Roslynator/Documentation/MemberDocumentationParts/README.md#_top)
 * Roslynator\.Documentation\.[NamespaceDocumentationParts](../../docs/api/Roslynator/Documentation/NamespaceDocumentationParts/README.md#_top)
+* Roslynator\.Documentation\.[OmitContainingNamespaceParts](../../docs/api/Roslynator/Documentation/OmitContainingNamespaceParts/README.md#_top)
 * Roslynator\.Documentation\.[RootDocumentationParts](../../docs/api/Roslynator/Documentation/RootDocumentationParts/README.md#_top)
 * Roslynator\.Documentation\.[SymbolDisplayAdditionalMemberOptions](../../docs/api/Roslynator/Documentation/SymbolDisplayAdditionalMemberOptions/README.md#_top)
 * Roslynator\.Documentation\.[SymbolDisplayTypeDeclarationOptions](../../docs/api/Roslynator/Documentation/SymbolDisplayTypeDeclarationOptions/README.md#_top)

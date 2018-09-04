@@ -761,7 +761,7 @@ namespace Roslynator.Documentation
                         case TypeDocumentationParts.ReturnValue:
                             {
                                 if (xmlDocumentation != null)
-                                    writer.WriteReturnValue(typeSymbol, xmlDocumentation);
+                                    writer.WriteReturnType(typeSymbol, xmlDocumentation);
 
                                 break;
                             }

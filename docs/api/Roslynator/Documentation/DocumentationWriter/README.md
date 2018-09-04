@@ -115,7 +115,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteProperties(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](WriteProperties/README.md#_top) | |
 | [WriteRaw(String)](WriteRaw/README.md#_top) | |
 | [WriteRemarks(ISymbol, SymbolXmlDocumentation, Int32)](WriteRemarks/README.md#_top) | |
-| [WriteReturnValue(ISymbol, SymbolXmlDocumentation)](WriteReturnValue/README.md#_top) | |
+| [WriteReturnType(ISymbol, SymbolXmlDocumentation)](WriteReturnType/README.md#_top) | |
 | [WriteSeeAlso(ISymbol, SymbolXmlDocumentation, Int32)](WriteSeeAlso/README.md#_top) | |
 | [WriteStartBlockQuote()](WriteStartBlockQuote/README.md#_top) | |
 | [WriteStartBold()](WriteStartBold/README.md#_top) | |

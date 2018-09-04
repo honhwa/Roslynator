@@ -111,7 +111,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteProperties(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](../../DocumentationWriter/WriteProperties/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteRaw(String)](WriteRaw/README.md#_top) |  \(Overrides [DocumentationWriter.WriteRaw](../../DocumentationWriter/WriteRaw/README.md#_top)\) |
 | [WriteRemarks(ISymbol, SymbolXmlDocumentation, Int32)](../../DocumentationWriter/WriteRemarks/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
-| [WriteReturnValue(ISymbol, SymbolXmlDocumentation)](../../DocumentationWriter/WriteReturnValue/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteReturnType(ISymbol, SymbolXmlDocumentation)](../../DocumentationWriter/WriteReturnType/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteSeeAlso(ISymbol, SymbolXmlDocumentation, Int32)](../../DocumentationWriter/WriteSeeAlso/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteStartBlockQuote()](WriteStartBlockQuote/README.md#_top) |  \(Overrides [DocumentationWriter.WriteStartBlockQuote](../../DocumentationWriter/WriteStartBlockQuote/README.md#_top)\) |
 | [WriteStartBold()](WriteStartBold/README.md#_top) |  \(Overrides [DocumentationWriter.WriteStartBold](../../DocumentationWriter/WriteStartBold/README.md#_top)\) |

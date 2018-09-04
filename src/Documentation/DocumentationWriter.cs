@@ -535,7 +535,7 @@ namespace Roslynator.Documentation
             }
         }
 
-        public virtual void WriteReturnValue(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation)
+        public virtual void WriteReturnType(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation)
         {
             switch (symbol.Kind)
             {
@@ -552,7 +552,7 @@ namespace Roslynator.Documentation
                             if (returnType.SpecialType == SpecialType.System_Void)
                                 return;
 
-                            WriteReturnValue(returnType, Resources.ReturnValueTitle);
+                            WriteReturnType(returnType, Resources.ReturnValueTitle);
 
                             xmlDocumentation?.Element(WellKnownTags.Returns)?.WriteContentTo(this);
                         }
@@ -563,7 +563,7 @@ namespace Roslynator.Documentation
                     {
                         var fieldSymbol = (IFieldSymbol)symbol;
 
-                        WriteReturnValue(fieldSymbol.Type, Resources.FieldValueTitle);
+                        WriteReturnType(fieldSymbol.Type, Resources.FieldValueTitle);
                         break;
                     }
                 case SymbolKind.Method:
@@ -575,7 +575,7 @@ namespace Roslynator.Documentation
                             case MethodKind.UserDefinedOperator:
                             case MethodKind.Conversion:
                                 {
-                                    WriteReturnValue(methodSymbol.ReturnType, Resources.ReturnsTitle);
+                                    WriteReturnType(methodSymbol.ReturnType, Resources.ReturnsTitle);
 
                                     xmlDocumentation?.Element(WellKnownTags.Returns)?.WriteContentTo(this);
                                     break;
@@ -587,7 +587,7 @@ namespace Roslynator.Documentation
                                     if (returnType.SpecialType == SpecialType.System_Void)
                                         return;
 
-                                    WriteReturnValue(returnType, Resources.ReturnsTitle);
+                                    WriteReturnType(returnType, Resources.ReturnsTitle);
 
                                     xmlDocumentation?.Element(WellKnownTags.Returns)?.WriteContentTo(this);
                                     break;
@@ -600,7 +600,7 @@ namespace Roslynator.Documentation
                     {
                         var propertySymbol = (IPropertySymbol)symbol;
 
-                        WriteReturnValue(propertySymbol.Type, Resources.PropertyValueTitle);
+                        WriteReturnType(propertySymbol.Type, Resources.PropertyValueTitle);
 
                         string elementName = (propertySymbol.IsIndexer) ? WellKnownTags.Returns : WellKnownTags.Value;
 
@@ -609,7 +609,7 @@ namespace Roslynator.Documentation
                     }
             }
 
-            void WriteReturnValue(ITypeSymbol typeSymbol, string heading)
+            void WriteReturnType(ITypeSymbol typeSymbol, string heading)
             {
                 WriteHeading(3, heading);
                 WriteTypeLink(typeSymbol, includeContainingNamespace: Options.IncludeContainingNamespace);

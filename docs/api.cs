@@ -2364,7 +2364,7 @@ namespace Roslynator.Documentation
         public virtual void WriteProperties(IEnumerable<IPropertySymbol> properties, INamedTypeSymbol containingType);
         public abstract void WriteRaw(string data);
         public virtual void WriteRemarks(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0);
-        public virtual void WriteReturnValue(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation);
+        public virtual void WriteReturnType(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation);
         public virtual void WriteSeeAlso(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0);
         public abstract void WriteStartBlockQuote();
         public abstract void WriteStartBold();
@@ -2583,6 +2583,23 @@ namespace Roslynator.Documentation
         Delegates = 512,
         SeeAlso = 1024,
         All = Content | ContainingNamespace | Summary | Examples | Remarks | Classes | Structs | Interfaces | Enums | Delegates | SeeAlso,
+    }
+
+    [Flags]
+    public enum OmitContainingNamespaceParts
+    {
+        None = 0,
+        Root = 1,
+        ContainingType = 2,
+        ReturnType = 4,
+        BaseType = 8,
+        Attribute = 16,
+        DerivedType = 32,
+        ImplementedInterface = 64,
+        ImplementedMember = 128,
+        Exception = 256,
+        SeeAlso = 512,
+        All = Root | ContainingType | ReturnType | BaseType | Attribute | DerivedType | ImplementedInterface | ImplementedMember | Exception | SeeAlso,
     }
 
     [Flags]

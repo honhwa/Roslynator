@@ -45,6 +45,7 @@
 | [MemberDeclarationKind](MemberDeclarationKind/README.md#_top) | |
 | [MemberDocumentationParts](MemberDocumentationParts/README.md#_top) | |
 | [NamespaceDocumentationParts](NamespaceDocumentationParts/README.md#_top) | |
+| [OmitContainingNamespaceParts](OmitContainingNamespaceParts/README.md#_top) | |
 | [RootDocumentationParts](RootDocumentationParts/README.md#_top) | |
 | [SymbolDisplayAdditionalMemberOptions](SymbolDisplayAdditionalMemberOptions/README.md#_top) | |
 | [SymbolDisplayTypeDeclarationOptions](SymbolDisplayTypeDeclarationOptions/README.md#_top) | |

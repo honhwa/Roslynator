@@ -204,7 +204,7 @@ namespace Roslynator.Documentation
                         }
                     case MemberDocumentationParts.ReturnValue:
                         {
-                            Writer.WriteReturnValue(symbol, xmlDocumentation);
+                            Writer.WriteReturnType(symbol, xmlDocumentation);
                             break;
                         }
                     case MemberDocumentationParts.Implements:
