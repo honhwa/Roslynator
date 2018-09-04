@@ -14,8 +14,8 @@ public class MarkdownDocumentationGenerator : Roslynator.Documentation.Documenta
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-&emsp;Roslynator\.Documentation\.[DocumentationGenerator](../../DocumentationGenerator/README.md#_top)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+&emsp;Roslynator\.Documentation\.[DocumentationGenerator](../../DocumentationGenerator/README.md#_top)  
 &emsp;&emsp;MarkdownDocumentationGenerator
 
 ## Constructors

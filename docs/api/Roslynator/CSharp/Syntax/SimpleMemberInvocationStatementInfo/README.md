@@ -18,8 +18,8 @@ public readonly struct SimpleMemberInvocationStatementInfo : System.IEquatable<S
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
 &emsp;&emsp;SimpleMemberInvocationStatementInfo
 
 ### Implements

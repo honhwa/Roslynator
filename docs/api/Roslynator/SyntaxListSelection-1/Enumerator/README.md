@@ -14,8 +14,8 @@ public struct SyntaxListSelection<TNode>.Enumerator
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
 &emsp;&emsp;SyntaxListSelection\<TNode>\.Enumerator
 
 ## Properties

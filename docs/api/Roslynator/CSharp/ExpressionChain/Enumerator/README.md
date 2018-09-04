@@ -14,8 +14,8 @@ public struct ExpressionChain.Enumerator
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+&emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)  
 &emsp;&emsp;ExpressionChain\.Enumerator
 
 ## Properties

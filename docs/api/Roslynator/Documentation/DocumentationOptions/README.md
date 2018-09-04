@@ -14,14 +14,14 @@ public class DocumentationOptions
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
 &emsp;DocumentationOptions
 
 ## Constructors
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts)](-ctor/README.md#_top) | |
+| [DocumentationOptions(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts)](-ctor/README.md#_top) | |
 
 ## Properties
 
@@ -40,6 +40,7 @@ System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
 | [IncludeAttributeArguments](IncludeAttributeArguments/README.md#_top) | |
 | [IncludeClassHierarchy](IncludeClassHierarchy/README.md#_top) | |
 | [IncludeContainingNamespace](IncludeContainingNamespace/README.md#_top) | |
+| [IncludeInheritedAttributes](IncludeInheritedAttributes/README.md#_top) | |
 | [IncludeInheritedInterfaceMembers](IncludeInheritedInterfaceMembers/README.md#_top) | |
 | [IncludeMemberConstantValue](IncludeMemberConstantValue/README.md#_top) | |
 | [IncludeMemberImplements](IncludeMemberImplements/README.md#_top) | |

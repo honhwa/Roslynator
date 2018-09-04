@@ -81,6 +81,9 @@ namespace Roslynator.Documentation
         [Option(longName: "omit-containing-namespace")]
         public bool OmitContainingNamespace { get; set; }
 
+        [Option(longName: "omit-inherited-atttributes")]
+        public bool OmitInheritedAttributes { get; set; }
+
         [Option(longName: "omit-member-constant-value")]
         public bool OmitMemberConstantValue { get; set; }
 

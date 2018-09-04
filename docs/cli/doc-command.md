@@ -31,6 +31,7 @@ doc
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
 [--omit-containing-namespace]
+[--omit-inherited-attributes]
 [--omit-member-constant-value]
 [--omit-member-inherited-from]
 [--omit-member-implements]
@@ -142,6 +143,10 @@ Indicates whether attribute arguments should be omitted when displaying an attri
 **`[--omit-containing-namespace]`**
 
 Indicates whether a containing namespace should be omitted when displaying type name.
+
+**`[--omit-inherited-attributes]`**
+
+Indicates whether inherited attributes should be omitted.
 
 **`[--omit-member-constant-value]`**
 

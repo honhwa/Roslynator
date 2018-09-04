@@ -69,6 +69,7 @@ namespace Roslynator.Documentation
                 includeInheritedInterfaceMembers: options.IncludeInheritedInterfaceMembers,
                 includeAllDerivedTypes: options.IncludeAllDerivedTypes,
                 includeAttributeArguments: !options.OmitAttributeArguments,
+                includeInheritedAttributes: !options.OmitInheritedAttributes,
                 omitIEnumerable: !options.IncludeIEnumerable,
                 depth: options.Depth,
                 inheritanceStyle: options.InheritanceStyle,

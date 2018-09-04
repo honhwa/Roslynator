@@ -8,7 +8,6 @@ using Microsoft.CodeAnalysis;
 
 namespace Roslynator.Documentation
 {
-    //TODO: DocumentationOptions.InheritedAttributes
     public class DocumentationOptions
     {
         private readonly ImmutableArray<MetadataName> _ignoredMetadataNames;
@@ -31,6 +30,7 @@ namespace Roslynator.Documentation
             bool includeInheritedInterfaceMembers = DefaultValues.IncludeInheritedInterfaceMembers,
             bool includeAllDerivedTypes = DefaultValues.IncludeInheritedInterfaceMembers,
             bool includeAttributeArguments = DefaultValues.IncludeAttributeArguments,
+            bool includeInheritedAttributes = DefaultValues.IncludeInheritedAttributes,
             bool omitIEnumerable = DefaultValues.OmitIEnumerable,
             DocumentationDepth depth = DefaultValues.Depth,
             InheritanceStyle inheritanceStyle = DefaultValues.InheritanceStyle,
@@ -61,6 +61,7 @@ namespace Roslynator.Documentation
             IncludeInheritedInterfaceMembers = includeInheritedInterfaceMembers;
             IncludeAllDerivedTypes = includeAllDerivedTypes;
             IncludeAttributeArguments = includeAttributeArguments;
+            IncludeInheritedAttributes = includeInheritedAttributes;
             OmitIEnumerable = omitIEnumerable;
             Depth = depth;
             InheritanceStyle = inheritanceStyle;
@@ -106,6 +107,8 @@ namespace Roslynator.Documentation
 
         public bool IncludeAttributeArguments { get; }
 
+        public bool IncludeInheritedAttributes { get; }
+
         public bool OmitIEnumerable { get; }
 
         public DocumentationDepth Depth { get; }
@@ -149,11 +152,12 @@ namespace Roslynator.Documentation
             public const DocumentationDepth Depth = DocumentationDepth.Member;
             public const bool FormatDeclarationBaseList = true;
             public const bool FormatDeclarationConstraints = true;
-            public const InheritanceStyle InheritanceStyle = Documentation.InheritanceStyle.Horizontal;
+            public const InheritanceStyle InheritanceStyle = Documentation.InheritanceStyle.Vertical;
             public const bool IncludeAllDerivedTypes = false;
             public const bool IncludeAttributeArguments = true;
             public const bool IncludeClassHierarchy = true;
             public const bool IncludeContainingNamespace = true;
+            public const bool IncludeInheritedAttributes = true;
             public const bool IncludeInheritedInterfaceMembers = false;
             public const bool IncludeMemberConstantValue = true;
             public const bool IncludeMemberImplements = true;

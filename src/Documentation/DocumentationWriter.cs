@@ -659,7 +659,7 @@ namespace Roslynator.Documentation
                 WriteTypeSymbol(typeSymbol, includeContainingNamespace: false);
                 WriteLine();
             }
-            else
+            else if (Options.InheritanceStyle == InheritanceStyle.Vertical)
             {
                 int depth = 0;
 
@@ -667,6 +667,9 @@ namespace Roslynator.Documentation
                 {
                     WriteIndentation(depth);
                     WriteTypeLink(baseType.OriginalDefinition, includeContainingNamespace: Options.IncludeContainingNamespace);
+
+                    //TODO: WriteLineBreak
+                    WriteString("  ");
                     WriteLine();
 
                     depth++;
@@ -675,6 +678,10 @@ namespace Roslynator.Documentation
                 WriteIndentation(depth);
                 WriteTypeSymbol(typeSymbol, includeContainingNamespace: false);
                 WriteLine();
+            }
+            else
+            {
+                throw new InvalidOperationException();
             }
 
             void WriteSeparator()
@@ -695,7 +702,8 @@ namespace Roslynator.Documentation
         {
             ImmutableArray<AttributeInfo> attributes;
 
-            if (symbol is INamedTypeSymbol typeSymbol)
+            if (symbol is INamedTypeSymbol typeSymbol
+                && Options.IncludeInheritedAttributes)
             {
                 attributes = typeSymbol.GetAttributesIncludingInherited(f => DocumentationUtility.IsVisibleAttribute(f));
             }
@@ -1050,7 +1058,9 @@ namespace Roslynator.Documentation
             int count = 0;
             bool isMaxReached = false;
 
+            WriteStartBulletList();
             WriteClassHierarchy();
+            WriteEndBulletList();
 
             void WriteClassHierarchy()
             {

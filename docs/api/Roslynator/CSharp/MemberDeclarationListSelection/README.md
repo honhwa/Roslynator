@@ -18,8 +18,8 @@ public sealed class MemberDeclarationListSelection : Roslynator.SyntaxListSelect
 
 ### Inheritance
 
-System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)
-&emsp;Roslynator\.[SyntaxListSelection\<TNode>](../../SyntaxListSelection-1/README.md#_top)
+System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+&emsp;Roslynator\.[SyntaxListSelection\<TNode>](../../SyntaxListSelection-1/README.md#_top)  
 &emsp;&emsp;MemberDeclarationListSelection
 
 ### Implements
