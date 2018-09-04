@@ -675,7 +675,7 @@ namespace Roslynator.Documentation
                 }
 
                 WriteIndentation(depth);
-                WriteTypeSymbol(typeSymbol, includeContainingNamespace: Options.IncludeContainingNamespace);
+                WriteTypeSymbol(typeSymbol, includeContainingNamespace: false);
                 WriteLine();
             }
             else

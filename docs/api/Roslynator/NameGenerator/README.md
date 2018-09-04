@@ -19,7 +19,7 @@ public abstract class NameGenerator
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.NameGenerator
+&emsp;NameGenerator
 
 ## Constructors
 

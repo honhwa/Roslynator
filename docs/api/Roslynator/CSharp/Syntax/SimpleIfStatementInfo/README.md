@@ -21,7 +21,7 @@ public readonly struct SimpleIfStatementInfo : System.IEquatable<SimpleIfStateme
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.SimpleIfStatementInfo
+&emsp;&emsp;SimpleIfStatementInfo
 
 ### Implements
 

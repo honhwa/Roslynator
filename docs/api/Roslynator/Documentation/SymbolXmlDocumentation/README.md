@@ -15,7 +15,7 @@ public class SymbolXmlDocumentation
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.Documentation\.SymbolXmlDocumentation
+&emsp;SymbolXmlDocumentation
 
 ## Properties
 

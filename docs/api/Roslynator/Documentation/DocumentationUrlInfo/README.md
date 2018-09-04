@@ -16,7 +16,7 @@ public readonly struct DocumentationUrlInfo : System.IEquatable<DocumentationUrl
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.Documentation\.DocumentationUrlInfo
+&emsp;&emsp;DocumentationUrlInfo
 
 ### Implements
 

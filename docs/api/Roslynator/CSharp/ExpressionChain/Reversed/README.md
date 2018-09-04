@@ -21,7 +21,7 @@ public readonly struct ExpressionChain.Reversed : System.IEquatable<ExpressionCh
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.ExpressionChain\.Reversed
+&emsp;&emsp;ExpressionChain\.Reversed
 
 ### Implements
 

@@ -20,7 +20,7 @@ public readonly struct ConditionalExpressionInfo : System.IEquatable<Conditional
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.ConditionalExpressionInfo
+&emsp;&emsp;ConditionalExpressionInfo
 
 ### Implements
 

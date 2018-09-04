@@ -21,7 +21,7 @@ public readonly struct IfStatementCascade : System.IEquatable<IfStatementCascade
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.IfStatementCascade
+&emsp;&emsp;IfStatementCascade
 
 ### Implements
 

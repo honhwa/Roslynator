@@ -20,7 +20,7 @@ public readonly struct AsExpressionInfo : System.IEquatable<AsExpressionInfo>
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.AsExpressionInfo
+&emsp;&emsp;AsExpressionInfo
 
 ### Implements
 

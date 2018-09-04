@@ -15,7 +15,7 @@ public class DeclarationListOptions
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.Documentation\.DeclarationListOptions
+&emsp;DeclarationListOptions
 
 ## Constructors
 

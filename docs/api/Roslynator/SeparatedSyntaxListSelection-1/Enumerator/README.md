@@ -16,7 +16,7 @@ public struct SeparatedSyntaxListSelection<TNode>.Enumerator
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.SeparatedSyntaxListSelection\<TNode>\.Enumerator
+&emsp;&emsp;SeparatedSyntaxListSelection\<TNode>\.Enumerator
 
 ## Properties
 

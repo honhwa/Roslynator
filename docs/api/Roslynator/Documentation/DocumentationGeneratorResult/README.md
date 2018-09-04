@@ -16,7 +16,7 @@ public readonly struct DocumentationGeneratorResult : System.IEquatable<Document
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.Documentation\.DocumentationGeneratorResult
+&emsp;&emsp;DocumentationGeneratorResult
 
 ### Implements
 

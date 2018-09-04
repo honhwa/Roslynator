@@ -20,7 +20,7 @@ public readonly struct SimpleAssignmentExpressionInfo : System.IEquatable<Simple
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.SimpleAssignmentExpressionInfo
+&emsp;&emsp;SimpleAssignmentExpressionInfo
 
 ### Implements
 

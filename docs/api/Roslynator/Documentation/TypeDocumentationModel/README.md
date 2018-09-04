@@ -15,7 +15,7 @@ public sealed class TypeDocumentationModel : System.IEquatable<TypeDocumentation
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.Documentation\.TypeDocumentationModel
+&emsp;TypeDocumentationModel
 
 ### Implements
 

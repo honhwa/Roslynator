@@ -18,7 +18,7 @@ public enum SymbolDisplayTypeDeclarationOptions
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
 &emsp;&emsp;System\.[Enum](https://docs.microsoft.com/en-us/dotnet/api/system.enum)\
-&emsp;&emsp;&emsp;Roslynator\.Documentation\.SymbolDisplayTypeDeclarationOptions
+&emsp;&emsp;&emsp;SymbolDisplayTypeDeclarationOptions
 
 ### Attributes
 

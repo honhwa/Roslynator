@@ -15,7 +15,7 @@ public abstract class DocumentationWriter : System.IDisposable
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.Documentation\.DocumentationWriter
+&emsp;DocumentationWriter
 
 ### Derived
 

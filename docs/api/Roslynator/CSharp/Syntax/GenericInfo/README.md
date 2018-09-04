@@ -20,7 +20,7 @@ public readonly struct GenericInfo : System.IEquatable<GenericInfo>
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.GenericInfo
+&emsp;&emsp;GenericInfo
 
 ### Implements
 

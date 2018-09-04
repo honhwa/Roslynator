@@ -20,7 +20,7 @@ public sealed class StatementListSelection : Roslynator.SyntaxListSelection<Micr
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;Roslynator\.[SyntaxListSelection\<TNode>](../../SyntaxListSelection-1/README.md#_top)\
-&emsp;&emsp;Roslynator\.CSharp\.StatementListSelection
+&emsp;&emsp;StatementListSelection
 
 ### Implements
 

@@ -21,7 +21,7 @@ public readonly struct ExpressionChain : System.IEquatable<ExpressionChain>,
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.ExpressionChain
+&emsp;&emsp;ExpressionChain
 
 ### Implements
 

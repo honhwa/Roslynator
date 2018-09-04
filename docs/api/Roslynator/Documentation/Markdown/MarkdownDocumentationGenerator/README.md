@@ -16,7 +16,7 @@ public class MarkdownDocumentationGenerator : Roslynator.Documentation.Documenta
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;Roslynator\.Documentation\.[DocumentationGenerator](../../DocumentationGenerator/README.md#_top)\
-&emsp;&emsp;Roslynator\.Documentation\.Markdown\.MarkdownDocumentationGenerator
+&emsp;&emsp;MarkdownDocumentationGenerator
 
 ## Constructors
 

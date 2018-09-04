@@ -16,7 +16,7 @@ public struct TextLineCollectionSelection.Enumerator
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.Text\.TextLineCollectionSelection\.Enumerator
+&emsp;&emsp;TextLineCollectionSelection\.Enumerator
 
 ## Properties
 

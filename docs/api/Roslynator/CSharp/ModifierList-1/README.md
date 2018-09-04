@@ -23,7 +23,7 @@ public abstract class ModifierList<TNode> where TNode : Microsoft.CodeAnalysis.S
 ### Inheritance
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
-&emsp;Roslynator\.CSharp\.ModifierList\<TNode>
+&emsp;ModifierList\<TNode>
 
 ## Properties
 

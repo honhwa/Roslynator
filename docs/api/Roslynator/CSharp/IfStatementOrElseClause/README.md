@@ -20,7 +20,7 @@ public readonly struct IfStatementOrElseClause : System.IEquatable<IfStatementOr
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.IfStatementOrElseClause
+&emsp;&emsp;IfStatementOrElseClause
 
 ### Implements
 

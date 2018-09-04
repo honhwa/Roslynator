@@ -16,7 +16,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;Roslynator\.Documentation\.[DocumentationWriter](../../DocumentationWriter/README.md#_top)\
-&emsp;&emsp;Roslynator\.Documentation\.Markdown\.MarkdownDocumentationWriter
+&emsp;&emsp;MarkdownDocumentationWriter
 
 ### Implements
 

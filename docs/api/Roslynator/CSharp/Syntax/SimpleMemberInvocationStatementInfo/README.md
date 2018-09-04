@@ -20,7 +20,7 @@ public readonly struct SimpleMemberInvocationStatementInfo : System.IEquatable<S
 
 System\.[Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\
 &emsp;System\.[ValueType](https://docs.microsoft.com/en-us/dotnet/api/system.valuetype)\
-&emsp;&emsp;Roslynator\.CSharp\.Syntax\.SimpleMemberInvocationStatementInfo
+&emsp;&emsp;SimpleMemberInvocationStatementInfo
 
 ### Implements
 
