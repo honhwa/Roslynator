@@ -129,8 +129,8 @@ namespace Roslynator.Documentation
             if ((Options.IgnoredParts & DeclarationListParts.AssemblyAttributes) == 0)
             {
                 foreach (IAssemblySymbol assembly in documentationModel.Assemblies
-               .OrderBy(f => f.Name)
-               .ThenBy(f => f.Identity.Version))
+                    .OrderBy(f => f.Name)
+                    .ThenBy(f => f.Identity.Version))
                 {
                     AppendAssemblyAttributes(assembly);
                 }
