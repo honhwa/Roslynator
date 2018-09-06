@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Josef Pihrt. All rights reserved. Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
@@ -8,8 +9,10 @@ using Microsoft.CodeAnalysis;
 
 namespace Roslynator.Documentation
 {
-    public class DocumentationModel
+    public sealed class DocumentationModel
     {
+        private readonly Func<ISymbol, bool> _isVisible;
+
         private readonly Dictionary<ISymbol, SymbolDocumentationData> _symbolData;
 
         private readonly Dictionary<IAssemblySymbol, XmlDocumentation> _xmlDocumentations;
@@ -21,16 +24,34 @@ namespace Roslynator.Documentation
         public DocumentationModel(
             Compilation compilation,
             IEnumerable<IAssemblySymbol> assemblies,
+            DocumentationVisibility visibility = DocumentationVisibility.Publicly,
             IEnumerable<string> additionalXmlDocumentationPaths = null)
         {
             Compilation = compilation;
             Assemblies = ImmutableArray.CreateRange(assemblies);
+            Visibility = visibility;
 
+            _isVisible = GetIsVisible();
             _symbolData = new Dictionary<ISymbol, SymbolDocumentationData>();
             _xmlDocumentations = new Dictionary<IAssemblySymbol, XmlDocumentation>();
 
             if (additionalXmlDocumentationPaths != null)
                 _additionalXmlDocumentationPaths = additionalXmlDocumentationPaths.ToImmutableArray();
+
+            Func<ISymbol, bool> GetIsVisible()
+            {
+                switch (visibility)
+                {
+                    case DocumentationVisibility.Publicly:
+                        return f => f.IsPubliclyVisible();
+                    case DocumentationVisibility.PubliclyOrInternally:
+                        return f => f.IsPubliclyOrInternallyVisible();
+                    case DocumentationVisibility.All:
+                        return _ => true;
+                    default:
+                        throw new ArgumentException($"Unknown enum value '{visibility}'.", nameof(visibility));
+                }
+            }
         }
 
         public Compilation Compilation { get; }
@@ -56,10 +77,9 @@ namespace Roslynator.Documentation
             get { return Assemblies.SelectMany(f => f.GetTypes(typeSymbol => IsVisible(typeSymbol))); }
         }
 
-        public virtual bool IsVisible(ISymbol symbol)
-        {
-            return symbol.IsPubliclyVisible();
-        }
+        public DocumentationVisibility Visibility { get; }
+
+        public bool IsVisible(ISymbol symbol) => _isVisible(symbol);
 
         public IEnumerable<IMethodSymbol> GetExtensionMethods()
         {

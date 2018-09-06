@@ -1,4 +1,4 @@
-# DocumentationModel\(Compilation, IEnumerable\<IAssemblySymbol>, IEnumerable\<String>\) Constructor
+# DocumentationModel\(Compilation, IEnumerable\<IAssemblySymbol>, DocumentationVisibility, IEnumerable\<String>\) Constructor
 
 [Home](../../../../README.md#_top)
 
@@ -7,7 +7,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public DocumentationModel(Compilation compilation, IEnumerable<IAssemblySymbol> assemblies, IEnumerable<string> additionalXmlDocumentationPaths = null)
+public DocumentationModel(Compilation compilation, IEnumerable<IAssemblySymbol> assemblies, DocumentationVisibility visibility = Publicly, IEnumerable<string> additionalXmlDocumentationPaths = null)
 ```
 
 ### Parameters
@@ -15,5 +15,7 @@ public DocumentationModel(Compilation compilation, IEnumerable<IAssemblySymbol> 
 **compilation**
 
 **assemblies**
+
+**visibility**
 
 **additionalXmlDocumentationPaths**

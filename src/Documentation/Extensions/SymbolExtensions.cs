@@ -12,6 +12,39 @@ namespace Roslynator.Documentation
 {
     internal static class SymbolExtensions
     {
+        public static bool HidesBaseSymbol(this ISymbol symbol)
+        {
+            if (!symbol.IsOverride)
+            {
+                switch (symbol.Kind)
+                {
+                    case SymbolKind.Event:
+                    case SymbolKind.Field:
+                    case SymbolKind.Method:
+                    case SymbolKind.Property:
+                    case SymbolKind.NamedType:
+                        {
+                            INamedTypeSymbol baseType = symbol.ContainingType?.BaseType;
+
+                            while (baseType != null)
+                            {
+                                foreach (ISymbol member in baseType.GetMembers(symbol.Name))
+                                {
+                                    if (MemberSymbolEqualityComparer.Instance.Equals(symbol, member))
+                                        return true;
+                                }
+
+                                baseType = baseType.BaseType;
+                            }
+
+                            break;
+                        }
+                }
+            }
+
+            return false;
+        }
+
         //XTODO: move to core
         public static ImmutableArray<INamedTypeSymbol> GetTypes(this IAssemblySymbol assemblySymbol, Func<INamedTypeSymbol, bool> predicate = null)
         {
@@ -64,7 +97,7 @@ namespace Roslynator.Documentation
 
             ImmutableArray<ISymbol> GetMembersIncludingInherited()
             {
-                var symbols = new HashSet<ISymbol>(MemberDeclarationEqualityComparer.Instance);
+                var symbols = new HashSet<ISymbol>(MemberSymbolEqualityComparer.Instance);
 
                 HashSet<ISymbol> overriddenSymbols = null;
 
@@ -89,6 +122,7 @@ namespace Roslynator.Documentation
 
                     foreach (ISymbol symbol in baseType.GetMembers())
                     {
+                        //TODO: DocumentationModel.Visibility?
                         if (!symbol.IsStatic
                             && symbol.DeclaredAccessibility != Accessibility.Private
                             && (predicate == null || predicate(symbol))
@@ -114,7 +148,7 @@ namespace Roslynator.Documentation
 
             ImmutableArray<ISymbol> GetInterfaceMembersIncludingInherited()
             {
-                var symbols = new HashSet<ISymbol>(MemberDeclarationEqualityComparer.Instance);
+                var symbols = new HashSet<ISymbol>(MemberSymbolEqualityComparer.Instance);
 
                 foreach (ISymbol symbol in GetMembers(typeSymbol, predicate: predicate))
                     symbols.Add(symbol);

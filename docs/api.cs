@@ -2136,15 +2136,16 @@ namespace Roslynator.Documentation
         public DocumentationGeneratorResult GenerateRoot(string heading, bool addExtensionsLink = false);
     }
 
-    public class DocumentationModel
+    public sealed class DocumentationModel
     {
-        public DocumentationModel(Compilation compilation, IEnumerable<IAssemblySymbol> assemblies, IEnumerable<string> additionalXmlDocumentationPaths = null);
+        public DocumentationModel(Compilation compilation, IEnumerable<IAssemblySymbol> assemblies, DocumentationVisibility visibility = DocumentationVisibility.Publicly, IEnumerable<string> additionalXmlDocumentationPaths = null);
 
         public ImmutableArray<IAssemblySymbol> Assemblies { get; }
         public Compilation Compilation { get; }
         public string Language { get; }
         public IEnumerable<MetadataReference> References { get; }
         public IEnumerable<INamedTypeSymbol> Types { get; }
+        public DocumentationVisibility Visibility { get; }
 
         public IEnumerable<INamedTypeSymbol> GetExtendedExternalTypes();
         public IEnumerable<IMethodSymbol> GetExtensionMethods();
@@ -2152,7 +2153,7 @@ namespace Roslynator.Documentation
         public TypeDocumentationModel GetTypeModel(INamedTypeSymbol typeSymbol);
         public SymbolXmlDocumentation GetXmlDocumentation(ISymbol symbol, string preferredCultureName = null);
         public bool IsExternal(ISymbol symbol);
-        public virtual bool IsVisible(ISymbol symbol);
+        public bool IsVisible(ISymbol symbol);
     }
 
     public class DocumentationOptions
@@ -2523,6 +2524,13 @@ namespace Roslynator.Documentation
     {
         Local = 0,
         External = 1,
+    }
+
+    public enum DocumentationVisibility
+    {
+        Publicly = 0,
+        PubliclyOrInternally = 1,
+        All = 2,
     }
 
     public enum InheritanceStyle

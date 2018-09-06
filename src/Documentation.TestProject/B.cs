@@ -2,7 +2,7 @@
 
 using System;
 
-#pragma warning disable CS1591, CA1051, CA1822
+#pragma warning disable CS1591, CA1051, CA1822, CA1711
 
 namespace Roslynator.Documentation.Test
 {
@@ -23,6 +23,26 @@ namespace Roslynator.Documentation.Test
             [FooAttribute]
             add { }
             remove { }
+        }
+
+        public class FooClass
+        {
+        }
+
+        public struct FooStruct
+        {
+        }
+
+        public interface IFoo
+        {
+            void M();
+        }
+
+        public delegate void FooDelegate();
+
+        public enum FooEnum
+        {
+            None
         }
     }
 }

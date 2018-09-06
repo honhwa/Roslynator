@@ -552,6 +552,20 @@ namespace Roslynator
             return true;
         }
 
+        internal static bool IsPubliclyOrInternallyVisible(this ISymbol symbol)
+        {
+            do
+            {
+                if (symbol.DeclaredAccessibility == Accessibility.Private)
+                    return false;
+
+                symbol = symbol.ContainingType;
+
+            } while (symbol != null);
+
+            return true;
+        }
+
         internal static bool HasMetadataName(this ISymbol symbol, in MetadataName metadataName)
         {
             return metadataName.Equals(symbol);

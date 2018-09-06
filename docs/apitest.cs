@@ -52,22 +52,64 @@ namespace Roslynator.Documentation.Test
         public string Property { [Foo] [Foo] get; }
 
         public string Method([Foo] [Foo] string s1, [Foo] string s2, [Foo] string s3);
+
+        public class FooClass
+        {
+            public FooClass();
+        }
+
+        public struct FooStruct
+        {
+        }
+
+        public interface IFoo
+        {
+            void M();
+        }
+
+        public enum FooEnum
+        {
+            None = 0,
+        }
+
+        public delegate void FooDelegate();
     }
 
     public class C : B
     {
-        public string Field;
+        new public string Field;
 
         public C();
 
-        public event EventHandler Event;
+        new public event EventHandler Event;
 
         public int this[int index] { get; }
 
-        public string Property { get; }
+        new public string Property { get; }
 
         public string Method();
-        public string ToString();
+        new public string ToString();
+
+        new public class FooClass
+        {
+            public FooClass();
+        }
+
+        new public struct FooStruct
+        {
+        }
+
+        new public interface IFoo
+        {
+            void M();
+        }
+
+        new public enum FooEnum
+        {
+            None = 0,
+        }
+
+        new public delegate void FooDelegate();
     }
 
     [Obsolete("Foo is obsolete.")]
@@ -87,6 +129,19 @@ namespace Roslynator.Documentation.Test
         public void Bar<T, T2>(string value, string value2);
         public void Bar2();
         public void WriteString(char* pSrcStart, char* pSrcEnd);
+    }
+
+    public class Foo<T>
+    {
+        public T Field;
+
+        public Foo();
+
+        public T this[T p] { get; }
+
+        public T Property { get; }
+
+        public T Method(T p);
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
@@ -138,6 +193,20 @@ namespace Roslynator.Documentation.Test
 
     public static class FooExtensions
     {
+    }
+
+    public class FooOfString : Foo<string>
+    {
+        new public string Field;
+
+        public FooOfString();
+
+        new public string this[string p] { get; }
+
+        new public string Property { get; }
+
+        new public string Method(string p);
+        new public string ToString();
     }
 
     public struct FooStruct

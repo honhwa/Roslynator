@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public class DocumentationModel
+public sealed class DocumentationModel
 ```
 
 ### Inheritance
@@ -20,7 +20,7 @@ public class DocumentationModel
 
 | Constructor | Summary |
 | ----------- | ------- |
-| [DocumentationModel(Compilation, IEnumerable\<IAssemblySymbol>, IEnumerable\<String>)](-ctor/README.md#_top) | |
+| [DocumentationModel(Compilation, IEnumerable\<IAssemblySymbol>, DocumentationVisibility, IEnumerable\<String>)](-ctor/README.md#_top) | |
 
 ## Properties
 
@@ -31,6 +31,7 @@ public class DocumentationModel
 | [Language](Language/README.md#_top) | |
 | [References](References/README.md#_top) | |
 | [Types](Types/README.md#_top) | |
+| [Visibility](Visibility/README.md#_top) | |
 
 ## Methods
 

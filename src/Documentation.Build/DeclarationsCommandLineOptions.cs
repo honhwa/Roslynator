@@ -71,5 +71,8 @@ namespace Roslynator.Documentation
 
         [Option(longName: "omit-attribute-arguments")]
         public bool OmitAttributeArguments { get; set; }
+
+        [Option(longName: "visibility", Default = nameof(DocumentationVisibility.Publicly))]
+        public string Visibility { get; set; }
     }
 }

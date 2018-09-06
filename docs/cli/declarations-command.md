@@ -27,6 +27,7 @@ declarations
 [--no-new-line-before-open-brace]
 [--no-precedence-for-system]
 [--omit-attribute-arguments]
+[--visibility]
 ```
 
 ## Options
@@ -117,6 +118,10 @@ Indicates whether symbols contained in `System` namespace should be ordered as a
 **`[--omit-attribute-arguments]`**
 
 Indicates whether attribute arguments should be omitted when displaying an attribute.
+
+**`[--visibility]`** `{publicly|publicly-or-internally|all}`
+
+Defines a visibility of a type or a member. Default value is `publicly`.
 
 ## See Also
 

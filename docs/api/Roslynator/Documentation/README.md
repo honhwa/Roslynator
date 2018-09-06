@@ -41,6 +41,7 @@
 | [DocumentationDepth](DocumentationDepth/README.md#_top) | |
 | [DocumentationFileKind](DocumentationFileKind/README.md#_top) | |
 | [DocumentationUrlKind](DocumentationUrlKind/README.md#_top) | |
+| [DocumentationVisibility](DocumentationVisibility/README.md#_top) | |
 | [InheritanceStyle](InheritanceStyle/README.md#_top) | |
 | [MemberDeclarationKind](MemberDeclarationKind/README.md#_top) | |
 | [MemberDocumentationParts](MemberDocumentationParts/README.md#_top) | |

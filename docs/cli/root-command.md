@@ -19,6 +19,7 @@ doc
 [--no-precedence-for-system]
 [--omit-containing-namespace]
 [--root-directory-url]
+[--visibility]
 ```
 
 ## Options
@@ -77,6 +78,10 @@ Indicates whether a containing namespace should be omitted when displaying type 
 **`[--root-directory-url]`**
 
 Defines a relative url to the documentation root directory.
+
+**`[--visibility]`** `{publicly|publicly-or-internally|all}`
+
+Defines a visibility of a type or a member. Default value is `publicly`.
 
 ## See Also
 

@@ -9,7 +9,7 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public virtual bool IsVisible(ISymbol symbol)
+public bool IsVisible(ISymbol symbol)
 ```
 
 ### Parameters

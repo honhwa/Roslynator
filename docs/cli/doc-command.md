@@ -37,6 +37,7 @@ doc
 [--omit-member-implements]
 [--omit-member-overrides]
 [--preferred-culture]
+[--visibility]
 ```
 
 ## Options
@@ -169,6 +170,10 @@ Indicates whether an overridden member should be omitted.
 **`[--preferred-culture]`**
 
 Defines culture that should be used when searching for xml documentation files.
+
+**`[--visibility]`** `{publicly|publicly-or-internally|all}`
+
+Defines a visibility of a type or a member. Default value is `publicly`.
 
 ## See Also
 

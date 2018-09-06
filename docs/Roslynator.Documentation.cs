@@ -128,11 +128,12 @@ namespace Roslynator
         bool addExtensionsLink = false);
     }
 
-    public class DocumentationModel
+    public sealed class DocumentationModel
     {
       public DocumentationModel(
         Compilation compilation,
         IEnumerable<IAssemblySymbol> assemblies,
+        DocumentationVisibility visibility = DocumentationVisibility.Publicly,
         IEnumerable<string> additionalXmlDocumentationPaths = null);
 
       public ImmutableArray<IAssemblySymbol> Assemblies { get; }
@@ -144,6 +145,8 @@ namespace Roslynator
       public IEnumerable<MetadataReference> References { get; }
 
       public IEnumerable<INamedTypeSymbol> Types { get; }
+
+      public DocumentationVisibility Visibility { get; }
 
       public IEnumerable<INamedTypeSymbol> GetExtendedExternalTypes();
 
@@ -159,7 +162,7 @@ namespace Roslynator
 
       public bool IsExternal(ISymbol symbol);
 
-      public virtual bool IsVisible(ISymbol symbol);
+      public bool IsVisible(ISymbol symbol);
     }
 
     public class DocumentationOptions
@@ -876,6 +879,13 @@ namespace Roslynator
     {
       Local = 0,
       External = 1,
+    }
+
+    public enum DocumentationVisibility
+    {
+      Publicly = 0,
+      PubliclyOrInternally = 1,
+      All = 2,
     }
 
     public enum InheritanceStyle

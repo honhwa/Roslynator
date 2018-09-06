@@ -98,5 +98,8 @@ namespace Roslynator.Documentation
 
         [Option(longName: "preferred-culture")]
         public string PreferredCulture { get; set; }
+
+        [Option(longName: "visibility", Default = nameof(DocumentationVisibility.Publicly))]
+        public string Visibility { get; set; }
     }
 }

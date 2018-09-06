@@ -50,7 +50,10 @@ namespace Roslynator.Documentation
             if (!TryGetOmitContainingNamespaceParts(options.OmitContainingNamespaceParts, out OmitContainingNamespaceParts omitContainingNamespaceParts))
                 return 1;
 
-            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, options.AdditionalXmlDocumentation);
+            if (!TryGetVisibility(options.Visibility, out DocumentationVisibility visibility))
+                return 1;
+
+            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, visibility, options.AdditionalXmlDocumentation);
 
             if (documentationModel == null)
                 return 1;
@@ -122,7 +125,10 @@ namespace Roslynator.Documentation
             if (!TryGetIgnoredDeclarationListParts(options.IgnoredParts, out DeclarationListParts ignoredParts))
                 return 1;
 
-            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, options.AdditionalXmlDocumentation);
+            if (!TryGetVisibility(options.Visibility, out DocumentationVisibility visibility))
+                return 1;
+
+            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, visibility, options.AdditionalXmlDocumentation);
 
             if (documentationModel == null)
                 return 1;
@@ -170,7 +176,10 @@ namespace Roslynator.Documentation
 
         private static int ExecuteRoot(RootCommandLineOptions options)
         {
-            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies);
+            if (!TryGetVisibility(options.Visibility, out DocumentationVisibility visibility))
+                return 1;
+
+            DocumentationModel documentationModel = CreateDocumentationModel(options.References, options.Assemblies, visibility);
 
             if (documentationModel == null)
                 return 1;
@@ -214,7 +223,7 @@ namespace Roslynator.Documentation
             return 0;
         }
 
-        private static DocumentationModel CreateDocumentationModel(string assemblyReferencesValue, IEnumerable<string> assemblies, IEnumerable<string> additionalXmlDocumentationPaths = null)
+        private static DocumentationModel CreateDocumentationModel(string assemblyReferencesValue, IEnumerable<string> assemblies, DocumentationVisibility visibility, IEnumerable<string> additionalXmlDocumentationPaths = null)
         {
             IEnumerable<string> assemblyReferences = GetAssemblyReferences(assemblyReferencesValue);
 
@@ -255,6 +264,7 @@ namespace Roslynator.Documentation
                     TryGetReference(references, assemblyPath, out PortableExecutableReference reference);
                     return (IAssemblySymbol)compilation.GetAssemblyOrModuleSymbol(reference);
                 }),
+                visibility: visibility,
                 additionalXmlDocumentationPaths: additionalXmlDocumentationPaths);
         }
 
@@ -438,6 +448,17 @@ namespace Roslynator.Documentation
                     Console.WriteLine($"Unknown omit containing namespace part '{value}'.");
                     return false;
                 }
+            }
+
+            return true;
+        }
+
+        private static bool TryGetVisibility(string value, out DocumentationVisibility visibility)
+        {
+            if (!Enum.TryParse(value.Replace("-", ""), ignoreCase: true, out visibility))
+            {
+                Console.WriteLine($"Unknown visibility '{value}'.");
+                return false;
             }
 
             return true;

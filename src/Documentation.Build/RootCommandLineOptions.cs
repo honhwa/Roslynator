@@ -44,5 +44,8 @@ namespace Roslynator.Documentation
 
         [Option(longName: "root-directory-url")]
         public string RootDirectoryUrl { get; set; }
+
+        [Option(longName: "visibility", Default = nameof(DocumentationVisibility.Publicly))]
+        public string Visibility { get; set; }
     }
 }

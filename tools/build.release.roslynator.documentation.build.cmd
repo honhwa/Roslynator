@@ -17,8 +17,5 @@ dotnet pack -c Release --no-build -v normal "..\src\Documentation.Build\Document
 copy "..\src\Documentation\bin\Release\Roslynator.Documentation.0.1.0-beta.nupkg" "E:\Dokumenty\LocalNuGet"
 copy "..\src\Documentation.Build\bin\Release\Roslynator.Documentation.Build.0.1.0-beta.nupkg" "E:\Dokumenty\LocalNuGet"
 
-copy "E:\Dokumenty\Visual Studio 2017\Projects\Roslynator\src\Documentation.Build\bin\Release\publish\net46" "C:\Users\Jojo\.nuget\packages\roslynator.documentation.build\0.1.0-beta\tools\net46" /Y
-copy "E:\Dokumenty\Visual Studio 2017\Projects\Roslynator\src\Documentation.Build\bin\Release\publish\netcoreapp1.0" "C:\Users\Jojo\.nuget\packages\roslynator.documentation.build\0.1.0-beta\tools\netcoreapp1.0" /Y
-
 echo OK
 pause
