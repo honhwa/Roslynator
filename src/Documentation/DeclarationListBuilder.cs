@@ -281,7 +281,6 @@ namespace Roslynator.Documentation
                             formatParameters: Options.FormatParameters,
                             splitAttributes: Options.SplitAttributes,
                             includeAttributeArguments: Options.IncludeAttributeArguments,
-                            displayNewKeyword: true,
                             omitIEnumerable: Options.OmitIEnumerable));
 
                         switch (typeKind)
@@ -432,12 +431,6 @@ namespace Roslynator.Documentation
 
                                 parts = builder.ToImmutableArray();
                             }
-                        }
-
-                        if (en.Current.HidesBaseSymbol())
-                        {
-                            Append(SymbolDisplayPartFactory.Keyword("new"));
-                            Append(SymbolDisplayPartFactory.Space());
                         }
 
                         Append(parts);

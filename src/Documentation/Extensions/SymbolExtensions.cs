@@ -122,9 +122,7 @@ namespace Roslynator.Documentation
 
                     foreach (ISymbol symbol in baseType.GetMembers())
                     {
-                        //TODO: DocumentationModel.Visibility?
                         if (!symbol.IsStatic
-                            && symbol.DeclaredAccessibility != Accessibility.Private
                             && (predicate == null || predicate(symbol))
                             && (symbol.DeclaredAccessibility != Accessibility.Internal || areInternalsVisible))
                         {

@@ -77,39 +77,39 @@ namespace Roslynator.Documentation.Test
 
     public class C : B
     {
-        new public string Field;
+        public string Field;
 
         public C();
 
-        new public event EventHandler Event;
+        public event EventHandler Event;
 
         public int this[int index] { get; }
 
-        new public string Property { get; }
+        public string Property { get; }
 
         public string Method();
-        new public string ToString();
+        public string ToString();
 
-        new public class FooClass
+        public class FooClass
         {
             public FooClass();
         }
 
-        new public struct FooStruct
+        public struct FooStruct
         {
         }
 
-        new public interface IFoo
+        public interface IFoo
         {
             void M();
         }
 
-        new public enum FooEnum
+        public enum FooEnum
         {
             None = 0,
         }
 
-        new public delegate void FooDelegate();
+        public delegate void FooDelegate();
     }
 
     [Obsolete("Foo is obsolete.")]
@@ -197,16 +197,16 @@ namespace Roslynator.Documentation.Test
 
     public class FooOfString : Foo<string>
     {
-        new public string Field;
+        public string Field;
 
         public FooOfString();
 
-        new public string this[string p] { get; }
+        public string this[string p] { get; }
 
-        new public string Property { get; }
+        public string Property { get; }
 
-        new public string Method(string p);
-        new public string ToString();
+        public string Method(string p);
+        public string ToString();
     }
 
     public struct FooStruct

@@ -12,7 +12,6 @@ namespace Roslynator.Documentation
 {
     internal static class SymbolDeclarationBuilder
     {
-        //TODO: displayNewKeyword
         public static ImmutableArray<SymbolDisplayPart> GetDisplayParts(
             ISymbol symbol,
             SymbolDisplayFormat format,
@@ -23,7 +22,6 @@ namespace Roslynator.Documentation
             bool formatParameters = false,
             bool splitAttributes = true,
             bool includeAttributeArguments = false,
-            bool displayNewKeyword = false,
             bool omitIEnumerable = false,
             bool useNameOnlyIfPossible = false)
         {
@@ -91,27 +89,19 @@ namespace Roslynator.Documentation
                 }
             }
 
-            //TODO: del
-            //if (!hasAttributes
-            //    && baseListCount == 0
-            //    && constraintCount == 0
-            //    && (!formatParameters || symbol.GetParameters().Length <= 1))
-            //{
-            //    return parts;
-            //}
+            if (!hasAttributes
+                && baseListCount == 0
+                && constraintCount == 0
+                && (!formatParameters || symbol.GetParameters().Length <= 1))
+            {
+                return parts;
+            }
 
             INamespaceSymbol containingNamespace = (useNameOnlyIfPossible) ? symbol.ContainingNamespace : null;
 
             ImmutableArray<SymbolDisplayPart>.Builder builder = ImmutableArray.CreateBuilder<SymbolDisplayPart>(parts.Length);
 
             AddAttributes(builder, attributes, isVisibleAttribute, containingNamespace, splitAttributes: splitAttributes, includeAttributeArguments: includeAttributeArguments);
-
-            if (displayNewKeyword
-                && symbol.HidesBaseSymbol())
-            {
-                builder.AddKeyword("new");
-                builder.AddSpace();
-            }
 
             if (baseListCount > 0)
             {

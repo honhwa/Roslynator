@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 
 namespace Roslynator.Documentation
@@ -21,12 +22,6 @@ namespace Roslynator.Documentation
             if (y == null)
                 return false;
 
-            if (x.Kind != y.Kind)
-                return false;
-
-            if (x.IsStatic != y.IsStatic)
-                return false;
-
             if (!string.Equals(x.Name, y.Name, StringComparison.Ordinal))
                 return false;
 
@@ -35,117 +30,157 @@ namespace Roslynator.Documentation
                 case SymbolKind.Event:
                 case SymbolKind.Field:
                     {
-                        return true;
+                        switch (y.Kind)
+                        {
+                            case SymbolKind.Event:
+                            case SymbolKind.Field:
+                            case SymbolKind.Method:
+                            case SymbolKind.Property:
+                                return true;
+                            default:
+                                return false;
+                        }
                     }
                 case SymbolKind.Method:
                     {
-                        var a = (IMethodSymbol)x;
-                        var b = (IMethodSymbol)y;
+                        switch (y.Kind)
+                        {
+                            case SymbolKind.Event:
+                            case SymbolKind.Field:
+                            case SymbolKind.Property:
+                                {
+                                    return true;
+                                }
+                            case SymbolKind.Method:
+                                {
+                                    var a = (IMethodSymbol)x;
+                                    var b = (IMethodSymbol)y;
 
-                        return a.MethodKind == MethodKind.Ordinary
-                            && b.MethodKind == MethodKind.Ordinary
-                            && a.TypeParameters.Length == b.TypeParameters.Length
-                            && ParameterEqualityComparer.ParametersEqual(a.Parameters, b.Parameters);
+                                    return a.MethodKind == MethodKind.Ordinary
+                                        && b.MethodKind == MethodKind.Ordinary
+                                        && a.TypeParameters.Length == b.TypeParameters.Length
+                                        && ParameterEqualityComparer.ParametersEqual(a.Parameters, b.Parameters);
+                                }
+                            default:
+                                {
+                                    return false;
+                                }
+                        }
                     }
                 case SymbolKind.Property:
                     {
-                        var a = (IPropertySymbol)x;
-                        var b = (IPropertySymbol)y;
+                        switch (y.Kind)
+                        {
+                            case SymbolKind.Event:
+                            case SymbolKind.Field:
+                            case SymbolKind.Method:
+                                {
+                                    return true;
+                                }
+                            case SymbolKind.Property:
+                                {
+                                    var a = (IPropertySymbol)x;
+                                    var b = (IPropertySymbol)y;
 
-                        return a.IsIndexer == b.IsIndexer
-                            && ParameterEqualityComparer.ParametersEqual(a.Parameters, b.Parameters);
+                                    return a.IsIndexer == b.IsIndexer
+                                        && ParameterEqualityComparer.ParametersEqual(a.Parameters, b.Parameters);
+                                }
+                            default:
+                                {
+                                    return false;
+                                }
+                        }
                     }
                 case SymbolKind.NamedType:
                     {
+                        if (y.Kind != SymbolKind.NamedType)
+                            return false;
+
                         var a = (INamedTypeSymbol)x;
                         var b = (INamedTypeSymbol)y;
 
-                        if (a.TypeKind != b.TypeKind)
+                        if (a.TypeParameters.Length != b.TypeParameters.Length)
                             return false;
 
                         switch (a.TypeKind)
                         {
                             case TypeKind.Class:
+                            case TypeKind.Delegate:
+                            case TypeKind.Enum:
                             case TypeKind.Interface:
                             case TypeKind.Struct:
                                 {
-                                    return a.TypeParameters.Length == b.TypeParameters.Length;
-                                }
-                            case TypeKind.Delegate:
-                                {
-                                    return a.TypeParameters.Length == b.TypeParameters.Length
-                                        && ParameterEqualityComparer.ParametersEqual(a.DelegateInvokeMethod.Parameters, b.DelegateInvokeMethod.Parameters);
-                                }
-                            case TypeKind.Enum:
-                                {
-                                    return true;
+                                    switch (b.TypeKind)
+                                    {
+                                        case TypeKind.Class:
+                                        case TypeKind.Delegate:
+                                        case TypeKind.Enum:
+                                        case TypeKind.Interface:
+                                        case TypeKind.Struct:
+                                            return true;
+                                        default:
+                                            return false;
+                                    }
                                 }
                             default:
                                 {
-                                    throw new InvalidOperationException($"Unknown type kind '{a.TypeKind.ToString()}'.");
+                                    return false;
                                 }
                         }
                     }
                 default:
                     {
-                        throw new InvalidOperationException($"Unknown symbol kind '{x.Kind.ToString()}'.");
+                        return false;
                     }
             }
         }
 
         public override int GetHashCode(ISymbol obj)
         {
-            SymbolKind kind = obj.Kind;
+            return StringComparer.Ordinal.GetHashCode(obj.Name);
+        }
 
-            if (kind == SymbolKind.NamedType)
+        private class ParameterEqualityComparer : EqualityComparer<IParameterSymbol>
+        {
+            public static ParameterEqualityComparer Instance { get; } = new ParameterEqualityComparer();
+
+            public static bool ParametersEqual(ImmutableArray<IParameterSymbol> parameters1, ImmutableArray<IParameterSymbol> parameters2)
             {
-                var namedType = (INamedTypeSymbol)obj;
+                int length = parameters1.Length;
 
-                TypeKind typeKind = namedType.TypeKind;
+                if (length != parameters2.Length)
+                    return false;
 
-                int hashCode = Hash.Combine(StringComparer.Ordinal.GetHashCode(namedType.Name), (int)typeKind);
-
-                switch (typeKind)
+                for (int i = 0; i < length; i++)
                 {
-                    case TypeKind.Class:
-                    case TypeKind.Interface:
-                    case TypeKind.Struct:
-                        {
-                            return Hash.Combine(namedType.TypeParameters.Length, hashCode);
-                        }
-                    case TypeKind.Delegate:
-                        {
-                            return Hash.Combine(namedType.TypeParameters.Length,
-                                Hash.Combine(Hash.CombineValues(namedType.DelegateInvokeMethod.Parameters, ParameterEqualityComparer.Instance), hashCode));
-                        }
+                    if (!Instance.Equals(parameters1[i], parameters2[i]))
+                        return false;
                 }
 
-                return hashCode;
+                return true;
             }
-            else
+
+            public override bool Equals(IParameterSymbol x, IParameterSymbol y)
             {
-                int hashCode = Hash.Combine(StringComparer.Ordinal.GetHashCode(obj.Name), (int)kind);
+                if (object.ReferenceEquals(x, y))
+                    return true;
 
-                switch (kind)
-                {
-                    case SymbolKind.Method:
-                        {
-                            var methodSymbol = (IMethodSymbol)obj;
+                if (x == null)
+                    return false;
 
-                            return Hash.Combine((int)methodSymbol.MethodKind,
-                                Hash.Combine(methodSymbol.TypeParameters.Length,
-                                Hash.Combine(Hash.CombineValues(methodSymbol.Parameters, ParameterEqualityComparer.Instance), hashCode)));
-                        }
-                    case SymbolKind.Property:
-                        {
-                            var propertySymbol = (IPropertySymbol)obj;
+                if (y == null)
+                    return false;
 
-                            return Hash.Combine(propertySymbol.IsIndexer,
-                                Hash.Combine(Hash.CombineValues(propertySymbol.Parameters, ParameterEqualityComparer.Instance), hashCode));
-                        }
-                }
+                return x.RefKind == y.RefKind
+                    && x.Type == y.Type;
+            }
 
-                return hashCode;
+            public override int GetHashCode(IParameterSymbol obj)
+            {
+                if (obj == null)
+                    return 0;
+
+                return Hash.Combine(obj.Type, (int)obj.RefKind);
             }
         }
     }
