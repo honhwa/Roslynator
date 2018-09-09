@@ -264,7 +264,7 @@ namespace Roslynator.CodeGeneration.Markdown
 
                     do
                     {
-                        var title = new object[] { $"src{Path.GetDirectoryName(en.Current).Replace(@"\", "/")}/", Bold(Path.GetFileName(en.Current)) };
+                        string title = Path.GetFileName(en.Current);
 
                         string url = "../../src" + en.Current.Replace(@"\", "/");
 
