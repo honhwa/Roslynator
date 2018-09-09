@@ -170,7 +170,7 @@ namespace Roslynator.CodeGeneration.Markdown
             }
         }
 
-        public static string CreateRefactoringMarkdown(RefactoringDescriptor refactoring)
+        public static string CreateRefactoringMarkdown(RefactoringDescriptor refactoring, IEnumerable<string> filePaths)
         {
             var format = new MarkdownFormat(tableOptions: MarkdownFormat.Default.TableOptions | TableOptions.FormatContent);
 
@@ -186,6 +186,7 @@ namespace Roslynator.CodeGeneration.Markdown
                 Heading3("Usage"),
                 GetRefactoringSamples(refactoring),
                 CreateRemarks(refactoring.Remarks),
+                CreateSourceFiles(filePaths),
                 Links(),
                 Link("full list of refactorings", "Refactorings.md"),
                 NewLine);
@@ -206,7 +207,7 @@ namespace Roslynator.CodeGeneration.Markdown
             }
         }
 
-        public static string CreateAnalyzerMarkdown(AnalyzerDescriptor analyzer)
+        public static string CreateAnalyzerMarkdown(AnalyzerDescriptor analyzer, IEnumerable<string> filePaths)
         {
             var format = new MarkdownFormat(tableOptions: MarkdownFormat.Default.TableOptions | TableOptions.FormatContent);
 
@@ -223,7 +224,8 @@ namespace Roslynator.CodeGeneration.Markdown
                 CreateSummary(analyzer.Summary),
                 Samples(),
                 CreateRemarks(analyzer.Remarks),
-                Links());
+                CreateSeeAlso(),
+                CreateSourceFiles(filePaths));
 
             document.AddFootnote();
 
@@ -242,7 +244,7 @@ namespace Roslynator.CodeGeneration.Markdown
                 }
             }
 
-            IEnumerable<MElement> Links()
+            IEnumerable<MElement> CreateSeeAlso()
             {
                 yield return Heading2("See Also");
 
@@ -252,7 +254,24 @@ namespace Roslynator.CodeGeneration.Markdown
             }
         }
 
-        public static string CreateCompilerDiagnosticMarkdown(CompilerDiagnosticDescriptor diagnostic, IEnumerable<CodeFixDescriptor> codeFixes, IComparer<string> comparer)
+        private static IEnumerable<object> CreateSourceFiles(IEnumerable<string> filePaths)
+        {
+            using (IEnumerator<string> en = filePaths.GetEnumerator())
+            {
+                if (en.MoveNext())
+                {
+                    yield return Heading2("Related Source Files");
+
+                    do
+                    {
+                        yield return BulletItem(Link(Path.GetFileName(en.Current), "../../src" + en.Current.Replace(@"\", "/")));
+                    }
+                    while (en.MoveNext());
+                }
+            }
+        }
+
+        public static string CreateCompilerDiagnosticMarkdown(CompilerDiagnosticDescriptor diagnostic, IEnumerable<CodeFixDescriptor> codeFixes, IComparer<string> comparer, IEnumerable<string> filePaths)
         {
             MDocument document = Document(
                 Heading1(diagnostic.Id),
@@ -266,7 +285,8 @@ namespace Roslynator.CodeGeneration.Markdown
                 BulletList(codeFixes
                     .Where(f => f.FixableDiagnosticIds.Any(diagnosticId => diagnosticId == diagnostic.Id))
                     .Select(f => f.Title)
-                    .OrderBy(f => f, comparer)));
+                    .OrderBy(f => f, comparer)),
+                CreateSourceFiles(filePaths));
 
             document.AddFootnote();
 
