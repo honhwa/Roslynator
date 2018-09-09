@@ -71,14 +71,6 @@ namespace Roslynator.CodeGeneration
                         fileMustExists: false);
                 }
 
-                WriteAllText(
-                    @"..\docs\refactorings\Refactorings.md",
-                    MarkdownGenerator.CreateRefactoringsMarkdown(Refactorings, Comparer));
-
-                WriteAllText(
-                    @"Refactorings\README.md",
-                    MarkdownGenerator.CreateRefactoringsReadMe(Refactorings.Where(f => !f.IsObsolete), Comparer));
-
                 foreach (RefactoringDescriptor refactoring in Refactorings)
                 {
                     IEnumerable<string> filePaths = await roslynatorInfo.GetRefactoringFilesAsync(refactoring.Identifier).ConfigureAwait(false);
@@ -88,10 +80,6 @@ namespace Roslynator.CodeGeneration
                         MarkdownGenerator.CreateRefactoringMarkdown(refactoring, filePaths),
                         fileMustExists: false);
                 }
-
-                WriteAllText(
-                    @"CodeFixes\README.md",
-                    MarkdownGenerator.CreateCodeFixesReadMe(CompilerDiagnostics, Comparer));
 
                 foreach (CompilerDiagnosticDescriptor diagnostic in CompilerDiagnostics)
                 {
@@ -103,6 +91,18 @@ namespace Roslynator.CodeGeneration
                         fileMustExists: false);
                 }
             }
+
+            WriteAllText(
+                @"..\docs\refactorings\Refactorings.md",
+                MarkdownGenerator.CreateRefactoringsMarkdown(Refactorings, Comparer));
+
+            WriteAllText(
+                @"Refactorings\README.md",
+                MarkdownGenerator.CreateRefactoringsReadMe(Refactorings.Where(f => !f.IsObsolete), Comparer));
+
+            WriteAllText(
+                @"CodeFixes\README.md",
+                MarkdownGenerator.CreateCodeFixesReadMe(CompilerDiagnostics, Comparer));
 
             WriteAllText(
                 "DefaultConfigFile.xml",
