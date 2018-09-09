@@ -224,8 +224,8 @@ namespace Roslynator.CodeGeneration.Markdown
                 CreateSummary(analyzer.Summary),
                 Samples(),
                 CreateRemarks(analyzer.Remarks),
-                CreateSeeAlso(),
-                CreateSourceFiles(filePaths));
+                CreateSourceFiles(filePaths),
+                CreateSeeAlso());
 
             document.AddFootnote();
 
@@ -264,7 +264,13 @@ namespace Roslynator.CodeGeneration.Markdown
 
                     do
                     {
-                        yield return BulletItem(Link(Path.GetFileName(en.Current), "../../src" + en.Current.Replace(@"\", "/")));
+                        string url = en.Current.Replace(@"\", "/");
+
+                        string title = "src" + en.Current.Replace(@"\", "/");
+
+                        url = "../../src" + en.Current.Replace(@"\", "/");
+
+                        yield return BulletItem(Link(title, url));
                     }
                     while (en.MoveNext());
                 }
