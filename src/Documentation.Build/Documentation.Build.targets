@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="$(MSBuildThisFileDirectory)/../../tools/Roslynator.Documentation.Build.Helpers.targets" />
-</Project>

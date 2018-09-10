@@ -1,7 +1,7 @@
 
 # How to Generate Documentation for .NET Project
 
-1) Install package [Roslynator.Documentation.Build](http://www.nuget.org/packages/Roslynator.Documentation.Build/)&ensp;[![NuGet](https://img.shields.io/nuget/v/Roslynator.Documentation.Build.svg)](https://nuget.org/packages/Roslynator.Documentation.Build)
+1) Install package [Roslynator.Documentation.CommandLine](http://www.nuget.org/packages/Roslynator.Documentation.CommandLine/)&ensp;[![NuGet](https://img.shields.io/nuget/v/Roslynator.Documentation.CommandLine.svg)](https://nuget.org/packages/Roslynator.Documentation.CommandLine)
 
 2) Add MSBuild Target to your csproj (vbproj) file
 

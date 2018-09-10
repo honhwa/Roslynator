@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>Roslynator.Documentation.Build</id>
+    <id>Roslynator.Documentation.CommandLine</id>
     <version>0.1.0-beta</version>
     <authors>Josef Pihrt</authors>
     <owners>Josef Pihrt</owners>
@@ -19,9 +19,9 @@
   <files>
     <file src="_._" target="lib/net40/" />
     <file src="_._" target="lib/netstandard1.0/" />
-    <file src="Documentation.Build.targets" target="build/net40/Roslynator.Documentation.Build.targets" />
-    <file src="Documentation.Build.targets" target="build/netstandard1.0/Roslynator.Documentation.Build.targets" />
-    <file src="Documentation.Build.Helpers.targets" target="tools/Roslynator.Documentation.Build.Helpers.targets" />
+    <file src="Documentation.CommandLine.targets" target="build/net40/Roslynator.Documentation.CommandLine.targets" />
+    <file src="Documentation.CommandLine.targets" target="build/netstandard1.0/Roslynator.Documentation.CommandLine.targets" />
+    <file src="DotDoc.targets" target="tools/DotDoc.targets" />
     <file src="$publishDir$\net46\**\*" target="tools/net46/" exclude="**\*.pdb;**\*.xml" />
     <file src="$publishDir$\netcoreapp1.0\**\*" target="tools/netcoreapp1.0/" exclude="**\*.pdb;**\*.xml" />
   </files>

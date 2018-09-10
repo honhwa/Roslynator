@@ -1,0 +1,28 @@
+﻿<Project>
+
+  <Target Name="DotDocInitialize" AfterTargets="Build" BeforeTargets="DotDoc" Condition=" '$(Configuration)' == 'Release'">
+
+    <PropertyGroup>
+
+      <DotDocExe Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">"$(MSBuildThisFileDirectory)net46\DotDoc.exe"</DotDocExe>
+      <DotDocExe Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' Or '$(TargetFrameworkIdentifier)' == '.NETStandard'">dotnet "$(MSBuildThisFileDirectory)netcoreapp1.0\DotDoc.dll"</DotDocExe>
+
+      <DotDocAssemblyReferences>$(TargetDir)DotDoc.assemblyreferences</DotDocAssemblyReferences>
+
+    </PropertyGroup>
+
+    <WriteLinesToFile
+                      File="$(DotDocAssemblyReferences)"
+                      Lines="@(_ResolveAssemblyReferenceResolvedFiles)"
+                      Overwrite="true"
+                      Encoding="Unicode" />
+
+  </Target>
+
+  <Target Name="DotDocDispose" AfterTargets="DotDoc">
+
+    <Delete Files="$(DotDocAssemblyReferences)" />
+
+  </Target>
+
+</Project>

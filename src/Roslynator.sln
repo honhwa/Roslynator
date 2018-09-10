@@ -97,7 +97,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation.Generator", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation.TestProject", "Documentation.TestProject\Documentation.TestProject.csproj", "{976AF9EC-420A-4709-AB60-E95D63DF992C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation.Build", "Documentation.Build\Documentation.Build.csproj", "{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation.CommandLine", "Documentation.CommandLine\Documentation.CommandLine.csproj", "{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

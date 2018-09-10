@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.3.0" />
-    <PackageReference Include="Roslynator.Documentation.Build" Version="0.1.0-beta" />
+    <PackageReference Include="Roslynator.Documentation.CommandLine" Version="0.1.0-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,15 +29,16 @@
     <None Remove="Tests.snk" />
   </ItemGroup>
 
-  <Target Name="RoslynatorDocumentation" AfterTargets="RoslynatorDocumentationInitialize" Condition=" '$(Configuration)' == 'Release'">
+  <Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
 
     <PropertyGroup>
-      <RoslynatorDocumentationAssemblies>&quot;$(TargetPath)&quot;</RoslynatorDocumentationAssemblies>
+      <DotDocEnabled>true</DotDocEnabled>
+      <DotDocAssemblies>&quot;$(TargetPath)&quot;</DotDocAssemblies>
     </PropertyGroup>
 
-    <Exec Command="$(RoslynatorDocumentationExe) declarations ^
--a $(RoslynatorDocumentationAssemblies) ^
--r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
+    <Exec Command="$(DotDocExe) declarations ^
+-a $(DotDocAssemblies) ^
+-r &quot;$(DotDocAssemblyReferences)&quot; ^
 -o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
 --indent-chars &quot;  &quot; ^
 --empty-line-between-members ^

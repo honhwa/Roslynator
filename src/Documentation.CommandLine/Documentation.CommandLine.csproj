@@ -7,17 +7,17 @@
 
   <PropertyGroup>
     <Version>0.1.0.0</Version>
-    <AssemblyName>Roslynator.Documentation.Build</AssemblyName>
+    <AssemblyName>DotDoc</AssemblyName>
     <RootNamespace>Roslynator.Documentation</RootNamespace>
     <CodeAnalysisRuleSet>..\global.ruleset</CodeAnalysisRuleSet>
     <LangVersion>latest</LangVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Documentation.Build.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Documentation.CommandLine.snk</AssemblyOriginatorKeyFile>
     <Copyright>Copyright (c) 2017-2018 Josef Pihrt</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
-    <NuspecFile>Documentation.Build.nuspec</NuspecFile> 
+    <NuspecFile>Documentation.CommandLine.nuspec</NuspecFile> 
     <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/publish/</IntermediatePackDir>
     <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
     <NuspecProperties>publishDir=$([MSBuild]::NormalizeDirectory($(IntermediatePackDir)))</NuspecProperties>
@@ -31,7 +31,6 @@
   </Target>
 
   <ItemGroup>
-    <None Remove="Documentation.Build.snk" />
     <None Remove="_._" />
   </ItemGroup>
 

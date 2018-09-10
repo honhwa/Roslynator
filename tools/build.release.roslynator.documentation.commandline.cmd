@@ -12,10 +12,10 @@ if errorlevel 1 (
 )
 
 dotnet pack -c Release --no-build -v normal "..\src\Documentation\Documentation.csproj"
-dotnet pack -c Release --no-build -v normal "..\src\Documentation.Build\Documentation.Build.csproj"
+dotnet pack -c Release --no-build -v normal "..\src\Documentation.CommandLine\Documentation.CommandLine.csproj"
 
 copy "..\src\Documentation\bin\Release\Roslynator.Documentation.0.1.0-beta.nupkg" "E:\Dokumenty\LocalNuGet"
-copy "..\src\Documentation.Build\bin\Release\Roslynator.Documentation.Build.0.1.0-beta.nupkg" "E:\Dokumenty\LocalNuGet"
+copy "..\src\Documentation.CommandLine\bin\Release\Roslynator.Documentation.CommandLine.0.1.0-beta.nupkg" "E:\Dokumenty\LocalNuGet"
 
 echo OK
 pause
