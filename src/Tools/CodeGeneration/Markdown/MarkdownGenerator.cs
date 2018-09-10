@@ -187,24 +187,11 @@ namespace Roslynator.CodeGeneration.Markdown
                 GetRefactoringSamples(refactoring),
                 CreateRemarks(refactoring.Remarks),
                 CreateSourceFiles(filePaths),
-                Links(),
-                Link("full list of refactorings", "Refactorings.md"),
-                NewLine);
+                CreateSeeAlso(refactoring.Links.Select(f => CreateLink(f)), Link("Full list of refactorings", "Refactorings.md")));
 
             document.AddFootnote();
 
             return document.ToString(format);
-
-            IEnumerable<MElement> Links()
-            {
-                IReadOnlyList<LinkDescriptor> links = refactoring.Links;
-
-                if (links.Count > 0)
-                {
-                    yield return Heading2("See Also");
-                    yield return BulletList(links.Select(f => CreateLink(f)));
-                }
-            }
         }
 
         public static string CreateAnalyzerMarkdown(AnalyzerDescriptor analyzer, IEnumerable<string> filePaths)
@@ -225,7 +212,9 @@ namespace Roslynator.CodeGeneration.Markdown
                 Samples(),
                 CreateRemarks(analyzer.Remarks),
                 CreateSourceFiles(filePaths),
-                CreateSeeAlso());
+                CreateSeeAlso(
+                    analyzer.Links.Select(f => CreateLink(f)),
+                    Link("How to Suppress a Diagnostic", "../HowToConfigureAnalyzers.md#how-to-suppress-a-diagnostic")));
 
             document.AddFootnote();
 
@@ -243,15 +232,12 @@ namespace Roslynator.CodeGeneration.Markdown
                         yield return item;
                 }
             }
+        }
 
-            IEnumerable<MElement> CreateSeeAlso()
-            {
-                yield return Heading2("See Also");
-
-                yield return BulletList(
-                    analyzer.Links.Select(f => CreateLink(f)),
-                    Link("How to Suppress a Diagnostic", "../HowToConfigureAnalyzers.md#how-to-suppress-a-diagnostic"));
-            }
+        private static IEnumerable<MElement> CreateSeeAlso(params object[] content)
+        {
+            yield return Heading2("See Also");
+            yield return BulletItem(content);
         }
 
         private static IEnumerable<object> CreateSourceFiles(IEnumerable<string> filePaths)

@@ -103,7 +103,8 @@ namespace Roslynator.CodeGeneration
                 .SelectMany(f => f.Locations)
                 .Where(f => !f.IsCandidateLocation && !f.IsImplicit && !GeneratedCodeUtility.IsGeneratedCodeFile(f.Document.FilePath))
                 .Select(f => f.Document.FilePath.Replace(SolutionDirectory, ""))
-                .Distinct();
+                .Distinct()
+                .OrderBy(f => f);
         }
     }
 }

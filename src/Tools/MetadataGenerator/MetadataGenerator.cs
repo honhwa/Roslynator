@@ -155,12 +155,12 @@ namespace Roslynator.CodeGeneration
         {
             public void Report(ProjectLoadProgress value)
             {
-                string projectDisplay = Path.GetFileName(value.FilePath);
+                string text = Path.GetFileName(value.FilePath);
 
                 if (value.TargetFramework != null)
-                    projectDisplay += $" ({value.TargetFramework})";
+                    text += $" ({value.TargetFramework})";
 
-                Console.WriteLine($"{value.Operation,-15} {value.ElapsedTime,-15:m\\:ss\\.fffffff} {projectDisplay}");
+                Console.WriteLine($"{value.Operation,-10} {value.ElapsedTime,-9:m\\:ss\\.ff} {text}");
             }
         }
     }
