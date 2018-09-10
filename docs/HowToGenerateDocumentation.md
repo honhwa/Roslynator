@@ -6,19 +6,19 @@
 2) Add MSBuild Target to your csproj (vbproj) file
 
 ```xml
-<Target Name="RoslynatorDocumentation" AfterTargets="RoslynatorDocumentationInitialize" Condition=" '$(Configuration)' == 'Release'">
+<Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
 
   <PropertyGroup>
 
     <!-- One or more assembly paths you want generator documentation for, for example: A.dll B.dll -->
-    <RoslynatorDocumentationAssemblies>&quot;$(TargetPath)&quot;</RoslynatorDocumentationAssemblies>
+    <DotDocAssemblies>&quot;$(TargetPath)&quot;</DotDocAssemblies>
 
   </PropertyGroup>
 
     <!-- Execute 'doc' command. This command will generate documentation files from specified assemblies -->
-  <Exec Command="$(RoslynatorDocumentationExe) doc ^
-    -a $(RoslynatorDocumentationAssemblies) ^
-    -r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
+  <Exec Command="$(DotDocExe) doc ^
+    -a $(DotDocAssemblies) ^
+    -r &quot;$(DotDocAssemblyReferences)&quot; ^
     -o &quot;$(SolutionDir)docs&quot; ^
     -h &quot;API Reference&quot;"
         LogStandardErrorAsError="true"
@@ -27,9 +27,9 @@
   </Exec>
 
     <!-- Execute 'declarations' command. This command will generate a single file that contains all declarations from specified assemblies -->
-  <Exec Command="$(RoslynatorDocumentationExe) declarations ^
-    -a $(RoslynatorDocumentationAssemblies) ^
-    -r &quot;$(RoslynatorDocumentationAssemblyReferencesPath)&quot; ^
+  <Exec Command="$(DotDocExe) declarations ^
+    -a $(DotDocAssemblies) ^
+    -r &quot;$(DotDocAssemblyReferences)&quot; ^
     -o &quot;$(SolutionDir)docs\api.cs&quot;"
         LogStandardErrorAsError="true"
         ConsoleToMSBuild="true">
