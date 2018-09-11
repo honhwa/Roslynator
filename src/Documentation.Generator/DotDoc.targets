@@ -1,0 +1,91 @@
+﻿<Project>
+
+  <Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
+
+    <PropertyGroup>
+      <DotDocAssemblies>Roslynator.CSharp.dll Roslynator.CSharp.Workspaces.dll Roslynator.Documentation.dll</DotDocAssemblies>
+    </PropertyGroup>
+
+    <Exec Command="$(DotDocExe) doc ^
+      -a $(DotDocAssemblies) ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)..\docs\api&quot; ^
+      -h &quot;Roslynator API Reference&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <Exec Command="$(DotDocExe) declarations ^
+      -a $(DotDocAssemblies) ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)..\docs\api.cs&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <Exec Command="$(DotDocExe) root ^
+      -a Roslynator.Documentation.dll ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)Documentation\README.md&quot; ^
+      -h &quot;Roslynator.Documentation&quot; ^
+      --root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <Exec Command="$(DotDocExe) root ^
+      -a Roslynator.CSharp.dll ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)CSharp\README.md&quot; ^
+      -h &quot;Roslynator.CSharp&quot; ^
+      --root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <Exec Command="$(DotDocExe) root ^
+      -a Roslynator.CSharp.Workspaces.dll ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^
+      -h &quot;Roslynator.CSharp.Workspaces&quot; ^
+      --root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <PropertyGroup>
+      <DotDocAssemblies>Roslynator.Documentation.TestProject</DotDocAssemblies>
+    </PropertyGroup>
+
+    <Exec Command="$(DotDocExe) doc ^
+      -a $(DotDocAssemblies) ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)..\docs\apitest&quot; ^
+      -h &quot;Foo API Reference&quot; ^
+      --include-inherited-interface-members ^
+      --additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^
+      --ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <Exec Command="$(DotDocExe) declarations ^
+      -a $(DotDocAssemblies) ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)..\docs\apitest.cs&quot; ^
+      --ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+    <PropertyGroup>
+      <DotDocAssemblies>Roslynator.Documentation</DotDocAssemblies>
+    </PropertyGroup>
+
+    <Exec Command="$(DotDocExe) declarations ^
+      -a $(DotDocAssemblies) ^
+      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+      -o &quot;$(SolutionDir)..\docs\Roslynator.Documentation.cs&quot; ^
+      --indent-chars &quot;  &quot; ^
+      --empty-line-between-members ^
+      --nest-namespaces ^
+      --format-parameters" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+
+  </Target>
+
+</Project>

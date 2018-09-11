@@ -14,58 +14,7 @@
     <AssemblyOriginatorKeyFile>Documentation.Generator.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
-
-    <PropertyGroup>
-      <DotDocAssemblies>Roslynator.CSharp.dll Roslynator.CSharp.Workspaces.dll Roslynator.Documentation.dll</DotDocAssemblies>
-    </PropertyGroup>
-
-    <Exec Command="$(DotDocExe) doc ^&#xD;&#xA;-a $(DotDocAssemblies) ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\api&quot; ^&#xD;&#xA;-h &quot;Roslynator API Reference&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) declarations ^&#xD;&#xA;-a $(DotDocAssemblies) ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\api.cs&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) root ^&#xD;&#xA;-a Roslynator.Documentation.dll ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)Documentation\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.Documentation&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) root ^&#xD;&#xA;-a Roslynator.CSharp.dll ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) root ^&#xD;&#xA;-a Roslynator.CSharp.Workspaces.dll ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)CSharp.Workspaces\README.md&quot; ^&#xD;&#xA;-h &quot;Roslynator.CSharp.Workspaces&quot; ^&#xD;&#xA;--root-directory-url &quot;../../docs/api/&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <PropertyGroup>
-      <DotDocAssemblies>Roslynator.Documentation.TestProject</DotDocAssemblies>
-    </PropertyGroup>
-
-    <Exec Command="$(DotDocExe) doc ^&#xD;&#xA;-a $(DotDocAssemblies) ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest&quot; ^&#xD;&#xA;-h &quot;Foo API Reference&quot; ^&#xD;&#xA;--include-inherited-interface-members ^&#xD;&#xA;--additional-xml-documentation &quot;$(ProjectDir)test.xml&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) declarations ^&#xD;&#xA;-a $(DotDocAssemblies) ^&#xD;&#xA;-r &quot;$(DotDocAssemblyReferences)&quot; ^&#xD;&#xA;-o &quot;$(SolutionDir)..\docs\apitest.cs&quot; ^&#xD;&#xA;--ignored-names &quot;Roslynator.Documentation.Test2&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-    <Exec Command="$(DotDocExe) declarations ^
--a Roslynator.Documentation ^
--r &quot;$(DotDocAssemblyReferences)&quot; ^
--o &quot;$(SolutionDir)..\docs\Roslynator.Documentation.cs&quot; ^
---indent-chars &quot;  &quot; ^
---empty-line-between-members ^
---nest-namespaces ^
---format-parameters"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-  </Target>
+  <Import Project="DotDoc.targets" />
 
   <ItemGroup>
     <None Remove="Documentation.Generator.snk" />

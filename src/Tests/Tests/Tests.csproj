@@ -29,26 +29,6 @@
     <None Remove="Tests.snk" />
   </ItemGroup>
 
-  <Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
-
-    <PropertyGroup>
-      <DotDocEnabled>true</DotDocEnabled>
-      <DotDocAssemblies>&quot;$(TargetPath)&quot;</DotDocAssemblies>
-    </PropertyGroup>
-
-    <Exec Command="$(DotDocExe) declarations ^
--a $(DotDocAssemblies) ^
--r &quot;$(DotDocAssemblyReferences)&quot; ^
--o &quot;$(SolutionDir)..\docs\Roslynator.Tests.cs&quot; ^
---indent-chars &quot;  &quot; ^
---empty-line-between-members ^
---nest-namespaces ^
---format-parameters"
-          LogStandardErrorAsError="true"
-          ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-
-  </Target>
+  <Import Project="DotDoc.targets" />
 
 </Project>
