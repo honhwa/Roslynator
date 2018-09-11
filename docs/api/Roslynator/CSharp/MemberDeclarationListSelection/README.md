@@ -2,7 +2,7 @@
 
 # MemberDeclarationListSelection Class
 
-[Home](../../../README.md#_top) &#x2022; [Indexers](#indexers) &#x2022; [Properties](#properties) &#x2022; [Methods](#methods)
+[Home](../../../README.md#_top) &#x2022; [Indexers](#indexers) &#x2022; [Properties](#properties) &#x2022; [Methods](#methods) &#x2022; [Structs](#structs)
 
 **Namespace**: [Roslynator.CSharp](../README.md#_top)
 
@@ -61,4 +61,10 @@ public sealed class MemberDeclarationListSelection : Roslynator.SyntaxListSelect
 | [ToString()](https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [TryCreate(NamespaceDeclarationSyntax, TextSpan, MemberDeclarationListSelection)](TryCreate/README.md#Roslynator_CSharp_MemberDeclarationListSelection_TryCreate_Microsoft_CodeAnalysis_CSharp_Syntax_NamespaceDeclarationSyntax_Microsoft_CodeAnalysis_Text_TextSpan_Roslynator_CSharp_MemberDeclarationListSelection__) | Creates a new [MemberDeclarationListSelection](#_top) based on the specified namespace declaration and span\. |
 | [TryCreate(TypeDeclarationSyntax, TextSpan, MemberDeclarationListSelection)](TryCreate/README.md#Roslynator_CSharp_MemberDeclarationListSelection_TryCreate_Microsoft_CodeAnalysis_CSharp_Syntax_TypeDeclarationSyntax_Microsoft_CodeAnalysis_Text_TextSpan_Roslynator_CSharp_MemberDeclarationListSelection__) | Creates a new [MemberDeclarationListSelection](#_top) based on the specified type declaration and span\. |
+
+## Structs
+
+| Struct | Summary |
+| ------ | ------- |
+| [Enumerator](../../SyntaxListSelection-1/Enumerator/README.md#_top) |  \(Inherited from [SyntaxListSelection\<TNode>](../../SyntaxListSelection-1/README.md#_top)\) |
 

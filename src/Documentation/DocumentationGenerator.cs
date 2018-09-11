@@ -671,8 +671,6 @@ namespace Roslynator.Documentation
         {
             INamedTypeSymbol typeSymbol = typeModel.Symbol;
 
-            ImmutableArray<INamedTypeSymbol> nestedTypes = default;
-
             ImmutableArray<INamedTypeSymbol> derivedTypes = ImmutableArray<INamedTypeSymbol>.Empty;
 
             if (EnabledAndSortedTypeParts.Contains(TypeDocumentationParts.Derived))
@@ -842,42 +840,27 @@ namespace Roslynator.Documentation
                             }
                         case TypeDocumentationParts.Classes:
                             {
-                                if (nestedTypes.IsDefault)
-                                    nestedTypes = typeSymbol.GetTypeMembers();
-
-                                WriteTypes(writer, nestedTypes, TypeKind.Class);
+                                WriteTypes(writer, typeModel.GetClasses(includeInherited: includeInherited), TypeKind.Class);
                                 break;
                             }
                         case TypeDocumentationParts.Structs:
                             {
-                                if (nestedTypes.IsDefault)
-                                    nestedTypes = typeSymbol.GetTypeMembers();
-
-                                WriteTypes(writer, nestedTypes, TypeKind.Struct);
+                                WriteTypes(writer, typeModel.GetStructs(includeInherited: includeInherited), TypeKind.Struct);
                                 break;
                             }
                         case TypeDocumentationParts.Interfaces:
                             {
-                                if (nestedTypes.IsDefault)
-                                    nestedTypes = typeSymbol.GetTypeMembers();
-
-                                WriteTypes(writer, nestedTypes, TypeKind.Interface);
+                                WriteTypes(writer, typeModel.GetInterfaces(includeInherited: includeInherited), TypeKind.Interface);
                                 break;
                             }
                         case TypeDocumentationParts.Enums:
                             {
-                                if (nestedTypes.IsDefault)
-                                    nestedTypes = typeSymbol.GetTypeMembers();
-
-                                WriteTypes(writer, nestedTypes, TypeKind.Enum);
+                                WriteTypes(writer, typeModel.GetEnums(includeInherited: includeInherited), TypeKind.Enum);
                                 break;
                             }
                         case TypeDocumentationParts.Delegates:
                             {
-                                if (nestedTypes.IsDefault)
-                                    nestedTypes = typeSymbol.GetTypeMembers();
-
-                                WriteTypes(writer, nestedTypes, TypeKind.Delegate);
+                                WriteTypes(writer, typeModel.GetDelegates(includeInherited: includeInherited), TypeKind.Delegate);
                                 break;
                             }
                         case TypeDocumentationParts.SeeAlso:
@@ -933,7 +916,8 @@ namespace Roslynator.Documentation
                     headingLevel: 2,
                     Resources.GetName(typeKind),
                     Resources.SummaryTitle,
-                    SymbolDisplayFormats.TypeNameAndTypeParameters);
+                    SymbolDisplayFormats.TypeNameAndTypeParameters,
+                    containingType: typeSymbol);
             }
 
             IEnumerable<TypeDocumentationParts> GetContentParts()
@@ -1018,38 +1002,23 @@ namespace Roslynator.Documentation
                         }
                     case TypeDocumentationParts.Classes:
                         {
-                            if (nestedTypes.IsDefault)
-                                nestedTypes = typeSymbol.GetTypeMembers();
-
-                            return nestedTypes.Any(f => f.TypeKind == TypeKind.Class && DocumentationModel.IsVisible(f));
+                            return typeModel.GetClasses(includeInherited: includeInherited).Any();
                         }
                     case TypeDocumentationParts.Structs:
                         {
-                            if (nestedTypes.IsDefault)
-                                nestedTypes = typeSymbol.GetTypeMembers();
-
-                            return nestedTypes.Any(f => f.TypeKind == TypeKind.Struct && DocumentationModel.IsVisible(f));
+                            return typeModel.GetStructs(includeInherited: includeInherited).Any();
                         }
                     case TypeDocumentationParts.Interfaces:
                         {
-                            if (nestedTypes.IsDefault)
-                                nestedTypes = typeSymbol.GetTypeMembers();
-
-                            return nestedTypes.Any(f => f.TypeKind == TypeKind.Interface && DocumentationModel.IsVisible(f));
+                            return typeModel.GetInterfaces(includeInherited: includeInherited).Any();
                         }
                     case TypeDocumentationParts.Enums:
                         {
-                            if (nestedTypes.IsDefault)
-                                nestedTypes = typeSymbol.GetTypeMembers();
-
-                            return nestedTypes.Any(f => f.TypeKind == TypeKind.Enum && DocumentationModel.IsVisible(f));
+                            return typeModel.GetEnums(includeInherited: includeInherited).Any();
                         }
                     case TypeDocumentationParts.Delegates:
                         {
-                            if (nestedTypes.IsDefault)
-                                nestedTypes = typeSymbol.GetTypeMembers();
-
-                            return nestedTypes.Any(f => f.TypeKind == TypeKind.Delegate && DocumentationModel.IsVisible(f));
+                            return typeModel.GetDelegates(includeInherited: includeInherited).Any();
                         }
                     case TypeDocumentationParts.SeeAlso:
                         {

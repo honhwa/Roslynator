@@ -2433,8 +2433,11 @@ namespace Roslynator.Documentation
         public bool Equals(TypeDocumentationModel other);
         public override bool Equals(object obj);
         public IEnumerable<INamedTypeSymbol> GetAllDerivedTypes();
+        public IEnumerable<INamedTypeSymbol> GetClasses(bool includeInherited = false);
         public IEnumerable<IMethodSymbol> GetConstructors();
+        public IEnumerable<INamedTypeSymbol> GetDelegates(bool includeInherited = false);
         public IEnumerable<INamedTypeSymbol> GetDerivedTypes();
+        public IEnumerable<INamedTypeSymbol> GetEnums(bool includeInherited = false);
         public IEnumerable<IEventSymbol> GetEvents(bool includeInherited = false);
         public IEnumerable<ISymbol> GetExplicitInterfaceImplementations();
         public IEnumerable<IMethodSymbol> GetExtensionMethods();
@@ -2442,9 +2445,11 @@ namespace Roslynator.Documentation
         public override int GetHashCode();
         public IEnumerable<INamedTypeSymbol> GetImplementedInterfaces(bool omitIEnumerable = false);
         public IEnumerable<IPropertySymbol> GetIndexers(bool includeInherited = false);
+        public IEnumerable<INamedTypeSymbol> GetInterfaces(bool includeInherited = false);
         public IEnumerable<IMethodSymbol> GetMethods(bool includeInherited = false);
         public IEnumerable<IMethodSymbol> GetOperators(bool includeInherited = false, bool includeConversion = true, bool includeUserDefinedOperator = true);
         public IEnumerable<IPropertySymbol> GetProperties(bool includeInherited = false, bool includeIndexers = false);
+        public IEnumerable<INamedTypeSymbol> GetStructs(bool includeInherited = false);
     }
 
     public static class WellKnownExternalUrlProviders

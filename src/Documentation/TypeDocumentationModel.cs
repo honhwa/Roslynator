@@ -202,6 +202,91 @@ namespace Roslynator.Documentation
             }
         }
 
+        public IEnumerable<INamedTypeSymbol> GetClasses(bool includeInherited = false)
+        {
+            if (!TypeKind.Is(TypeKind.Interface, TypeKind.Delegate, TypeKind.Enum))
+            {
+                foreach (ISymbol member in (GetMembers(includeInherited)))
+                {
+                    if (member.Kind == SymbolKind.NamedType)
+                    {
+                        var namedType = (INamedTypeSymbol)member;
+
+                        if (namedType.TypeKind == TypeKind.Class)
+                            yield return namedType;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<INamedTypeSymbol> GetStructs(bool includeInherited = false)
+        {
+            if (!TypeKind.Is(TypeKind.Interface, TypeKind.Delegate, TypeKind.Enum))
+            {
+                foreach (ISymbol member in (GetMembers(includeInherited)))
+                {
+                    if (member.Kind == SymbolKind.NamedType)
+                    {
+                        var namedType = (INamedTypeSymbol)member;
+
+                        if (namedType.TypeKind == TypeKind.Struct)
+                            yield return namedType;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<INamedTypeSymbol> GetInterfaces(bool includeInherited = false)
+        {
+            if (!TypeKind.Is(TypeKind.Interface, TypeKind.Delegate, TypeKind.Enum))
+            {
+                foreach (ISymbol member in (GetMembers(includeInherited)))
+                {
+                    if (member.Kind == SymbolKind.NamedType)
+                    {
+                        var namedType = (INamedTypeSymbol)member;
+
+                        if (namedType.TypeKind == TypeKind.Interface)
+                            yield return namedType;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<INamedTypeSymbol> GetEnums(bool includeInherited = false)
+        {
+            if (!TypeKind.Is(TypeKind.Interface, TypeKind.Delegate, TypeKind.Enum))
+            {
+                foreach (ISymbol member in (GetMembers(includeInherited)))
+                {
+                    if (member.Kind == SymbolKind.NamedType)
+                    {
+                        var namedType = (INamedTypeSymbol)member;
+
+                        if (namedType.TypeKind == TypeKind.Enum)
+                            yield return namedType;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<INamedTypeSymbol> GetDelegates(bool includeInherited = false)
+        {
+            if (!TypeKind.Is(TypeKind.Interface, TypeKind.Delegate, TypeKind.Enum))
+            {
+                foreach (ISymbol member in (GetMembers(includeInherited)))
+                {
+                    if (member.Kind == SymbolKind.NamedType)
+                    {
+                        var namedType = (INamedTypeSymbol)member;
+
+                        if (namedType.TypeKind == TypeKind.Delegate)
+                            yield return namedType;
+                    }
+                }
+            }
+        }
+
         public IEnumerable<ISymbol> GetExplicitInterfaceImplementations()
         {
             if (TypeKind.Is(TypeKind.Delegate, TypeKind.Enum))

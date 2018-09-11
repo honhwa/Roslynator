@@ -34,8 +34,11 @@ public sealed class TypeDocumentationModel : System.IEquatable<TypeDocumentation
 | [Equals(Object)](Equals/README.md#Roslynator_Documentation_TypeDocumentationModel_Equals_System_Object_) |  \(Overrides [Object.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.object.equals)\) |
 | [Equals(TypeDocumentationModel)](Equals/README.md#Roslynator_Documentation_TypeDocumentationModel_Equals_Roslynator_Documentation_TypeDocumentationModel_) |  \(Implements [IEquatable\<TypeDocumentationModel>.Equals](https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1.equals)\) |
 | [GetAllDerivedTypes()](GetAllDerivedTypes/README.md#_top) | |
+| [GetClasses(Boolean)](GetClasses/README.md#_top) | |
 | [GetConstructors()](GetConstructors/README.md#_top) | |
+| [GetDelegates(Boolean)](GetDelegates/README.md#_top) | |
 | [GetDerivedTypes()](GetDerivedTypes/README.md#_top) | |
+| [GetEnums(Boolean)](GetEnums/README.md#_top) | |
 | [GetEvents(Boolean)](GetEvents/README.md#_top) | |
 | [GetExplicitInterfaceImplementations()](GetExplicitInterfaceImplementations/README.md#_top) | |
 | [GetExtensionMethods()](GetExtensionMethods/README.md#_top) | |
@@ -43,9 +46,11 @@ public sealed class TypeDocumentationModel : System.IEquatable<TypeDocumentation
 | [GetHashCode()](GetHashCode/README.md#_top) |  \(Overrides [Object.GetHashCode](https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode)\) |
 | [GetImplementedInterfaces(Boolean)](GetImplementedInterfaces/README.md#_top) | |
 | [GetIndexers(Boolean)](GetIndexers/README.md#_top) | |
+| [GetInterfaces(Boolean)](GetInterfaces/README.md#_top) | |
 | [GetMethods(Boolean)](GetMethods/README.md#_top) | |
 | [GetOperators(Boolean, Boolean, Boolean)](GetOperators/README.md#_top) | |
 | [GetProperties(Boolean, Boolean)](GetProperties/README.md#_top) | |
+| [GetStructs(Boolean)](GetStructs/README.md#_top) | |
 | [GetType()](https://docs.microsoft.com/en-us/dotnet/api/system.object.gettype) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [MemberwiseClone()](https://docs.microsoft.com/en-us/dotnet/api/system.object.memberwiseclone) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
 | [ToString()](https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring) |  \(Inherited from [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object)\) |
