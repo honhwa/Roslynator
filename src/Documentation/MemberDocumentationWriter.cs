@@ -49,63 +49,6 @@ namespace Roslynator.Documentation
             }
         }
 
-        public virtual void WriteMember(MemberDocumentationModel model)
-        {
-            ISymbol symbol = model.Symbol;
-
-            WriteTitle(symbol, isOverloaded: model.IsOverloaded);
-
-            Writer.WriteContent(Array.Empty<string>(), addLinkToRoot: true);
-
-            foreach (MemberDocumentationParts part in EnabledAndSortedMemberParts)
-            {
-                switch (part)
-                {
-                    case MemberDocumentationParts.ContainingType:
-                        {
-                            Writer.WriteContainingType(symbol.ContainingType, Resources.ContainingTypeTitle);
-                            break;
-                        }
-                    case MemberDocumentationParts.ContainingAssembly:
-                        {
-                            Writer.WriteContainingAssembly(symbol, Resources.AssemblyTitle);
-                            break;
-                        }
-                }
-            }
-
-            if (!model.IsOverloaded)
-            {
-                WriteContent(symbol);
-            }
-            else
-            {
-                SymbolDisplayFormat format = SymbolDisplayFormats.SimpleDeclaration;
-                const SymbolDisplayAdditionalMemberOptions additionalOptions = SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName;
-
-                Writer.WriteTable(
-                    model.Overloads,
-                    heading: Resources.OverloadsTitle,
-                    headingLevel: 2,
-                    header1: Resources.GetName(symbol),
-                    header2: Resources.SummaryTitle,
-                    format: format,
-                    additionalOptions: additionalOptions);
-
-                foreach (ISymbol overloadSymbol in model.Overloads.OrderBy(f => f.ToDisplayString(format, additionalOptions)))
-                {
-                    string id = DocumentationUrlProvider.GetFragment(overloadSymbol);
-
-                    Writer.WriteStartHeading(2);
-                    Writer.WriteString(overloadSymbol.ToDisplayString(format, additionalOptions));
-                    Writer.WriteSpace();
-                    Writer.WriteLinkDestination(id);
-                    Writer.WriteEndHeading();
-                    WriteContent(overloadSymbol, headingLevelBase: 1);
-                }
-            }
-        }
-
         public virtual void WriteTitle(ISymbol symbol, bool isOverloaded)
         {
             Writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
@@ -182,12 +125,12 @@ namespace Roslynator.Documentation
                         }
                     case MemberDocumentationParts.TypeParameters:
                         {
-                            Writer.WriteTypeParameters(symbol);
+                            Writer.WriteTypeParameters(symbol.GetTypeParameters());
                             break;
                         }
                     case MemberDocumentationParts.Parameters:
                         {
-                            Writer.WriteParameters(symbol);
+                            Writer.WriteParameters(symbol.GetParameters());
                             break;
                         }
                     case MemberDocumentationParts.ReturnValue:
@@ -243,11 +186,11 @@ namespace Roslynator.Documentation
             {
                 case SymbolKind.Event:
                     {
-                        return new EventDocumentationWriter(writer);
+                        return new EventDocumentationWriter(writer, (IEventSymbol)symbol);
                     }
                 case SymbolKind.Field:
                     {
-                        return new FieldDocumentationWriter(writer);
+                        return new FieldDocumentationWriter(writer, (IFieldSymbol)symbol);
                     }
                 case SymbolKind.Method:
                     {
@@ -257,20 +200,20 @@ namespace Roslynator.Documentation
                         {
                             case MethodKind.Constructor:
                                 {
-                                    return new ConstructorDocumentationWriter(writer);
+                                    return new ConstructorDocumentationWriter(writer, methodSymbol);
                                 }
                             case MethodKind.UserDefinedOperator:
                             case MethodKind.Conversion:
                                 {
-                                    return new OperatorDocumentationWriter(writer);
+                                    return new OperatorDocumentationWriter(writer, methodSymbol);
                                 }
                         }
 
-                        return new MethodDocumentationWriter(writer);
+                        return new MethodDocumentationWriter(writer, methodSymbol);
                     }
                 case SymbolKind.Property:
                     {
-                        return new PropertyDocumentationWriter(writer);
+                        return new PropertyDocumentationWriter(writer, (IPropertySymbol)symbol);
                     }
             }
 
@@ -279,9 +222,12 @@ namespace Roslynator.Documentation
 
         private class ConstructorDocumentationWriter : MemberDocumentationWriter
         {
-            public ConstructorDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public ConstructorDocumentationWriter(DocumentationWriter writer, IMethodSymbol methodSymbol) : base(writer)
             {
+                MethodSymbol = methodSymbol;
             }
+
+            public IMethodSymbol MethodSymbol { get; }
 
             public override void WriteTitle(ISymbol symbol, bool isOverloaded)
             {
@@ -306,37 +252,52 @@ namespace Roslynator.Documentation
 
         private class EventDocumentationWriter : MemberDocumentationWriter
         {
-            public EventDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public EventDocumentationWriter(DocumentationWriter writer, IEventSymbol eventSymbol) : base(writer)
             {
+                EventSymbol = eventSymbol;
             }
+
+            public IEventSymbol EventSymbol { get; }
         }
 
         private class FieldDocumentationWriter : MemberDocumentationWriter
         {
-            public FieldDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public FieldDocumentationWriter(DocumentationWriter writer, IFieldSymbol fieldSymbol) : base(writer)
             {
+                FieldSymbol = fieldSymbol;
             }
+
+            public IFieldSymbol FieldSymbol { get; }
         }
 
         private class MethodDocumentationWriter : MemberDocumentationWriter
         {
-            public MethodDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public MethodDocumentationWriter(DocumentationWriter writer, IMethodSymbol methodSymbol) : base(writer)
             {
+                MethodSymbol = methodSymbol;
             }
+
+            public IMethodSymbol MethodSymbol { get; }
         }
 
         private class OperatorDocumentationWriter : MemberDocumentationWriter
         {
-            public OperatorDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public OperatorDocumentationWriter(DocumentationWriter writer, IMethodSymbol methodSymbol) : base(writer)
             {
+                MethodSymbol = methodSymbol;
             }
+
+            public IMethodSymbol MethodSymbol { get; }
         }
 
         private class PropertyDocumentationWriter : MemberDocumentationWriter
         {
-            public PropertyDocumentationWriter(DocumentationWriter writer) : base(writer)
+            public PropertyDocumentationWriter(DocumentationWriter writer, IPropertySymbol propertySymbol) : base(writer)
             {
+                PropertySymbol = propertySymbol;
             }
+
+            public IPropertySymbol PropertySymbol { get; }
         }
     }
 }

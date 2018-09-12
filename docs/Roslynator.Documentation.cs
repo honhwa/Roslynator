@@ -479,7 +479,7 @@ namespace Roslynator
       public virtual void WriteConstructors(IEnumerable<IMethodSymbol> constructors);
 
       public virtual void WriteContainingAssembly(
-        ISymbol symbol,
+        IAssemblySymbol assemblySymbol,
         string title);
 
       public virtual void WriteContainingNamespace(
@@ -622,7 +622,7 @@ namespace Roslynator
         int number,
         string text);
 
-      public virtual void WriteParameters(ISymbol symbol);
+      public virtual void WriteParameters(ImmutableArray<IParameterSymbol> parameters);
 
       public virtual void WriteProperties(
         IEnumerable<IPropertySymbol> properties,
@@ -685,7 +685,7 @@ namespace Roslynator
 
       public abstract void WriteTableHeaderSeparator();
 
-      public virtual void WriteTypeParameters(ISymbol symbol);
+      public virtual void WriteTypeParameters(ImmutableArray<ITypeParameterSymbol> typeParameters);
 
       public virtual void WriteValue(bool value);
 
@@ -711,9 +711,11 @@ namespace Roslynator
 
     public sealed class MemberDocumentationModel : IEquatable<MemberDocumentationModel>
     {
-      public bool IsOverloaded { get; }
+      public IAssemblySymbol ContainingAssembly { get; }
 
-      public ImmutableArray<ISymbol> Overloads { get; }
+      public INamespaceSymbol ContainingNamespace { get; }
+
+      public INamedTypeSymbol ContainingType { get; }
 
       public ISymbol Symbol { get; }
 
@@ -739,9 +741,23 @@ namespace Roslynator
 
     public sealed class TypeDocumentationModel : IEquatable<TypeDocumentationModel>
     {
+      public IAssemblySymbol ContainingAssembly { get; }
+
+      public INamespaceSymbol ContainingNamespace { get; }
+
+      public bool IsObsolete { get; }
+
+      public bool IsStatic { get; }
+
+      public ImmutableArray<IParameterSymbol> Parameters { get; }
+
+      public ITypeSymbol ReturnType { get; }
+
       public INamedTypeSymbol Symbol { get; }
 
       public TypeKind TypeKind { get; }
+
+      public ImmutableArray<ITypeParameterSymbol> TypeParameters { get; }
 
       public bool Equals(TypeDocumentationModel other);
 

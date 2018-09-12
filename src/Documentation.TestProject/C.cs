@@ -10,11 +10,11 @@ namespace Roslynator.Documentation.Test
     {
         new public string Field;
 
-        new public string Method() => "";
+        new public string Method(string s1, string s2, string s3) => s1 + s2 + s3;
 
         new public string ToString() => "";
 
-        new public int this[int index] => index;
+        new public int this[int index1, int index2, int index3] => index1 + index2 + index3;
 
         new public string Property { get; }
 

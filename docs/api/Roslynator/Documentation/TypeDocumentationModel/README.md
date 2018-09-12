@@ -24,8 +24,15 @@ public sealed class TypeDocumentationModel : System.IEquatable<TypeDocumentation
 
 | Property | Summary |
 | -------- | ------- |
+| [ContainingAssembly](ContainingAssembly/README.md#_top) | |
+| [ContainingNamespace](ContainingNamespace/README.md#_top) | |
+| [IsObsolete](IsObsolete/README.md#_top) | |
+| [IsStatic](IsStatic/README.md#_top) | |
+| [Parameters](Parameters/README.md#_top) | |
+| [ReturnType](ReturnType/README.md#_top) | |
 | [Symbol](Symbol/README.md#_top) | |
 | [TypeKind](TypeKind/README.md#_top) | |
+| [TypeParameters](TypeParameters/README.md#_top) | |
 
 ## Methods
 

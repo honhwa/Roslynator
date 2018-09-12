@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DocumentationWriter\.WriteTypeParameters\(ISymbol\) Method
+# DocumentationWriter\.WriteTypeParameters\(ImmutableArray\<ITypeParameterSymbol>\) Method
 
 [Home](../../../../README.md#_top)
 
@@ -9,9 +9,9 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public virtual void WriteTypeParameters(ISymbol symbol)
+public virtual void WriteTypeParameters(ImmutableArray<ITypeParameterSymbol> typeParameters)
 ```
 
 ### Parameters
 
-**symbol**
+**typeParameters**

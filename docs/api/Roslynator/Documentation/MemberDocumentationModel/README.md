@@ -24,8 +24,9 @@ public sealed class MemberDocumentationModel : System.IEquatable<MemberDocumenta
 
 | Property | Summary |
 | -------- | ------- |
-| [IsOverloaded](IsOverloaded/README.md#_top) | |
-| [Overloads](Overloads/README.md#_top) | |
+| [ContainingAssembly](ContainingAssembly/README.md#_top) | |
+| [ContainingNamespace](ContainingNamespace/README.md#_top) | |
+| [ContainingType](ContainingType/README.md#_top) | |
 | [Symbol](Symbol/README.md#_top) | |
 
 ## Methods

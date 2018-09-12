@@ -83,11 +83,11 @@ namespace Roslynator.Documentation.Test
 
         public event EventHandler Event;
 
-        public int this[int index] { get; }
+        public int this[int index1, int index2, int index3] { get; }
 
         public string Property { get; }
 
-        public string Method();
+        public string Method(string s1, string s2, string s3);
         public string ToString();
 
         public class FooClass

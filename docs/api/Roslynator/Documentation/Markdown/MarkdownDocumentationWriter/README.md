@@ -55,7 +55,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteCodeBlock(String, String)](WriteCodeBlock/README.md#_top) |  \(Overrides [DocumentationWriter.WriteCodeBlock](../../DocumentationWriter/WriteCodeBlock/README.md#_top)\) |
 | [WriteComment(String)](WriteComment/README.md#_top) |  \(Overrides [DocumentationWriter.WriteComment](../../DocumentationWriter/WriteComment/README.md#_top)\) |
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](../../DocumentationWriter/WriteConstructors/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
-| [WriteContainingAssembly(ISymbol, String)](../../DocumentationWriter/WriteContainingAssembly/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteContainingAssembly(IAssemblySymbol, String)](../../DocumentationWriter/WriteContainingAssembly/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingNamespace(INamespaceSymbol, String)](../../DocumentationWriter/WriteContainingNamespace/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContainingType(INamedTypeSymbol, String)](../../DocumentationWriter/WriteContainingType/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](../../DocumentationWriter/WriteContent/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
@@ -107,7 +107,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteObsoleteMessage(ISymbol)](../../DocumentationWriter/WriteObsoleteMessage/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteOperators(IEnumerable\<IMethodSymbol>, INamedTypeSymbol)](../../DocumentationWriter/WriteOperators/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteOrderedItem(Int32, String)](../../DocumentationWriter/WriteOrderedItem/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
-| [WriteParameters(ISymbol)](../../DocumentationWriter/WriteParameters/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteParameters(ImmutableArray\<IParameterSymbol>)](../../DocumentationWriter/WriteParameters/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteProperties(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](../../DocumentationWriter/WriteProperties/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteRaw(String)](WriteRaw/README.md#_top) |  \(Overrides [DocumentationWriter.WriteRaw](../../DocumentationWriter/WriteRaw/README.md#_top)\) |
 | [WriteRemarks(ISymbol, SymbolXmlDocumentation, Int32)](../../DocumentationWriter/WriteRemarks/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
@@ -132,7 +132,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteSummary(ISymbol, SymbolXmlDocumentation, Int32)](../../DocumentationWriter/WriteSummary/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteTableCell(String)](WriteTableCell/README.md#_top) |  \(Overrides [DocumentationWriter.WriteTableCell](../../DocumentationWriter/WriteTableCell/README.md#_top)\) |
 | [WriteTableHeaderSeparator()](WriteTableHeaderSeparator/README.md#_top) |  \(Overrides [DocumentationWriter.WriteTableHeaderSeparator](../../DocumentationWriter/WriteTableHeaderSeparator/README.md#_top)\) |
-| [WriteTypeParameters(ISymbol)](../../DocumentationWriter/WriteTypeParameters/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
+| [WriteTypeParameters(ImmutableArray\<ITypeParameterSymbol>)](../../DocumentationWriter/WriteTypeParameters/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteValue(Boolean)](../../DocumentationWriter/WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Boolean_) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteValue(Decimal)](../../DocumentationWriter/WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Decimal_) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteValue(Double)](../../DocumentationWriter/WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Double_) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

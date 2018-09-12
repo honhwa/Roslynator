@@ -59,7 +59,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteCodeBlock(String, String)](WriteCodeBlock/README.md#_top) | |
 | [WriteComment(String)](WriteComment/README.md#_top) | |
 | [WriteConstructors(IEnumerable\<IMethodSymbol>)](WriteConstructors/README.md#_top) | |
-| [WriteContainingAssembly(ISymbol, String)](WriteContainingAssembly/README.md#_top) | |
+| [WriteContainingAssembly(IAssemblySymbol, String)](WriteContainingAssembly/README.md#_top) | |
 | [WriteContainingNamespace(INamespaceSymbol, String)](WriteContainingNamespace/README.md#_top) | |
 | [WriteContainingType(INamedTypeSymbol, String)](WriteContainingType/README.md#_top) | |
 | [WriteContent(IEnumerable\<String>, Boolean, Boolean)](WriteContent/README.md#_top) | |
@@ -111,7 +111,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteObsoleteMessage(ISymbol)](WriteObsoleteMessage/README.md#_top) | |
 | [WriteOperators(IEnumerable\<IMethodSymbol>, INamedTypeSymbol)](WriteOperators/README.md#_top) | |
 | [WriteOrderedItem(Int32, String)](WriteOrderedItem/README.md#_top) | |
-| [WriteParameters(ISymbol)](WriteParameters/README.md#_top) | |
+| [WriteParameters(ImmutableArray\<IParameterSymbol>)](WriteParameters/README.md#_top) | |
 | [WriteProperties(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](WriteProperties/README.md#_top) | |
 | [WriteRaw(String)](WriteRaw/README.md#_top) | |
 | [WriteRemarks(ISymbol, SymbolXmlDocumentation, Int32)](WriteRemarks/README.md#_top) | |
@@ -136,7 +136,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteSummary(ISymbol, SymbolXmlDocumentation, Int32)](WriteSummary/README.md#_top) | |
 | [WriteTableCell(String)](WriteTableCell/README.md#_top) | |
 | [WriteTableHeaderSeparator()](WriteTableHeaderSeparator/README.md#_top) | |
-| [WriteTypeParameters(ISymbol)](WriteTypeParameters/README.md#_top) | |
+| [WriteTypeParameters(ImmutableArray\<ITypeParameterSymbol>)](WriteTypeParameters/README.md#_top) | |
 | [WriteValue(Boolean)](WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Boolean_) | |
 | [WriteValue(Decimal)](WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Decimal_) | |
 | [WriteValue(Double)](WriteValue/README.md#Roslynator_Documentation_DocumentationWriter_WriteValue_System_Double_) | |

@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Josef Pihrt. All rights reserved. Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Immutable;
 using System.Diagnostics;
 using Microsoft.CodeAnalysis;
 
@@ -12,11 +11,9 @@ namespace Roslynator.Documentation
     {
         internal MemberDocumentationModel(
             ISymbol symbol,
-            ImmutableArray<ISymbol> overloads,
             DocumentationModel documentationModel)
         {
             Symbol = symbol;
-            Overloads = overloads;
             DocumentationModel = documentationModel;
         }
 
@@ -24,23 +21,21 @@ namespace Roslynator.Documentation
 
         internal DocumentationModel DocumentationModel { get; }
 
-        public ImmutableArray<ISymbol> Overloads { get; }
+        public IAssemblySymbol ContainingAssembly => Symbol.ContainingAssembly;
 
-        public bool IsOverloaded
-        {
-            get { return Overloads.Length > 1; }
-        }
+        public INamespaceSymbol ContainingNamespace => Symbol.ContainingNamespace;
+
+        public INamedTypeSymbol ContainingType => Symbol.ContainingType;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string DebuggerDisplay
         {
-            get { return $"{Symbol.Name} Overloads = {Overloads.Length}"; }
+            get { return $"{Symbol.Kind} {Symbol.ToDisplayString(Roslynator.SymbolDisplayFormats.Test)}"; }
         }
 
         public bool Equals(MemberDocumentationModel other)
         {
-            return other.Symbol.Name == Symbol.Name
-                && other.Symbol.ContainingType.Equals(Symbol.ContainingType);
+            return Symbol.Equals(other);
         }
 
         public override bool Equals(object obj)
@@ -51,7 +46,7 @@ namespace Roslynator.Documentation
 
         public override int GetHashCode()
         {
-            return Hash.Combine(Symbol.ContainingType, Hash.Create(Symbol.Name));
+            return Symbol.GetHashCode();
         }
     }
 }

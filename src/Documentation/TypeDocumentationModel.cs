@@ -29,6 +29,29 @@ namespace Roslynator.Documentation
 
         public TypeKind TypeKind => Symbol.TypeKind;
 
+        public INamespaceSymbol ContainingNamespace => Symbol.ContainingNamespace;
+
+        public IAssemblySymbol ContainingAssembly => Symbol.ContainingAssembly;
+
+        public bool IsStatic => Symbol.IsStatic;
+
+        public bool IsObsolete => Symbol.HasAttribute(MetadataNames.System_ObsoleteAttribute);
+
+        public ImmutableArray<ITypeParameterSymbol> TypeParameters
+        {
+            get { return Symbol.TypeParameters; }
+        }
+
+        public ImmutableArray<IParameterSymbol> Parameters
+        {
+            get { return Symbol.DelegateInvokeMethod?.Parameters ?? ImmutableArray<IParameterSymbol>.Empty; }
+        }
+
+        public ITypeSymbol ReturnType
+        {
+            get { return Symbol.DelegateInvokeMethod?.ReturnType; }
+        }
+
         internal ImmutableArray<ISymbol> Members
         {
             get
@@ -48,7 +71,7 @@ namespace Roslynator.Documentation
             {
                 if (_membersIncludingInherited.IsDefault)
                 {
-                    if (Symbol.IsStatic)
+                    if (IsStatic)
                     {
                         _membersIncludingInherited = Members;
                     }
@@ -352,7 +375,7 @@ namespace Roslynator.Documentation
         public IEnumerable<INamedTypeSymbol> GetDerivedTypes()
         {
             if (TypeKind.Is(TypeKind.Class, TypeKind.Interface)
-                && !Symbol.IsStatic)
+                && !IsStatic)
             {
                 foreach (INamedTypeSymbol typeSymbol in DocumentationModel.Types)
                 {
@@ -371,7 +394,7 @@ namespace Roslynator.Documentation
         public IEnumerable<INamedTypeSymbol> GetAllDerivedTypes()
         {
             if (TypeKind.Is(TypeKind.Class, TypeKind.Interface)
-                && !Symbol.IsStatic)
+                && !IsStatic)
             {
                 foreach (INamedTypeSymbol typeSymbol in DocumentationModel.Types)
                 {
@@ -383,7 +406,7 @@ namespace Roslynator.Documentation
 
         public IEnumerable<INamedTypeSymbol> GetImplementedInterfaces(bool omitIEnumerable = false)
         {
-            if (!Symbol.IsStatic
+            if (!IsStatic
                 && !Symbol.TypeKind.Is(TypeKind.Enum, TypeKind.Delegate))
             {
                 ImmutableArray<INamedTypeSymbol> allInterfaces = Symbol.AllInterfaces;
@@ -405,73 +428,61 @@ namespace Roslynator.Documentation
             }
         }
 
-        internal IEnumerable<MemberDocumentationModel> CreateMemberModels(TypeDocumentationParts ignoredParts = TypeDocumentationParts.None)
+        internal IEnumerable<ISymbol> GetMembers(TypeDocumentationParts ignoredParts = TypeDocumentationParts.None)
         {
-            if (TypeKind.Is(TypeKind.Enum, TypeKind.Delegate))
-                yield break;
-
-            if (IsEnabled(TypeDocumentationParts.Constructors))
+            if (!TypeKind.Is(TypeKind.Enum, TypeKind.Delegate))
             {
-                foreach (MemberDocumentationModel model in GetMembers(GetConstructors()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Fields))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetFields()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Indexers))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetIndexers()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Properties))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetProperties()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Methods))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetMethods()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Operators))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetOperators()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.Events))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetEvents()))
-                    yield return model;
-            }
-
-            if (IsEnabled(TypeDocumentationParts.ExplicitInterfaceImplementations))
-            {
-                foreach (MemberDocumentationModel model in GetMembers(GetExplicitInterfaceImplementations()))
-                    yield return model;
-            }
-
-            bool IsEnabled(TypeDocumentationParts part)
-            {
-                return (ignoredParts & part) == 0;
-            }
-
-            IEnumerable<MemberDocumentationModel> GetMembers(IEnumerable<ISymbol> symbols)
-            {
-                foreach (IGrouping<string, ISymbol> grouping in symbols.GroupBy(f => f.Name))
+                if (IsEnabled(TypeDocumentationParts.Constructors))
                 {
-                    ImmutableArray<ISymbol> symbolsWithName = grouping.ToImmutableArray();
+                    foreach (IMethodSymbol result in GetConstructors())
+                        yield return result;
+                }
 
-                    ISymbol symbol = symbolsWithName[0];
+                if (IsEnabled(TypeDocumentationParts.Fields))
+                {
+                    foreach (IFieldSymbol result in GetFields())
+                        yield return result;
+                }
 
-                    yield return new MemberDocumentationModel(symbol, symbolsWithName, DocumentationModel);
+                if (IsEnabled(TypeDocumentationParts.Indexers))
+                {
+                    foreach (IPropertySymbol result in GetIndexers())
+                        yield return result;
+                }
+
+                if (IsEnabled(TypeDocumentationParts.Properties))
+                {
+                    foreach (IPropertySymbol result in GetProperties())
+                        yield return result;
+                }
+
+                if (IsEnabled(TypeDocumentationParts.Methods))
+                {
+                    foreach (IMethodSymbol result in GetMethods())
+                        yield return result;
+                }
+
+                if (IsEnabled(TypeDocumentationParts.Operators))
+                {
+                    foreach (IMethodSymbol result in GetOperators())
+                        yield return result;
+                }
+
+                if (IsEnabled(TypeDocumentationParts.Events))
+                {
+                    foreach (IEventSymbol result in GetEvents())
+                        yield return result;
+                }
+
+                if (IsEnabled(TypeDocumentationParts.ExplicitInterfaceImplementations))
+                {
+                    foreach (ISymbol result in GetExplicitInterfaceImplementations())
+                        yield return result;
+                }
+
+                bool IsEnabled(TypeDocumentationParts part)
+                {
+                    return (ignoredParts & part) == 0;
                 }
             }
         }

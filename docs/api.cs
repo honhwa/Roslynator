@@ -2310,7 +2310,7 @@ namespace Roslynator.Documentation
         public abstract void WriteCodeBlock(string text, string language = null);
         public abstract void WriteComment(string text);
         public virtual void WriteConstructors(IEnumerable<IMethodSymbol> constructors);
-        public virtual void WriteContainingAssembly(ISymbol symbol, string title);
+        public virtual void WriteContainingAssembly(IAssemblySymbol assemblySymbol, string title);
         public virtual void WriteContainingNamespace(INamespaceSymbol namespaceSymbol, string title);
         public virtual void WriteContainingType(INamedTypeSymbol typeSymbol, string title);
         public virtual void WriteContent(IEnumerable<string> names, bool addLinkToRoot = false, bool beginWithSeparator = false);
@@ -2361,7 +2361,7 @@ namespace Roslynator.Documentation
         public virtual void WriteObsoleteMessage(ISymbol symbol);
         public virtual void WriteOperators(IEnumerable<IMethodSymbol> operators, INamedTypeSymbol containingType);
         public virtual void WriteOrderedItem(int number, string text);
-        public virtual void WriteParameters(ISymbol symbol);
+        public virtual void WriteParameters(ImmutableArray<IParameterSymbol> parameters);
         public virtual void WriteProperties(IEnumerable<IPropertySymbol> properties, INamedTypeSymbol containingType);
         public abstract void WriteRaw(string data);
         public virtual void WriteRemarks(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0);
@@ -2386,7 +2386,7 @@ namespace Roslynator.Documentation
         public virtual void WriteSummary(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0);
         public abstract void WriteTableCell(string text);
         public abstract void WriteTableHeaderSeparator();
-        public virtual void WriteTypeParameters(ISymbol symbol);
+        public virtual void WriteTypeParameters(ImmutableArray<ITypeParameterSymbol> typeParameters);
         public virtual void WriteValue(bool value);
         public virtual void WriteValue(decimal value);
         public virtual void WriteValue(double value);
@@ -2406,8 +2406,9 @@ namespace Roslynator.Documentation
 
     public sealed class MemberDocumentationModel : IEquatable<MemberDocumentationModel>
     {
-        public bool IsOverloaded { get; }
-        public ImmutableArray<ISymbol> Overloads { get; }
+        public IAssemblySymbol ContainingAssembly { get; }
+        public INamespaceSymbol ContainingNamespace { get; }
+        public INamedTypeSymbol ContainingType { get; }
         public ISymbol Symbol { get; }
 
         public bool Equals(MemberDocumentationModel other);
@@ -2427,8 +2428,15 @@ namespace Roslynator.Documentation
 
     public sealed class TypeDocumentationModel : IEquatable<TypeDocumentationModel>
     {
+        public IAssemblySymbol ContainingAssembly { get; }
+        public INamespaceSymbol ContainingNamespace { get; }
+        public bool IsObsolete { get; }
+        public bool IsStatic { get; }
+        public ImmutableArray<IParameterSymbol> Parameters { get; }
+        public ITypeSymbol ReturnType { get; }
         public INamedTypeSymbol Symbol { get; }
         public TypeKind TypeKind { get; }
+        public ImmutableArray<ITypeParameterSymbol> TypeParameters { get; }
 
         public bool Equals(TypeDocumentationModel other);
         public override bool Equals(object obj);
