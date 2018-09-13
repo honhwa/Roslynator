@@ -97,6 +97,7 @@ public abstract class DocumentationWriter : System.IDisposable
 | [WriteHorizontalRule()](WriteHorizontalRule/README.md#_top) | |
 | [WriteCharEntity(Char)](WriteCharEntity/README.md#_top) | |
 | [WriteImage(String, String, String)](WriteImage/README.md#_top) | |
+| [WriteImplementedInterfaceMembers(IEnumerable\<ISymbol>)](WriteImplementedInterfaceMembers/README.md#_top) | |
 | [WriteImplementedInterfaces(IEnumerable\<INamedTypeSymbol>)](WriteImplementedInterfaces/README.md#_top) | |
 | [WriteIndexers(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](WriteIndexers/README.md#_top) | |
 | [WriteInheritance(INamedTypeSymbol)](WriteInheritance/README.md#_top) | |

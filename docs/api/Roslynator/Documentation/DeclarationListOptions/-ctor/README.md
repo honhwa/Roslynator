@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # DeclarationListOptions\(IEnumerable\<String>, Boolean, String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, DeclarationListParts\) Constructor
 
 [Home](../../../../README.md#_top)

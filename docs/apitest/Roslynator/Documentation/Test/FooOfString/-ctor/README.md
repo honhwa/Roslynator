@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # FooOfString\(\) Constructor
 
 [Home](../../../../../README.md#_top)

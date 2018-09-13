@@ -19,7 +19,6 @@
 | [DocumentationUrlProvider](DocumentationUrlProvider/README.md#_top) | |
 | [DocumentationWriter](DocumentationWriter/README.md#_top) | |
 | [ExternalUrlProvider](ExternalUrlProvider/README.md#_top) | |
-| [MemberDocumentationModel](MemberDocumentationModel/README.md#_top) | |
 | [SymbolXmlDocumentation](SymbolXmlDocumentation/README.md#_top) | |
 | [TypeDocumentationModel](TypeDocumentationModel/README.md#_top) | |
 | [WellKnownExternalUrlProviders](WellKnownExternalUrlProviders/README.md#_top) | |

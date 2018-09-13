@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # DocumentationGenerator\(DocumentationModel, DocumentationUrlProvider, DocumentationOptions, DocumentationResources\) Constructor
 
 [Home](../../../../README.md#_top)

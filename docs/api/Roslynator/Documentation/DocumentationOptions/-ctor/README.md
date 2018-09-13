@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # DocumentationOptions\(IEnumerable\<String>, String, String, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, DocumentationDepth, InheritanceStyle, RootDocumentationParts, NamespaceDocumentationParts, TypeDocumentationParts, MemberDocumentationParts, OmitContainingNamespaceParts\) Constructor
 
 [Home](../../../../README.md#_top)

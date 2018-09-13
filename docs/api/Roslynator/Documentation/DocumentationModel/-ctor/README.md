@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # DocumentationModel\(Compilation, IEnumerable\<IAssemblySymbol>, DocumentationVisibility, IEnumerable\<String>\) Constructor
 
 [Home](../../../../README.md#_top)

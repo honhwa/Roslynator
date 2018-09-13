@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # NameGenerator\(\) Constructor
 
 [Home](../../../README.md#_top)

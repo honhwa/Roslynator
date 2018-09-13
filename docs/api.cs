@@ -2347,6 +2347,7 @@ namespace Roslynator.Documentation
         public virtual void WriteHeading6(string text);
         public abstract void WriteHorizontalRule();
         public abstract void WriteImage(string text, string url, string title = null);
+        public virtual void WriteImplementedInterfaceMembers(IEnumerable<ISymbol> interfaceMembers);
         public virtual void WriteImplementedInterfaces(IEnumerable<INamedTypeSymbol> interfaceTypes);
         public virtual void WriteIndexers(IEnumerable<IPropertySymbol> indexers, INamedTypeSymbol containingType);
         public virtual void WriteInheritance(INamedTypeSymbol typeSymbol);
@@ -2402,18 +2403,6 @@ namespace Roslynator.Documentation
         public abstract string Name { get; }
 
         public abstract DocumentationUrlInfo CreateUrl(ImmutableArray<string> folders);
-    }
-
-    public sealed class MemberDocumentationModel : IEquatable<MemberDocumentationModel>
-    {
-        public IAssemblySymbol ContainingAssembly { get; }
-        public INamespaceSymbol ContainingNamespace { get; }
-        public INamedTypeSymbol ContainingType { get; }
-        public ISymbol Symbol { get; }
-
-        public bool Equals(MemberDocumentationModel other);
-        public override bool Equals(object obj);
-        public override int GetHashCode();
     }
 
     public class SymbolXmlDocumentation

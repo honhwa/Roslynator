@@ -1041,11 +1041,12 @@ namespace Roslynator.Documentation
                         {
                             writer.WriteStartDocument();
 
-                            MemberDocumentationWriter memberWriter = MemberDocumentationWriter.Create(symbol, writer);
-
                             bool isOverloaded = en.MoveNext();
 
-                            memberWriter.WriteTitle(symbol, isOverloaded: isOverloaded);
+                            writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+                            writer.WriteLine();
+
+                            writer.WriteMemberTitle(symbol, isOverloaded);
 
                             writer.WriteContent(Array.Empty<string>(), addLinkToRoot: true);
 
@@ -1057,24 +1058,12 @@ namespace Roslynator.Documentation
 
                             if (isOverloaded)
                             {
-                                ImmutableArray<ISymbol>.Builder builder = ImmutableArray.CreateBuilder<ISymbol>();
-
-                                builder.Add(symbol);
-
-                                do
-                                {
-                                    builder.Add(en.Current);
-                                }
-                                while (en.MoveNext());
-
-                                ImmutableArray<ISymbol> group = builder.ToImmutableArray();
-
                                 SymbolDisplayFormat format = SymbolDisplayFormats.SimpleDeclaration;
 
                                 const SymbolDisplayAdditionalMemberOptions additionalOptions = SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName;
 
                                 writer.WriteTable(
-                                    group,
+                                    grouping,
                                     heading: Resources.OverloadsTitle,
                                     headingLevel: 2,
                                     header1: Resources.GetName(symbol),
@@ -1082,7 +1071,7 @@ namespace Roslynator.Documentation
                                     format: format,
                                     additionalOptions: additionalOptions);
 
-                                foreach (ISymbol overloadSymbol in group.OrderBy(f => f.ToDisplayString(format, additionalOptions)))
+                                foreach (ISymbol overloadSymbol in grouping.OrderBy(f => f.ToDisplayString(format, additionalOptions)))
                                 {
                                     string id = DocumentationUrlProvider.GetFragment(overloadSymbol);
 
@@ -1091,18 +1080,103 @@ namespace Roslynator.Documentation
                                     writer.WriteSpace();
                                     writer.WriteLinkDestination(id);
                                     writer.WriteEndHeading();
-                                    memberWriter.WriteContent(overloadSymbol, headingLevelBase: 1);
+
+                                    GenerateMemberContent(writer, overloadSymbol, headingLevelBase: 1);
                                 }
                             }
                             else
                             {
-                                memberWriter.WriteContent(symbol);
+                                GenerateMemberContent(writer, symbol);
                             }
 
                             writer.WriteEndDocument();
 
                             yield return CreateResult(writer, DocumentationFileKind.Member, symbol);
                         }
+                    }
+                }
+            }
+
+            void GenerateMemberContent(DocumentationWriter writer, ISymbol symbol, int headingLevelBase = 0)
+            {
+                SymbolXmlDocumentation xmlDocumentation = DocumentationModel.GetXmlDocumentation(symbol, Options.PreferredCultureName);
+
+                foreach (MemberDocumentationParts part in EnabledAndSortedMemberParts)
+                {
+                    switch (part)
+                    {
+                        case MemberDocumentationParts.ObsoleteMessage:
+                            {
+                                if (symbol.HasAttribute(MetadataNames.System_ObsoleteAttribute))
+                                    writer.WriteObsoleteMessage(symbol);
+
+                                break;
+                            }
+                        case MemberDocumentationParts.Summary:
+                            {
+                                if (xmlDocumentation != null)
+                                    writer.WriteSummary(symbol, xmlDocumentation, headingLevelBase: headingLevelBase);
+
+                                break;
+                            }
+                        case MemberDocumentationParts.Declaration:
+                            {
+                                writer.WriteDeclaration(symbol);
+                                break;
+                            }
+                        case MemberDocumentationParts.TypeParameters:
+                            {
+                                writer.WriteTypeParameters(symbol.GetTypeParameters());
+                                break;
+                            }
+                        case MemberDocumentationParts.Parameters:
+                            {
+                                writer.WriteParameters(symbol.GetParameters());
+                                break;
+                            }
+                        case MemberDocumentationParts.ReturnValue:
+                            {
+                                writer.WriteReturnType(symbol, xmlDocumentation);
+                                break;
+                            }
+                        case MemberDocumentationParts.Implements:
+                            {
+                                writer.WriteImplementedInterfaceMembers(symbol.FindImplementedInterfaceMembers());
+                                break;
+                            }
+                        case MemberDocumentationParts.Attributes:
+                            {
+                                writer.WriteAttributes(symbol);
+                                break;
+                            }
+                        case MemberDocumentationParts.Exceptions:
+                            {
+                                if (xmlDocumentation != null)
+                                    writer.WriteExceptions(symbol, xmlDocumentation);
+
+                                break;
+                            }
+                        case MemberDocumentationParts.Examples:
+                            {
+                                if (xmlDocumentation != null)
+                                    writer.WriteExamples(symbol, xmlDocumentation, headingLevelBase: headingLevelBase);
+
+                                break;
+                            }
+                        case MemberDocumentationParts.Remarks:
+                            {
+                                if (xmlDocumentation != null)
+                                    writer.WriteRemarks(symbol, xmlDocumentation, headingLevelBase: headingLevelBase);
+
+                                break;
+                            }
+                        case MemberDocumentationParts.SeeAlso:
+                            {
+                                if (xmlDocumentation != null)
+                                    writer.WriteSeeAlso(symbol, xmlDocumentation, headingLevelBase: headingLevelBase);
+
+                                break;
+                            }
                     }
                 }
             }

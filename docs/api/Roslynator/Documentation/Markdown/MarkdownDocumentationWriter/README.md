@@ -93,6 +93,7 @@ public class MarkdownDocumentationWriter : Roslynator.Documentation.Documentatio
 | [WriteHorizontalRule()](WriteHorizontalRule/README.md#_top) |  \(Overrides [DocumentationWriter.WriteHorizontalRule](../../DocumentationWriter/WriteHorizontalRule/README.md#_top)\) |
 | [WriteCharEntity(Char)](WriteCharEntity/README.md#_top) |  \(Overrides [DocumentationWriter.WriteCharEntity](../../DocumentationWriter/WriteCharEntity/README.md#_top)\) |
 | [WriteImage(String, String, String)](WriteImage/README.md#_top) |  \(Overrides [DocumentationWriter.WriteImage](../../DocumentationWriter/WriteImage/README.md#_top)\) |
+| [WriteImplementedInterfaceMembers(IEnumerable\<ISymbol>)](../../DocumentationWriter/WriteImplementedInterfaceMembers/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteImplementedInterfaces(IEnumerable\<INamedTypeSymbol>)](../../DocumentationWriter/WriteImplementedInterfaces/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteIndexers(IEnumerable\<IPropertySymbol>, INamedTypeSymbol)](../../DocumentationWriter/WriteIndexers/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |
 | [WriteInheritance(INamedTypeSymbol)](../../DocumentationWriter/WriteInheritance/README.md#_top) |  \(Inherited from [DocumentationWriter](../../DocumentationWriter/README.md#_top)\) |

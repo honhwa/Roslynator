@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # SeparatedSyntaxListSelection\(SeparatedSyntaxList\<TNode>, TextSpan, Int32, Int32\) Constructor
 
 [Home](../../../README.md#_top)

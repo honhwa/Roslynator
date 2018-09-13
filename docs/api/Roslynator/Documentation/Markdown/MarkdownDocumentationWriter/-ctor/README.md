@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # MarkdownDocumentationWriter\(DocumentationModel, DocumentationUrlProvider, DocumentationOptions, DocumentationResources\) Constructor
 
 [Home](../../../../../README.md#_top)

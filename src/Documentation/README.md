@@ -22,7 +22,6 @@
 * &emsp; Roslynator\.Documentation\.[DocumentationWriter](../../docs/api/Roslynator/Documentation/DocumentationWriter/README.md#_top)
 * &emsp; \| &emsp; Roslynator\.Documentation\.Markdown\.[MarkdownDocumentationWriter](../../docs/api/Roslynator/Documentation/Markdown/MarkdownDocumentationWriter/README.md#_top)
 * &emsp; Roslynator\.Documentation\.[ExternalUrlProvider](../../docs/api/Roslynator/Documentation/ExternalUrlProvider/README.md#_top)
-* &emsp; Roslynator\.Documentation\.[MemberDocumentationModel](../../docs/api/Roslynator/Documentation/MemberDocumentationModel/README.md#_top)
 * &emsp; Roslynator\.Documentation\.[SymbolXmlDocumentation](../../docs/api/Roslynator/Documentation/SymbolXmlDocumentation/README.md#_top)
 * &emsp; Roslynator\.Documentation\.[TypeDocumentationModel](../../docs/api/Roslynator/Documentation/TypeDocumentationModel/README.md#_top)
 * &emsp; Roslynator\.Documentation\.[XmlDocumentation](../../docs/api/Roslynator/Documentation/XmlDocumentation/README.md#_top)

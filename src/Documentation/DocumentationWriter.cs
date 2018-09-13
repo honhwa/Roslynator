@@ -344,6 +344,40 @@ namespace Roslynator.Documentation
             WriteSpace();
         }
 
+        internal void WriteMemberTitle(ISymbol symbol, bool isOverloaded)
+        {
+            WriteStartHeading(1);
+
+            if (symbol.Kind == SymbolKind.Method
+                && ((IMethodSymbol)symbol).MethodKind == MethodKind.Constructor)
+            {
+                if (isOverloaded)
+                {
+                    WriteString(symbol.ContainingType.ToDisplayString(SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters));
+                    WriteSpace();
+                    WriteString(Resources.ConstructorsTitle);
+                }
+                else
+                {
+                    WriteString(symbol.ToDisplayString(SymbolDisplayFormats.SimpleDeclaration));
+                    WriteSpace();
+                    WriteString(Resources.ConstructorTitle);
+                }
+            }
+            else
+            {
+                SymbolDisplayFormat format = (isOverloaded)
+                    ? SymbolDisplayFormats.OverloadedMemberTitle
+                    : SymbolDisplayFormats.MemberTitle;
+
+                WriteString(symbol.ToDisplayString(format, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName));
+                WriteSpace();
+                WriteString(Resources.GetName(symbol));
+            }
+
+            WriteEndHeading();
+        }
+
         public virtual void WriteContainingNamespace(INamespaceSymbol namespaceSymbol, string title)
         {
             WriteBold(title);
@@ -721,6 +755,36 @@ namespace Roslynator.Documentation
                 format: SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters,
                 addLinkForTypeParameters: true,
                 includeContainingNamespace: Options.IncludeContainingNamespace(OmitContainingNamespaceParts.ImplementedInterface));
+        }
+
+        public virtual void WriteImplementedInterfaceMembers(IEnumerable<ISymbol> interfaceMembers)
+        {
+            SymbolDisplayFormat format = SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters;
+            bool includeContainingNamespace = Options.IncludeContainingNamespace(OmitContainingNamespaceParts.ImplementedMember);
+            const SymbolDisplayAdditionalMemberOptions additionalOptions = SymbolDisplayAdditionalMemberOptions.UseItemPropertyName;
+
+            using (IEnumerator<ISymbol> en = interfaceMembers
+                .Sort(format, systemNamespaceFirst: Options.PlaceSystemNamespaceFirst, includeContainingNamespace: includeContainingNamespace, additionalOptions: additionalOptions)
+                .GetEnumerator())
+            {
+                if (en.MoveNext())
+                {
+                    WriteHeading(3, Resources.ImplementsTitle);
+
+                    WriteStartBulletList();
+
+                    do
+                    {
+                        WriteStartBulletItem();
+
+                        WriteLink(en.Current, format, additionalOptions, includeContainingNamespace: includeContainingNamespace);
+                        WriteEndBulletItem();
+                    }
+                    while (en.MoveNext());
+
+                    WriteEndBulletList();
+                }
+            }
         }
 
         public virtual void WriteExceptions(ISymbol symbol, SymbolXmlDocumentation xmlDocumentation, int headingLevelBase = 0)

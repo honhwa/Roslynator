@@ -1,3 +1,5 @@
+<a name="_top"></a>
+
 # DocumentationGeneratorResult\(String, String, DocumentationFileKind\) Constructor
 
 [Home](../../../../README.md#_top)
