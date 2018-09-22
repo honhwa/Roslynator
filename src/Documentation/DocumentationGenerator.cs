@@ -10,6 +10,7 @@ using Roslynator.CSharp;
 
 namespace Roslynator.Documentation
 {
+    //TODO: Add CancellationToken
     public abstract class DocumentationGenerator
     {
         private ImmutableArray<RootDocumentationParts> _enabledAndSortedRootParts;
