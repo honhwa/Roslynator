@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>Roslynator.Documentation.CommandLine</id>
+    <id>Roslynator.CommandLine</id>
     <version>0.1.0-beta</version>
     <authors>Josef Pihrt</authors>
     <owners>Josef Pihrt</owners>
@@ -9,19 +9,19 @@
     <projectUrl>http://github.com/JosefPihrt/Roslynator</projectUrl>
     <iconUrl>http://pihrt.net/images/Roslynator.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Command line tool for Roslynator.Documentation</description>
-    <summary>Command line tool for Roslynator.Documentation</summary>
+    <description>Command line tool for Roslynator</description>
+    <summary>Command line tool for Roslynator</summary>
     <copyright>Copyright (c) 2017-2018 Josef Pihrt</copyright>
-    <tags>Documentation C# CSharp CLI</tags>
+    <tags>C# CSharp CLI Documentation</tags>
     <developmentDependency>true</developmentDependency>
     <repository type="git" url="http://github.com/JosefPihrt/Roslynator.git" />
   </metadata>
   <files>
     <file src="_._" target="lib/net40/" />
     <file src="_._" target="lib/netstandard1.0/" />
-    <file src="Documentation.CommandLine.targets" target="build/net40/Roslynator.Documentation.CommandLine.targets" />
-    <file src="Documentation.CommandLine.targets" target="build/netstandard1.0/Roslynator.Documentation.CommandLine.targets" />
-    <file src="DotDoc.targets" target="tools/DotDoc.targets" />
+    <file src="CommandLine.targets" target="build/net40/Roslynator.CommandLine.targets" />
+    <file src="CommandLine.targets" target="build/netstandard1.0/Roslynator.CommandLine.targets" />
+    <file src="Roslynator.targets" target="tools/Roslynator.targets" />
     <file src="$publishDir$\net46\**\*" target="tools/net46/" exclude="**\*.pdb;**\*.xml" />
     <file src="$publishDir$\netcoreapp1.0\**\*" target="tools/netcoreapp1.0/" exclude="**\*.pdb;**\*.xml" />
   </files>

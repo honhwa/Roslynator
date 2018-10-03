@@ -8,10 +8,11 @@ using System.Text;
 using CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Roslynator.Documentation;
 using Roslynator.Documentation.Markdown;
 using System.Threading.Tasks;
 
-namespace Roslynator.Documentation
+namespace Roslynator.CommandLine
 {
     internal static class Program
     {
@@ -19,15 +20,15 @@ namespace Roslynator.Documentation
 
         private static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<DocCommandLineOptions, DeclarationsCommandLineOptions, RootCommandLineOptions>(args)
+            Parser.Default.ParseArguments<GenerateDocCommandLineOptions, GenerateDeclarationsCommandLineOptions, GenerateDocRootCommandLineOptions>(args)
                 .MapResult(
-                  (DocCommandLineOptions options) => ExecuteDoc(options),
-                  (DeclarationsCommandLineOptions options) => ExecuteDeclarations(options),
-                  (RootCommandLineOptions options) => ExecuteRoot(options),
+                  (GenerateDocCommandLineOptions options) => ExecuteDoc(options),
+                  (GenerateDeclarationsCommandLineOptions options) => ExecuteDeclarations(options),
+                  (GenerateDocRootCommandLineOptions options) => ExecuteRoot(options),
                   _ => 1);
         }
 
-        private static int ExecuteDoc(DocCommandLineOptions options)
+        private static int ExecuteDoc(GenerateDocCommandLineOptions options)
         {
             if (options.MaxDerivedTypes < 0)
             {
@@ -120,7 +121,7 @@ namespace Roslynator.Documentation
             return 0;
         }
 
-        private static int ExecuteDeclarations(DeclarationsCommandLineOptions options)
+        private static int ExecuteDeclarations(GenerateDeclarationsCommandLineOptions options)
         {
             if (!TryGetIgnoredDeclarationListParts(options.IgnoredParts, out DeclarationListParts ignoredParts))
                 return 1;
@@ -174,7 +175,7 @@ namespace Roslynator.Documentation
             return 0;
         }
 
-        private static int ExecuteRoot(RootCommandLineOptions options)
+        private static int ExecuteRoot(GenerateDocRootCommandLineOptions options)
         {
             if (!TryGetVisibility(options.Visibility, out DocumentationVisibility visibility))
                 return 1;

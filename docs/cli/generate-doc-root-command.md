@@ -1,5 +1,5 @@
 
-# `root` Command
+# `generate-doc-root` Command
 
 Generates root documentation file from specified assemblies.
 

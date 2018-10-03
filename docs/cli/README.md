@@ -1,8 +1,8 @@
 
-# Roslynator.Documentation Command-Line Interface
+# Roslynator Command-Line Interface
 
 ## Commands
 
-* [doc](doc-command.md)
-* [declarations](declarations-command.md)
-* [root](root-command.md)
+* [generate-doc](generate-doc-command.md)
+* [generate-doc-root](generate-doc-root-command.md)
+* [generate-declarations](generate-declarations-command.md)

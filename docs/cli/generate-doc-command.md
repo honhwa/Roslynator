@@ -1,5 +1,5 @@
 
-# `doc` Command
+# `generate-doc` Command
 
 Generates documentation files from specified assemblies.
 

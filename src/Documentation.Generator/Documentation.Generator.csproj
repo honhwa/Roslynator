@@ -14,7 +14,7 @@
     <AssemblyOriginatorKeyFile>Documentation.Generator.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <Import Project="DotDoc.targets" />
+  <Import Project="Roslynator.targets" />
 
   <ItemGroup>
     <None Remove="Documentation.Generator.snk" />
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Roslynator.Documentation.CommandLine" Version="0.1.0-beta" />
+    <PackageReference Include="Roslynator.CommandLine" Version="0.1.0-beta" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.8.0" />
   </ItemGroup>
 

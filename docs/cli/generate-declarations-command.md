@@ -1,5 +1,5 @@
 
-# `declarations` Command
+# `generate-declarations` Command
 
 Generates a single file that contains all declarations from specified assemblies.
 

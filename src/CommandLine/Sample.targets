@@ -1,15 +1,15 @@
 ﻿<Project>
 
-  <Target Name="DotDoc" AfterTargets="DotDocInitialize" Condition=" '$(Configuration)' == 'Release'">
+  <Target Name="Roslynator" AfterTargets="RoslynatorInitialize" Condition=" '$(Configuration)' == 'Release'">
 
     <PropertyGroup>
-      <DotDocEnabled>true</DotDocEnabled>
-      <DotDocAssemblies>&quot;$(TargetPath)&quot;</DotDocAssemblies>
+      <RoslynatorEnabled>true</RoslynatorEnabled>
+      <RoslynatorAssemblies>&quot;$(TargetPath)&quot;</RoslynatorAssemblies>
     </PropertyGroup>
 
-    <Exec Command="$(DotDocExe) doc ^
-      -a $(DotDocAssemblies) ^
-      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+    <Exec Command="$(RoslynatorExe) generate-doc ^
+      -a $(RoslynatorAssemblies) ^
+      -r &quot;$(RoslynatorAssemblyReferences)&quot; ^
       -o &quot;$(SolutionDir)docs&quot; ^
       -h &quot;API Reference&quot;"
           LogStandardErrorAsError="true"
@@ -17,9 +17,9 @@
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
 
-    <Exec Command="$(DotDocExe) declarations ^
-      -a $(DotDocAssemblies) ^
-      -r &quot;$(DotDocAssemblyReferences)&quot; ^
+    <Exec Command="$(RoslynatorExe) generate-declarations ^
+      -a $(RoslynatorAssemblies) ^
+      -r &quot;$(RoslynatorAssemblyReferences)&quot; ^
       -o &quot;$(SolutionDir)docs\api.cs&quot;"
           LogStandardErrorAsError="true"
           ConsoleToMSBuild="true">

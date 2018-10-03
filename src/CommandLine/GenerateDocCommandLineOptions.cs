@@ -2,12 +2,13 @@
 
 using System.Collections.Generic;
 using CommandLine;
+using Roslynator.Documentation;
 using static Roslynator.Documentation.DocumentationOptions;
 
-namespace Roslynator.Documentation
+namespace Roslynator.CommandLine
 {
-    [Verb("doc")]
-    public class DocCommandLineOptions
+    [Verb("generate-doc")]
+    public class GenerateDocCommandLineOptions
     {
         [Option(longName: "assemblies", shortName: 'a', Required = true)]
         public IEnumerable<string> Assemblies { get; set; }

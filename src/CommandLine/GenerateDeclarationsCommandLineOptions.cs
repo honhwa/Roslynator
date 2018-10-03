@@ -2,12 +2,13 @@
 
 using System.Collections.Generic;
 using CommandLine;
+using Roslynator.Documentation;
 using static Roslynator.Documentation.DeclarationListOptions;
 
-namespace Roslynator.Documentation
+namespace Roslynator.CommandLine
 {
-    [Verb("declarations")]
-    public class DeclarationsCommandLineOptions
+    [Verb("generate-declarations")]
+    public class GenerateDeclarationsCommandLineOptions
     {
         [Option(longName: "assemblies", shortName: 'a', Required = true)]
         public IEnumerable<string> Assemblies { get; set; }
