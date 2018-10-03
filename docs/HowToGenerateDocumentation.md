@@ -6,14 +6,20 @@
 2) Add MSBuild Target to your csproj (vbproj) file
 
 ```xml
-<Target Name="Roslynator" AfterTargets="RoslynatorInitialize" Condition=" '$(Configuration)' == 'Release'">
+<Target Name="GenerateDocumentation" AfterTargets="RoslynatorInitialize" Condition=" '$(Configuration)' == 'Release'">
 
   <PropertyGroup>
 
     <!-- One or more assembly paths you want generator documentation for, for example: A.dll B.dll -->
     <RoslynatorAssemblies>&quot;$(TargetPath)&quot;</RoslynatorAssemblies>
 
+    <!-- A file that will contain all assembly references -->
+    <RoslynatorAssemblyReferences>$(TargetDir)Roslynator.assemblyreferences</RoslynatorAssemblyReferences>
+
   </PropertyGroup>
+
+    <!-- Save assembly references to a file -->
+    <WriteLinesToFile File="$(RoslynatorAssemblyReferences)" Lines="@(_ResolveAssemblyReferenceResolvedFiles)" Overwrite="true" Encoding="Unicode" />
 
     <!-- Execute 'doc' command. This command will generate documentation files from specified assemblies -->
   <Exec Command="$(RoslynatorExe) generate-doc ^

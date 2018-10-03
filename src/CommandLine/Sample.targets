@@ -1,11 +1,13 @@
 ﻿<Project>
 
-  <Target Name="Roslynator" AfterTargets="RoslynatorInitialize" Condition=" '$(Configuration)' == 'Release'">
+  <Target Name="GenerateDocumentation" AfterTargets="RoslynatorInitialize" Condition=" '$(Configuration)' == 'Release'">
 
     <PropertyGroup>
-      <RoslynatorEnabled>true</RoslynatorEnabled>
       <RoslynatorAssemblies>&quot;$(TargetPath)&quot;</RoslynatorAssemblies>
+      <RoslynatorAssemblyReferences>$(TargetDir)Roslynator.assemblyreferences</RoslynatorAssemblyReferences>
     </PropertyGroup>
+
+    <WriteLinesToFile File="$(RoslynatorAssemblyReferences)" Lines="@(_ResolveAssemblyReferenceResolvedFiles)" Overwrite="true" Encoding="Unicode" />
 
     <Exec Command="$(RoslynatorExe) generate-doc ^
       -a $(RoslynatorAssemblies) ^
