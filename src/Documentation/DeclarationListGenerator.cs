@@ -23,8 +23,11 @@ namespace Roslynator.Documentation
             DeclarationListOptions options = null,
             IComparer<INamespaceSymbol> namespaceComparer = null,
             IComparer<INamedTypeSymbol> typeComparer = null,
-            IComparer<ISymbol> memberComparer = null)
+            IComparer<ISymbol> memberComparer = null,
+            CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             options = options ?? DeclarationListOptions.Default;
 
             var builder = new DeclarationListBuilder(
@@ -42,6 +45,8 @@ namespace Roslynator.Documentation
 
             foreach (INamespaceSymbol namespaceSymbol in builder.Namespaces.OrderBy(f => f, builder.NamespaceComparer))
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 sb.Append("using ");
                 sb.Append(namespaceSymbol.ToDisplayString(SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespaces));
                 sb.AppendLine(";");
@@ -70,19 +75,19 @@ namespace Roslynator.Documentation
 
             Document document = project.AddDocument("AdHocFile.cs", SourceText.From(content));
 
-            SemanticModel semanticModel = await document.GetSemanticModelAsync().ConfigureAwait(false);
+            SemanticModel semanticModel = await document.GetSemanticModelAsync(cancellationToken).ConfigureAwait(false);
 
-            SyntaxNode root = await document.GetSyntaxRootAsync().ConfigureAwait(false);
+            SyntaxNode root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 
-            var rewriter = new Rewriter(options, semanticModel);
+            var rewriter = new Rewriter(options, semanticModel, cancellationToken);
 
             root = rewriter.Visit(root);
 
             document = document.WithSyntaxRoot(root);
 
-            document = await Simplifier.ReduceAsync(document).ConfigureAwait(false);
+            document = await Simplifier.ReduceAsync(document, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            root = await document.GetSyntaxRootAsync().ConfigureAwait(false);
+            root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 
             return root.ToFullString();
         }

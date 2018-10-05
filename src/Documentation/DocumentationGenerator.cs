@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Microsoft.CodeAnalysis;
 using Roslynator.CSharp;
 
 namespace Roslynator.Documentation
 {
-    //TODO: Add CancellationToken
     public abstract class DocumentationGenerator
     {
         private ImmutableArray<RootDocumentationParts> _enabledAndSortedRootParts;
@@ -150,8 +150,10 @@ namespace Roslynator.Documentation
 
         protected abstract DocumentationWriter CreateWriterCore();
 
-        public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null)
+        public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null, CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             DocumentationDepth depth = Options.Depth;
 
             DocumentationGeneratorResult objectModel = default;
@@ -170,6 +172,8 @@ namespace Roslynator.Documentation
                     .Select(f => f.ContainingNamespace)
                     .Distinct(MetadataNameEqualityComparer<INamespaceSymbol>.Instance))
                 {
+                    cancellationToken.ThrowIfCancellationRequested();
+
                     yield return GenerateNamespace(namespaceSymbol);
                 }
 
@@ -177,6 +181,8 @@ namespace Roslynator.Documentation
                 {
                     foreach (INamedTypeSymbol typeSymbol in typeSymbols)
                     {
+                        cancellationToken.ThrowIfCancellationRequested();
+
                         if (!Options.ShouldBeIgnored(typeSymbol))
                         {
                             TypeDocumentationModel typeModel = DocumentationModel.GetTypeModel(typeSymbol);
@@ -186,7 +192,11 @@ namespace Roslynator.Documentation
                             if (depth == DocumentationDepth.Member)
                             {
                                 foreach (DocumentationGeneratorResult result in GenerateMembers(typeModel))
+                                {
+                                    cancellationToken.ThrowIfCancellationRequested();
+
                                     yield return result;
+                                }
                             }
                         }
                     }

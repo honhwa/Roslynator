@@ -11,6 +11,9 @@ using Microsoft.CodeAnalysis.CSharp;
 using Roslynator.Documentation;
 using Roslynator.Documentation.Markdown;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Reflection;
+using static System.Console;
 
 namespace Roslynator.CommandLine
 {
@@ -20,6 +23,10 @@ namespace Roslynator.CommandLine
 
         private static void Main(string[] args)
         {
+            WriteLine($"Roslynator Tool version {typeof(Program).GetTypeInfo().Assembly.GetName().Version}");
+            WriteLine("Copyright (c) Josef Pihrt. All rights reserved.");
+            WriteLine();
+
             Parser.Default.ParseArguments<GenerateDocCommandLineOptions, GenerateDeclarationsCommandLineOptions, GenerateDocRootCommandLineOptions>(args)
                 .MapResult(
                   (GenerateDocCommandLineOptions options) => ExecuteDoc(options),
@@ -32,7 +39,7 @@ namespace Roslynator.CommandLine
         {
             if (options.MaxDerivedTypes < 0)
             {
-                Console.WriteLine("Maximum number of derived items must be equal or greater than 0.");
+                WriteLine("Maximum number of derived items must be equal or greater than 0.");
                 return 1;
             }
 
@@ -98,25 +105,34 @@ namespace Roslynator.CommandLine
                 }
                 catch (IOException ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    WriteLine(ex.ToString());
                 }
             }
 
-            Console.WriteLine($"Documentation is being generated to '{options.OutputDirectory}'.");
+            var cts = new CancellationTokenSource();
+            CancelKeyPress += (sender, e) =>
+            {
+                e.Cancel = true;
+                cts.Cancel();
+            };
 
-            foreach (DocumentationGeneratorResult documentationFile in generator.Generate(heading: options.Heading))
+            CancellationToken cancellationToken = cts.Token;
+
+            WriteLine($"Documentation is being generated to '{options.OutputDirectory}'.");
+
+            foreach (DocumentationGeneratorResult documentationFile in generator.Generate(heading: options.Heading, cancellationToken))
             {
                 string path = Path.Combine(directoryPath, documentationFile.FilePath);
 
 #if DEBUG
-                Console.WriteLine($"saving '{path}'");
+                WriteLine($"saving '{path}'");
 #else
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
                 File.WriteAllText(path, documentationFile.Content, _defaultEncoding);
 #endif
             }
 
-            Console.WriteLine($"Documentation successfully generated to '{options.OutputDirectory}'.");
+            WriteLine($"Documentation successfully generated to '{options.OutputDirectory}'.");
 
             return 0;
         }
@@ -152,25 +168,35 @@ namespace Roslynator.CommandLine
                 depth: options.Depth,
                 ignoredParts: ignoredParts);
 
-            Console.WriteLine($"Declaration list is being generated to '{options.OutputPath}'.");
+            var cts = new CancellationTokenSource();
+            CancelKeyPress += (sender, e) =>
+            {
+                e.Cancel = true;
+                cts.Cancel();
+            };
+
+            CancellationToken cancellationToken = cts.Token;
+
+            WriteLine($"Declaration list is being generated to '{options.OutputPath}'.");
 
             Task<string> task = DeclarationListGenerator.GenerateAsync(
                 documentationModel,
                 declarationListOptions,
-                namespaceComparer: NamespaceSymbolComparer.GetInstance(systemNamespaceFirst: !options.NoPrecedenceForSystem));
+                namespaceComparer: NamespaceSymbolComparer.GetInstance(systemNamespaceFirst: !options.NoPrecedenceForSystem),
+                cancellationToken: cancellationToken);
 
             string content = task.Result;
 
             string path = options.OutputPath;
 
 #if DEBUG
-            Console.WriteLine($"saving '{path}'");
+            WriteLine($"saving '{path}'");
 #else
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, content, Encoding.UTF8);
 #endif
 
-            Console.WriteLine($"Declaration list successfully generated to '{options.OutputPath}'.");
+            WriteLine($"Declaration list successfully generated to '{options.OutputPath}'.");
 
             return 0;
         }
@@ -202,7 +228,7 @@ namespace Roslynator.CommandLine
 
             string path = options.OutputPath;
 
-            Console.WriteLine($"Documentation root is being generated to '{path}'.");
+            WriteLine($"Documentation root is being generated to '{path}'.");
 
             string heading = options.Heading;
 
@@ -219,7 +245,7 @@ namespace Roslynator.CommandLine
 
             File.WriteAllText(path, result.Content, _defaultEncoding);
 
-            Console.WriteLine($"Documentation root successfully generated to '{path}'.");
+            WriteLine($"Documentation root successfully generated to '{path}'.");
 
             return 0;
         }
@@ -246,7 +272,7 @@ namespace Roslynator.CommandLine
                     }
                     else
                     {
-                        Console.WriteLine($"Assembly not found: '{assemblyPath}'.");
+                        WriteLine($"Assembly not found: '{assemblyPath}'.");
                         return null;
                     }
                 }
@@ -281,7 +307,7 @@ namespace Roslynator.CommandLine
 
                 if (!File.Exists(path))
                 {
-                    Console.WriteLine($"File not found: '{path}'.");
+                    WriteLine($"File not found: '{path}'.");
                     return null;
                 }
 
@@ -316,7 +342,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown root documentation part '{value}'.");
+                    WriteLine($"Unknown root documentation part '{value}'.");
                     return false;
                 }
             }
@@ -342,7 +368,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown namespace documentation part '{value}'.");
+                    WriteLine($"Unknown namespace documentation part '{value}'.");
                     return false;
                 }
             }
@@ -368,7 +394,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown type documentation part '{value}'.");
+                    WriteLine($"Unknown type documentation part '{value}'.");
                     return false;
                 }
             }
@@ -394,7 +420,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown member documentation part '{value}'.");
+                    WriteLine($"Unknown member documentation part '{value}'.");
                     return false;
                 }
             }
@@ -420,7 +446,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown declaration list part '{value}'.");
+                    WriteLine($"Unknown declaration list part '{value}'.");
                     return false;
                 }
             }
@@ -446,7 +472,7 @@ namespace Roslynator.CommandLine
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown omit containing namespace part '{value}'.");
+                    WriteLine($"Unknown omit containing namespace part '{value}'.");
                     return false;
                 }
             }
@@ -458,7 +484,7 @@ namespace Roslynator.CommandLine
         {
             if (!Enum.TryParse(value.Replace("-", ""), ignoreCase: true, out visibility))
             {
-                Console.WriteLine($"Unknown visibility '{value}'.");
+                WriteLine($"Unknown visibility '{value}'.");
                 return false;
             }
 
