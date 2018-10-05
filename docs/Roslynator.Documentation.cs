@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reflection;
 using System.Runtime.Versioning;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.CodeAnalysis;
@@ -37,7 +38,8 @@ namespace Roslynator
         DeclarationListOptions options = null,
         IComparer<INamespaceSymbol> namespaceComparer = null,
         IComparer<INamedTypeSymbol> typeComparer = null,
-        IComparer<ISymbol> memberComparer = null);
+        IComparer<ISymbol> memberComparer = null,
+        CancellationToken cancellationToken = default);
     }
 
     public class DeclarationListOptions
@@ -121,7 +123,9 @@ namespace Roslynator
 
       protected abstract DocumentationWriter CreateWriterCore();
 
-      public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null);
+      public IEnumerable<DocumentationGeneratorResult> Generate(
+        string heading = null,
+        CancellationToken cancellationToken = default);
 
       public DocumentationGeneratorResult GenerateRoot(
         string heading,

@@ -1,6 +1,6 @@
 <a name="_top"></a>
 
-# DocumentationGenerator\.Generate\(String\) Method
+# DocumentationGenerator\.Generate\(String, CancellationToken\) Method
 
 [Home](../../../../README.md#_top)
 
@@ -9,12 +9,14 @@
 **Assembly**: Roslynator\.Documentation\.dll
 
 ```csharp
-public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null)
+public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null, CancellationToken cancellationToken = default(CancellationToken))
 ```
 
 ### Parameters
 
 **heading**
+
+**cancellationToken**
 
 ### Returns
 

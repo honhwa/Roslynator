@@ -2092,7 +2092,7 @@ namespace Roslynator.Documentation
 {
     public static class DeclarationListGenerator
     {
-        public static Task<string> GenerateAsync(DocumentationModel documentationModel, DeclarationListOptions options = null, IComparer<INamespaceSymbol> namespaceComparer = null, IComparer<INamedTypeSymbol> typeComparer = null, IComparer<ISymbol> memberComparer = null);
+        public static Task<string> GenerateAsync(DocumentationModel documentationModel, DeclarationListOptions options = null, IComparer<INamespaceSymbol> namespaceComparer = null, IComparer<INamedTypeSymbol> typeComparer = null, IComparer<ISymbol> memberComparer = null, CancellationToken cancellationToken = default);
     }
 
     public class DeclarationListOptions
@@ -2132,7 +2132,7 @@ namespace Roslynator.Documentation
         public DocumentationUrlProvider UrlProvider { get; }
 
         protected abstract DocumentationWriter CreateWriterCore();
-        public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null);
+        public IEnumerable<DocumentationGeneratorResult> Generate(string heading = null, CancellationToken cancellationToken = default);
         public DocumentationGeneratorResult GenerateRoot(string heading, bool addExtensionsLink = false);
     }
 
