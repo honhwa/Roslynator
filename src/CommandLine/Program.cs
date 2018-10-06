@@ -23,7 +23,7 @@ namespace Roslynator.CommandLine
 
         private static void Main(string[] args)
         {
-            WriteLine($"Roslynator Tool version {typeof(Program).GetTypeInfo().Assembly.GetName().Version}");
+            WriteLine($"Roslynator Command Line Tool version {typeof(Program).GetTypeInfo().Assembly.GetName().Version}");
             WriteLine("Copyright (c) Josef Pihrt. All rights reserved.");
             WriteLine();
 
