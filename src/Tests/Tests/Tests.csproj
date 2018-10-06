@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="GenerateDocumentation.targets" />
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
@@ -28,7 +30,5 @@
   <ItemGroup>
     <None Remove="Tests.snk" />
   </ItemGroup>
-
-  <Import Project="Roslynator.targets" />
 
 </Project>
