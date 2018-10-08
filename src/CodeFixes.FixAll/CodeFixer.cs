@@ -89,7 +89,7 @@ namespace Roslynator.CodeFixes
 
                 TimeSpan elapsed = stopwatch.Elapsed;
 
-                WriteLine($"  Done fixing project {$"{i + 1}/{projects.Length}"} {elapsed - lastElapsed:mm\\:ss\\.ff} '{project.Name}'", ConsoleColor.Green);
+                WriteLine($"Done fixing project {$"{i + 1}/{projects.Length}"} {elapsed - lastElapsed:mm\\:ss\\.ff} '{project.Name}'", ConsoleColor.Green);
 
                 lastElapsed = elapsed;
             }

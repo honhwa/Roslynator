@@ -135,7 +135,7 @@ namespace Roslynator.CommandLine
                         }
                     }
 
-                    WriteLine($"  Done loading solution '{solutionPath}'", ConsoleColor.Green);
+                    WriteLine($"Done loading solution '{solutionPath}'", ConsoleColor.Green);
 
                     var codeFixerOptions = new CodeFixerOptions(
                         ignoreCompilerErrors: options.IgnoreCompilerErrors,

@@ -8,7 +8,7 @@ namespace Roslynator.CommandLine
     [Verb("fix")]
     public class FixCommandLineOptions
     {
-        [Option(shortName: 's', longName: "solution", Required = true)]
+        [Value(index: 0, Required = true)]
         public string Solution { get; set; }
 
         [Option(shortName: 'a', longName: "analyzers")]

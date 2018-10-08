@@ -7,7 +7,7 @@ Fix all diagnostics in the specified solution.
 
 ```
 roslynator fix
--s|--solution
+<SOLUTION>
 [-a|--analyzers]
 [-p|--properties]
 [--msbuild-path]
@@ -19,13 +19,11 @@ roslynator fix
 [--batch-size]
 ```
 
-## Options
+## Arguments
 
-### Required Options
+**`SOLUTION`**
 
-**`-s|--solution`**
-
-Defines a path to the solution file.
+The solution file to fix.
 
 ### Optional Options
 
