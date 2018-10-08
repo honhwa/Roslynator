@@ -1,6 +1,8 @@
 
 # `fix` Command
 
+Fix all diagnostics in the specified solution.
+
 ## Synopsis
 
 ```

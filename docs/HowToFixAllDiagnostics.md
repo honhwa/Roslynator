@@ -1,5 +1,5 @@
 
-# How to Fix All Diagnostics
+# How to Fix All Diagnostics in a Solution
 
 1) Download package [Roslynator.CommandLine](http://www.nuget.org/packages/Roslynator.CommandLine/)&ensp;[![NuGet](https://img.shields.io/nuget/v/Roslynator.CommandLine.svg)](https://nuget.org/packages/Roslynator.CommandLine)
 
@@ -33,8 +33,6 @@ roslynator fix ^
   -s SOLUTION_PATH ^
   -p CodeAnalysisRuleSet=FULL_PATH_TO_RULESET_FILE
 ```
-
-Because each project use its current directory is it necessary to specify full path.
 
 ## See Also
 
