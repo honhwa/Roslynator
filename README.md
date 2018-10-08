@@ -4,10 +4,13 @@
 * [List of analyzers](src/Analyzers/README.md)
 * [List of refactorings](src/Refactorings/README.md)
 * [List of code fixes for CS diagnostics](src/CodeFixes/README.md)
-* **NEW FEATURE: [Fix all diagnostics in a solution](docs/HowToFixAllDiagnostics.md)**
-* **NEW FEATURE: [Generate documentation for .NET project and publish it to GitHub](docs/HowToGenerateDocumentation.md)**
 * [Release notes](ChangeLog.md)
 * Follow on [Twitter](https://twitter.com/roslynator)
+
+### New Features
+
+* [Fix all diagnostics in a solution](docs/HowToFixAllDiagnostics.md)
+* [Generate documentation for .NET project and publish it to GitHub](docs/HowToGenerateDocumentation.md)
 
 ### Donation
 
@@ -44,13 +47,17 @@ Although Roslynator products are free of charge, any [donation](https://www.payp
 
 * Package [Roslynator.CSharp](http://www.nuget.org/packages/Roslynator.CSharp/) is a must-have for Roslyn-based development.
 * It is built on top of Roslyn API (namely [Microsoft.CodeAnalysis.CSharp](http://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp/)).
-* See [API Reference](docs/api/README.md#_top).
+<!--* See [API Reference](docs/api/README.md#_top). -->
 
 ### Roslynator.CSharp.Workspaces &ensp;[![NuGet](https://img.shields.io/nuget/v/Roslynator.CSharp.Workspaces.svg)](https://nuget.org/packages/Roslynator.CSharp.Workspaces)
 
 * Package [Roslynator.CSharp.Workspaces](http://www.nuget.org/packages/Roslynator.CSharp.Workspaces/) is a must-have for Roslyn-based development.
 * It is built on top of Roslyn API (namely [Microsoft.CodeAnalysis.CSharp.Workspaces](http://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp.Workspaces/)).
-* See [API Reference](docs/api/README.md#_top).
+<!-- * See [API Reference](docs/api/README.md#_top). -->
+
+### Roslynator.CommandLine &ensp;[![NuGet](https://img.shields.io/nuget/v/Roslynator.CommandLine.svg)](https://nuget.org/packages/Roslynator.CommandLine)
+
+* See [Command Line Reference](docs/cli/README.md#_top).
 
 ## Roslynator for VS Code
 
@@ -65,6 +72,7 @@ Please read the [tutorial](docs/RoslynatorForVisualStudioCode.md) how to install
 * [How to Configure Refactorings](docs/HowToConfigureRefactorings.md)
 * [How to Customize Rules for a Project](docs/HowToCustomizeRulesForProject.md)
 * [How to Generate Documentation for .NET Project](docs/HowToGenerateDocumentation.md)
+* [How to Fix All Diagnostics in a Solution](docs/HowToFixAllDiagnostics.md)
 
 ## Other Projects
 

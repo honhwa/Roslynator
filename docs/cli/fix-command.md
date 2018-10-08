@@ -4,7 +4,7 @@
 ## Synopsis
 
 ```
-fix
+roslynator fix
 -s|--solution
 [-a|--analyzers]
 [-p|--properties]
@@ -68,4 +68,4 @@ Defines maximum number of diagnostics that can be fixed in one batch.
 
 ## See Also
 
-* [Roslynator.Documentation Command-Line Interface](README.md)
+* [Roslynator Command-Line Interface](README.md)

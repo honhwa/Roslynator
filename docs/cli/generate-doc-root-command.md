@@ -6,7 +6,7 @@ Generates root documentation file from specified assemblies.
 ## Synopsis
 
 ```
-doc
+roslynator doc
 -a|--assemblies
 -h|--heading
 -o|--output
@@ -85,4 +85,4 @@ Defines a visibility of a type or a member. Default value is `publicly`.
 
 ## See Also
 
-* [Roslynator.Documentation Command-Line Interface](README.md)
+* [Roslynator Command-Line Interface](README.md)

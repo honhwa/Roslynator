@@ -6,7 +6,7 @@ Generates a single file that contains all declarations from specified assemblies
 ## Synopsis
 
 ```
-declarations
+roslynator declarations
 -a|--assemblies
 -o|--output
 -r|--references
@@ -125,4 +125,4 @@ Defines a visibility of a type or a member. Default value is `publicly`.
 
 ## See Also
 
-* [Roslynator.Documentation Command-Line Interface](README.md)
+* [Roslynator Command-Line Interface](README.md)

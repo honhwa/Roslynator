@@ -9,10 +9,10 @@
 
 4) Change directory to directory where **roslynator.exe** is located (for example `C:\\roslynator\\tools\\net46`)
 
-5) Execute following command
+5) Execute following command:
 
 ```
-roslynator.exe fix -s SOLUTION_PATH
+roslynator fix -s SOLUTION_PATH
 ```
 ## How to Reference Analyzer Assemblies
 
@@ -21,10 +21,20 @@ It will not use analyzers and code fixes that are part of Visual Studio extensio
 If you want to use these assemblies you have to use `--analyzers` option. For example:
 
 ```
-roslynator.exe fix ^
+roslynator fix ^
   -s SOLUTION_PATH ^
-  --analyzers "C:\Users\JohnDoe\AppData\Local\Microsoft\VisualStudio\15.0\Extensions\EXTENSION_THAT_CONTAINS_ANALYZERS"
+  --analyzers PATH_TO_ASSEMBLY_WITH_ANALYZERS PATH_TO_DIRECTORY_WITH_ANALYZERS
 ```
+
+## How to Use Custom Rule Set
+
+```
+roslynator fix ^
+  -s SOLUTION_PATH ^
+  -p CodeAnalysisRuleSet=FULL_PATH_TO_RULESET_FILE
+```
+
+Because each project use its current directory is it necessary to specify full path.
 
 ## See Also
 
