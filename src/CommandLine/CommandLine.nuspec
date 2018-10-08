@@ -18,11 +18,8 @@
   </metadata>
   <files>
     <file src="_._" target="lib/net40/" />
-    <file src="_._" target="lib/netstandard1.0/" />
     <file src="CommandLine.targets" target="build/net40/Roslynator.CommandLine.targets" />
-    <file src="CommandLine.targets" target="build/netstandard1.0/Roslynator.CommandLine.targets" />
     <file src="Roslynator.targets" target="tools/Roslynator.targets" />
     <file src="$publishDir$\net461\**\*" target="tools/net461/" exclude="**\*.pdb;**\*.xml" />
-    <file src="$publishDir$\netcoreapp1.0\**\*" target="tools/netcoreapp1.0/" exclude="**\*.pdb;**\*.xml" />
   </files>
 </package>

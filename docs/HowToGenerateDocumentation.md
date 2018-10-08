@@ -51,7 +51,7 @@
 * [`generate-doc-root`](cli/generate-doc-root-command.md)
 * [`generate-declarations`](cli/generate-declarations-command.md)
 
-3) Build project in **Release** configuration
+3) Build solution in **Release** configuration
 
 4) Publish documentation to GitHub
 

@@ -4,6 +4,7 @@
 * [List of analyzers](src/Analyzers/README.md)
 * [List of refactorings](src/Refactorings/README.md)
 * [List of code fixes for CS diagnostics](src/CodeFixes/README.md)
+* **NEW FEATURE: [Fix all diagnostics in a solution](docs/HowToFixAllDiagnostics.md)**
 * **NEW FEATURE: [Generate documentation for .NET project and publish it to GitHub](docs/HowToGenerateDocumentation.md)**
 * [Release notes](ChangeLog.md)
 * Follow on [Twitter](https://twitter.com/roslynator)
