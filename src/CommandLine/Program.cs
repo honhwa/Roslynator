@@ -4,16 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using CommandLine;
+using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.MSBuild;
+using Roslynator.CodeFixes;
 using Roslynator.Documentation;
 using Roslynator.Documentation.Markdown;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Reflection;
-using static System.Console;
+//using static System.Console;
+using static Roslynator.CodeFixes.ConsoleHelpers;
+
+#pragma warning disable RCS1090
 
 namespace Roslynator.CommandLine
 {
@@ -27,12 +33,129 @@ namespace Roslynator.CommandLine
             WriteLine("Copyright (c) Josef Pihrt. All rights reserved.");
             WriteLine();
 
-            Parser.Default.ParseArguments<GenerateDocCommandLineOptions, GenerateDeclarationsCommandLineOptions, GenerateDocRootCommandLineOptions>(args)
+            Parser.Default.ParseArguments<FixCommandLineOptions, GenerateDocCommandLineOptions, GenerateDeclarationsCommandLineOptions, GenerateDocRootCommandLineOptions>(args)
                 .MapResult(
+                  (FixCommandLineOptions options) => ExecuteFixAsync(options).Result,
                   (GenerateDocCommandLineOptions options) => ExecuteDoc(options),
                   (GenerateDeclarationsCommandLineOptions options) => ExecuteDeclarations(options),
                   (GenerateDocRootCommandLineOptions options) => ExecuteRoot(options),
                   _ => 1);
+        }
+
+        private static async Task<int> ExecuteFixAsync(FixCommandLineOptions options)
+        {
+            var cts = new CancellationTokenSource();
+            Console.CancelKeyPress += (sender, e) =>
+            {
+                e.Cancel = true;
+                cts.Cancel();
+            };
+
+            CancellationToken cancellationToken = cts.Token;
+
+            if (options.MSBuildPath != null)
+            {
+                MSBuildLocator.RegisterMSBuildPath(options.MSBuildPath);
+            }
+            else
+            {
+                VisualStudioInstance instance = MSBuildLocator.QueryVisualStudioInstances()
+                    .OrderBy(f => f.Version)
+                    .LastOrDefault();
+
+                if (instance == null)
+                {
+                    WriteLine("MSBuild location not found. Use option '--msbuild-path' to specify MSBuild location", ConsoleColor.Red);
+                    return 1;
+                }
+
+                WriteLine($"MSBuild location is '{instance.MSBuildPath}'");
+
+                MSBuildLocator.RegisterInstance(instance);
+            }
+
+            var properties = new Dictionary<string, string>();
+
+            foreach (string property in options.Properties)
+            {
+                int index = property.IndexOf("=");
+
+                if (index == -1)
+                {
+                    WriteLine($"Unable to parse property '{property}'", ConsoleColor.Red);
+                    return 1;
+                }
+
+                string key = property.Substring(0, index);
+
+                properties[key] = property.Substring(index + 1);
+            }
+
+            if (properties.Count > 0)
+            {
+                WriteLine("Add MSBuild properties");
+
+                int maxLength = properties.Max(f => f.Key.Length);
+
+                foreach (KeyValuePair<string, string> kvp in properties)
+                    WriteLine($"  {kvp.Key.PadRight(maxLength)} = {kvp.Value}");
+            }
+
+            // https://github.com/Microsoft/MSBuildLocator/issues/16
+            if (!properties.ContainsKey("AlwaysCompileMarkupFilesInSeparateDomain"))
+                properties["AlwaysCompileMarkupFilesInSeparateDomain"] = bool.FalseString;
+
+            using (MSBuildWorkspace workspace = MSBuildWorkspace.Create(properties))
+            {
+                workspace.WorkspaceFailed += (o, e) => WriteLine(e.Diagnostic.Message, ConsoleColor.Yellow);
+
+                string solutionPath = options.Solution;
+
+                WriteLine($"Load solution '{solutionPath}'", ConsoleColor.Cyan);
+
+                try
+                {
+                    Solution solution;
+
+                    try
+                    {
+                        solution = await workspace.OpenSolutionAsync(solutionPath, new ConsoleProgressReporter(), cancellationToken);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is FileNotFoundException
+                            || ex is InvalidOperationException)
+                        {
+                            WriteLine(ex.ToString(), ConsoleColor.Red);
+                            return 1;
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+
+                    WriteLine($"  Done loading solution '{solutionPath}'", ConsoleColor.Green);
+
+                    var codeFixerOptions = new CodeFixerOptions(
+                        ignoreCompilerErrors: options.IgnoreCompilerErrors,
+                        ignoreAnalyzerReferences: options.IgnoreAnalyzerReferences,
+                        ignoredDiagnosticIds: options.IgnoredDiagnostics,
+                        ignoredCompilerDiagnosticIds: options.IgnoredCompilerDiagnostics,
+                        ignoredProjectNames: options.IgnoredProjects,
+                        batchSize: options.BatchSize);
+
+                    var codeFixer = new CodeFixer(workspace, analyzerPaths: options.Analyzers, options: codeFixerOptions);
+
+                    await codeFixer.FixAsync(cancellationToken);
+                }
+                catch (OperationCanceledException)
+                {
+                    WriteLine("Fixing was canceled.");
+                }
+            }
+
+            return 0;
         }
 
         private static int ExecuteDoc(GenerateDocCommandLineOptions options)
@@ -110,7 +233,7 @@ namespace Roslynator.CommandLine
             }
 
             var cts = new CancellationTokenSource();
-            CancelKeyPress += (sender, e) =>
+            Console.CancelKeyPress += (sender, e) =>
             {
                 e.Cancel = true;
                 cts.Cancel();
@@ -169,7 +292,7 @@ namespace Roslynator.CommandLine
                 ignoredParts: ignoredParts);
 
             var cts = new CancellationTokenSource();
-            CancelKeyPress += (sender, e) =>
+            Console.CancelKeyPress += (sender, e) =>
             {
                 e.Cancel = true;
                 cts.Cancel();
@@ -522,6 +645,19 @@ namespace Roslynator.CommandLine
 
             reference = null;
             return false;
+        }
+
+        private class ConsoleProgressReporter : IProgress<ProjectLoadProgress>
+        {
+            public void Report(ProjectLoadProgress value)
+            {
+                string text = Path.GetFileName(value.FilePath);
+
+                if (value.TargetFramework != null)
+                    text += $" ({value.TargetFramework})";
+
+                WriteLine($"  {value.Operation,-9} {value.ElapsedTime:mm\\:ss\\.ff}  {text}");
+            }
         }
     }
 }

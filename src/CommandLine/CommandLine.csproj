@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp1.0;net46</TargetFrameworks>
+    <TargetFramework>net461</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,6 +15,15 @@
     <AssemblyOriginatorKeyFile>CommandLine.snk</AssemblyOriginatorKeyFile>
     <Copyright>Copyright (c) 2017-2018 Josef Pihrt</Copyright>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <TrimUnusedDependencies>true</TrimUnusedDependencies>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)'=='Debug'">
+    <TrimFilesRootFiles Include="System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <TrimFilesRootFiles Include="System.Diagnostics.Tracing.dll" />
+  </ItemGroup>
 
   <PropertyGroup>
     <NuspecFile>CommandLine.nuspec</NuspecFile> 
@@ -30,27 +39,22 @@
     <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="Publish" Properties="TargetFramework=%(_TargetFramework.Identity)" />
   </Target>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <TrimUnusedDependencies>true</TrimUnusedDependencies>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(Configuration)'=='Debug'">
-    <TrimFilesRootFiles Include="System.Runtime.InteropServices.RuntimeInformation.dll" />
-    <TrimFilesRootFiles Include="System.Diagnostics.Tracing.dll" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Remove="_._" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.3.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.9.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="2.9.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="2.9.0" />
+    <PackageReference Include="Microsoft.Build.Locator" Version="1.0.31" />
     <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-preview1-26619-01" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Documentation\Documentation.csproj" />
+    <ProjectReference Include="..\CodeFixes.FixAll\CodeFixes.FixAll.csproj" />
   </ItemGroup>
 
 </Project>

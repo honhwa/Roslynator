@@ -95,6 +95,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation", "Documentat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLine", "CommandLine\CommandLine.csproj", "{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFixes.FixAll", "CodeFixes.FixAll\CodeFixes.FixAll.csproj", "{02400C27-6E98-4840-A75C-0635C99B8814}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -340,6 +342,16 @@ Global
 		{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}.DebugVS|Any CPU.ActiveCfg = Debug|Any CPU
 		{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A865E4D9-30C3-4CC8-A1AB-A897A7A1DA0C}.ReleaseTools|Any CPU.ActiveCfg = Release|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.DebugTests|Any CPU.ActiveCfg = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.DebugTests|Any CPU.Build.0 = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.DebugVS|Any CPU.ActiveCfg = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.DebugVS|Any CPU.Build.0 = Debug|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.ReleaseTools|Any CPU.ActiveCfg = Release|Any CPU
+		{02400C27-6E98-4840-A75C-0635C99B8814}.ReleaseTools|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
