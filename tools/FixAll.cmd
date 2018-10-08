@@ -1,6 +1,6 @@
 @echo off
 
-set _solutionPath=E:\x\msgpack\msgpack.sln
+set _solutionPath=
 
 "..\src\CommandLine\bin\Debug\net461\roslynator" fix ^
  -s "%_solutionPath%" ^
@@ -8,6 +8,6 @@ set _solutionPath=E:\x\msgpack\msgpack.sln
  -a "analyzers" ^
  --ignore-analyzer-references ^
  --ignore-compiler-errors ^
- --batch-size 500
+ --batch-size 2000
 
 pause
