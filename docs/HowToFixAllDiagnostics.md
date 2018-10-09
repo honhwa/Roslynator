@@ -12,7 +12,7 @@
 5) Execute following command:
 
 ```
-roslynator fix -s SOLUTION_PATH
+roslynator fix SOLUTION
 ```
 ## How to Reference Analyzer Assemblies
 
@@ -21,17 +21,13 @@ It will not use analyzers and code fixes that are part of Visual Studio extensio
 If you want to use these assemblies you have to use `--analyzers` option. For example:
 
 ```
-roslynator fix ^
-  -s SOLUTION_PATH ^
-  --analyzers PATH_TO_ASSEMBLY_WITH_ANALYZERS PATH_TO_DIRECTORY_WITH_ANALYZERS
+roslynator fix SOLUTION --analyzers PATH_TO_ASSEMBLY_WITH_ANALYZERS PATH_TO_DIRECTORY_WITH_ANALYZERS
 ```
 
 ## How to Use Custom Rule Set
 
 ```
-roslynator fix ^
-  -s SOLUTION_PATH ^
-  -p CodeAnalysisRuleSet=FULL_PATH_TO_RULESET_FILE
+roslynator fix SOLUTION -p CodeAnalysisRuleSet=FULL_PATH_TO_RULESET_FILE
 ```
 
 ## See Also
