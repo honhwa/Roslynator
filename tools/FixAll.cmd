@@ -2,6 +2,8 @@
 
 set _solutionPath=E:\x\msgpack\msgpack.sln
 
+"..\src\CommandLine\bin\Debug\net461\roslynator" loc "%_solutionPath%"
+
 "..\src\CommandLine\bin\Debug\net461\roslynator" fix ^
  "%_solutionPath%" ^
  -p TreatWarningsAsErrors=false "CodeAnalysisRuleSet=E:\Dokumenty\Visual Studio 2017\Projects\Roslynator\src\CommandLine\FixAll.ruleset" ^

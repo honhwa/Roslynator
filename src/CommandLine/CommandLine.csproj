@@ -55,6 +55,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Documentation\Documentation.csproj" />
     <ProjectReference Include="..\CodeFixes.FixAll\CodeFixes.FixAll.csproj" />
+    <ProjectReference Include="..\Metrics\Metrics.csproj" />
   </ItemGroup>
 
 </Project>
