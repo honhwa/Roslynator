@@ -1,8 +1,8 @@
 @echo off
 
-dotnet restore "..\src\Roslynator.Documentation.sln"
+dotnet restore "..\src\Documentation.sln"
 
-"C:\Program Files\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\msbuild" "..\src\Roslynator.Documentation.sln" ^
+"C:\Program Files\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\msbuild" "..\src\Documentation.sln" ^
  /t:Clean,Build ^
  /p:Configuration=Release,TreatWarningsAsErrors=true,WarningsNotAsErrors="1591" ^
  /v:normal ^
@@ -21,7 +21,7 @@ copy "..\src\CommandLine\bin\Release\Roslynator.CommandLine.0.1.0-beta.nupkg" "E
 
 rd /S /Q "C:\Users\Jojo\.nuget\packages\roslynator.commandline" 
 
-dotnet restore "..\src\Roslynator.Documentation.sln"
+dotnet restore "..\src\Documentation.sln"
 
 echo OK
 pause

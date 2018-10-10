@@ -189,6 +189,16 @@ namespace Roslynator.CommandLine
                     WriteLine($"Done counting metrics for solution '{solutionPath}'", ConsoleColor.Green);
 
                     WriteLine();
+                    WriteLine("Lines of code by project:");
+
+                    int maxDigits = projectsMetrics.Max(f => f.metrics.CodeLineCount).ToString("n0").Length;
+
+                    foreach ((Project project, LineMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
+                    {
+                        WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name}");
+                    }
+
+                    WriteLine();
                     WriteLine("Solution metrics:");
 
                     int totalCodeLineCount = projectsMetrics.Sum(f => f.metrics.CodeLineCount);
@@ -205,7 +215,7 @@ namespace Roslynator.CommandLine
                     string totalPreprocessorDirectiveLines = totalPreprocessorDirectiveLineCount.ToString("n0");
                     string totalLines = totalLineCount.ToString("n0");
 
-                    int maxDigits = Math.Max(totalCodeLines.Length,
+                    maxDigits = Math.Max(totalCodeLines.Length,
                         Math.Max(totalBraceLines.Length,
                             Math.Max(totalWhiteSpaceLines.Length,
                                 Math.Max(totalCommentLines.Length,
@@ -236,16 +246,6 @@ namespace Roslynator.CommandLine
                         WriteLine($"{totalPreprocessorDirectiveLines.PadLeft(maxDigits)} {((totalPreprocessorDirectiveLineCount / (double)totalLineCount)),4:P0} preprocessor directive lines");
 
                     WriteLine($"{totalLines.PadLeft(maxDigits)} {((totalLineCount / (double)totalLineCount)),4:P0} total lines");
-
-                    maxDigits = projectsMetrics.Max(f => f.metrics.CodeLineCount).ToString("n0").Length;
-
-                    WriteLine();
-                    WriteLine("Lines of code by project:");
-
-                    foreach ((Project project, LineMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
-                    {
-                        WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name}");
-                    }
 
                     WriteLine();
                 }
