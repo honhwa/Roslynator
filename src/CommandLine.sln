@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Workspaces", "CSharp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLine", "CommandLine\CommandLine.csproj", "{5FC70E60-F77A-4D4F-8484-6E432351CD1F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation", "Documentation\Documentation.csproj", "{43B9DEFC-E6A9-4CA2-B19E-0C486A418831}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5FC70E60-F77A-4D4F-8484-6E432351CD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FC70E60-F77A-4D4F-8484-6E432351CD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FC70E60-F77A-4D4F-8484-6E432351CD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B9DEFC-E6A9-4CA2-B19E-0C486A418831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B9DEFC-E6A9-4CA2-B19E-0C486A418831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B9DEFC-E6A9-4CA2-B19E-0C486A418831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B9DEFC-E6A9-4CA2-B19E-0C486A418831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
