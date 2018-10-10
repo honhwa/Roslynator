@@ -8,19 +8,21 @@ namespace Roslynator.Metrics
             int totalLineCount,
             int whiteSpaceLineCount,
             int commentLineCount,
-            int preprocessDirectiveLineCount)
+            int preprocessDirectiveLineCount,
+            int braceLineCount)
         {
             TotalLineCount = totalLineCount;
             WhiteSpaceLineCount = whiteSpaceLineCount;
             CommentLineCount = commentLineCount;
             PreprocessDirectiveLineCount = preprocessDirectiveLineCount;
+            BraceLineCount = braceLineCount;
         }
 
         public int TotalLineCount { get; }
 
         public int CodeLineCount
         {
-            get { return TotalLineCount - CommentLineCount - PreprocessDirectiveLineCount - WhiteSpaceLineCount; }
+            get { return TotalLineCount - CommentLineCount - PreprocessDirectiveLineCount - WhiteSpaceLineCount - BraceLineCount; }
         }
 
         public int WhiteSpaceLineCount { get; }
@@ -28,5 +30,7 @@ namespace Roslynator.Metrics
         public int CommentLineCount { get; }
 
         public int PreprocessDirectiveLineCount { get; }
+
+        public int BraceLineCount { get; }
     }
 }

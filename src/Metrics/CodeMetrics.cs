@@ -6,6 +6,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using Roslynator.CSharp;
+using Roslynator.Metrics.CSharp;
 
 namespace Roslynator.Metrics
 {
@@ -20,6 +21,7 @@ namespace Roslynator.Metrics
             int preprocessDirectiveLineCount = 0;
             int commentLineCount = 0;
             int whiteSpaceLineCount = 0;
+            int braceLineCount = 0;
 
             foreach (Project project in solution.Projects)
             {
@@ -29,9 +31,15 @@ namespace Roslynator.Metrics
                 preprocessDirectiveLineCount += metrics.PreprocessDirectiveLineCount;
                 commentLineCount += metrics.CommentLineCount;
                 whiteSpaceLineCount += metrics.WhiteSpaceLineCount;
+                braceLineCount += metrics.BraceLineCount;
             }
 
-            return new LineMetrics(totalLineCount, whiteSpaceLineCount, commentLineCount, preprocessDirectiveLineCount);
+            return new LineMetrics(
+                totalLineCount: totalLineCount,
+                whiteSpaceLineCount: whiteSpaceLineCount,
+                commentLineCount: commentLineCount,
+                preprocessDirectiveLineCount: preprocessDirectiveLineCount,
+                braceLineCount: braceLineCount);
         }
 
         public static async Task<LineMetrics> CountLinesAsync(
@@ -43,6 +51,7 @@ namespace Roslynator.Metrics
             int preprocessDirectiveLineCount = 0;
             int commentLineCount = 0;
             int whiteSpaceLineCount = 0;
+            int braceLineCount = 0;
 
             foreach (Document document in project.Documents)
             {
@@ -55,9 +64,15 @@ namespace Roslynator.Metrics
                 preprocessDirectiveLineCount += metrics.PreprocessDirectiveLineCount;
                 commentLineCount += metrics.CommentLineCount;
                 whiteSpaceLineCount += metrics.WhiteSpaceLineCount;
+                braceLineCount += metrics.BraceLineCount;
             }
 
-            return new LineMetrics(totalLineCount, whiteSpaceLineCount, commentLineCount, preprocessDirectiveLineCount);
+            return new LineMetrics(
+                totalLineCount: totalLineCount,
+                whiteSpaceLineCount: whiteSpaceLineCount,
+                commentLineCount: commentLineCount,
+                preprocessDirectiveLineCount: preprocessDirectiveLineCount,
+                braceLineCount: braceLineCount);
         }
 
         //TODO: visual basic
@@ -80,60 +95,15 @@ namespace Roslynator.Metrics
 
             SyntaxNode root = tree.GetRoot(cancellationToken);
 
-            var walker = new CodeMetricsWalker();
-
-            walker.Visit(root);
-
             SourceText sourceText = await document.GetTextAsync(cancellationToken).ConfigureAwait(false);
 
             TextLineCollection lines = sourceText.Lines;
 
-            int totalLineCount = lines.Count;
-            int commentLineCount = 0;
+            var walker = new CSharpCodeMetricsWalker(lines, options, cancellationToken);
+
+            walker.Visit(root);
+
             int whiteSpaceLineCount = 0;
-
-            if (!options.IncludeComments)
-            {
-                foreach (SyntaxTrivia trivia in walker.SingleLineComments)
-                {
-                    TextSpan span = trivia.Span;
-
-                    TextLine line = lines.GetLineFromPosition(span.Start);
-
-                    if (line.IsEmptyOrWhiteSpace(TextSpan.FromBounds(line.Start, span.Start)))
-                    {
-                        commentLineCount++;
-                    }
-                }
-
-                foreach (SyntaxTrivia trivia in walker.SingleLineDocumentationComments)
-                {
-                    commentLineCount += tree.GetLineCount(trivia.Span) - 1;
-                }
-
-                foreach (SyntaxTrivia trivia in walker.MultiLineComments)
-                {
-                    TextSpan span = trivia.Span;
-
-                    TextLine line = lines.GetLineFromPosition(span.Start);
-
-                    if (line.IsEmptyOrWhiteSpace(TextSpan.FromBounds(line.Start, span.Start)))
-                    {
-                        int lineCount = tree.GetLineCount(trivia.Span, cancellationToken);
-
-                        if (lineCount == 1
-                            || line.IsEmptyOrWhiteSpace(TextSpan.FromBounds(lines.GetLineFromPosition(span.End).End, span.End)))
-                        {
-                            commentLineCount += lineCount;
-                        }
-                    }
-                }
-
-                foreach (SyntaxTrivia trivia in walker.MultiLineDocumentationComments)
-                {
-                    commentLineCount += tree.GetLineCount(trivia.Span);
-                }
-            }
 
             if (!options.IncludeWhiteSpace)
             {
@@ -151,10 +121,11 @@ namespace Roslynator.Metrics
             }
 
             return new LineMetrics(
-                totalLineCount: totalLineCount,
+                totalLineCount: lines.Count,
                 whiteSpaceLineCount: whiteSpaceLineCount,
-                commentLineCount: commentLineCount,
-                preprocessDirectiveLineCount: walker.PreprocessorDirectives.Count);
+                commentLineCount: walker.CommentLineCount,
+                preprocessDirectiveLineCount: walker.PreprocessorDirectiveLineCount,
+                braceLineCount: walker.BraceLineCount);
         }
     }
 }

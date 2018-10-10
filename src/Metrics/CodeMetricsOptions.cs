@@ -8,12 +8,14 @@ namespace Roslynator.Metrics
             bool includeGenerated = false,
             bool includeWhiteSpace = false,
             bool includeComments = false,
-            bool includePreprocessorDirectives = false)
+            bool includePreprocessorDirectives = false,
+            bool ignoreBraces = false)
         {
             IncludeGenerated = includeGenerated;
             IncludeWhiteSpace = includeWhiteSpace;
             IncludeComments = includeComments;
             IncludePreprocessorDirectives = includePreprocessorDirectives;
+            IgnoreBraces = ignoreBraces;
         }
 
         public static CodeMetricsOptions Default { get; } = new CodeMetricsOptions();
@@ -25,5 +27,7 @@ namespace Roslynator.Metrics
         public bool IncludeComments { get; }
 
         public bool IncludePreprocessorDirectives { get; }
+
+        public bool IgnoreBraces { get; }
     }
 }

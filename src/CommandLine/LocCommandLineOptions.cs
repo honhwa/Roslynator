@@ -29,5 +29,8 @@ namespace Roslynator.CommandLine
 
         [Option(longName: "include-preprocessor-directives")]
         public bool IncludePreprocessorDirectives { get; set; }
+
+        [Option(longName: "ignore-braces")]
+        public bool IgnoreBraces { get; set; }
     }
 }
