@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Josef Pihrt. All rights reserved. Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
@@ -23,7 +24,7 @@ namespace Roslynator.Metrics
             int whiteSpaceLineCount = 0;
             int braceLineCount = 0;
 
-            foreach (Project project in solution.Projects)
+            foreach (Project project in solution.Projects.OrderBy(f => f.Name))
             {
                 LineMetrics metrics = await CountLinesAsync(project, options, cancellationToken).ConfigureAwait(false);
 
