@@ -2815,7 +2815,7 @@ namespace Roslynator.CSharp
             if (predicate == null)
                 throw new ArgumentNullException(nameof(predicate));
 
-            SyntaxNode parent = GetParent(node, ascendOutOfTrivia);
+            SyntaxNode parent = node.GetParent(ascendOutOfTrivia);
 
             if (parent != null)
             {
@@ -2898,24 +2898,10 @@ namespace Roslynator.CSharp
                 if (predicate(node))
                     return node;
 
-                node = GetParent(node, ascendOutOfTrivia);
+                node = node.GetParent(ascendOutOfTrivia);
             }
 
             return null;
-        }
-
-        internal static SyntaxNode GetParent(this SyntaxNode node, bool ascendOutOfTrivia)
-        {
-            SyntaxNode parent = node.Parent;
-
-            if (parent == null
-                && ascendOutOfTrivia
-                && (node is IStructuredTriviaSyntax structuredTrivia))
-            {
-                parent = structuredTrivia.ParentTrivia.Token.Parent;
-            }
-
-            return parent;
         }
 
         internal static TRoot RemoveNode<TRoot>(this TRoot root, SyntaxNode node) where TRoot : SyntaxNode
@@ -3040,39 +3026,35 @@ namespace Roslynator.CSharp
         {
             for (SyntaxNode current = node; current != null; current = current.Parent)
             {
-                if (CSharpFacts.IsLambdaExpression(current.Kind())
-                    && semanticModel
-                        .GetTypeInfo(current, cancellationToken)
-                        .ConvertedType?
-                        .OriginalDefinition
-                        .HasMetadataName(MetadataNames.System_Linq_Expressions_Expression_T) == true)
+                switch (current.Kind())
                 {
-                    return true;
-                }
-            }
+                    case SyntaxKind.SimpleLambdaExpression:
+                    case SyntaxKind.ParenthesizedLambdaExpression:
+                        {
+                            if (semanticModel
+                                .GetTypeInfo(current, cancellationToken)
+                                .ConvertedType?
+                                .OriginalDefinition
+                                .HasMetadataName(MetadataNames.System_Linq_Expressions_Expression_T) == true)
+                            {
+                                return true;
+                            }
 
-            return false;
-        }
+                            break;
+                        }
+                    case SyntaxKind.QueryExpression:
+                        {
+                            if (semanticModel
+                                .GetTypeInfo(current, cancellationToken)
+                                .ConvertedType?
+                                .OriginalDefinition
+                                .HasMetadataName(MetadataNames.System_Linq_IQueryable_T) == true)
+                            {
+                                return true;
+                            }
 
-        internal static bool IsInExpressionTree(
-            this SyntaxNode node,
-            INamedTypeSymbol expressionType,
-            SemanticModel semanticModel,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (expressionType == null)
-                return false;
-
-            for (SyntaxNode current = node; current != null; current = current.Parent)
-            {
-                if (CSharpFacts.IsLambdaExpression(current.Kind())
-                    && semanticModel
-                        .GetTypeInfo(current, cancellationToken)
-                        .ConvertedType?
-                        .OriginalDefinition
-                        .Equals(expressionType) == true)
-                {
-                    return true;
+                            break;
+                        }
                 }
             }
 
@@ -3090,7 +3072,7 @@ namespace Roslynator.CSharp
                 int lineStartIndex = span.Start - tree.GetLineSpan(span, cancellationToken).StartLinePosition.Character;
 
                 while (!node.FullSpan.Contains(lineStartIndex))
-                    node = GetParent(node, ascendOutOfTrivia: true);
+                    node = node.GetParent(ascendOutOfTrivia: true);
 
                 if (node.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia))
                 {
