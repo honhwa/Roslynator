@@ -11,13 +11,6 @@ if errorlevel 1 (
  exit
 )
 
-rem dotnet test -c Release --no-build "..\src\Tests\Analyzers.Tests\Analyzers.Tests.csproj"
-
-if errorlevel 1 (
- pause
- exit
-)
-
 dotnet pack -c Release --no-build -v normal "..\src\Analyzers.CodeFixes\Analyzers.CodeFixes.csproj"
 
 echo OK

@@ -11,11 +11,11 @@ namespace Roslynator.Metrics.CSharp
     //TODO:  } //
     internal class CSharpCodeMetricsWalker : CSharpSyntaxWalker
     {
-        public int CommentLineCount { get; private set; }
+        public int CommentLineCount { get; set; }
 
-        public int PreprocessorDirectiveLineCount { get; private set; }
+        public int PreprocessorDirectiveLineCount { get; set; }
 
-        public int BraceLineCount { get; private set; }
+        public int BlockBoundaryLineCount { get; set; }
 
         public TextLineCollection Lines { get; }
 
@@ -164,7 +164,7 @@ namespace Roslynator.Metrics.CSharp
 
         private void VisitBraces(in SyntaxToken openBraceToken, in SyntaxToken closeBraceToken)
         {
-            if (Options.IgnoreBraces)
+            if (Options.IgnoreBlockBoundary)
             {
                 VisitBrace(openBraceToken);
                 VisitBrace(closeBraceToken);
@@ -180,7 +180,7 @@ namespace Roslynator.Metrics.CSharp
             if (line.IsEmptyOrWhiteSpace(TextSpan.FromBounds(line.Start, span.Start))
                 && line.IsEmptyOrWhiteSpace(TextSpan.FromBounds(span.End, line.End)))
             {
-                BraceLineCount++;
+                BlockBoundaryLineCount++;
             }
         }
     }

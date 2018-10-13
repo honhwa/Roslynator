@@ -9,13 +9,13 @@ namespace Roslynator.Metrics
             bool includeWhiteSpace = false,
             bool includeComments = false,
             bool includePreprocessorDirectives = false,
-            bool ignoreBraces = false)
+            bool ignoreBlockBoundary = false)
         {
             IncludeGenerated = includeGenerated;
             IncludeWhiteSpace = includeWhiteSpace;
             IncludeComments = includeComments;
             IncludePreprocessorDirectives = includePreprocessorDirectives;
-            IgnoreBraces = ignoreBraces;
+            IgnoreBlockBoundary = ignoreBlockBoundary;
         }
 
         public static CodeMetricsOptions Default { get; } = new CodeMetricsOptions();
@@ -28,6 +28,6 @@ namespace Roslynator.Metrics
 
         public bool IncludePreprocessorDirectives { get; }
 
-        public bool IgnoreBraces { get; }
+        public bool IgnoreBlockBoundary { get; }
     }
 }

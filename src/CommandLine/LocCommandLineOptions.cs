@@ -5,7 +5,6 @@ using CommandLine;
 
 namespace Roslynator.CommandLine
 {
-    //TODO: IgnoredProjects
     [Verb("loc")]
     public class LocCommandLineOptions
     {
@@ -30,7 +29,10 @@ namespace Roslynator.CommandLine
         [Option(longName: "include-preprocessor-directives")]
         public bool IncludePreprocessorDirectives { get; set; }
 
-        [Option(longName: "ignore-braces")]
-        public bool IgnoreBraces { get; set; }
+        [Option(longName: "ignore-block-boundary")]
+        public bool IgnoreBlockBoundary { get; set; }
+
+        [Option(longName: "ignored-projects")]
+        public IEnumerable<string> IgnoredProjects { get; set; }
     }
 }

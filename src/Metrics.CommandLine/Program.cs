@@ -56,32 +56,34 @@ namespace Roslynator.CommandLine
                     }
                 }
 
-                var codeMetricsOptions = new CodeMetricsOptions(ignoreBraces: true);
+                var codeMetricsOptions = new CodeMetricsOptions(ignoreBlockBoundary: true);
 
                 WriteLine($"Count metrics for solution '{solutionPath}'", ConsoleColor.Cyan);
 
-                var projectsMetrics = new List<(Project project, LineMetrics metrics)>();
+                var projectsMetrics = new List<(Project project, CodeMetrics metrics)>();
 
                 foreach (Project project in solution.Projects)
                 {
-                    projectsMetrics.Add((project, await CodeMetrics.CountLinesAsync(project, codeMetricsOptions)));
+                    projectsMetrics.Add((project, await CodeMetricsCounter.CountLinesAsync(project, codeMetricsOptions)));
                 }
 
                 int maxDigits = projectsMetrics.Max(f => f.metrics.CodeLineCount).ToString("n0").Length;
 
-                foreach ((Project project, LineMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
+                int maxNameLength = projectsMetrics.Max(f => f.project.Name.Length);
+
+                foreach ((Project project, CodeMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
                 {
-                    WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name}");
+                    WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name.PadRight(maxNameLength)} {project.Language}");
                 }
 
                 WriteLine();
                 WriteLine("Solution metrics:");
 
                 int totalCodeLineCount = projectsMetrics.Sum(f => f.metrics.CodeLineCount);
-                int totalBraceLineCount = projectsMetrics.Sum(f => f.metrics.BraceLineCount);
+                int totalBraceLineCount = projectsMetrics.Sum(f => f.metrics.BlockBoundaryLineCount);
                 int totalWhiteSpaceLineCount = projectsMetrics.Sum(f => f.metrics.WhiteSpaceLineCount);
                 int totalCommentLineCount = projectsMetrics.Sum(f => f.metrics.CommentLineCount);
-                int totalPreprocessorDirectiveLineCount = projectsMetrics.Sum(f => f.metrics.PreprocessDirectiveLineCount);
+                int totalPreprocessorDirectiveLineCount = projectsMetrics.Sum(f => f.metrics.PreprocessorDirectiveLineCount);
                 int totalLineCount = projectsMetrics.Sum(f => f.metrics.TotalLineCount);
 
                 string totalCodeLines = totalCodeLineCount.ToString("n0");
@@ -97,13 +99,13 @@ namespace Roslynator.CommandLine
                             Math.Max(totalCommentLines.Length,
                                 Math.Max(totalPreprocessorDirectiveLines.Length, totalLines.Length)))));
 
-                WriteLine($"{totalCodeLines.PadLeft(maxDigits)} {((totalCodeLineCount / (double)totalLineCount)),4:P0} lines of code");
-                WriteLine($"{totalBraceLines.PadLeft(maxDigits)} {((totalBraceLineCount / (double)totalLineCount)),4:P0} brace lines");
-                WriteLine($"{totalWhiteSpaceLines.PadLeft(maxDigits)} {((totalWhiteSpaceLineCount / (double)totalLineCount)),4:P0} white-space lines");
-                WriteLine($"{totalCommentLines.PadLeft(maxDigits)} {((totalCommentLineCount / (double)totalLineCount)),4:P0} comment lines");
-                WriteLine($"{totalPreprocessorDirectiveLines.PadLeft(maxDigits)} {((totalPreprocessorDirectiveLineCount / (double)totalLineCount)),4:P0} preprocessor directive lines");
+                WriteLine($"{totalCodeLines.PadLeft(maxDigits)} {totalCodeLineCount / (double)totalLineCount,4:P0} lines of code");
+                WriteLine($"{totalBraceLines.PadLeft(maxDigits)} {totalBraceLineCount / (double)totalLineCount,4:P0} brace lines");
+                WriteLine($"{totalWhiteSpaceLines.PadLeft(maxDigits)} {totalWhiteSpaceLineCount / (double)totalLineCount,4:P0} white-space lines");
+                WriteLine($"{totalCommentLines.PadLeft(maxDigits)} {totalCommentLineCount / (double)totalLineCount,4:P0} comment lines");
+                WriteLine($"{totalPreprocessorDirectiveLines.PadLeft(maxDigits)} {totalPreprocessorDirectiveLineCount / (double)totalLineCount,4:P0} preprocessor directive lines");
 
-                WriteLine($"{totalLines.PadLeft(maxDigits)} {((totalLineCount / (double)totalLineCount)),4:P0} total lines");
+                WriteLine($"{totalLines.PadLeft(maxDigits)} {totalLineCount / (double)totalLineCount,4:P0} total lines");
 
                 WriteLine();
 

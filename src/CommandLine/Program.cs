@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -173,17 +174,24 @@ namespace Roslynator.CommandLine
                         includeWhiteSpace: options.IncludeWhiteSpace,
                         includeComments: options.IncludeComments,
                         includePreprocessorDirectives: options.IncludePreprocessorDirectives,
-                        ignoreBraces: options.IgnoreBraces);
+                        ignoreBlockBoundary: options.IgnoreBlockBoundary);
 
                     WriteLine($"Count metrics for solution '{solutionPath}'", ConsoleColor.Cyan);
 
-                    var projectsMetrics = new List<(Project project, LineMetrics metrics)>();
+                    var projectsMetrics = new List<(Project project, CodeMetrics metrics)>();
+
+                    ImmutableHashSet<string> ignoredProjectNames = (options.IgnoredProjects.Any())
+                        ? ImmutableHashSet.CreateRange(options.IgnoredProjects)
+                        : ImmutableHashSet<string>.Empty;
 
                     foreach (Project project in solution.Projects)
                     {
+                        if (ignoredProjectNames.Contains(project.Name))
+                            continue;
+
                         WriteLine($"  Count metrics for project '{project.Name}'");
 
-                        projectsMetrics.Add((project, await CodeMetrics.CountLinesAsync(project, codeMetricsOptions, cancellationToken).ConfigureAwait(false)));
+                        projectsMetrics.Add((project, await CodeMetricsCounter.CountLinesAsync(project, codeMetricsOptions, cancellationToken).ConfigureAwait(false)));
                     }
 
                     WriteLine($"Done counting metrics for solution '{solutionPath}'", ConsoleColor.Green);
@@ -193,59 +201,61 @@ namespace Roslynator.CommandLine
 
                     int maxDigits = projectsMetrics.Max(f => f.metrics.CodeLineCount).ToString("n0").Length;
 
-                    foreach ((Project project, LineMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
+                    int maxNameLength = projectsMetrics.Max(f => f.project.Name.Length);
+
+                    foreach ((Project project, CodeMetrics metrics) in projectsMetrics.OrderByDescending(f => f.metrics.CodeLineCount))
                     {
-                        WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name}");
+                        WriteLine($"{metrics.CodeLineCount.ToString("n0").PadLeft(maxDigits)} {project.Name.PadRight(maxNameLength)} {project.Language}");
                     }
 
                     WriteLine();
                     WriteLine("Solution metrics:");
 
                     int totalCodeLineCount = projectsMetrics.Sum(f => f.metrics.CodeLineCount);
-                    int totalBraceLineCount = projectsMetrics.Sum(f => f.metrics.BraceLineCount);
+                    int totalBlockBoundaryLineCount = projectsMetrics.Sum(f => f.metrics.BlockBoundaryLineCount);
                     int totalWhiteSpaceLineCount = projectsMetrics.Sum(f => f.metrics.WhiteSpaceLineCount);
                     int totalCommentLineCount = projectsMetrics.Sum(f => f.metrics.CommentLineCount);
-                    int totalPreprocessorDirectiveLineCount = projectsMetrics.Sum(f => f.metrics.PreprocessDirectiveLineCount);
+                    int totalPreprocessorDirectiveLineCount = projectsMetrics.Sum(f => f.metrics.PreprocessorDirectiveLineCount);
                     int totalLineCount = projectsMetrics.Sum(f => f.metrics.TotalLineCount);
 
                     string totalCodeLines = totalCodeLineCount.ToString("n0");
-                    string totalBraceLines = totalBraceLineCount.ToString("n0");
+                    string totalBlockBoundaryLines = totalBlockBoundaryLineCount.ToString("n0");
                     string totalWhiteSpaceLines = totalWhiteSpaceLineCount.ToString("n0");
                     string totalCommentLines = totalCommentLineCount.ToString("n0");
                     string totalPreprocessorDirectiveLines = totalPreprocessorDirectiveLineCount.ToString("n0");
                     string totalLines = totalLineCount.ToString("n0");
 
                     maxDigits = Math.Max(totalCodeLines.Length,
-                        Math.Max(totalBraceLines.Length,
+                        Math.Max(totalBlockBoundaryLines.Length,
                             Math.Max(totalWhiteSpaceLines.Length,
                                 Math.Max(totalCommentLines.Length,
                                     Math.Max(totalPreprocessorDirectiveLines.Length, totalLines.Length)))));
 
-                    if (options.IgnoreBraces
+                    if (options.IgnoreBlockBoundary
                         || !options.IncludeWhiteSpace
                         || !options.IncludeComments
                         || !options.IncludePreprocessorDirectives)
                     {
-                        WriteLine($"{totalCodeLines.PadLeft(maxDigits)} {((totalCodeLineCount / (double)totalLineCount)),4:P0} lines of code");
+                        WriteLine($"{totalCodeLines.PadLeft(maxDigits)} {totalCodeLineCount / (double)totalLineCount,4:P0} lines of code");
                     }
                     else
                     {
                         WriteLine($"{totalCodeLines.PadLeft(maxDigits)} lines of code");
                     }
 
-                    if (options.IgnoreBraces)
-                        WriteLine($"{totalBraceLines.PadLeft(maxDigits)} {((totalBraceLineCount / (double)totalLineCount)),4:P0} brace lines");
+                    if (options.IgnoreBlockBoundary)
+                        WriteLine($"{totalBlockBoundaryLines.PadLeft(maxDigits)} {totalBlockBoundaryLineCount / (double)totalLineCount,4:P0} block boundary lines");
 
                     if (!options.IncludeWhiteSpace)
-                        WriteLine($"{totalWhiteSpaceLines.PadLeft(maxDigits)} {((totalWhiteSpaceLineCount / (double)totalLineCount)),4:P0} white-space lines");
+                        WriteLine($"{totalWhiteSpaceLines.PadLeft(maxDigits)} {totalWhiteSpaceLineCount / (double)totalLineCount,4:P0} white-space lines");
 
                     if (!options.IncludeComments)
-                        WriteLine($"{totalCommentLines.PadLeft(maxDigits)} {((totalCommentLineCount / (double)totalLineCount)),4:P0} comment lines");
+                        WriteLine($"{totalCommentLines.PadLeft(maxDigits)} {totalCommentLineCount / (double)totalLineCount,4:P0} comment lines");
 
                     if (!options.IncludePreprocessorDirectives)
-                        WriteLine($"{totalPreprocessorDirectiveLines.PadLeft(maxDigits)} {((totalPreprocessorDirectiveLineCount / (double)totalLineCount)),4:P0} preprocessor directive lines");
+                        WriteLine($"{totalPreprocessorDirectiveLines.PadLeft(maxDigits)} {totalPreprocessorDirectiveLineCount / (double)totalLineCount,4:P0} preprocessor directive lines");
 
-                    WriteLine($"{totalLines.PadLeft(maxDigits)} {((totalLineCount / (double)totalLineCount)),4:P0} total lines");
+                    WriteLine($"{totalLines.PadLeft(maxDigits)} {totalLineCount / (double)totalLineCount,4:P0} total lines");
 
                     WriteLine();
                 }
