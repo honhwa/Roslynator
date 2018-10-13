@@ -155,12 +155,12 @@ namespace Roslynator.Documentation
             return StringBuilderCache.GetStringAndFree(sb);
         }
 
-        internal string GetUrlToRoot(int depth, char separator)
+        internal string GetUrlToRoot(int depth, char separator, bool scrollToContent = false)
         {
             string fileName = GetFileName(DocumentationFileKind.Root);
 
             if (depth == 0)
-                return fileName + "#" + WellKnownNames.TopFragmentName;
+                return fileName + ((scrollToContent) ? "#" + WellKnownNames.TopFragmentName : null);
 
             int capacity = (depth * 3) + fileName.Length;
 
@@ -176,8 +176,12 @@ namespace Roslynator.Documentation
 
             sb.Append(separator);
             sb.Append(fileName);
-            sb.Append("#");
-            sb.Append(WellKnownNames.TopFragmentName);
+
+            if (scrollToContent)
+            {
+                sb.Append("#");
+                sb.Append(WellKnownNames.TopFragmentName);
+            }
 
             return StringBuilderCache.GetStringAndFree(sb);
         }

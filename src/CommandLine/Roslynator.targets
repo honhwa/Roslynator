@@ -4,8 +4,7 @@
 
     <PropertyGroup>
 
-      <RoslynatorExe Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">"$(MSBuildThisFileDirectory)net46\Roslynator.exe"</RoslynatorExe>
-      <RoslynatorExe Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' Or '$(TargetFrameworkIdentifier)' == '.NETStandard'">dotnet "$(MSBuildThisFileDirectory)netcoreapp1.0\Roslynator.dll"</RoslynatorExe>
+      <RoslynatorExe>"$(MSBuildThisFileDirectory)net461\Roslynator.exe"</RoslynatorExe>
 
     </PropertyGroup>
 

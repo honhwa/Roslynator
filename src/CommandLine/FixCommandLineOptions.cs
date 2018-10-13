@@ -9,10 +9,10 @@ namespace Roslynator.CommandLine
     public class FixCommandLineOptions
     {
         [Value(index: 0, Required = true)]
-        public string Solution { get; set; }
+        public string SolutionPath { get; set; }
 
-        [Option(shortName: 'a', longName: "analyzers")]
-        public IEnumerable<string> Analyzers { get; set; }
+        [Option(shortName: 'a', longName: "analyzer-assemblies")]
+        public IEnumerable<string> AnalyzerAssemblies { get; set; }
 
         [Option(shortName: 'p', longName: "properties")]
         public IEnumerable<string> Properties { get; set; }

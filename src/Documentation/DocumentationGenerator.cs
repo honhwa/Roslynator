@@ -237,7 +237,9 @@ namespace Roslynator.Documentation
         {
             writer.WriteStartDocument();
 
-            writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+            if (Options.ScrollToContent)
+                writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+
             writer.WriteStartHeading(1);
             writer.WriteString(heading);
             writer.WriteEndHeading();
@@ -342,7 +344,7 @@ namespace Roslynator.Documentation
                             {
                                 writer.WriteHeading2(Resources.OtherTitle);
                                 writer.WriteStartBulletItem();
-                                writer.WriteLink(Resources.ExtensionsOfExternalTypesTitle, WellKnownNames.Extensions + "#" + WellKnownNames.TopFragmentName);
+                                writer.WriteLink(Resources.ExtensionsOfExternalTypesTitle, WellKnownNames.Extensions + ((Options.ScrollToContent) ? "#" + WellKnownNames.TopFragmentName : null));
                                 writer.WriteEndBulletItem();
                             }
 
@@ -453,7 +455,7 @@ namespace Roslynator.Documentation
 
                 SymbolXmlDocumentation xmlDocumentation = DocumentationModel.GetXmlDocumentation(namespaceSymbol, Options.PreferredCultureName);
 
-                writer.WriteHeading(1, namespaceSymbol, SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespaces, addLink: false, linkDestination: WellKnownNames.TopFragmentName);
+                writer.WriteHeading(1, namespaceSymbol, SymbolDisplayFormats.TypeNameAndContainingTypesAndNamespaces, addLink: false, linkDestination: (Options.ScrollToContent) ? WellKnownNames.TopFragmentName : null);
 
                 foreach (NamespaceDocumentationParts part in EnabledAndSortedNamespaceParts)
                 {
@@ -621,13 +623,17 @@ namespace Roslynator.Documentation
             {
                 writer.WriteStartDocument();
 
-                writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
-                writer.WriteLine();
+                if (Options.ScrollToContent)
+                {
+                    writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+                    writer.WriteLine();
+                }
+
                 writer.WriteStartHeading(1);
                 writer.WriteString(Resources.ExtensionsOfExternalTypesTitle);
                 writer.WriteEndHeading();
 
-                writer.WriteLink(Resources.HomeTitle, UrlProvider.GetUrlToRoot(0, '/'));
+                writer.WriteLink(Resources.HomeTitle, UrlProvider.GetUrlToRoot(0, '/', scrollToContent: Options.ScrollToContent));
                 writer.WriteContentSeparator();
                 writer.WriteLink(Resources.NamespacesTitle, UrlProvider.GetFragment(Resources.NamespacesTitle));
 
@@ -665,8 +671,13 @@ namespace Roslynator.Documentation
             using (DocumentationWriter writer = CreateWriter(typeSymbol))
             {
                 writer.WriteStartDocument();
-                writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
-                writer.WriteLine();
+
+                if (Options.ScrollToContent)
+                {
+                    writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+                    writer.WriteLine();
+                }
+
                 writer.WriteStartHeading(1);
                 writer.WriteLink(typeSymbol, SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters);
                 writer.WriteSpace();
@@ -711,7 +722,13 @@ namespace Roslynator.Documentation
             {
                 writer.WriteStartDocument();
 
-                writer.WriteHeading(1, typeSymbol, SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters, SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName, addLink: false, linkDestination: WellKnownNames.TopFragmentName);
+                writer.WriteHeading(
+                    1,
+                    typeSymbol,
+                    SymbolDisplayFormats.TypeNameAndContainingTypesAndTypeParameters,
+                    SymbolDisplayAdditionalMemberOptions.UseItemPropertyName | SymbolDisplayAdditionalMemberOptions.UseOperatorName,
+                    addLink: false,
+                    linkDestination: (Options.ScrollToContent) ? WellKnownNames.TopFragmentName : null);
 
                 foreach (TypeDocumentationParts part in EnabledAndSortedTypeParts)
                 {
@@ -1054,8 +1071,11 @@ namespace Roslynator.Documentation
 
                             bool isOverloaded = en.MoveNext();
 
-                            writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
-                            writer.WriteLine();
+                            if (Options.ScrollToContent)
+                            {
+                                writer.WriteLinkDestination(WellKnownNames.TopFragmentName);
+                                writer.WriteLine();
+                            }
 
                             writer.WriteMemberTitle(symbol, isOverloaded);
 

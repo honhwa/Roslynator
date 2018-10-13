@@ -35,15 +35,15 @@ namespace Roslynator.CommandLine
 
             Parser.Default.ParseArguments<FixCommandLineOptions, LocCommandLineOptions, GenerateDocCommandLineOptions, GenerateDeclarationsCommandLineOptions, GenerateDocRootCommandLineOptions>(args)
                 .MapResult(
-                  (FixCommandLineOptions options) => ExecuteFixAsync(options).Result,
-                  (LocCommandLineOptions options) => ExecuteLocAsync(options).Result,
-                  (GenerateDocCommandLineOptions options) => ExecuteDoc(options),
-                  (GenerateDeclarationsCommandLineOptions options) => ExecuteDeclarations(options),
-                  (GenerateDocRootCommandLineOptions options) => ExecuteRoot(options),
+                  (FixCommandLineOptions options) => FixAsync(options).Result,
+                  (LocCommandLineOptions options) => LocAsync(options).Result,
+                  (GenerateDocCommandLineOptions options) => GenerateDoc(options),
+                  (GenerateDeclarationsCommandLineOptions options) => GenerateDeclarations(options),
+                  (GenerateDocRootCommandLineOptions options) => GenerateDocRoot(options),
                   _ => 1);
         }
 
-        private static async Task<int> ExecuteFixAsync(FixCommandLineOptions options)
+        private static async Task<int> FixAsync(FixCommandLineOptions options)
         {
             MSBuildWorkspace workspace = null;
 
@@ -56,7 +56,7 @@ namespace Roslynator.CommandLine
 
                 workspace.WorkspaceFailed += (o, e) => WriteLine(e.Diagnostic.Message, ConsoleColor.Yellow);
 
-                string solutionPath = options.Solution;
+                string solutionPath = options.SolutionPath;
 
                 WriteLine($"Load solution '{solutionPath}'", ConsoleColor.Cyan);
 
@@ -101,7 +101,7 @@ namespace Roslynator.CommandLine
                         ignoredProjectNames: options.IgnoredProjects,
                         batchSize: options.BatchSize);
 
-                    var codeFixer = new CodeFixer(workspace, analyzerPaths: options.Analyzers, options: codeFixerOptions);
+                    var codeFixer = new CodeFixer(workspace, analyzerAssemblies: options.AnalyzerAssemblies, options: codeFixerOptions);
 
                     await codeFixer.FixAsync(cancellationToken);
                 }
@@ -118,7 +118,7 @@ namespace Roslynator.CommandLine
             return 0;
         }
 
-        private static async Task<int> ExecuteLocAsync(LocCommandLineOptions options)
+        private static async Task<int> LocAsync(LocCommandLineOptions options)
         {
             MSBuildWorkspace workspace = null;
 
@@ -319,7 +319,7 @@ namespace Roslynator.CommandLine
             return MSBuildWorkspace.Create(dicProperties);
         }
 
-        private static int ExecuteDoc(GenerateDocCommandLineOptions options)
+        private static int GenerateDoc(GenerateDocCommandLineOptions options)
         {
             if (options.MaxDerivedTypes < 0)
             {
@@ -374,11 +374,12 @@ namespace Roslynator.CommandLine
                 ignoredNamespaceParts: ignoredNamespaceParts,
                 ignoredTypeParts: ignoredTypeParts,
                 ignoredMemberParts: ignoredMemberParts,
-                omitContainingNamespaceParts: omitContainingNamespaceParts);
+                omitContainingNamespaceParts: omitContainingNamespaceParts,
+                scrollToContent: options.ScrollToContent);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 
-            string directoryPath = options.OutputDirectory;
+            string directoryPath = options.OutputPath;
 
             if (!options.NoDelete
                 && Directory.Exists(directoryPath))
@@ -402,7 +403,7 @@ namespace Roslynator.CommandLine
 
             CancellationToken cancellationToken = cts.Token;
 
-            WriteLine($"Documentation is being generated to '{options.OutputDirectory}'.");
+            WriteLine($"Documentation is being generated to '{options.OutputPath}'.");
 
             foreach (DocumentationGeneratorResult documentationFile in generator.Generate(heading: options.Heading, cancellationToken))
             {
@@ -416,12 +417,12 @@ namespace Roslynator.CommandLine
 #endif
             }
 
-            WriteLine($"Documentation successfully generated to '{options.OutputDirectory}'.");
+            WriteLine($"Documentation successfully generated to '{options.OutputPath}'.");
 
             return 0;
         }
 
-        private static int ExecuteDeclarations(GenerateDeclarationsCommandLineOptions options)
+        private static int GenerateDeclarations(GenerateDeclarationsCommandLineOptions options)
         {
             if (!TryGetIgnoredDeclarationListParts(options.IgnoredParts, out DeclarationListParts ignoredParts))
                 return 1;
@@ -485,7 +486,7 @@ namespace Roslynator.CommandLine
             return 0;
         }
 
-        private static int ExecuteRoot(GenerateDocRootCommandLineOptions options)
+        private static int GenerateDocRoot(GenerateDocRootCommandLineOptions options)
         {
             if (!TryGetVisibility(options.Visibility, out DocumentationVisibility visibility))
                 return 1;
@@ -506,7 +507,8 @@ namespace Roslynator.CommandLine
                 markObsolete: !options.NoMarkObsolete,
                 depth: options.Depth,
                 ignoredRootParts: ignoredParts,
-                omitContainingNamespaceParts: (options.OmitContainingNamespace) ? OmitContainingNamespaceParts.Root : OmitContainingNamespaceParts.None);
+                omitContainingNamespaceParts: (options.OmitContainingNamespace) ? OmitContainingNamespaceParts.Root : OmitContainingNamespaceParts.None,
+                scrollToContent: options.ScrollToContent);
 
             var generator = new MarkdownDocumentationGenerator(documentationModel, WellKnownUrlProviders.GitHub, documentationOptions);
 
@@ -534,16 +536,17 @@ namespace Roslynator.CommandLine
             return 0;
         }
 
-        private static DocumentationModel CreateDocumentationModel(string assemblyReferencesValue, IEnumerable<string> assemblies, DocumentationVisibility visibility, IEnumerable<string> additionalXmlDocumentationPaths = null)
+        private static DocumentationModel CreateDocumentationModel(IEnumerable<string> assemblyReferences, IEnumerable<string> assemblies, DocumentationVisibility visibility, IEnumerable<string> additionalXmlDocumentationPaths = null)
         {
-            IEnumerable<string> assemblyReferences = GetAssemblyReferences(assemblyReferencesValue);
+            var references = new List<PortableExecutableReference>();
 
-            if (assemblyReferences == null)
-                return null;
+            foreach (string path in assemblyReferences.SelectMany(f => GetAssemblyReferences(f)))
+            {
+                if (path == null)
+                    return null;
 
-            List<PortableExecutableReference> references = assemblyReferences
-                .Select(f => MetadataReference.CreateFromFile(f))
-                .ToList();
+                references.Add(MetadataReference.CreateFromFile(path));
+            }
 
             foreach (string assemblyPath in assemblies)
             {
@@ -579,32 +582,21 @@ namespace Roslynator.CommandLine
                 additionalXmlDocumentationPaths: additionalXmlDocumentationPaths);
         }
 
-        private static IEnumerable<string> GetAssemblyReferences(string assemblyReferences)
+        private static IEnumerable<string> GetAssemblyReferences(string path)
         {
-            if (assemblyReferences.Contains(";"))
+            if (!File.Exists(path))
             {
-                return assemblyReferences.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                WriteLine($"File not found: '{path}'.");
+                return null;
+            }
+
+            if (string.Equals(Path.GetExtension(path), ".dll", StringComparison.OrdinalIgnoreCase))
+            {
+                return new string[] { path };
             }
             else
             {
-                string path = assemblyReferences;
-
-                if (!File.Exists(path))
-                {
-                    WriteLine($"File not found: '{path}'.");
-                    return null;
-                }
-
-                string extension = Path.GetExtension(path);
-
-                if (string.Equals(extension, ".dll", StringComparison.OrdinalIgnoreCase))
-                {
-                    return assemblyReferences.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-                }
-                else
-                {
-                    return File.ReadLines(assemblyReferences).Where(f => !string.IsNullOrWhiteSpace(f));
-                }
+                return File.ReadLines(path).Where(f => !string.IsNullOrWhiteSpace(f));
             }
         }
 

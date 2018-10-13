@@ -1,14 +1,14 @@
 
 # `fix` Command
 
-Fix all diagnostics in the specified solution.
+Fixes all diagnostics in the specified solution.
 
 ## Synopsis
 
 ```
 roslynator fix
 <SOLUTION>
-[-a|--analyzers]
+[-a|--analyzer-assemblies]
 [-p|--properties]
 [--msbuild-path]
 [--ignore-analyzer-references]
@@ -27,7 +27,7 @@ The solution file to fix.
 
 ### Optional Options
 
-**`a-|--analyzers`**
+**`a-|--analyzer-assemblies`**
 
 Defines one or more paths to:
 

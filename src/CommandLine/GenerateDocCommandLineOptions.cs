@@ -13,14 +13,14 @@ namespace Roslynator.CommandLine
         [Option(longName: "assemblies", shortName: 'a', Required = true)]
         public IEnumerable<string> Assemblies { get; set; }
 
-        [Option(longName: "heading", shortName: 'h', Required = true)]
-        public string Heading { get; set; }
-
         [Option(longName: "output", shortName: 'o', Required = true)]
-        public string OutputDirectory { get; set; }
+        public string OutputPath { get; set; }
 
         [Option(longName: "references", shortName: 'r', Required = true)]
-        public string References { get; set; }
+        public IEnumerable<string> References { get; set; }
+
+        [Option(longName: "heading", shortName: 'h', Required = true)]
+        public string Heading { get; set; }
 
         [Option(longName: "additional-xml-documentation")]
         public IEnumerable<string> AdditionalXmlDocumentation { get; set; }
@@ -99,6 +99,9 @@ namespace Roslynator.CommandLine
 
         [Option(longName: "preferred-culture")]
         public string PreferredCulture { get; set; }
+
+        [Option(longName: "scroll-to-content")]
+        public bool ScrollToContent { get; set; }
 
         [Option(longName: "visibility", Default = nameof(DocumentationVisibility.Publicly))]
         public string Visibility { get; set; }

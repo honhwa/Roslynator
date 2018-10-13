@@ -37,6 +37,7 @@ roslynator doc
 [--omit-member-implements]
 [--omit-member-overrides]
 [--preferred-culture]
+[--scroll-to-content]
 [--visibility]
 ```
 
@@ -56,12 +57,12 @@ Defines a heading of the root documentation file.
 
 Defines a path for the output directory.
 
-**`-r|--references`** `<ASSEMBLY-REFERENCES-OR-PATH-TO-FILE-WITH-ASSEMBLY-REFERENCES>`
+**`-r|--references`** `<ASSEMBLY-REFERENCE> <ASSEMBLY-REFERENCES-FILE>`
 
-Defines one of two following options:
+Defines one or more values where each value can be:
 
-* Semicolon separated list of assemblies necessary to compile a project.
-* Path to a file that contains a list of all assemblies necessary to compile a project. Each assembly must be on separate line.
+* Path to assembly file.
+* Path to a file that contains a list of all assemblies. Each assembly must be on separate line.
 
 ### Optional Options
 
@@ -167,9 +168,13 @@ Indicates whether an interface member that is being implemented should be omitte
 
 Indicates whether an overridden member should be omitted.
 
-**`[--preferred-culture]`**
+**`[--preferred-culture]`** <CULTURE-NAME>
 
 Defines culture that should be used when searching for xml documentation files.
+
+**`[--scroll-to-content]`**
+
+Indicates whether a link should lead to the top of the documentation content.
 
 **`[--visibility]`** `{publicly|publicly-or-internally|all}`
 

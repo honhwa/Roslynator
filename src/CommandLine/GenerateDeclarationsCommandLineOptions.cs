@@ -17,7 +17,7 @@ namespace Roslynator.CommandLine
         public string OutputPath { get; set; }
 
         [Option(longName: "references", shortName: 'r', Required = true)]
-        public string References { get; set; }
+        public IEnumerable<string> References { get; set; }
 
         [Option(longName: "additional-xml-documentation")]
         public IEnumerable<string> AdditionalXmlDocumentation { get; set; }

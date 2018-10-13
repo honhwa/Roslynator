@@ -37,7 +37,8 @@ namespace Roslynator.Documentation
             NamespaceDocumentationParts ignoredNamespaceParts = NamespaceDocumentationParts.None,
             TypeDocumentationParts ignoredTypeParts = TypeDocumentationParts.None,
             MemberDocumentationParts ignoredMemberParts = MemberDocumentationParts.None,
-            OmitContainingNamespaceParts omitContainingNamespaceParts = OmitContainingNamespaceParts.None)
+            OmitContainingNamespaceParts omitContainingNamespaceParts = OmitContainingNamespaceParts.None,
+            bool scrollToContent = DefaultValues.ScrollToContent)
         {
             if (maxDerivedTypes < 0)
                 throw new ArgumentOutOfRangeException(nameof(maxDerivedTypes), maxDerivedTypes, "Maximum number of derived items must be greater than or equal to 0.");
@@ -69,6 +70,7 @@ namespace Roslynator.Documentation
             IgnoredTypeParts = ignoredTypeParts;
             IgnoredMemberParts = ignoredMemberParts;
             OmitContainingNamespaceParts = omitContainingNamespaceParts;
+            ScrollToContent = scrollToContent;
         }
 
         public static DocumentationOptions Default { get; } = new DocumentationOptions();
@@ -123,6 +125,8 @@ namespace Roslynator.Documentation
 
         public OmitContainingNamespaceParts OmitContainingNamespaceParts { get; }
 
+        public bool ScrollToContent { get; }
+
         internal bool IncludeContainingNamespace(OmitContainingNamespaceParts parts)
         {
             return (OmitContainingNamespaceParts & parts) == 0;
@@ -171,6 +175,7 @@ namespace Roslynator.Documentation
             public const int MaxDerivedTypes = 5;
             public const bool OmitIEnumerable = true;
             public const bool PlaceSystemNamespaceFirst = true;
+            public const bool ScrollToContent = false;
         }
     }
 }

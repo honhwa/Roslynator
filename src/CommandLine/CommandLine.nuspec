@@ -12,14 +12,16 @@
     <description>Command line tool for Roslynator</description>
     <summary>Command line tool for Roslynator</summary>
     <copyright>Copyright (c) 2017-2018 Josef Pihrt</copyright>
-    <tags>C# CSharp CLI Documentation</tags>
+    <tags>C# CSharp CLI Roslyn</tags>
     <developmentDependency>true</developmentDependency>
     <repository type="git" url="http://github.com/JosefPihrt/Roslynator.git" />
   </metadata>
   <files>
-    <file src="_._" target="lib/net40/" />
-    <file src="CommandLine.targets" target="build/net40/Roslynator.CommandLine.targets" />
-    <file src="Roslynator.targets" target="tools/Roslynator.targets" />
+    <file src="_._" target="lib/net45/" />
+    <file src="_._" target="lib/netstandard1.0/" />
+    <file src="CommandLine.targets" target="build/net45/Roslynator.CommandLine.targets" />
+    <file src="CommandLine.targets" target="build/netstandard1.0/Roslynator.CommandLine.targets" />
+    <file src="Roslynator.targets" target="tools/" />
     <file src="$publishDir$\net461\**\*" target="tools/net461/" exclude="**\*.pdb;**\*.xml" />
   </files>
 </package>

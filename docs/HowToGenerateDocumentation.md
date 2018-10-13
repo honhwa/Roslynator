@@ -14,17 +14,19 @@
     <RoslynatorAssemblies>&quot;$(TargetPath)&quot;</RoslynatorAssemblies>
 
     <!-- A file that will contain all assembly references -->
-    <RoslynatorAssemblyReferences>$(TargetDir)Roslynator.assemblyreferences</RoslynatorAssemblyReferences>
+    <RoslynatorAssemblyReferencesFile>$(TargetDir)Roslynator.assemblyreferences</RoslynatorAssemblyReferencesFile>
+
+    <RoslynatorAssemblyReferences>&quot;$(RoslynatorAssemblyReferencesFile)&quot; &quot;$(TargetPath)&quot;</RoslynatorAssemblyReferences>
 
   </PropertyGroup>
 
     <!-- Save assembly references to a file -->
-    <WriteLinesToFile File="$(RoslynatorAssemblyReferences)" Lines="@(_ResolveAssemblyReferenceResolvedFiles)" Overwrite="true" Encoding="Unicode" />
+    <WriteLinesToFile File="$(RoslynatorAssemblyReferencesFile)" Lines="@(_ResolveAssemblyReferenceResolvedFiles)" Overwrite="true" Encoding="Unicode" />
 
     <!-- Execute 'doc' command. This command will generate documentation files from specified assemblies -->
   <Exec Command="$(RoslynatorExe) generate-doc ^
     -a $(RoslynatorAssemblies) ^
-    -r &quot;$(RoslynatorAssemblyReferences)&quot; ^
+    -r $(RoslynatorAssemblyReferences) ^
     -o &quot;$(SolutionDir)docs&quot; ^
     -h &quot;API Reference&quot;"
         LogStandardErrorAsError="true"
@@ -35,7 +37,7 @@
     <!-- Execute 'declarations' command. This command will generate a single file that contains all declarations from specified assemblies -->
   <Exec Command="$(RoslynatorExe) generate-declarations ^
     -a $(RoslynatorAssemblies) ^
-    -r &quot;$(RoslynatorAssemblyReferences)&quot; ^
+    -r $(RoslynatorAssemblyReferences) ^
     -o &quot;$(SolutionDir)docs\api.cs&quot;"
         LogStandardErrorAsError="true"
         ConsoleToMSBuild="true">
@@ -59,4 +61,3 @@
 
 * [MSBuild reserved and well-known properties](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2017)
 * [Common MSBuild project properties](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2017)
-* [Common macros for build commands and properties](https://docs.microsoft.com/en-us/cpp/ide/common-macros-for-build-commands-and-properties?view=vs-2017)

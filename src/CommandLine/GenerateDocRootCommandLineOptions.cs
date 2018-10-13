@@ -20,7 +20,7 @@ namespace Roslynator.CommandLine
         public string OutputPath { get; set; }
 
         [Option(longName: "references", shortName: 'r', Required = true)]
-        public string References { get; set; }
+        public IEnumerable<string> References { get; set; }
 
         [Option(longName: "depth", Default = DefaultValues.Depth)]
         public DocumentationDepth Depth { get; set; }
@@ -45,6 +45,9 @@ namespace Roslynator.CommandLine
 
         [Option(longName: "root-directory-url")]
         public string RootDirectoryUrl { get; set; }
+
+        [Option(longName: "scroll-to-content")]
+        public bool ScrollToContent { get; set; }
 
         [Option(longName: "visibility", Default = nameof(DocumentationVisibility.Publicly))]
         public string Visibility { get; set; }

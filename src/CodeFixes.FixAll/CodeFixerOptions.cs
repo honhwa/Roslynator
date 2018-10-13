@@ -9,8 +9,6 @@ namespace Roslynator.CodeFixes
     //TODO: DiagnosticEquivalenceKeyMap RCS1155=Roslynator.RCS1155.CurrentCultureIgnoreCase
     public class CodeFixerOptions
     {
-        internal object FixableProjectNames;
-
         public static CodeFixerOptions Default { get; } = new CodeFixerOptions();
 
         public CodeFixerOptions(

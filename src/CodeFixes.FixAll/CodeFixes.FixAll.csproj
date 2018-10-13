@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Version>0.1.0.0</Version>
     <AssemblyName>Roslynator.CodeFixes.FixAll</AssemblyName>
     <RootNamespace>Roslynator.CodeFixes</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeFixes.FixAll.snk</AssemblyOriginatorKeyFile>
     <CodeAnalysisRuleSet>..\global.ruleset</CodeAnalysisRuleSet>
     <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

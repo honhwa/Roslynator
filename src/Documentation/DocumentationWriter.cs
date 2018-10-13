@@ -303,7 +303,7 @@ namespace Roslynator.Documentation
                 if (beginWithSeparator)
                     WriteContentSeparator();
 
-                WriteLink(Resources.HomeTitle, UrlProvider.GetUrlToRoot(UrlProvider.GetFolders(CurrentSymbol).Length, '/'));
+                WriteLink(Resources.HomeTitle, UrlProvider.GetUrlToRoot(UrlProvider.GetFolders(CurrentSymbol).Length, '/', scrollToContent: Options.ScrollToContent));
             }
 
             if (en.MoveNext())
@@ -1745,7 +1745,13 @@ namespace Roslynator.Documentation
                 ? UrlProvider.GetFolders(CurrentSymbol)
                 : default;
 
-            string fragment = "#" + GetFragment();
+            string fragment = GetFragment();
+
+            if (fragment == null
+                && Options.ScrollToContent)
+            {
+                fragment = "#" + WellKnownNames.TopFragmentName;
+            }
 
             string url = UrlProvider.GetLocalUrl(folders, containingFolders, fragment).Url;
 
@@ -1767,13 +1773,13 @@ namespace Roslynator.Documentation
                             if (en.MoveNext()
                                 && en.MoveNext())
                             {
-                                return DocumentationUrlProvider.GetFragment(symbol);
+                                return "#" + DocumentationUrlProvider.GetFragment(symbol);
                             }
                         }
                     }
                 }
 
-                return WellKnownNames.TopFragmentName;
+                return null;
             }
 
             IEnumerable<ISymbol> GetMembers(TypeDocumentationModel model)

@@ -30,15 +30,15 @@ namespace Roslynator.CodeFixes
             logAnalyzerExecutionTime: false,
             reportSuppressedDiagnostics: false);
 
-        public CodeFixer(Workspace workspace, IEnumerable<string> analyzerPaths = null, CodeFixerOptions options = null)
+        public CodeFixer(Workspace workspace, IEnumerable<string> analyzerAssemblies = null, CodeFixerOptions options = null)
         {
             Workspace = workspace;
             Options = options ?? CodeFixerOptions.Default;
 
             _analyzerFiles = new AnalyzerFileCache();
 
-            if (analyzerPaths != null)
-                _analyzerFiles.LoadFrom(analyzerPaths);
+            if (analyzerAssemblies != null)
+                _analyzerFiles.LoadFrom(analyzerAssemblies);
         }
 
         public Workspace Workspace { get; }

@@ -6,7 +6,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFixes.FixAll", "CodeFix
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8B17331B-D942-4A0C-82AA-23515F4B46C4}"
 	ProjectSection(SolutionItems) = preProject
+		..\docs\cli\fix-command.md = ..\docs\cli\fix-command.md
+		..\docs\cli\generate-declarations-command.md = ..\docs\cli\generate-declarations-command.md
+		..\docs\cli\generate-doc-command.md = ..\docs\cli\generate-doc-command.md
+		..\docs\cli\generate-doc-root-command.md = ..\docs\cli\generate-doc-root-command.md
 		global.ruleset = global.ruleset
+		..\docs\HowToFixAllDiagnostics.md = ..\docs\HowToFixAllDiagnostics.md
+		..\docs\HowToGenerateDocumentation.md = ..\docs\HowToGenerateDocumentation.md
+		..\docs\cli\README.md = ..\docs\cli\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzers", "Analyzers\Analyzers.csproj", "{156C7E61-2199-44EB-BEFD-5507BEC5E359}"
