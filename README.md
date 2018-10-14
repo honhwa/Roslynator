@@ -10,7 +10,7 @@
 ### New Features
 
 * [Fix all diagnostics in a solution](docs/HowToFixAllDiagnostics.md)
-* [Generate API documentation for your project and publish it to GitHub](docs/HowToGenerateDocumentation.md)
+* [Generate API documentation](docs/HowToGenerateDocumentation.md)
 
 ### Donation
 
@@ -71,8 +71,8 @@ Please read the [tutorial](docs/RoslynatorForVisualStudioCode.md) how to install
 * [How to Configure Analyzers](docs/HowToConfigureAnalyzers.md)
 * [How to Configure Refactorings](docs/HowToConfigureRefactorings.md)
 * [How to Customize Rules for a Project](docs/HowToCustomizeRulesForProject.md)
-* [How to Generate API Documentation for your Project](docs/HowToGenerateDocumentation.md)
 * [How to Fix All Diagnostics in a Solution](docs/HowToFixAllDiagnostics.md)
+* [How to Generate API Documentation](docs/HowToGenerateDocumentation.md)
 
 ## Other Projects
 
